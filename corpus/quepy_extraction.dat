@@ -1,0 +1,118 @@
+What is a car	whatis	s
+What is Seinfield?	whatis	s
+where in the world is the Eiffel Tower	whereis	s
+list presidents of Argentina?	presidentsof	s
+What is the capital of Bolivia?	capitalcityof	s
+What is the language of Liberia?	spokenlanguageof	s
+What is the spoken language in Russia?	spokenlanguageof	s
+What is the population of China?	populationof	s
+how many people live in Australia?	populationof	s
+List movies	listmovies	s
+List movies directed by Quentin Tarantino.	moviesbydirector	s
+movies directed by Martin Scorsese	moviesbydirector	s
+which movies did Mel Gibson directed	moviesbydirector	s
+How long is Pulp Fiction	movieduration	s
+What is the duration of The Thin Red Line?	movieduration	s
+List movies with Hugh Laurie	actedon	s
+Movies with Matt LeBlanc	actedon	s
+In what movies did Jennifer Aniston appear?	actedon	s
+Which movies did Mel Gibson starred?	actedon	s
+Movies starring Winona Ryder	actedon	s
+when was gravity released?	moviereleasedate	s
+release date of the hobbit?	moviereleasedate	s
+Who is the director of Big Fish?	directorof	s
+who directed Pocahontas?	directorof	s
+who are the actors of Titanic?	actorsof	s
+who acted in Alien?	actorsof	s
+who starred in Depredator?	actorsof	s
+Actors of Fight Club	actorsof	s
+what is the plot of Titanic	plotof	s
+what was Sherk about?	plotof	s
+Radiohead members	bandmembers	s
+What are the members of Metallica?	bandmembers	s
+who were the members of pink floyd?	bandmembers	s
+When was Korn formed?	bandfoundation	s
+What is the music genre of Gorillaz?	musicgenre	s
+Music genre of Radiohead	musicgenre	s
+List albums of Pink Floyd	albumsofband	s
+What albums did Pearl Jam record?	albumsofband	s
+Albums by Metallica	albumsofband	s
+what albums did The Beatles make?	albumsofband	s
+Who is Tom Cruise?	whois	s
+How old is Bob Dylan	howoldis	s
+Where is Bill Gates from?	whereisfrom	s
+What is the cast of Friends?	castof	s
+Who works in Breaking Bad?	castof	s
+List actors of Seinfeld	castof	s
+List TV shows	listtvshows	s
+How many episodes does Seinfeld have?	episodecount	s
+Number of episodes of Seinfeld	episodecount	s
+List shows with Hugh Laurie	showswith	s
+In what shows does Jennifer Aniston appears?	showswith	s
+Shows with Matt LeBlanc	showswith	s
+Who is the creator of Breaking Bad?	creatorof	s
+Who are the creators of Friends?	creatorof	s
+who wrote The Little Prince?	whowrote	s
+who is the author of A Game Of Thrones?	whowrote	s
+list books by George Orwell	booksbyauthor	s
+which books did Suzanne Collins wrote?	booksbyauthor	s
+
+
+
+On what TV show does Hammond regularly appear?	showswith	n
+definition of computer	whatis	n
+where is the Statue of Liberty	whereis	n
+who are the presidents of Bolivia?	presidentsof	n
+who have been presidents of the Republic of Egypt?	presidentsof	n
+who have been presidents of the Arab Republic of Egypt?	presidentsof	n
+who are the past liders of Brazil?	presidentsof	n
+what is the capital city of the United Kingdom?	capitalcityof	n
+what is the capital of the country Germany?	capitalcityof	n
+What is the main spoken language in Poland?	spokenlanguageof	n
+what is the main language in th republic of Argentina?	spokenlanguageof	n
+how many people is in Paraguay?	populationof	n
+how many people there is in the People's Republic of China?	populationof	n
+what movies there are?	listmovies	n
+steven spielberg was the director of what movies?	moviesbydirector	n
+how many minutes long is the lord of the rings?	movieduration	n
+when was Harry Potter the movie released?	moviereleasedate	n
+what actors worked on the matrix?	actedon	n
+actors of Memoirs of a Geisha	actedon	n
+actors that worked in the movie Matrix?	actedon	n
+list the actors that worked in Alice in Wonderland	actedon	n
+list actors starring in the movie The Nightmare Before Christmas	actedon	n
+plot of Frozen?	plotof	n
+what is the hitchhiker's guide to the galaxy about?	plotof	n
+When was the Red Hot Chili Peppers founded?	bandfoundation	n
+when was the Rolling Stones born?	bandfoundation	n
+when did My Chemical Romance start to perform?	bandfoundation	n
+in what year did the Sex Pistils start to make recitals?	bandfoundation	n
+what type of music does AC DC?	musicgenre	n
+what type of songs does the Rolling Stones?	musicgenre	n
+what works did the Beatles do?	albumsofband	n
+which works did Linkin Park make?	albumsofband	n
+albums recorded by the Guns n' Roses	albumsofband	n
+What are titles of albums featuring The Black Eyed Peas?	albumsofband	n
+biography of Charles Dickens	whois	n
+when is Angelina Jolie's birthday?	howoldis	n
+what is the age of Katy Perry?	howoldis	n
+in what year was Madonna born?	howoldis	n
+in what date did Bryan Cranston born?	howoldis	n
+when was George Clooney born?	howoldis	n
+where was Matt Damon born?	whereisfrom	n
+Where did he grow up?	whereisfrom	n
+where did J. R. R. Tolkien born?	whereisfrom	n
+which are the actors of Grey's Anatomy	castof	n
+list of actors of the show The Addams Family	castof	n
+which were the actors of the TV show Uggly Betty	castof	n
+what TV shows are?	listtvshows	n
+what TV shows have been made?	listtvshows	n
+shows where Matthew Perry worked in?	showswith	n
+who create Stargate Atlantis?	creatorof	n
+who is the writer of The Lord of the Rings?	creatorof	n
+who create The Neverending Story?	creatorof	n
+list books written by J. K. Rowling	booksbyauthor	n
+list of works written by George R.R. Martin	booksbyauthor	n
+list of books created by Agatha Christie	booksbyauthor	n
+What are titles of books written by Dan Brown?		booksbyauthor	n
+What movies did James Dean appear in?	actedon	n

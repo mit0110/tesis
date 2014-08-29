@@ -5,7 +5,7 @@ from sklearn.pipeline import Pipeline
 
 from feature_extraction import get_features
 
-annotated_corpus = open('Corpus/annotated_corpus.pickle', 'r')
+annotated_corpus = open('corpus/annotated_corpus.pickle', 'r')
 annotated_corpus = pickle.load(annotated_corpus)
 
 def main():
