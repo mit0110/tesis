@@ -2,37 +2,37 @@
 (dp1
 S'question'
 p2
-S'What is a car'
+S'when did My Chemical Romance start to perform?'
 p3
 sS'target'
 p4
-S'whatis'
+S'bandfoundation'
 p5
 sS'recognized'
 p6
-S's'
+S'n'
 p7
 sa(dp8
 g2
-S'What is Seinfield?'
+S'what movies there are?'
 p9
 sg4
-S'whatis'
+S'listmovies'
 p10
 sg6
 g7
 sa(dp11
 g2
-S'where in the world is the Eiffel Tower'
+S'steven spielberg was the director of what movies?'
 p12
 sg4
-S'whereis'
+S'moviesbydirector'
 p13
 sg6
 g7
 sa(dp14
 g2
-S'list presidents of Argentina?'
+S'who are the past liders of Brazil?'
 p15
 sg4
 S'presidentsof'
@@ -41,16 +41,16 @@ sg6
 g7
 sa(dp17
 g2
-S'What is the capital of Bolivia?'
+S"when is Angelina Jolie's birthday?"
 p18
 sg4
-S'capitalcityof'
+S'howoldis'
 p19
 sg6
 g7
 sa(dp20
 g2
-S'What is the language of Liberia?'
+S'What is the main spoken language in Poland?'
 p21
 sg4
 S'spokenlanguageof'
@@ -59,97 +59,97 @@ sg6
 g7
 sa(dp23
 g2
-S'What is the spoken language in Russia?'
+S'list of books created by Agatha Christie'
 p24
 sg4
-S'spokenlanguageof'
+S'booksbyauthor'
 p25
 sg6
 g7
 sa(dp26
 g2
-S'What is the population of China?'
+S"what is the hitchhiker's guide to the galaxy about?"
 p27
 sg4
-S'populationof'
+S'plotof'
 p28
 sg6
 g7
 sa(dp29
 g2
-S'how many people live in Australia?'
+S'which works did Linkin Park make?'
 p30
 sg4
-S'populationof'
+S'albumsofband'
 p31
 sg6
 g7
 sa(dp32
 g2
-S'List movies'
+S'where is the Statue of Liberty'
 p33
 sg4
-S'listmovies'
+S'whereis'
 p34
 sg6
 g7
 sa(dp35
 g2
-S'List movies directed by Quentin Tarantino.'
+S'who create Stargate Atlantis?'
 p36
 sg4
-S'moviesbydirector'
+S'creatorof'
 p37
 sg6
 g7
 sa(dp38
 g2
-S'movies directed by Martin Scorsese'
+S'which were the actors of the TV show Uggly Betty'
 p39
 sg4
-S'moviesbydirector'
+S'castof'
 p40
 sg6
 g7
 sa(dp41
 g2
-S'which movies did Mel Gibson directed'
+S'who are the presidents of Bolivia?'
 p42
 sg4
-S'moviesbydirector'
+S'presidentsof'
 p43
 sg6
 g7
 sa(dp44
 g2
-S'How long is Pulp Fiction'
+S'definition of computer'
 p45
 sg4
-S'movieduration'
+S'whatis'
 p46
 sg6
 g7
 sa(dp47
 g2
-S'What is the duration of The Thin Red Line?'
+S'what type of songs does the Rolling Stones?'
 p48
 sg4
-S'movieduration'
+S'musicgenre'
 p49
 sg6
 g7
 sa(dp50
 g2
-S'List movies with Hugh Laurie'
+S'what works did the Beatles do?'
 p51
 sg4
-S'actedon'
+S'albumsofband'
 p52
 sg6
 g7
 sa(dp53
 g2
-S'Movies with Matt LeBlanc'
+S'What movies did James Dean appear in?'
 p54
 sg4
 S'actedon'
@@ -158,886 +158,768 @@ sg6
 g7
 sa(dp56
 g2
-S'In what movies did Jennifer Aniston appear?'
+S'who have been presidents of the Arab Republic of Egypt?'
 p57
 sg4
-S'actedon'
+S'presidentsof'
 p58
 sg6
 g7
 sa(dp59
 g2
-S'Which movies did Mel Gibson starred?'
+S'plot of Frozen?'
 p60
 sg4
-S'actedon'
+S'plotof'
 p61
 sg6
 g7
 sa(dp62
 g2
-S'Movies starring Winona Ryder'
+S"how many people there is in the People's Republic of China?"
 p63
 sg4
-S'actedon'
+S'populationof'
 p64
 sg6
 g7
 sa(dp65
 g2
-S'when was gravity released?'
+S'list books written by J. K. Rowling'
 p66
 sg4
-S'moviereleasedate'
+S'booksbyauthor'
 p67
 sg6
 g7
 sa(dp68
 g2
-S'release date of the hobbit?'
+S'when was George Clooney born?'
 p69
 sg4
-S'moviereleasedate'
+S'howoldis'
 p70
 sg6
 g7
 sa(dp71
 g2
-S'Who is the director of Big Fish?'
+S'What are titles of albums featuring The Black Eyed Peas?'
 p72
 sg4
-S'directorof'
+S'albumsofband'
 p73
 sg6
 g7
 sa(dp74
 g2
-S'who directed Pocahontas?'
+S'list of works written by George R.R. Martin'
 p75
 sg4
-S'directorof'
+S'booksbyauthor'
 p76
 sg6
 g7
 sa(dp77
 g2
-S'who are the actors of Titanic?'
+S'list the actors that worked in Alice in Wonderland'
 p78
 sg4
-S'actorsof'
+S'actedon'
 p79
 sg6
 g7
 sa(dp80
 g2
-S'who acted in Alien?'
+S'how many minutes long is the lord of the rings?'
 p81
 sg4
-S'actorsof'
+S'movieduration'
 p82
 sg6
 g7
 sa(dp83
 g2
-S'who starred in Depredator?'
+S'who is the writer of The Lord of the Rings?'
 p84
 sg4
-S'actorsof'
+S'creatorof'
 p85
 sg6
 g7
 sa(dp86
 g2
-S'Actors of Fight Club'
+S'what is the main language in th republic of Argentina?'
 p87
 sg4
-S'actorsof'
+S'spokenlanguageof'
 p88
 sg6
 g7
 sa(dp89
 g2
-S'what is the plot of Titanic'
+S"albums recorded by the Guns n' Roses"
 p90
 sg4
-S'plotof'
+S'albumsofband'
 p91
 sg6
 g7
 sa(dp92
 g2
-S'what was Sherk about?'
+S'where was Matt Damon born?'
 p93
 sg4
-S'plotof'
+S'whereisfrom'
 p94
 sg6
 g7
 sa(dp95
 g2
-S'Radiohead members'
+S'what is the capital city of the United Kingdom?'
 p96
 sg4
-S'bandmembers'
+S'capitalcityof'
 p97
 sg6
 g7
 sa(dp98
 g2
-S'What are the members of Metallica?'
+S'what is the age of Katy Perry?'
 p99
 sg4
-S'bandmembers'
+S'howoldis'
 p100
 sg6
 g7
 sa(dp101
 g2
-S'who were the members of pink floyd?'
+S'When was the Red Hot Chili Peppers founded?'
 p102
 sg4
-S'bandmembers'
+S'bandfoundation'
 p103
 sg6
 g7
 sa(dp104
 g2
-S'When was Korn formed?'
+S'in what date did Bryan Cranston born?'
 p105
 sg4
-S'bandfoundation'
+S'howoldis'
 p106
 sg6
 g7
 sa(dp107
 g2
-S'What is the music genre of Gorillaz?'
+S'how many people is in Paraguay?'
 p108
 sg4
-S'musicgenre'
+S'populationof'
 p109
 sg6
 g7
 sa(dp110
 g2
-S'Music genre of Radiohead'
+S'actors that worked in the movie Matrix?'
 p111
 sg4
-S'musicgenre'
+S'actedon'
 p112
 sg6
 g7
 sa(dp113
 g2
-S'List albums of Pink Floyd'
+S'what type of music does AC DC?'
 p114
 sg4
-S'albumsofband'
+S'musicgenre'
 p115
 sg6
 g7
 sa(dp116
 g2
-S'What albums did Pearl Jam record?'
+S'what TV shows are?'
 p117
 sg4
-S'albumsofband'
+S'listtvshows'
 p118
 sg6
 g7
 sa(dp119
 g2
-S'Albums by Metallica'
+S'when was the Rolling Stones born?'
 p120
 sg4
-S'albumsofband'
+S'bandfoundation'
 p121
 sg6
 g7
 sa(dp122
 g2
-S'what albums did The Beatles make?'
+S'what actors worked on the matrix?'
 p123
 sg4
-S'albumsofband'
+S'actedon'
 p124
 sg6
 g7
 sa(dp125
 g2
-S'Who is Tom Cruise?'
+S'On what TV show does Hammond regularly appear?'
 p126
 sg4
-S'whois'
+S'showswith'
 p127
 sg6
 g7
 sa(dp128
 g2
-S'How old is Bob Dylan'
+S'list actors starring in the movie The Nightmare Before Christmas'
 p129
 sg4
-S'howoldis'
+S'actedon'
 p130
 sg6
 g7
 sa(dp131
 g2
-S'Where is Bill Gates from?'
+S"which are the actors of Grey's Anatomy"
 p132
 sg4
-S'whereisfrom'
+S'castof'
 p133
 sg6
 g7
 sa(dp134
 g2
-S'What is the cast of Friends?'
+S'where did J. R. R. Tolkien born?'
 p135
 sg4
-S'castof'
+S'whereisfrom'
 p136
 sg6
 g7
 sa(dp137
 g2
-S'Who works in Breaking Bad?'
+S'What is a car'
 p138
 sg4
-S'castof'
+S'whatis'
 p139
 sg6
-g7
-sa(dp140
+S's'
+p140
+sa(dp141
 g2
-S'List actors of Seinfeld'
-p141
-sg4
-S'castof'
+S'What is Seinfield?'
 p142
-sg6
-g7
-sa(dp143
-g2
-S'List TV shows'
-p144
-sg4
-S'listtvshows'
-p145
-sg6
-g7
-sa(dp146
-g2
-S'How many episodes does Seinfeld have?'
-p147
-sg4
-S'episodecount'
-p148
-sg6
-g7
-sa(dp149
-g2
-S'Number of episodes of Seinfeld'
-p150
-sg4
-S'episodecount'
-p151
-sg6
-g7
-sa(dp152
-g2
-S'List shows with Hugh Laurie'
-p153
-sg4
-S'showswith'
-p154
-sg6
-g7
-sa(dp155
-g2
-S'In what shows does Jennifer Aniston appears?'
-p156
-sg4
-S'showswith'
-p157
-sg6
-g7
-sa(dp158
-g2
-S'Shows with Matt LeBlanc'
-p159
-sg4
-S'showswith'
-p160
-sg6
-g7
-sa(dp161
-g2
-S'Who is the creator of Breaking Bad?'
-p162
-sg4
-S'creatorof'
-p163
-sg6
-g7
-sa(dp164
-g2
-S'Who are the creators of Friends?'
-p165
-sg4
-S'creatorof'
-p166
-sg6
-g7
-sa(dp167
-g2
-S'who wrote The Little Prince?'
-p168
-sg4
-S'whowrote'
-p169
-sg6
-g7
-sa(dp170
-g2
-S'who is the author of A Game Of Thrones?'
-p171
-sg4
-S'whowrote'
-p172
-sg6
-g7
-sa(dp173
-g2
-S'list books by George Orwell'
-p174
-sg4
-S'booksbyauthor'
-p175
-sg6
-g7
-sa(dp176
-g2
-S'which books did Suzanne Collins wrote?'
-p177
-sg4
-S'booksbyauthor'
-p178
-sg6
-g7
-sa(dp179
-g2
-S'On what TV show does Hammond regularly appear?'
-p180
-sg4
-S'showswith'
-p181
-sg6
-S'n'
-p182
-sa(dp183
-g2
-S'definition of computer'
-p184
 sg4
 S'whatis'
-p185
+p143
 sg6
-g182
-sa(dp186
+g140
+sa(dp144
 g2
-S'where is the Statue of Liberty'
-p187
+S'where in the world is the Eiffel Tower'
+p145
 sg4
 S'whereis'
-p188
+p146
 sg6
-g182
-sa(dp189
+g140
+sa(dp147
 g2
-S'who are the presidents of Bolivia?'
-p190
+S'list presidents of Argentina?'
+p148
 sg4
 S'presidentsof'
-p191
+p149
 sg6
-g182
-sa(dp192
+g140
+sa(dp150
 g2
-S'who have been presidents of the Republic of Egypt?'
-p193
-sg4
-S'presidentsof'
-p194
-sg6
-g182
-sa(dp195
-g2
-S'who have been presidents of the Arab Republic of Egypt?'
-p196
-sg4
-S'presidentsof'
-p197
-sg6
-g182
-sa(dp198
-g2
-S'who are the past liders of Brazil?'
-p199
-sg4
-S'presidentsof'
-p200
-sg6
-g182
-sa(dp201
-g2
-S'what is the capital city of the United Kingdom?'
-p202
+S'What is the capital of Bolivia?'
+p151
 sg4
 S'capitalcityof'
-p203
+p152
 sg6
-g182
-sa(dp204
+g140
+sa(dp153
 g2
-S'what is the capital of the country Germany?'
-p205
-sg4
-S'capitalcityof'
-p206
-sg6
-g182
-sa(dp207
-g2
-S'What is the main spoken language in Poland?'
-p208
+S'What is the language of Liberia?'
+p154
 sg4
 S'spokenlanguageof'
-p209
+p155
 sg6
-g182
-sa(dp210
+g140
+sa(dp156
 g2
-S'what is the main language in th republic of Argentina?'
-p211
+S'What is the spoken language in Russia?'
+p157
 sg4
 S'spokenlanguageof'
-p212
+p158
 sg6
-g182
-sa(dp213
+g140
+sa(dp159
 g2
-S'how many people is in Paraguay?'
-p214
+S'What is the population of China?'
+p160
 sg4
 S'populationof'
-p215
+p161
 sg6
-g182
-sa(dp216
+g140
+sa(dp162
 g2
-S"how many people there is in the People's Republic of China?"
-p217
+S'how many people live in Australia?'
+p163
 sg4
 S'populationof'
-p218
+p164
 sg6
-g182
-sa(dp219
+g140
+sa(dp165
 g2
-S'what movies there are?'
-p220
+S'List movies'
+p166
 sg4
 S'listmovies'
-p221
+p167
 sg6
-g182
-sa(dp222
+g140
+sa(dp168
 g2
-S'steven spielberg was the director of what movies?'
-p223
+S'List movies directed by Quentin Tarantino.'
+p169
 sg4
 S'moviesbydirector'
-p224
+p170
 sg6
-g182
-sa(dp225
+g140
+sa(dp171
 g2
-S'how many minutes long is the lord of the rings?'
-p226
+S'movies directed by Martin Scorsese'
+p172
+sg4
+S'moviesbydirector'
+p173
+sg6
+g140
+sa(dp174
+g2
+S'which movies did Mel Gibson directed'
+p175
+sg4
+S'moviesbydirector'
+p176
+sg6
+g140
+sa(dp177
+g2
+S'How long is Pulp Fiction'
+p178
 sg4
 S'movieduration'
-p227
+p179
 sg6
-g182
-sa(dp228
+g140
+sa(dp180
 g2
-S'when was Harry Potter the movie released?'
-p229
+S'What is the duration of The Thin Red Line?'
+p181
+sg4
+S'movieduration'
+p182
+sg6
+g140
+sa(dp183
+g2
+S'List movies with Hugh Laurie'
+p184
+sg4
+S'actedon'
+p185
+sg6
+g140
+sa(dp186
+g2
+S'Movies with Matt LeBlanc'
+p187
+sg4
+S'actedon'
+p188
+sg6
+g140
+sa(dp189
+g2
+S'In what movies did Jennifer Aniston appear?'
+p190
+sg4
+S'actedon'
+p191
+sg6
+g140
+sa(dp192
+g2
+S'Which movies did Mel Gibson starred?'
+p193
+sg4
+S'actedon'
+p194
+sg6
+g140
+sa(dp195
+g2
+S'Movies starring Winona Ryder'
+p196
+sg4
+S'actedon'
+p197
+sg6
+g140
+sa(dp198
+g2
+S'when was gravity released?'
+p199
 sg4
 S'moviereleasedate'
+p200
+sg6
+g140
+sa(dp201
+g2
+S'release date of the hobbit?'
+p202
+sg4
+S'moviereleasedate'
+p203
+sg6
+g140
+sa(dp204
+g2
+S'Who is the director of Big Fish?'
+p205
+sg4
+S'directorof'
+p206
+sg6
+g140
+sa(dp207
+g2
+S'who directed Pocahontas?'
+p208
+sg4
+S'directorof'
+p209
+sg6
+g140
+sa(dp210
+g2
+S'who are the actors of Titanic?'
+p211
+sg4
+S'actorsof'
+p212
+sg6
+g140
+sa(dp213
+g2
+S'who acted in Alien?'
+p214
+sg4
+S'actorsof'
+p215
+sg6
+g140
+sa(dp216
+g2
+S'who starred in Depredator?'
+p217
+sg4
+S'actorsof'
+p218
+sg6
+g140
+sa(dp219
+g2
+S'Actors of Fight Club'
+p220
+sg4
+S'actorsof'
+p221
+sg6
+g140
+sa(dp222
+g2
+S'what is the plot of Titanic'
+p223
+sg4
+S'plotof'
+p224
+sg6
+g140
+sa(dp225
+g2
+S'what was Sherk about?'
+p226
+sg4
+S'plotof'
+p227
+sg6
+g140
+sa(dp228
+g2
+S'Radiohead members'
+p229
+sg4
+S'bandmembers'
 p230
 sg6
-g182
+g140
 sa(dp231
 g2
-S'what actors worked on the matrix?'
+S'What are the members of Metallica?'
 p232
 sg4
-S'actedon'
+S'bandmembers'
 p233
 sg6
-g182
+g140
 sa(dp234
 g2
-S'actors of Memoirs of a Geisha'
+S'who were the members of pink floyd?'
 p235
 sg4
-S'actedon'
+S'bandmembers'
 p236
 sg6
-g182
+g140
 sa(dp237
 g2
-S'actors that worked in the movie Matrix?'
+S'When was Korn formed?'
 p238
 sg4
-S'actedon'
+S'bandfoundation'
 p239
 sg6
-g182
+g140
 sa(dp240
 g2
-S'list the actors that worked in Alice in Wonderland'
+S'What is the music genre of Gorillaz?'
 p241
 sg4
-S'actedon'
+S'musicgenre'
 p242
 sg6
-g182
+g140
 sa(dp243
 g2
-S'list actors starring in the movie The Nightmare Before Christmas'
+S'Music genre of Radiohead'
 p244
 sg4
-S'actedon'
+S'musicgenre'
 p245
 sg6
-g182
+g140
 sa(dp246
 g2
-S'plot of Frozen?'
+S'List albums of Pink Floyd'
 p247
 sg4
-S'plotof'
+S'albumsofband'
 p248
 sg6
-g182
+g140
 sa(dp249
 g2
-S"what is the hitchhiker's guide to the galaxy about?"
+S'What albums did Pearl Jam record?'
 p250
 sg4
-S'plotof'
+S'albumsofband'
 p251
 sg6
-g182
+g140
 sa(dp252
 g2
-S'When was the Red Hot Chili Peppers founded?'
+S'Albums by Metallica'
 p253
 sg4
-S'bandfoundation'
+S'albumsofband'
 p254
 sg6
-g182
+g140
 sa(dp255
 g2
-S'when was the Rolling Stones born?'
+S'what albums did The Beatles make?'
 p256
 sg4
-S'bandfoundation'
+S'albumsofband'
 p257
 sg6
-g182
+g140
 sa(dp258
 g2
-S'when did My Chemical Romance start to perform?'
+S'Who is Tom Cruise?'
 p259
 sg4
-S'bandfoundation'
+S'whois'
 p260
 sg6
-g182
+g140
 sa(dp261
 g2
-S'in what year did the Sex Pistils start to make recitals?'
+S'How old is Bob Dylan'
 p262
 sg4
-S'bandfoundation'
+S'howoldis'
 p263
 sg6
-g182
+g140
 sa(dp264
 g2
-S'what type of music does AC DC?'
+S'Where is Bill Gates from?'
 p265
 sg4
-S'musicgenre'
+S'whereisfrom'
 p266
 sg6
-g182
+g140
 sa(dp267
 g2
-S'what type of songs does the Rolling Stones?'
+S'What is the cast of Friends?'
 p268
 sg4
-S'musicgenre'
+S'castof'
 p269
 sg6
-g182
+g140
 sa(dp270
 g2
-S'what works did the Beatles do?'
+S'Who works in Breaking Bad?'
 p271
 sg4
-S'albumsofband'
+S'castof'
 p272
 sg6
-g182
+g140
 sa(dp273
 g2
-S'which works did Linkin Park make?'
+S'List actors of Seinfeld'
 p274
 sg4
-S'albumsofband'
+S'castof'
 p275
 sg6
-g182
+g140
 sa(dp276
 g2
-S"albums recorded by the Guns n' Roses"
+S'List TV shows'
 p277
 sg4
-S'albumsofband'
+S'listtvshows'
 p278
 sg6
-g182
+g140
 sa(dp279
 g2
-S'What are titles of albums featuring The Black Eyed Peas?'
+S'How many episodes does Seinfeld have?'
 p280
 sg4
-S'albumsofband'
+S'episodecount'
 p281
 sg6
-g182
+g140
 sa(dp282
 g2
-S'biography of Charles Dickens'
+S'Number of episodes of Seinfeld'
 p283
 sg4
-S'whois'
+S'episodecount'
 p284
 sg6
-g182
+g140
 sa(dp285
 g2
-S"when is Angelina Jolie's birthday?"
+S'List shows with Hugh Laurie'
 p286
 sg4
-S'howoldis'
+S'showswith'
 p287
 sg6
-g182
+g140
 sa(dp288
 g2
-S'what is the age of Katy Perry?'
+S'In what shows does Jennifer Aniston appears?'
 p289
 sg4
-S'howoldis'
+S'showswith'
 p290
 sg6
-g182
+g140
 sa(dp291
 g2
-S'in what year was Madonna born?'
+S'Shows with Matt LeBlanc'
 p292
 sg4
-S'howoldis'
+S'showswith'
 p293
 sg6
-g182
+g140
 sa(dp294
 g2
-S'in what date did Bryan Cranston born?'
+S'Who is the creator of Breaking Bad?'
 p295
 sg4
-S'howoldis'
+S'creatorof'
 p296
 sg6
-g182
+g140
 sa(dp297
 g2
-S'when was George Clooney born?'
+S'Who are the creators of Friends?'
 p298
 sg4
-S'howoldis'
+S'creatorof'
 p299
 sg6
-g182
+g140
 sa(dp300
 g2
-S'where was Matt Damon born?'
+S'who wrote The Little Prince?'
 p301
 sg4
-S'whereisfrom'
+S'whowrote'
 p302
 sg6
-g182
+g140
 sa(dp303
 g2
-S'Where did he grow up?'
+S'who is the author of A Game Of Thrones?'
 p304
 sg4
-S'whereisfrom'
+S'whowrote'
 p305
 sg6
-g182
+g140
 sa(dp306
 g2
-S'where did J. R. R. Tolkien born?'
+S'list books by George Orwell'
 p307
 sg4
-S'whereisfrom'
+S'booksbyauthor'
 p308
 sg6
-g182
+g140
 sa(dp309
 g2
-S"which are the actors of Grey's Anatomy"
+S'which books did Suzanne Collins wrote?'
 p310
 sg4
-S'castof'
+S'booksbyauthor'
 p311
 sg6
-g182
-sa(dp312
-g2
-S'list of actors of the show The Addams Family'
-p313
-sg4
-S'castof'
-p314
-sg6
-g182
-sa(dp315
-g2
-S'which were the actors of the TV show Uggly Betty'
-p316
-sg4
-S'castof'
-p317
-sg6
-g182
-sa(dp318
-g2
-S'what TV shows are?'
-p319
-sg4
-S'listtvshows'
-p320
-sg6
-g182
-sa(dp321
-g2
-S'what TV shows have been made?'
-p322
-sg4
-S'listtvshows'
-p323
-sg6
-g182
-sa(dp324
-g2
-S'shows where Matthew Perry worked in?'
-p325
-sg4
-S'showswith'
-p326
-sg6
-g182
-sa(dp327
-g2
-S'who create Stargate Atlantis?'
-p328
-sg4
-S'creatorof'
-p329
-sg6
-g182
-sa(dp330
-g2
-S'who is the writer of The Lord of the Rings?'
-p331
-sg4
-S'creatorof'
-p332
-sg6
-g182
-sa(dp333
-g2
-S'who create The Neverending Story?'
-p334
-sg4
-S'creatorof'
-p335
-sg6
-g182
-sa(dp336
-g2
-S'list books written by J. K. Rowling'
-p337
-sg4
-S'booksbyauthor'
-p338
-sg6
-g182
-sa(dp339
-g2
-S'list of works written by George R.R. Martin'
-p340
-sg4
-S'booksbyauthor'
-p341
-sg6
-g182
-sa(dp342
-g2
-S'list of books created by Agatha Christie'
-p343
-sg4
-S'booksbyauthor'
-p344
-sg6
-g182
-sa(dp345
-g2
-S'What are titles of books written by Dan Brown?'
-p346
-sg4
-S''
-p347
-sg6
-S'booksbyauthor'
-p348
-sa(dp349
-g2
-S'What movies did James Dean appear in?'
-p350
-sg4
-S'actedon'
-p351
-sg6
-g182
+g140
 sa.

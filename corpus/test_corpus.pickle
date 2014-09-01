@@ -1,0 +1,114 @@
+(lp0
+(dp1
+S'question'
+p2
+S'list of actors of the show The Addams Family'
+p3
+sS'target'
+p4
+S'castof'
+p5
+sS'recognized'
+p6
+S'n'
+p7
+sa(dp8
+g2
+S'in what year did the Sex Pistils start to make recitals?'
+p9
+sg4
+S'bandfoundation'
+p10
+sg6
+g7
+sa(dp11
+g2
+S'what is the capital of the country Germany?'
+p12
+sg4
+S'capitalcityof'
+p13
+sg6
+g7
+sa(dp14
+g2
+S'in what year was Madonna born?'
+p15
+sg4
+S'howoldis'
+p16
+sg6
+g7
+sa(dp17
+g2
+S'Where did he grow up?'
+p18
+sg4
+S'whereisfrom'
+p19
+sg6
+g7
+sa(dp20
+g2
+S'who have been presidents of the Republic of Egypt?'
+p21
+sg4
+S'presidentsof'
+p22
+sg6
+g7
+sa(dp23
+g2
+S'who create The Neverending Story?'
+p24
+sg4
+S'creatorof'
+p25
+sg6
+g7
+sa(dp26
+g2
+S'when was Harry Potter the movie released?'
+p27
+sg4
+S'moviereleasedate'
+p28
+sg6
+g7
+sa(dp29
+g2
+S'actors of Memoirs of a Geisha'
+p30
+sg4
+S'actedon'
+p31
+sg6
+g7
+sa(dp32
+g2
+S'biography of Charles Dickens'
+p33
+sg4
+S'whois'
+p34
+sg6
+g7
+sa(dp35
+g2
+S'shows where Matthew Perry worked in?'
+p36
+sg4
+S'showswith'
+p37
+sg6
+g7
+sa(dp38
+g2
+S'what TV shows have been made?'
+p39
+sg4
+S'listtvshows'
+p40
+sg6
+g7
+sa.
