@@ -1,0 +1,6 @@
+Corpus:
+http://www-nlp.stanford.edu/data/QuestionBank-Stanford.shtml
+http://trec.nist.gov/data/qa/2007_qadata/QA2007_testset.xml.txt
+
+Trabajos sobre los corpus
+http://www.computing.dcu.ie/~jjudge/pubs/judge06acl.pdf QuestionBank: Creating a Corpus of Parse-Annotated Questions

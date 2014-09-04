@@ -1,0 +1,543 @@
+\documentclass[11pt,spanish]{article}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+
+\title{Resúmenes de la Bibliografía}
+
+\begin{document}
+
+\maketitle
+
+\section{Estudio sobre la Literatura en Aprendizaje Activo}
+
+\textbf{Active Learning Literature Survey.}
+\textbf{Burr Settles.}
+\\
+Este escrito consiste en un resumen de conceptos claves y métodos más utilizados
+en los trabajos realizados utilizando Aprendizaje Activo. Incluye como evidencias
+numerosas citas y resultados de trabajos realizados en la década previa a su
+escritura, identificando ventajas, desventajas y posibles escenarios de aplicación 
+para cada uno de ellos.
+
+\subsection{¿Qué es aprendizaje activo?}
+Es un subcampo del (Machine Learning) que se focaliza en desarrollar métodos
+donde el sistema aprendedor pueda elegir qué ejemplos utilizar para aprender.
+El entorno idóneo de aplicación es aquel en el cual los ejemplos pueden
+conseguirse con un bajo costo, mientras que etiquetarlos requiere dinero, tiempo
+o un experto en el campo. Si el aprendedor puede elegir los ejemplos que más
+evidencia aportan, el sistema completo puede entrenarse con menos ejemplos
+logrando los mismos resultados.
+Los sistemas de aprendizaje activo usualmente incluyen un oráculo humano que
+etiqueta los ejemplos solicitados por el aprendedor.
+
+Algunas aplicaciones mencionadas en el trabajo son:
+\begin{itemize}
+    \item Reconocimiento de voz.
+    \item Extracción de información.
+    \item Clasificación y filtrado.
+\end{itemize}
+
+\subsection{Selección de ejemplos}
+Existen tres métodos principales para la selección de ejemplos por parte del
+aprendedor:
+\begin{description}
+    \item[Generación de ejemplos] El aprendedor selecciona cualquier instancia
+    no etiquetada, o incluso puede generar nuevas instancias él mismo. Es muy
+    utilizado dentro de los problemas de regresión o incluso dentro de ámbitos
+    químicos donde se sintetizan nuevas sustancias. Sin embargo las instancias
+    creadas pueden no tener sentido alguno o no ser relevantes.
+    \item[Muestreo selectivo secuencial] Los ejemplos son generados a partir de
+    una distribución base (a un costo muy bajo) y luego el aprendedor decide si
+    presentarlo al oráculo o no.
+    \item[Muestreo en grupo] Si se pueden obtener grandes cantidades de ejemplos
+    con una sola acción, el aprendedor puede elegir de ellos los más
+    significativos. La ventaja es que la evaluación no se realiza
+    individualmente sino teniendo en cuenta todas los ejemplos obtenidos.
+\end{description}
+
+\subsection{Estrategias de selección}
+En esta sección se presentan métodos para determinar cuál o cuáles son los
+ejemplos más apropiados para etiquetar:
+\begin{description}
+    \item[Muestro por incertidumbre] Asumiendo que el aprendedor tiene cierto
+    grado de certidumbre a la hora de etiquetar un ejemplo, hay varias formas
+    de utilizar esta información para seleccionar los ejemplos que se enviarán
+    al oráculo:
+    \begin{itemize}
+        \item Ejemplos que tienen etiquetas con menor confianza (si fueran
+        etiquetados por el aprendedor).
+        \item Ejemplos que tiene mayor incertidumbre para elegir la etiqueta.
+        \item Ejemplos que maximicen el costo si fueran mal etiquetados por
+        el aprendedor.
+        \item Ejemplos que minimicen la distancia entre la dos primeras
+        etiquetas más probables.
+        \item Ejemplos con mayor entropía.
+    \end{itemize}
+    Estudios han demostrado que dichas estrategias obtienen resultados similares
+    y que la elección debe hacerse teniendo en cuenta la aplicación particular
+    para la que se utilizarán.
+    \item[Selección por comité (QBC)] Se utilizan varios clasificadores para obtener
+    un conjunto de etiquetas para cada una de las instancias no etiquetadas.
+    Luego se seleccionan las instancias que hayan generado mayor desacuerdo
+    entre los clasificadores. Existen así mismo varios medidas de dicho
+    desacuerdo. Algunas de ellas son:
+    \begin{itemize}
+        \item Entropía de los votos.
+        \item Distancia Kullback-Leibler promedio, que mide la diferencia entre
+        dos distribuciones de probabilidad.
+        \item Distancia Jensen-Shannon.
+    \end{itemize}
+    El uso de varios clasificadores permite minimizar el espacio de hipótesis
+    compatible con el conjunto de ejemplos etiquetados.
+    \item[Cambio esperado del modelo] Selecciona las instancias que generarían
+    un mayor cambio en el modelo (aprendedor) si se supiera su etiqueta. Como
+    medida de cambio se utiliza el largo del gradiente del modelo (EGL). Se ha
+    demostrado que funciona bien empíricamente, pero puede ser
+    computacionalmente caro.
+    \item[Reducción del error esperado] Es similar al método anterior, pero en
+    lugar de maximizar el cambio en el modelo, minimiza su error de
+    generalización. El objetivo es reducir el número esperado de predicciones
+    erróneas. Este método ha sido ampliamente estudiado demostrando muy buenos
+    resultados, sin embargo, es el método computacionalmente más costoso.
+    \item[Reducción de la varianza] Intenta minimizar el error esperado
+    indirectamente minimizando la varianza de los resultados. Para ello,
+    selecciona un conjunto de instancias quq maximice la información Fisher. Al
+    igual que en el método anterior se tiene en cuenta todo es espacio de
+    ejemplos en lugar de cada una de las instancias, y por lo tanto tiene menos
+    probabilidades de seleccionar ejemplos raros en la distribución.
+    \item[Métodos pesador por la densidad] Siguiendo la misma línea que los dos
+    métodos anteriores, supone que los ejemplos significativos son aquellos
+    que no solo tienen alta incertidumbre, sino que son representativos
+    de la distribución subyacente. Estudios indican resultados superiores,
+    acompañados por implementaciones de alta velocidad que permiten incluso
+    interacción de tiempo real con el usuario.
+\end{description}
+
+\subsection{Análisis empírico del aprendizaje activo}
+Hay numerosas evidencias que indican que el aprendizaje activo obtiene buenos
+resultados, tanto dentro de la academia como de la industria. Sin embargo,
+el aprendizaje activo también tiene falencias: Los ejemplos seleccionados por
+el aprendedor están inherentemente
+ligados al modelo utilizado por el mismo y por lo tanto no pertenecen a la
+distribución original de los datos de entrada. Hay estudios que demuestran
+que si se cambian las clases del modelo, el conjunto de ejemplos
+seleccionados ya no es útil e incluso puede necesitar más iteraciones para
+los mismo resultados.
+
+\subsection{Análisis teórico del aprendizaje activo}
+En el trabajo se prensetan varios análisis sobre límites teóricos de la cantidad
+de ejemplos seleccionados por el sistema.
+
+\subsection{Otras configuraciones de problemas}
+Esta sección menciona otros campos donde puede aplicarse el aprendizaje activo:
+\begin{description}
+    \item[Aprendizaje Activos para datos estructurados] Existen aplicaciones en
+    las que no sólo basta con una tarea de clasificación, sino que deben
+    generarse como salidas tipos conplejos de datos. El ejemplo más claro es
+    extracción de información.
+    \item[Adquisición y clasificación de características] El aprendedor puede
+    seleccionar activamente características sobre los ejemplos para preguntar
+    al oráculo.
+    \item[Selección activa de clases] En este caso, el etiquetado es un proceso
+    relativamente sencillo y la adquisición de nuevos ejemplos es costosa.
+    \item[Clustering Activo] En este escenario, el aprendedor no cuenta con
+    ejemplos etiquetados sino que debe agrupar las instancias en formas
+    significativas. El oráculo puede crear grupos preexistentes para el
+    aprendedor, o indentificar elementos que deben pertenecer o no a la misma
+    clase.
+\end{description}
+
+\subsection{Consideraciones prácticas}
+Los análisis teóricos sobre el aprendizaje activo realizan numerosas asunciones
+sobre el entorno de las aplicaciones que pueden no cumplirse en el mundo real.
+Algunas de estas situaciones son:
+\begin{description}
+    \item[Aprendizaje activo en modo batch] Seleccionar los ejemplos
+    secuencialmente puede ser demasiado costoso para algunas aplicaciones. Esta
+    técnica busca generar un conjunto de preguntas óptimo para enviar al
+    oráculo.
+    \item[Oráculos ruidosos] En caso de que las etiquetas obtenidas no sean
+    confiables, el aprendedor debe poder identificar las situaciones en las que
+    pedir una nueva etiqueta a otro oráculo. La situación puede agravarse si la
+    confianza del oráculo varía con el tiempo.
+    \item[Costos de etiquetamiento variables] En estos escenarios elegir la
+    mínima cantidad de instancias posibles para etiquetar puede no ser la
+    solución óptima. Una estrategia posible es preetiquetar las instancias
+    enviadas al oráculo para facilitar su tarea. Por otra parte, también se
+    puede crear un función de riesgo entre el costo de etiquetamiento y el de
+    error de clasificación futuro del sistema si se agregara el ejemplo. Sin
+    embargo, existen casos en lo que el costo de etiquetamiento no se conoce de
+    antemano y debe estimarse como metacaracterísticas de cada ejemplo. Existen
+    muchos factores que influyen en el costo de etiquetamiento intrínsecos al
+    ejemplo, al aprendedor o dependientes del oráculo.
+    \item[Tipos alternativos de preguntas] Existen configuraciones en las cuales
+    el aprendedor utiliza otras estrategias al generar las preguntas para el
+    oráculo. Por ejemplo:
+    \begin{itemize}
+        \item El óraculo etiqueta bolsas de ejemplos, en lugar de hacerlo para
+        cada uno de ellos individualmente. Un ejemplo es etiquetado
+        positivamente si y solo si alguna de las instancias del mismo pertenecen
+        a la clase dada, y negativamente si todas de ellas no lo hacen. También
+        pueden aplicarse técnicas con granularidad variable que permiten
+        etiquetar tanto ejemplos individuales como conjuntos.
+        \item Se pregunta sobre el nivel de significatividad de una
+        característica en el proceso de desición para una etiqueta en
+        particular. Notar que esto no es lo mismo que selección de
+        características, ya que no se vincula el resultado con la clase en
+        particular.
+    \end{itemize}
+    \item[Aprendizaje multitarea] Asume que un mismo ejemplo será etiquetado
+    para múltiples tareas y trata de encontrar la mejor instancia para todas
+    ellas.
+    \item[Clases cambiantes (o desconocidas)] Como hemos visto anteriormente,
+    no siempre es posible cambiar las clases de los datos etiquetados para
+    reutilizarlos con otro modelo. Estudios se han realizado sobre cómo
+    reaccionan distintas configuraciones ante este problema. En muchos casos,
+    si no se conocen de antemano los modelos es más seguro no usar aprendizaje
+    activo.
+    \item[Criterios de parada] Cuándo detener las iteraciones de un algoritmo
+    de aprendizaje activo es todavía un problema abierto. En la mayoría de los
+    casos depende de las condiciones particulares de cada sistema o experimento.
+\end{description}
+
+\subsection{Áreas de investigación relacionada}
+\begin{description}
+    \item[Aprendizaje semi-supervisado] Ambas áreas tratan de optimizar el uso
+    de las instancias etiquetadas. El aprendizaje activo puede utilizarse sobre
+    un sistema entrenado sobre un conjunto pequeño de ejemplos.
+    \item[Aprendizeje con recompenzas] El aprendedor interacciona con el mundo
+    tratando de maximizar la cantidad de recompenzas obtenidas. Para que estos
+    sistemas den buenos resultados, el aprendedor debe ser "curioso" para no
+    limitarse a un conjunto de acciones inflexible.
+    \item[Optimización submodular] La submodularidad en una propiedad que
+    formaliza el concepto intuitivo de rendimientos decrecientes. Esto es,
+    agregar la instancia x a un conjunto A da mejores resultados que agregar
+    la misma instancia x a un conjunto más grande A'. La ventaja de este método
+    es que existen algoritmoz voraces con un límite teórico del 63\% del
+    desempeño óptimo, mientras que en la práctica usualmente alcanzan el 90\%.
+    \item[Aprendizaje con ejemplos equivalentes] El aprendedor genera hipótesis
+    sobre el concepto de clase y el oráculo acepta o refuta dicha hipótesis. Si
+    es incorrecta, se debe proveer un contraejemplo.
+    \item[Modelo de lo repetición y compresión] En algunos casos es deseable
+    transferir el conocimiento de un modelo a otro modelo. Este problema puede
+    ser visto como aprendizaje activo donde el oráculo es el modelo
+    preexistente.
+\end{description}
+
+
+\section{Una Introducción sobre Selección de Características y Variables}
+\textbf{An Introduction to Variable and Feature Selection.}
+\textbf{Isabelle Guyon, André Elisseeff.}\\\\
+Existen problemas de aprendizaje activo que manejan cientos o incluso miles de
+características de cada instancia, muchos de ellos redundantes o irrelevantes.
+Dos ejemplos típicos son:
+\begin{description}
+    \item[Selección de genes desde microarreglos] Usualmente se cuenta con menos
+    de 100 ejemplos etiquetados, donde cada ejemplo tiene entre 6000 y 60000
+    variables.
+    \item[Clasificación de documentos] Los documentos son representados como
+    bolsas de palabras, y el valor para cada variable es la frecuencia
+    observada. Es común encontrar vocabularios de cientos de miles de palabras,
+    e inclusive utilizando sólo las más frecuentes se encuentran cerca de 15000
+    valores posibles.
+\end{description}
+Existen potenciales beneficios de utilizar selección de características:
+\begin{itemize}
+    \item Facilitar la visualización y comprensión de los datos.
+    \item Reducir el costo de almacenamiento.
+    \item Reducir el tiempo y costo de entrenamiento de sistemas de aprendizaje
+    automático.
+    \item Redefinir la dimensionalidad para lograr mejores resultados de
+    clasificación.
+\end{itemize}
+Al mismo tiempo, el problema de selección de características puede abordarse
+desde distintos ángulos:
+\begin{itemize}
+    \item Encontrar el mejor subconjunto de variables que maximice el desempeño
+    del clasificador.
+    \item Encontrar y ordenar las variables más relevantes.
+\end{itemize}
+
+\subsection{Ranking de variables}
+Este método es utilizado frecuentemente gracias a su bajo coste computacional,
+escalabilidad y buenos resultados empíricos. Sin embargo, no siempre se aplica
+en la construcción de clasificadores: puede utilizarse como preprocesamiento
+para explorar el dominio y seleccionar características relevantes.
+Se utiliza una función de valoración S(i) sobre los valores de la variable i
+de una instancia etiquetada y su clase. Las caracteríticas que obtienen valores
+altos de esta función se consideran más relevantes.\\
+Si bien este es un método de filtrado independiente del clasificador que se
+utilice, para ciertos modelos y clasificadores puede resultar óptimo.
+Para construir clasificadores se utilizan subconjuntos de variables
+incrementados progresivamente con variables menos significativas.\\
+La forma más simple de hacerlo de obtener una clasificación de varialbes es
+evaluando cada una independientemente. Se construye un clasificador con un parámetro de
+corte que indica a qué clase pertenece el ejemplo dado el valor de dicha
+variable. Se utiliza alguna medida para determinar el desempeño del clasificador
+como la tasa de error, la cantidad de falsos positivos o negativos, etc.\\
+Sin embargo, analizar cada variable de forma aislada no permite estimar el mejor
+grupo de variables que describa los datos. Es usual utilizar entonces la
+correlación entre variables o algún otro concepto estadístico como la distancia
+entre los ejemplos de clases opuestas que son cercanos para una variable dada.\\
+Otro criterio de ranking muy popular es el de Information Theoretic, que estima
+la información mutua entre cada variable y las clases.
+
+\subsection{Ejemplos}
+Existen algunos ejemplos que evidencian las ventajas y desventajas de los
+métodos de ranking de variables:
+\begin{itemize}
+    \item Muchos métodos de ranking encuentran subconjuntos de variables
+    redundantes. Sin embargo, en algunos casos dos variables aparentemente
+    redundantes pueden describir mejor un conjunto de datos que variables
+    complementarias, gracias a la reducción de ruido.
+    \item Variables perfectamente correlacionadas son en efecto redundantes,
+    sim embargo, valores altos de correlación no necesariamente significan
+    ausencia de complementación entre las variables.
+    \item Una variable que es completamente inútil por si misma puede aportar
+    información valiosa en conjunto con otras variables.
+\end{itemize}
+
+\subsection{Selección de subconjunto de variables}
+Existen tres grandes tipos de métodos:
+\begin{description}
+    \item[Wrappers] Utilizan aprendedores automáticos como una caja negra para
+    ordenar las variables según su poder predictivo. El la práctica, por otro
+    lado, uno necesita definir:
+    \begin{itemize}
+        \item Cómo explorar el espacio de variables.
+        \item Cómo obtener el desempeño del clasificador para guiar la tarea de
+        selección.
+        \item Qué clasificador usar.
+    \end{itemize}
+    En general son vistos como métodos de fuerza bruta, pero se pueden usar
+    mejores estrategias sin sacrificar precisión. Las dos estrategias clásicas
+    son:
+    \begin{itemize}
+        \item Selección hacia delante.
+        \item Eliminación hacia atrás.
+    \end{itemize}
+    Gracias a que se utilizan como una caja negra, son en general universales 
+    y portables.
+
+    \item[Métodos embebidos] Realizan el proceso de selección de variables
+    durante el entrenamiento y suelen ser específicos para cada clasificador.
+    Pueden ser más eficientes que los wrappers ya que:
+    \begin{itemize}
+        \item No necesita dividir los datos entre entrenamiento y testing.
+        \item No necesita reentrenar el clasificador y logra resultados más
+        rápidos.
+    \end{itemize}
+
+    \item[Métodos de nested subsets ??] Son métodos embebidos que 
+    guían la búsqueda estimando cambios en el valor de la función 
+    objetivo obtenido moviendo el espacio de subconjuntos de 
+    variables. Algunos métodos para calcular el cambio en el valor de la función objetivo son:
+    \begin{description}
+        \item[Cáculo de la diferencia finita]: Se calcula la
+        diferencia entre los valores de la función objetivo
+        quitando y agregando las variables cantidatas al 
+        subconjunto. Puede utilizarse sin necesidad de reentrenar 
+        el modelo.
+        \item[Aproximación cuadrática a la función de costo]: Fue 
+        originalmente propuesto para \"recortar\" pesos en las 
+        redes neuronales, pero puede ser utilizado para backward 
+        elimination a través de la eliminación de los pesos de 
+        las variables de entrada.
+        \item[Cálculo de la sensitividad de la función objetivo]: 
+        Se utiliza el valor absoluto del cuadrado de la derivada 
+        de la función objetiva con respecto de la variable.
+    \end{description}
+
+    \item[Optimización objetiva directa] Generalmente la función 
+    objetiva consiste de dos partes que compiten: el goodness-of.
+    fit que debe ser maximizado, y el número de variables para 
+    ser minimizado. Este método embebido \"bears similarity with\"
+    funciones objetivas de dos partes. Existen numerosos 
+    algortimos propuestos dentro de este método.
+    \begin{itemize}
+        \item Utilizando predictores lineales con SVM, la lp-norm 
+        representa en el límite el número de variables, y puede 
+        ser minimizada con una modificación simple del algoritmo 
+        original de SVM. Sin embargo, una minimización aproximada 
+        puede dar mejores resultados que una minimización exacta.
+        \item En lugar de usar la lp-norm, la minimización de la 
+        l1-norm es suficiente para eliminar un número 
+        considerable de varaibles. Puede continuarse la 
+        eliminación con otro método como backward elimination.
+        \item En lugar de selección de variables también se 
+        propone escalar las variables, donde los valores de 
+        escalamiento son meta parámetros dependientes del modelo.
+    \end{itemize}
+
+    \item[Filtros] Seleccionan subconjuntos de variables como un 
+    preproceso. Algunas de sus ventajas son:
+    \begin{itemize}
+        \item Se argumentó que son más eficientes que los
+        métodos embebidos, aunque la optimización reciente de éstos ha revertido la situación. 
+        \item Proveen métodos de selección que son independientes de cualquier algoritmo de aprendizaje.
+        \item Pueden utilizarse como un preproceso para disminuir la dimensionalidad del problema.
+    \end{itemize}
+    Es razonable utilizar un método embebido o wrapper con un predictor lineal como filtro y luego entrenar un sistema más complejo para la clasificación.
+
+\end{description}
+
+\subsection{Construcción de características y reducción de la dimensionalidad.}
+
+La reducción de la dimensionalidad puede ser beneficiosa si la generación, almacenamiento o procesamiento de características es costoso. Sin embargo, éstas no son las únicas justificaciones. La construcción de características puede usarse para:
+\begin{itemize}
+    \item Mejorar la reconstrucción del input. (No supervisado)
+    \item Mejorar la predicción. (Supervisado)
+\end{itemize}
+Algunos métodos propuestos en la literatura son:
+\begin{description}
+    \item[Clustering] La idea es reemplazar un grupo de características similares por un centroide. Aunque el clustering es usualmente no supervisado, conviene introducir algunos ejemplos etiquetados para obtener mejores resultados. Esta ténica es muy utilizada en PLN.
+    \item[Factorización de matriz] Descomposición en valores singulares. El objetivo es formar un conjunto de características que son combinaciones lineales de las características originales y que permiten una mejor reconstrucción de los datos en el sentido de los menores cuadrados. Además de ello, se ha propuesto la reducción suficiente de dimensionalidad, que utiliza sólo las características más importantes que preservan la reconstrucción y la compresión de los datos.
+    \item[Selección de características supervisadas] Hay tres formas principales de aproximar el problema:
+    \begin{description}
+        \item[Métodos de \"nested\" subconjuntos] Un número de aprendedores automáticos extraen características como parte de su proceso de aprendizaje.
+        \item[Filtros] Utilizan información mutua como criterio.
+        \item[Optimización objetiva directa] Los kernels transforman el espacio implicitamente, por lo que pueden ser seleccionados para minimizar la l0-norm.
+    \end{description}
+\end{description}
+
+\subsection{Métodos de validación}
+Para validar aspectos referidos a la construcción del modelo, tales como la selección de características o la estimación de meta-parámetros, es necesario re-dividir el corpus de entrenamiento. Luego se aplican test estadísticos o cross-validation. Sin embargo, determinar qué dimensiones debería tener cada división del corpus es todavía un problema abierto, aunque existen muchas propuestas al respecto:
+\begin{itemize}
+    \item Cross-validation excluyendo uno. No son adecuados cuando los datos no son independientes ni uniformemente obtenidos.
+    \item Métodos basados en métricas. Utiliza datos no etiquetados para calcular la discrepancia entre modelos entrenados con distintos conjuntos embebidos de características. Si la relación entre las discrepancias de datos etiquetados y no etiquetados es significativamente mayor que uno, se puede reconsiderar la utilidad de las varaibles contenidas en un conjunto y no en el otro.
+    \item Se introducen variables falsas obtenidas de alguna distribución artificial. Luego, descartan las variables que son menos significativas que las variables falsas.
+\end{itemize}
+
+\subsection{Problemas abiertos}
+\subsubsection{Varianza de la selección}
+Muchos métodos de selección de subconjuntos de variables son muy sensibles a cambios en el ambiente experimental. Para estabilizar la variaza pueden utilizarse varios \"bootstraps\" con porciones de los datos de entrenamiento y seleccionar como resultado final un promedio de todos los experimentos.
+\subsubsection{Ranking de varaibles en contexto con otras}
+Pueden utilizarse algoritmos basados en los k-vecinos más cercanos.
+\subsubsection{Selección de variables no supervisada}
+...
+\subsubsection{Selección Forward o Backward}
+Se argumenta que la selección forward es más eficiente. Por otro lado, la selección backward produce conjuntos más fuertes debido a que considera todas las variables.
+Sin embargo no hay datos concluyentes en este aspecto.
+\subsubsection{El problema multiclase}
+...
+
+\section{Cerrando el ciclo: Anotación semisupervisada rápida e interactiva con
+        preguntas de características e instancias}
+\textbf{Closing the Loop: Fast, Interactive Semi-Supervised Annotation
+With Queries on Features and Instances.}
+\textbf{Burr Settles.}\\\\
+DUALIST es un paradigma de aprendizaje activo que utiliza tanto las instancias
+como las características de las mismas para aprender. Fue desarrollado por Burr
+Settles y cuenta con una simple interfaz gráfica que soporta interacción en
+tiempo real con el usuario usuarios. \\
+El ejemplo para el que fue utilizado es de clasificación de documentos.
+Los principales problemas que busca solucionar son:
+\begin{itemize}
+    \item La lentitud y complejidad de los sistemas más avanzados de aprendizaje
+    activo.
+    \item El esfuerzo del oráculo al momento de la clasificación, dado que la
+    clasificación de características es mucho menos costosa.
+\end{itemize}
+
+\subsection{Modelo generativo}
+Para modelar la distribución de las clases de acuerdo a las palabras utiliza un
+modelo Bayesiano ingenuo multinomial. En otras palabras, asume que cada clase
+es una distribución binomial con respecto a las palabras, independientes unas
+de las otras, y que cada documento es una mezcla de todas las clases. Utiliza
+los datos etiquetados para estimar los parámetros de estas distribuciones a
+través de la probabilidad anterior de Dirichlet, maximizando la probabilidad de
+los parámetros con respesto a la probabilidad posterior.\\
+Para modelar la distribución de las características, asume que si una
+característica c es asociada a la clase A por el usuario, entonces cada
+ocurrencia de c maximiza la probabilidad de que el documento esté asociado a la
+clase A. "La interpretación natural de esto con respecto al modelo anterior es
+incrementar la probabilidad anterior de la multinomial de la clase A."\\
+Este método tiene las siguientes ventajas sobre la clásica obtención de
+multinomiales:
+\begin{itemize}
+    \item Puede ser aplicado a un clasificador con más de dos clases. (no
+    entendí muy bien por qué)
+    \item Las etiquetas para las características no son necesariamente
+    excluyentes.
+    \item El usuario puede dar distintas prioridades a distintas características
+    indicando que son mas representativas de una clase.
+\end{itemize}
+
+\subsection{Inclusión de ejemplos no etiquetados}
+Combina los métodos pool-based de aprendizaje activos con maximización de la
+esperanza. El proceso consta de los siguientes pasos
+\begin{enumerate}
+    \item Se estiman los parámetros usando sólo las probabilidades anteriores.
+    \item Se aplica el clasificador inducido a la pileta de instancias no
+    etiquetadas.
+    \item Se reestiman las distribuciones multinomiales de las características,
+    usando tanto las instancias etiquetadas como las que el clasificador
+    etiquetó adecuadamente valoradas.
+    \item Se reestiman los parámetros.
+\end{enumerate}
+Para lograr un método veloz, los entrenamientos del clasificador se interrumpen
+luego de la primera iteración.
+
+\subsection{Selección de características e instancias}
+Para las instancias utilizan muestreo por incertidumbre basado en al entropía,
+que las ordena de acuerdo a la entropía (de la probabilidad posterior) de la
+clase según el modelo actual. Este método no sólo da buenos resultados sino
+que es rápido de calcular.
+Las características, por su parte, son ordenas de acuerdo a la ganancia de
+información (IG). Luego, a cada una se le asigna las clases en que aparece con
+más frecuencia.
+
+\subsection{Resultados obtenidos}
+\subsubsection{Comparación con otros métodos}
+Se realizaron experimentos con otros métodos de feature selection conocidos en
+la literatura y los resultados obtenidos son el general similares o mejores,
+pero 40 veces más rápidos.
+\subsubsection{Estimación del parámetro $\alpha$}
+El parámetro $\alpha$ determina cuánto influye cada característica etiquetada
+en la distribución de la clase. Se realizaron experimentos con distintas
+cantidades de características e instancias, para valores de $\alpha$ entre 1 y
+$x^{12}$.
+\begin{itemize}
+    \item Valores entre 1 y 100 para $\alpha$ son estables.
+    \item Etiquetar más características da mucha más ganacia que etiquetar
+    instancias. Por otra parte, también requiere menos esfuerzo.
+\end{itemize}
+\subsubsection{Experimentos con usuarios}
+Se llevaron a cabo experimentos donde usuarios utilizaron el sistema por una
+determinada cantidad de tiempo para etiquetar documentos de distintos dominios.
+Se comparan tres métodos de etiquetado: de documentos seleccionados al azar,
+de documentos seleccionados activamente y de documentos y características.
+\begin{itemize}
+    \item Los casos de etiquetado de documentos y características tuvieron
+    consistentemente mejores resultados.
+    \item El etiquetado de características fue menos costoso que el de
+    instancias.
+    \item Los usuarios pasaron en general los primeros minutos etiquetando
+    características, y luego pasaron a las instancias.
+    \item Los usuarios fueron más eficientes y cometieron menos errores. 
+\end{itemize}
+
+\subsection{Otros experimentos}
+Se llevaron a cabo estudios sobre la eficiencia de DUALIST en otros conocidos
+problemas de Procesamiento de Lenguaje Natural: desambiguación de sentidos,
+extracción de información y análisis de sentimientos.
+
+\subsection{Notas sobre la implementación}
+\begin{itemize}
+    \item Lenguaje de implementación: Java. Esto puede tener sus consecuencias
+    pero también podemos utilizar algo como jyton si quisieramos importar
+    alguna clase a python.
+    \begin{description}
+        \item[Ventajas] Probablemente haya muchos clasificadores ya
+        implementados en Java. (Probablemente también podemos encontrarlos
+        en python).
+        \item[Desventajas] Me llevaría un tiempo extra aprender a usar Java.
+        Nuestros templates para Quepy están en Python, deberíamos traducir
+        básicamente todo el sistema a Java.
+    \end{description}
+    \item Tiene una buena documentación dentro del código y está pensado para
+    poder extenderlo a otros clasificadores. Parece prometedor.
+\end{itemize}
+
+\end{document}
