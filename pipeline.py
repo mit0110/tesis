@@ -1,10 +1,13 @@
 import pickle
 
+from feature_extraction import get_features
+from random import choice
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
+from termcolor import colored
 
-from feature_extraction import get_features
 
+NUMBER_OF_OPTIONS = 30
 
 
 class ClassifierPipeline(object):
@@ -17,10 +20,10 @@ class ClassifierPipeline(object):
     """
 
     def __init__(self):
-        gnb = MultinomialNB()
+        mnb = MultinomialNB()
         self.steps = [
             ('vectorizer', get_features()),
-            ('classifier', gnb),
+            ('classifier', mnb),
         ]
         self._get_corpus()
         self.pipeline = Pipeline(self.steps)
@@ -29,6 +32,7 @@ class ClassifierPipeline(object):
         self.user_answers = []
         self.load_session()
         self._train()
+        self.classes = mnb.classes_.tolist() + ['None of the previuous']
         
     def _train(self):
         self.pipeline.fit(
@@ -59,34 +63,65 @@ class ClassifierPipeline(object):
     def predict(self, question):
         return self.pipeline.predict(question)
 
-    def _process_answer(self, answer, question, prediction):
+    def _process_answer(self, answer, question, predicted_classes):
         """
         """
-        if answer is 'y':
+        if answer.lower() == 'stop':
+            print "Thank you for your time!"
+            self.save_session()
+            return True
+
+        try:
+            answer = int(answer)
+            prediction = predicted_classes[answer]
+        except (ValueError, IndexError):
+            print colored("Please insert one of the listed numbers", "red")
+            return False
+
+        if answer != len(predicted_classes) - 1: # Class other not selected
+            print colored("Adding result", "green")
             self.user_questions.append(question)
             self.user_answers.append(prediction)
+            self._train()
+            print "New accuracy: TRAINING {}% - TEST {}%\n".format(
+                self.evaluate_training(), self.evaluate_test()
+            )
+        return False
+
+    def _print_classes(self, predicted_classes):
+        message = "{} - {}"
+        for (counter, class_name) in enumerate(predicted_classes):
+            print message.format(counter, class_name)
+
+    def _most_probable_classes(self, predicted_classes):
+        indexes = predicted_classes.argsort()
+        result = []
+        for index in indexes[0][:NUMBER_OF_OPTIONS]:
+            result.append(self.classes[index])  # Class name
+        result.append(self.classes[-1])
+        return result
 
     def bootstrap(self):
         """
         """
-        message = "Is the same as {}? y/n/d/STOP\n>>> "
-        while True:
+        stop = False
+        while not stop:
             new_question = self.get_next_question()
-            print new_question
-            prediction = str(self.predict([new_question]))
-            line = raw_input(message.format(prediction))
-            if line == 'STOP':
-                print "Thank you for your time!"
-                self._train()
-                print "New accuracy: TRAINING {}% - TEST {}%\n".format(
-                    self.evaluate_training(), self.evaluate_test()
-                )
-                self.save_session()
-                break
-            self._process_answer(line, new_question, prediction)
+            print "**********************************************************"
+            print colored(new_question, "red", "on_white", attrs=["bold"])
+            predicted_classes = self.pipeline.predict_log_proba([new_question])
+            predicted_classes = self._most_probable_classes(predicted_classes)
+            print "\nWhat is the correct template? Write the number or STOP\n"
+            self._print_classes(predicted_classes)
+            line = raw_input(">>> ")
+            stop = self._process_answer(line, new_question, predicted_classes)
 
     def get_next_question(self):
-        return self.unlabeled_corpus.pop()
+        try:
+            question = choice(self.unlabeled_corpus)
+            return question
+        except IndexError:
+            return None
 
     def _get_accuracy(self, predicted_targets, real_targets):
         ok = 0
@@ -126,7 +161,7 @@ class ClassifierPipeline(object):
             f = open(filename, 'r')
             self.user_questions, self.user_answers = pickle.load(f)
             f.close()
-            print "Session {} loaded\n".format filename
+            print "Session {} loaded\n".format(filename)
 
 
 def main():
