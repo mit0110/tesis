@@ -540,4 +540,155 @@ extracción de información y análisis de sentimientos.
     poder extenderlo a otros clasificadores. Parece prometedor.
 \end{itemize}
 
+
+\section{Aprendiendo Representaciones para tareas Semi Supervisadas para Procesamiento de Lenguaje Natural}
+\textbf{Learning Representations for Weakly Supervised Natural Language Processing Tasks}
+\textbf{Fei Huang et al.}\\\\
+
+Los sistemas de PLN dependen generalmente de reglas hechas a mano para lograr un mejor desempeño, lo cual las hace específicas para uno o vario dominios particulares. En general, se ha demostrado que las aplicaciones de PLN obtienen pobres resultados cuando son probadas en dominios para los cuales no fueron entrenadas.
+Cuando se utiliza aprendizaje semi-supervisado, estas reglas adaptadas desde la teoría son contraproducentes ya que:
+\begin{itemize}
+    \item Los datos muy distribuidos impiden la correcta generalización por parte del sistema.
+    \item La distribución de Zipf de los datos asegura que existe una gran cantidad de ejemplos que el sistema nunca ha visto. Esto se agrava cuando existen cambios de dominio.
+    \item Las palabras son polisémicas y pueden no tener el mismo significado en distintos dominios.
+\end{itemize}
+Para contrarestar estos problemas se propone en este trabajo buscar nuevas representaciones que permitan al sistema generalizar para ejemplos no vistos. Este método se basa en la hipótesis de que el significado de una palabra depende del contexto en el que ésta se encuentra.
+El problema de aprendizaje de representaciones agrega una nueva variable a los algoritmos de aprendizaje automáticos. Ahora se busca minimizar la función de costo explorando no sólo el espacio de las hipótesis sino también el espacio de posibles representaciones.
+\subsection{Trabajo previo sobre aprendizaje de representaciones}
+La adaptación de dominio consiste en entrenar un sistema sobre un dominio Ds y utilizarlo para clasificar ejemplos en otro dominio Dt.
+\begin{itemize}
+	\item Ben David et Al. probaron límites teóricos para este problema. La representación utilizada es crucial ya que debe minimizar la distancia entre los dominios Ds y Dt. Mientras más características aparezcan en distintos dominios con frecuencias distintas, mayor es la distancia. Una cota inferior para la distancia el la exactitud con la que el mejor clasificador puede predecir a qué dominio pertenece un ejemplo.
+	\item Otros estudios han demostrado que utilizar características léxicas puede impactar negativamente en el desempaño del sistema cuando se lo prueba en un dominio distinto.
+	\item Bikel et Al. demostraron que, debido a la complejidad de los vocabularios, la mayoría de los sistemas cuenta con ejemplos poco representativos. Las representaciones más usadas contribuyen a la dispersión de los datos, situación agravada por un cambio de dominio.
+\end{itemize}
+Sin embargo, la minimización de la función de error es muchas veces imposible de llevar a cabo conexactitud. Por lo tanto, se busca el mejor modelo estadístico como representación de los significados de las palabras. Como concecuencia, se utiliza fuertemente el concepto de hipótesis distribucional (el sentido de una palabra depende fuertemente del contexto en el que ésta se encuentra).
+\subsubsection{Hipótesis de representación con modelos de lenguajes estadísticos (LMRH)}
+Si un modelo describe con exactitud los posibles contextos de una palabra, entonces los parámetros de ese modelo pueden describir dichos contextos. Por lo tanto, es razonable incluirlos como características en tareas de procesamiento de lenguaje natural.
+Esto quiere decir que podemos separar las tareas de aprender la mejor representación para los datos y de aprender un clasificador, realizandolas en ese orden. Para aprender la representación basta con entrenar un modelo con datos no etiquetados, y después utilizar los parámetros o estados latentes del mismo para inducir una función de representación. Si optimizamos la representación para la tarea de modelado del lenguaje, entonces obtendremos buenos resultados para otras tareas utilizando sistemas semi supervisados. 
+\\
+Los trabajos previos realizados sobre representación caen en general en una de las siguientes cuatro categorías:
+\begin{itemize}
+    \item Espacios de vectores que modelan significados basados en coocurrencia.
+    \item Técnicas de reducción de dimensionalidad para espacios vectoriales.
+    \item Utilizar clusters como características no dispersas.
+    \item Modelos de redes neuronales sofisticadas.
+\end{itemize}
+Los mejores resultados se han obtenido con las redes neuronales. Sin embargo, son costosas de entrenar y funcionan sólo en n-gramas.
+Otros trabajos en adaptación de dominios utilizan ejemplos etiquetados de Ds y Dt, y se centran en cómo pesarlos adequadamente para lograr un buen desempeño. Trabajos que no dependen de datos etiquetados de Dt son:
+\begin{itemize}
+    \item Pereira et al. utilizan la técnica Aprendizaje de correspondencia estructural. Toman como pivotes las palabras que son comunes a ambos dominios, y entrenan clasificadores lineales para predecirlas. Reduce los vectores de pesos obtenidos y luego proyecta las características originales sobre esos vectores para formar nuevas características.
+    \item Satpal et al. cambian la función de optimización durante el entrenamiento de un conditional random field. Seleccionan características que minimizen la distancia entre los ejemplos de entrenamiento y ejemplos de test no etiquetados.
+    \item McClosky et al. usan clasificadores de distintos dominios y miden cuánto se distancia un documento de cada dominio para pesar las características del clasificador usado en Ds.
+    \item Dai et al. usan la divergencia KL entre dominios para modificar los parámetros de un bayesiano ingénuo entrenado únicamente en Ds.
+\end{itemize}
+
+\subsection{Aprendiendo representaciones para similitudes distribucionales}
+Los modelos a utilizar son:
+\begin{description}
+    \item[TRAD-R] Mapea cada oración en un conjunto de vectores booleanos (uno por cada palabra) con características del tipo de la palabra y variaciones ortográficas. Se utiliza como baseline.
+    \item[N-gram-R] Para cada palabra se genera la probabilidad condicional de su contexto a la izquierda y a la derecha. Cada dimensión representa una combinación de estos contextos.
+    \item[LSA-R] Para mejorar la dispersión de los datos representados con N-gram-R, se utiliza una técnica de LSA sobre esta representación. Se analizan por separado el contexto derecho y el izquierdo de la palabra. A través de experimentos de determinó que la cantidad de dimensiones que mejoraba la presición era 10.
+    \item[NB-R] Se usan varios modelos basados en un Bayesiano con S estados latentes, uno por cada trigrama, donde cada término del trigrama está condicionalmente independiente según el estado latente. Dado un modelo bayesiano, se construye una representación con |S| características booleanas si el estado latente maximiza la probabilidad de la etiqueta. Este modelo, a diferencia de los anteriores, depende del contexto de la palabra y es menos propenso a generar datos dispersos.
+    \item[HMM-TOKEN-R] Se utiliza un HMM con estados ocultos y*, y se lo maximiza utilizando el algortimo de Viterbi. Se utilizan los valores de y* como nuevas características que representan clusters de palabras.
+    \item[HMM-TYPE-R] También se utiliza un HMM, pero pide características sobre los tipos de las palabras. Se aplica el algortimo de Bayes para calcular la probabilidad de una palabra dado un estado oculto, y luego se toma dicha probabilidad para cada valor del estado oculto posible como características.
+    \item[I-HMM-TOKEN-R] Se basa en un implementación de múltiples capas de un HMM. Se crean M modelos distintos y se entrenan con el corpus, pero inicializados en valores aleatorios. El estado latente decodificado de cada modelo, obtenido a través del algoritmo de Viterbi, son utilizados como características.
+    \item[I-HMM-TYPE-R] Similar al anterior, pero utiliza como conjunto de características las distribuciones condicionales con respecto a los estados ocultos de cada modelo.
+    \item[BROWN-TYPE-R, BROWN-TOKEN-R] Se usan como características los clusters de Brown. Se construyen utilizando un HMM donde cada palabra tiene restringido un sólo estado oculto posible.
+    \item[LATTICE-TOKEN-R] Este modelo llamado Lattice Parcial MRF contiene una grilla con M x N estados ocultos, donde N es el número de palabras en la oración y M es el número de capas del modelo. Es llamado parcial porque no utiliza todas las conexiones posibles entre estos estados latentes. Este modelo en capaz pretende capturar la naturaleza multidimensional de las palabras. Para obtener las características se obtiene la matriz óptima de estados latentes y*. Luego por cada capa j y cada estado oculto posible k se agrega un valor booleano si para la palabra i, y*[j,i] = k.
+    \item[LATTICE-TYPE-R] Igual al anterior, pero se computan las distribuciones según la matriz de estados latentes para cada typo de palabra. Se utilizan esas probabilidades como características.
+\end{description}
+
+\subsection{Entorno de Experimentación}
+\begin{enumerate}
+    \item Se reúnen datos no anotados de ambos dominios.
+    \item Se aprenden representaciones de éstos corpus no anotados.
+    \item Se anotan automáticamente los corpus de test y de entrenamiento con las características obtenidas.
+    \item Se entrena una cadena lineal CRF en el corpus anotado y se lo prueba sobre en el corpus de test.
+\end{enumerate}
+
+\subsection{Resultados en POS Tagging}
+\begin{itemize}
+    \item Todos las representaciones aprendidas superaron a TRAD-R.
+    \item La mejor representación fue LATTICE-TOKEN-R.
+    \item Los resultados se aproximaron al state-of-the-art de clasificadores en el dominio.
+    \item Los modelos más complejos se entrenaron con menos datos debido a la complejidad de cómputo y aún así lograron mejores resultados.
+    \item La precisión de las representaciones aprendidas aumentaba considerablemente al aumentar el número de ejemplos no etiquetados.
+    \item Los mejores resultados de modelos sensibles al contexto (HMM y LATTICE) con respecto a modelos independientes como un Bayesiano sugieren que las representaciones impactan en la representación de palabras polisémicas, de las cuales se deduce el significado teniendo en cuenta el contexto.
+    \item Se seleccionaron palabras polisémicas que tuvieran diversidad de POS Tags. Los resultados fueron superiores para representaciones aprendidas.
+    \item Se midió la distancia entre los dominios a través de dos implementaciones de la distancia Jensen-Shannon, teniendo en cuenta la importancia de cada característica en ambos dominios. Luego se entrenó un clasificador binario para distinguir entre palabras de un dominio o del otro. Los datos comprueban que mientras menor es la distancia entre los dominios, mejor es el desempeño del clasificador en el Dt y peor lo es en Ds, utilizando como medida de distancia la distancia Jensen-Shannon y la presición del clasificador de dominios.
+    \item Agregar más capas a los modelos con capas no aumenta el desempeño, ya que las capas se entrenan individualmente y pueden resultar capas equivalentes.
+\end{itemize}
+
+\subsection{Resultados en Chunking y POS Tagging para el idioma chino}
+\begin{itemize}
+    \item Nuevamente los modelos complejos aprendidos obtienen mejores resultados.
+    \item Remover características del HMM hasta dejar sólo un 20\% más que el baseline también presentó mejores resultados.
+\end{itemize}
+
+\subsection{Resultados en Extracción de Información}
+Estos experimentos intentan probar la eficacia de las representaciones aprendidas para aprender relaciones semánticas más que sintácticas.
+Se formaliza el problema como devolver en orden de probabilidad las sentencias más similares a las dadas como semillas. Se utilizan representaciones basadas en tipos en lugar de tokens.
+\begin{itemize}
+    \item Se utilizaron distintas medidas de distancia.
+    \item Se evaluó utilizando el área debajo de la curva presición y recall.
+    \item Las representaciones basadas en tipos no son tan flexibles para representar polisemia y dispersión.
+    \item La mejor representación fue I-HMM-TYPE-R, seguida por las obtenidas del Brown, finalmente LATTICE-TYPE-R.
+    \item Las representaciones aprendidas obtienen mejores resultados que las otras en palabras poco frecuentes.
+\end{itemize}
+
+\subsection{Comentario}
+\begin{itemize}
+    \item No es muy difícil superar los n-gramas no?
+    \item No entiendo bien la separación entre typos y tokens.
+\end{itemize}
+
+
+\section{Construyendo un corpus de preguntas para relaciones semánticas textuales}
+
+\textbf{Constructing a Question corpus for Textual Semantic Relations}\\
+\textbf{Rui Wang and Shuguang Li}\\\\
+Este trabajo pretende identificar preguntas cuya respuesta pueda resulta útil para responder otra pregunta del usuario. Sin embargo, esto no es una tarea fácil:
+\begin{itemize}
+    \item La información que el usuario necesita es muy compleja.
+    \item Preguntas con la misma respuesta pueden tener muy pocas palabras en común.
+\end{itemize}
+La mayoría de las preguntas útiles tienen alguna relación de implicación textual con la pregunta de referencia.
+\subsection{Trabajo Relacionado}
+\begin{itemize}
+    \item Bunescu y Huang intentan ordenar preguntas relacionadas de forma automática. Anotaron un corpus de 60 preguntas en tres categorías: útiles, reformulación y neutrales.
+    \item Zhao et al. presentan un método de generación de plantillas a partir de preguntas relacionadas.
+    \item Scaleanu et al. resumen un conjunto de plantillas para preguntas utilizadas para encontrar la pregunta más relacionada.
+    \item Bernhard y Gurevych evalúan distintas medidas de similitud entre strings y entre vectores para encontrar reformulaciones de preguntas.
+    \item En reconocimiento de implicaciones textuales la mayoría de los trabajos utilizan similitud entre bolsas de palabras asistidos por recursos como WordNet. Kouylekov y Magnini proponen utilizar la distancia de edición de árboles sintáctivos.
+\end{itemize}
+
+\subsection{Relaciones entre preguntas}
+Se establecen diversas relaciones entre la pregunta del usuario Qi y la pregunta candidata Qr:
+\begin{itemize}
+    \item Igualdad entre Qi y Qr
+    \item La respuesta de Qi es más general que la de Qr.
+    \item La respuesta de Qr es más general que la de Qi.
+    \item Qi está preguntando sobre una presuposición utilizada en Qr
+    \item Existe una relación pero no es ninguna de las anteriores.
+    \item Las preguntas no están relacionandas pero pueden tratar de los mismo sujetos.
+\end{itemize}
+
+\subsection{Experimentación}
+Se utilizan distintas medidas de similitud.
+\begin{description}
+    \item[Bolsas de palabras] Se combina con WordNet
+    \item[Similaridad de dependencia sintáctica]
+    \item[Similaridad predicado-argumento] Las estructuras predicado-argumento (PASes) son utilizadas para medir la cercanía semántica en texto.
+    \item[TF-IDF]
+\end{description}
+
+
+\section{Notas sobre la forma de los trabajos}
+\begin{itemize}
+    \item Presentar primero la intuición del problema o resolución propuesta y luego la formalización del mismo.
+    \item Resumir en la primera parte las contribuciones del trabajo para dar una mejor perspectiva sobre el resto del trabajo.
+    \item Aclarar la notación y las definiciones que damos por sentado que el lector va a entender.
+    \item Selecciona corpus específicos para probar teorías concretas, más allá del experimento principal.
+\end{itemize}
+
 \end{document}

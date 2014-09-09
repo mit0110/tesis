@@ -21,7 +21,8 @@
 \raggedbottom
 
 %define the default submitted text
-\newcommand{\submittedtext}{{A thesis submitted for the degree of}}
+%\newcommand{\submittedtext}{{A thesis submitted for the degree of}}
+\newcommand{\submittedtext}{{Directores}}
 
 %
 % DECLARATIONS
@@ -36,6 +37,7 @@
 % The name of your Oxford college (e.g. Christ Church, Pembroke)
 \def\college#1{\gdef\@college{#1}}
 
+\def\directors#1{\gdef\@directors{#1}}
 
 %
 % Setup choosen crest/logo
@@ -93,7 +95,7 @@
        \else\newpage\thispagestyle{empty}\fi}
 
 %define title page layout
-\renewcommand{\maketitle}{%
+\renewcommand{\maketitle}{
 \begin{alwayssingle}
     \renewcommand{\footnotesize}{\small}
     \renewcommand{\footnoterule}{\relax}
@@ -101,18 +103,21 @@
   \null\vfill
   \begin{center}
     { \Huge {\bfseries {\@title}} \par}
-{\large \vspace*{40mm} {\logo \par} \vspace*{25mm}}
+%{\large \vspace*{40mm} {\logo \par} \vspace*{25mm}}
+\vspace*{75mm}
     {{\Large \@author} \par}
 {\large \vspace*{1ex}
-    {{\@college} \par}
-\vspace*{1ex}
-    {University of Oxford \par}
-\vspace*{25mm}
-    {{\submittedtext} \par}
-\vspace*{1ex}
-    {\it {\@degree} \par}
-\vspace*{2ex}
-    {\@degreedate}}
+  \vspace*{1ex}
+      {{\Large \@college} \par}
+  \vspace*{1ex}
+      {Universidad Nacional de Córdoba \par}
+  \vspace*{25mm}
+      {{\submittedtext} \par}
+  \vspace*{1ex}
+      {\it {\@directors} \par}
+  \vspace*{2ex}
+%    {\@degreedate}
+}
   \end{center}
   \null\vfill
 \end{alwayssingle}}

@@ -1,9 +1,13 @@
-\documentclass[12pt]{ociamthesis}  % default square logo 
+\documentclass[12pt,spanish]{ociamthesis}  % default square logo 
 %\documentclass[12pt,beltcrest]{ociamthesis} % use old belt crest logo
 %\documentclass[12pt,shieldcrest]{ociamthesis} % use older shield crest logo
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
 
 %load any additional packages
 \usepackage{amssymb}
+\usepackage{natbib}
 
 %input macros (i.e. write your own macros file called mymacros.tex 
 %and uncomment the next line)
@@ -13,12 +17,12 @@
 
 \author{Teruel Milagro}             %your name
 \college{Facultad de Matemática, Astronomía y Física\\[1ex]
-	     Universidad Nacional de Córdoba}  %your college
+		}  %your college
 
 %\renewcommand{\submittedtext}{change the default text here if needed}
-\degree{Directores\\[1ex]
-		Laura Alonso Alemany\\[1ex]
-		Franco Luque}     %the degree
+%\degree{Licenciada en Ciencias de la Computación}     %the degree
+\directors{Laura Alonso Alemany\\[1ex]
+		Franco Luque}
 
 %end the preamble and start the document
 \begin{document}
@@ -43,7 +47,7 @@
 \end{romanpages}            % end roman page numbering
 
 %now include the files of latex for each of the chapters etc
-\include{chapter1}
+\include{definicion_problema}
 \include{chapter2}
 \include{conclusions}
 
@@ -56,8 +60,8 @@
 \addcontentsline{toc}{chapter}{Bibliography}
 %uncomment next line to change bibliography name to references
 %\renewcommand{\bibname}{References}
-\bibliography{refs}        %use a bibtex bibliography file refs.bib
-\bibliographystyle{plain}  %use the plain bibliography style
+\bibliography{biblio}        %use a bibtex bibliography file refs.bib
+\bibliographystyle{plainnat}
 
 \end{document}
 
