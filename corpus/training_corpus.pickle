@@ -1,0 +1,1291 @@
+(lp0
+(dp1
+S'question'
+p2
+S'What is a car'
+p3
+sS'target'
+p4
+S'whatis'
+p5
+sS'recognized'
+p6
+I01
+sa(dp7
+g2
+S'What is Seinfield?'
+p8
+sg4
+S'whatis'
+p9
+sg6
+I01
+sa(dp10
+g2
+S'where in the world is the Eiffel Tower'
+p11
+sg4
+S'whereis'
+p12
+sg6
+I01
+sa(dp13
+g2
+S'list presidents of Argentina?'
+p14
+sg4
+S'presidentsof'
+p15
+sg6
+I01
+sa(dp16
+g2
+S'What is the capital of Bolivia?'
+p17
+sg4
+S'capitalcityof'
+p18
+sg6
+I01
+sa(dp19
+g2
+S'What is the language of Liberia?'
+p20
+sg4
+S'spokenlanguageof'
+p21
+sg6
+I01
+sa(dp22
+g2
+S'What is the spoken language in Russia?'
+p23
+sg4
+S'spokenlanguageof'
+p24
+sg6
+I01
+sa(dp25
+g2
+S'What is the population of China?'
+p26
+sg4
+S'populationof'
+p27
+sg6
+I01
+sa(dp28
+g2
+S'how many people live in Australia?'
+p29
+sg4
+S'populationof'
+p30
+sg6
+I01
+sa(dp31
+g2
+S'List movies'
+p32
+sg4
+S'listmovies'
+p33
+sg6
+I01
+sa(dp34
+g2
+S'List movies directed by Quentin Tarantino.'
+p35
+sg4
+S'moviesbydirector'
+p36
+sg6
+I01
+sa(dp37
+g2
+S'movies directed by Martin Scorsese'
+p38
+sg4
+S'moviesbydirector'
+p39
+sg6
+I01
+sa(dp40
+g2
+S'which movies did Mel Gibson directed'
+p41
+sg4
+S'moviesbydirector'
+p42
+sg6
+I01
+sa(dp43
+g2
+S'How long is Pulp Fiction'
+p44
+sg4
+S'movieduration'
+p45
+sg6
+I01
+sa(dp46
+g2
+S'What is the duration of The Thin Red Line?'
+p47
+sg4
+S'movieduration'
+p48
+sg6
+I01
+sa(dp49
+g2
+S'List movies with Hugh Laurie'
+p50
+sg4
+S'actedon'
+p51
+sg6
+I01
+sa(dp52
+g2
+S'Movies with Matt LeBlanc'
+p53
+sg4
+S'actedon'
+p54
+sg6
+I01
+sa(dp55
+g2
+S'In what movies did Jennifer Aniston appear?'
+p56
+sg4
+S'actedon'
+p57
+sg6
+I01
+sa(dp58
+g2
+S'Which movies did Mel Gibson starred?'
+p59
+sg4
+S'actedon'
+p60
+sg6
+I01
+sa(dp61
+g2
+S'Movies starring Winona Ryder'
+p62
+sg4
+S'actedon'
+p63
+sg6
+I01
+sa(dp64
+g2
+S'when was gravity released?'
+p65
+sg4
+S'moviereleasedate'
+p66
+sg6
+I01
+sa(dp67
+g2
+S'release date of the hobbit?'
+p68
+sg4
+S'moviereleasedate'
+p69
+sg6
+I01
+sa(dp70
+g2
+S'Who is the director of Big Fish?'
+p71
+sg4
+S'directorof'
+p72
+sg6
+I01
+sa(dp73
+g2
+S'who directed Pocahontas?'
+p74
+sg4
+S'directorof'
+p75
+sg6
+I01
+sa(dp76
+g2
+S'who are the actors of Titanic?'
+p77
+sg4
+S'actorsof'
+p78
+sg6
+I01
+sa(dp79
+g2
+S'who acted in Alien?'
+p80
+sg4
+S'actorsof'
+p81
+sg6
+I01
+sa(dp82
+g2
+S'who starred in Depredator?'
+p83
+sg4
+S'actorsof'
+p84
+sg6
+I01
+sa(dp85
+g2
+S'Actors of Fight Club'
+p86
+sg4
+S'actorsof'
+p87
+sg6
+I01
+sa(dp88
+g2
+S'what is the plot of Titanic'
+p89
+sg4
+S'plotof'
+p90
+sg6
+I01
+sa(dp91
+g2
+S'what was Sherk about?'
+p92
+sg4
+S'plotof'
+p93
+sg6
+I01
+sa(dp94
+g2
+S'Radiohead members'
+p95
+sg4
+S'bandmembers'
+p96
+sg6
+I01
+sa(dp97
+g2
+S'What are the members of Metallica?'
+p98
+sg4
+S'bandmembers'
+p99
+sg6
+I01
+sa(dp100
+g2
+S'who were the members of pink floyd?'
+p101
+sg4
+S'bandmembers'
+p102
+sg6
+I01
+sa(dp103
+g2
+S'When was Korn formed?'
+p104
+sg4
+S'bandfoundation'
+p105
+sg6
+I01
+sa(dp106
+g2
+S'What is the music genre of Gorillaz?'
+p107
+sg4
+S'musicgenre'
+p108
+sg6
+I01
+sa(dp109
+g2
+S'Music genre of Radiohead'
+p110
+sg4
+S'musicgenre'
+p111
+sg6
+I01
+sa(dp112
+g2
+S'List albums of Pink Floyd'
+p113
+sg4
+S'albumsofband'
+p114
+sg6
+I01
+sa(dp115
+g2
+S'What albums did Pearl Jam record?'
+p116
+sg4
+S'albumsofband'
+p117
+sg6
+I01
+sa(dp118
+g2
+S'Albums by Metallica'
+p119
+sg4
+S'albumsofband'
+p120
+sg6
+I01
+sa(dp121
+g2
+S'what albums did The Beatles make?'
+p122
+sg4
+S'albumsofband'
+p123
+sg6
+I01
+sa(dp124
+g2
+S'Who is Tom Cruise?'
+p125
+sg4
+S'whois'
+p126
+sg6
+I01
+sa(dp127
+g2
+S'How old is Bob Dylan'
+p128
+sg4
+S'howoldis'
+p129
+sg6
+I01
+sa(dp130
+g2
+S'Where is Bill Gates from?'
+p131
+sg4
+S'whereisfrom'
+p132
+sg6
+I01
+sa(dp133
+g2
+S'What is the cast of Friends?'
+p134
+sg4
+S'castof'
+p135
+sg6
+I01
+sa(dp136
+g2
+S'Who works in Breaking Bad?'
+p137
+sg4
+S'castof'
+p138
+sg6
+I01
+sa(dp139
+g2
+S'List actors of Seinfeld'
+p140
+sg4
+S'castof'
+p141
+sg6
+I01
+sa(dp142
+g2
+S'List TV shows'
+p143
+sg4
+S'listtvshows'
+p144
+sg6
+I01
+sa(dp145
+g2
+S'How many episodes does Seinfeld have?'
+p146
+sg4
+S'episodecount'
+p147
+sg6
+I01
+sa(dp148
+g2
+S'Number of episodes of Seinfeld'
+p149
+sg4
+S'episodecount'
+p150
+sg6
+I01
+sa(dp151
+g2
+S'List shows with Hugh Laurie'
+p152
+sg4
+S'showswith'
+p153
+sg6
+I01
+sa(dp154
+g2
+S'In what shows does Jennifer Aniston appears?'
+p155
+sg4
+S'showswith'
+p156
+sg6
+I01
+sa(dp157
+g2
+S'Shows with Matt LeBlanc'
+p158
+sg4
+S'showswith'
+p159
+sg6
+I01
+sa(dp160
+g2
+S'Who is the creator of Breaking Bad?'
+p161
+sg4
+S'creatorof'
+p162
+sg6
+I01
+sa(dp163
+g2
+S'Who are the creators of Friends?'
+p164
+sg4
+S'creatorof'
+p165
+sg6
+I01
+sa(dp166
+g2
+S'who wrote The Little Prince?'
+p167
+sg4
+S'whowrote'
+p168
+sg6
+I01
+sa(dp169
+g2
+S'who is the author of A Game Of Thrones?'
+p170
+sg4
+S'whowrote'
+p171
+sg6
+I01
+sa(dp172
+g2
+S'list books by George Orwell'
+p173
+sg4
+S'booksbyauthor'
+p174
+sg6
+I01
+sa(dp175
+g2
+S'which books did Suzanne Collins wrote?'
+p176
+sg4
+S'booksbyauthor'
+p177
+sg6
+I01
+sa(dp178
+g2
+S'who is the writer of The Lord of the Rings?'
+p179
+sg4
+S'creatorof'
+p180
+sg6
+I00
+sa(dp181
+g2
+S'who create The Neverending Story?'
+p182
+sg4
+S'creatorof'
+p183
+sg6
+I00
+sa(dp184
+g2
+S'list books written by J. K. Rowling'
+p185
+sg4
+S'booksbyauthor'
+p186
+sg6
+I00
+sa(dp187
+g2
+S'list of works written by George R.R. Martin'
+p188
+sg4
+S'booksbyauthor'
+p189
+sg6
+I00
+sa(dp190
+g2
+S'list of books created by Agatha Christie'
+p191
+sg4
+S'booksbyauthor'
+p192
+sg6
+I00
+sa(dp193
+g2
+S'What are titles of books written by Dan Brown?'
+p194
+sg4
+S''
+p195
+sg6
+I00
+sa(dp196
+g2
+S'What movies did James Dean appear in?'
+p197
+sg4
+S'actedon'
+p198
+sg6
+I00
+sa(dp199
+S'question'
+p200
+S'Who killed Lee Harvey Oswald'
+p201
+sS'target'
+p202
+S'other'
+p203
+sa(dp204
+g200
+S'Who was the creator of the strip?'
+p205
+sg202
+S'other'
+p206
+sa(dp207
+g200
+S'How many vehicles took part in the Challenge?'
+p208
+sg202
+S'other'
+p209
+sa(dp210
+g200
+S'Who is the chairman of WWE?'
+p211
+sg202
+S'other'
+p212
+sa(dp213
+g200
+S'In what city is this corporation based?'
+p214
+sg202
+S'other'
+p215
+sa(dp216
+g200
+S'What is considered the costliest disaster the insurance industry has ever faced'
+p217
+sg202
+S'other'
+p218
+sa(dp219
+g200
+S'What is the name of the highest mountain in Africa'
+p220
+sg202
+S'other'
+p221
+sa(dp222
+g200
+S'What was the previous world record time?'
+p223
+sg202
+S'other'
+p224
+sa(dp225
+g200
+S"Who built the basilica that previously stood at the same site as St. Peter's "
+p226
+sg202
+S'other'
+p227
+sa(dp228
+g200
+S'In how many concerts has Bon Jovi performed?'
+p229
+sg202
+S'other'
+p230
+sa(dp231
+g200
+S'In what do marsupials keep their young?'
+p232
+sg202
+S'other'
+p233
+sa(dp234
+g200
+S'On what TV show does Hammond regularly appear?'
+p235
+sg202
+S'showswith'
+p236
+sa(dp237
+g200
+S'What is the name of the Wizarding Game in "Harry Potter and the Goblet of Fire"?'
+p238
+sg202
+S'other'
+p239
+sa(dp240
+g200
+S'What countries have Rhodes Scholars come from?'
+p241
+sg202
+S'other'
+p242
+sa(dp243
+g200
+S'In what movie did Bon Jovi star?'
+p244
+sg202
+S'actedon'
+p245
+sa(dp246
+g200
+S'How long a term do FISA judges serve?'
+p247
+sg202
+S'other'
+p248
+sa(dp249
+g200
+S'Who were victims of the disaster?'
+p250
+sg202
+S'other'
+p251
+sa(dp252
+g200
+S'What type of music is performed by the Dixie Chicks?'
+p253
+sg202
+S'musicgenre'
+p254
+sa(dp255
+g200
+S'Who supervised the transplant?'
+p256
+sg202
+S'other'
+p257
+sa(dp258
+g200
+S'In what year was Habitat for Humanity founded?'
+p259
+sg202
+S'other'
+p260
+sa(dp261
+g200
+S'What Pope started the building of the basilica?'
+p262
+sg202
+S'other'
+p263
+sa(dp264
+g200
+S'How many people visit Angkor Wat annually?'
+p265
+sg202
+S'other'
+p266
+sa(dp267
+g200
+S'Who have been members of the organization? (Black Panthers)'
+p268
+sg202
+S'other'
+p269
+sa(dp270
+g200
+S'How old was Jasper Fforde when he wrote his first Thursday Next novel?'
+p271
+sg202
+S'other'
+p272
+sa(dp273
+g200
+S'In what city and state are Habitat for Humanity International headquarters?'
+p274
+sg202
+S'whereis'
+p275
+sa(dp276
+g200
+S'For which newspaper does Krugman write?'
+p277
+sg202
+S'other'
+p278
+sa(dp279
+g200
+S'Where is the actress Marion Davies buried'
+p280
+sg202
+S'other'
+p281
+sa(dp282
+g200
+S'On what date was Obama born?'
+p283
+sg202
+S'howoldis'
+p284
+sa(dp285
+g200
+S'Who released the Internet worm in the late'
+p286
+sg202
+S'other'
+p287
+sa(dp288
+g200
+S'What was the target rate for growth in'
+p289
+sg202
+S'other'
+p290
+sa(dp291
+g200
+S'What is the population of Mozambique?'
+p292
+sg202
+g195
+sa(dp293
+g200
+S'What is the expansion of "AMT"?'
+p294
+sg202
+S'other'
+p295
+sa(dp296
+g200
+S'Who is the commander of the USS Abraham Lincoln?'
+p297
+sg202
+S'other'
+p298
+sa(dp299
+g200
+S"How big is Limbaugh's listening audience?"
+p300
+sg202
+S'other'
+p301
+sa(dp302
+g200
+S'On what date did she withdraw her nomination?'
+p303
+sg202
+S'other'
+p304
+sa(dp305
+g200
+S'Who nominated Miers for the post?'
+p306
+sg202
+S'other'
+p307
+sa(dp308
+g200
+S'On what date did Opportunity land on Mars?'
+p309
+sg202
+S'other'
+p310
+sa(dp311
+g200
+S'His shows appear on which network?'
+p312
+sg202
+S'other'
+p313
+sa(dp314
+g200
+S'What are some Bon Jovi hits?'
+p315
+sg202
+S'other'
+p316
+sa(dp317
+g200
+S'Who is the airport named after?'
+p318
+sg202
+S'other'
+p319
+sa(dp320
+g200
+S'List doctors who have performed cateract surgery.'
+p321
+sg202
+S'other'
+p322
+sa(dp323
+g200
+S'What planets will the Cassini space probe pass?'
+p324
+sg202
+S'other'
+p325
+sa(dp326
+g200
+S'Where is the Mint headquartered?'
+p327
+sg202
+S'whereis'
+p328
+sa(dp329
+g200
+S'What organism causes Lyme disease?'
+p330
+sg202
+S'other'
+p331
+sa(dp332
+g200
+S'Name members of the Muslin Brotherhood group.'
+p333
+sg202
+S'bandmembers'
+p334
+sa(dp335
+g200
+S'Which Congress persons want to change the AMT?'
+p336
+sg202
+S'other'
+p337
+sa(dp338
+g200
+S'How many state jobs did Steffen hold?'
+p339
+sg202
+S'other'
+p340
+sa(dp341
+g200
+S'When was 3M founded?'
+p342
+sg202
+S'other'
+p343
+sa(dp344
+g200
+S'How many consecutive baseball games did Lou Gehrig play'
+p345
+sg202
+S'other'
+p346
+sa(dp347
+g200
+S'How many countries are included in CAFTA?'
+p348
+sg202
+S'other'
+p349
+sa(dp350
+g200
+S'How old is Darrell Hammond?'
+p351
+sg202
+S'howoldis'
+p352
+sa(dp353
+g200
+S'What countries does the Muslim Brotherhood operate in?'
+p354
+sg202
+S'other'
+p355
+sa(dp356
+g200
+S"How tall is St. Peter's Basilica?"
+p357
+sg202
+S'other'
+p358
+sa(dp359
+g200
+S'Who is the director of the international group called the Human Genome Organization that is trying to coordinate research worldwide'
+p360
+sg202
+S'other'
+p361
+sa(dp362
+g200
+S'List states that have had problems with Boll Weevils'
+p363
+sg202
+S'other'
+p364
+sa(dp365
+g200
+S'Who was his predecessor as 3M CEO?'
+p366
+sg202
+S'other'
+p367
+sa(dp368
+g200
+S'When did the original Howdy Doody show go off the air'
+p369
+sg202
+S'other'
+p370
+sa(dp371
+g200
+S'In what country is Angkor Wat?'
+p372
+sg202
+S'whereis'
+p373
+sa(dp374
+g200
+S'Which city in China has the largest number of foreign financial companies'
+p375
+sg202
+S'other'
+p376
+sa(dp377
+g200
+S'On what date was she diagnosed with acute myelogenous leukemia?'
+p378
+sg202
+S'other'
+p379
+sa(dp380
+g200
+S'In what city and state did the Challenge finals race take place?'
+p381
+sg202
+S'other'
+p382
+sa(dp383
+g200
+S'What is the largest city in Germany'
+p384
+sg202
+S'other'
+p385
+sa(dp386
+g200
+S'Name a film that has won the Golden Bear in the Berlin Film Festival'
+p387
+sg202
+S'other'
+p388
+sa(dp389
+g200
+S'Who is the mayor of Marbella'
+p390
+sg202
+S'other'
+p391
+sa(dp392
+g200
+S'What are the names of the space shuttles?'
+p393
+sg202
+S'other'
+p394
+sa(dp395
+g200
+S'On which street is Merrill Lynch headquarters located?'
+p396
+sg202
+S'other'
+p397
+sa(dp398
+g200
+S'How long does the Madness last?'
+p399
+sg202
+S'other'
+p400
+sa(dp401
+g200
+S'What singers made recordings with Ella Fitzgerald?'
+p402
+sg202
+S'other'
+p403
+sa(dp404
+g200
+S'Who founded the House of Chanel?'
+p405
+sg202
+S'other'
+p406
+sa(dp407
+g200
+S'What position did Obama hold before becoming US senator?'
+p408
+sg202
+S'other'
+p409
+sa(dp410
+g200
+S'What costume designer decided that Michael Jackson should only wear one glove'
+p411
+sg202
+S'other'
+p412
+sa(dp413
+g200
+S'In what country was Irving Berlin born?'
+p414
+sg202
+S'whereisfrom'
+p415
+sa(dp416
+g200
+S'Which former Ku Klux Klan member won an elected office in the'
+p417
+sg202
+S'other'
+p418
+sa(dp419
+g200
+S'How many passengers have traveled with Cunard Cruise Lines?'
+p420
+sg202
+S'other'
+p421
+sa(dp422
+g200
+S'In what U.S. states have sightings of Yeti been reported?'
+p423
+sg202
+S'other'
+p424
+sa(dp425
+g200
+S'When was Rafik Hariri born?'
+p426
+sg202
+S'howoldis'
+p427
+sa(dp428
+g200
+S'How many Ninja Turtles were there?'
+p429
+sg202
+S'other'
+p430
+sa(dp431
+g200
+S'What corporation owns the American Girl company?'
+p432
+sg202
+S'other'
+p433
+sa(dp434
+g200
+S'In which state did the Buffalo Soldiers protect National Parks?'
+p435
+sg202
+S'other'
+p436
+sa(dp437
+g200
+S'List groups affected by Good Friday Agreement.'
+p438
+sg202
+S'other'
+p439
+sa(dp440
+g200
+S'What language is most commonly used in Bombay'
+p441
+sg202
+S'spokenlanguageof'
+p442
+sa(dp443
+g200
+S'List the years that she won the Iditarod Race.'
+p444
+sg202
+S'other'
+p445
+sa(dp446
+g200
+S'When was Bon Jovi born?'
+p447
+sg202
+S'howoldis'
+p448
+sa(dp449
+g200
+S'How many monuments are there in Angkor Wat?'
+p450
+sg202
+S'other'
+p451
+sa(dp452
+g200
+S'On what date did the trial end?'
+p453
+sg202
+S'other'
+p454
+sa(dp455
+g200
+S'What is the last name of the character Blondie?'
+p456
+sg202
+S'other'
+p457
+sa(dp458
+g200
+S'What books has Limbaugh written?'
+p459
+sg202
+S'booksbyauthor'
+p460
+sa(dp461
+g200
+S'What movies did James Dean appear in?'
+p462
+sg202
+S'actedon'
+p463
+sa(dp464
+g200
+S'On what date did the court begin screening potential jurors?'
+p465
+sg202
+S'other'
+p466
+sa(dp467
+g200
+S'List some of the stars in the 2004 World Series.'
+p468
+sg202
+S'other'
+p469
+sa(dp470
+g200
+S'What are the names of the Dixie Chicks?'
+p471
+sg202
+S'bandmembers'
+p472
+sa(dp473
+g200
+S'What countries were affected by this earthquake?'
+p474
+sg202
+S'other'
+p475
+sa(dp476
+g200
+S"What is Jon Bon Jovi's profession?"
+p477
+sg202
+S'other'
+p478
+sa(dp479
+g200
+S'How long did it take to build the temples?'
+p480
+sg202
+S'other'
+p481
+sa(dp482
+g200
+S'What other sport stars are represented by IMG?'
+p483
+sg202
+S'other'
+p484
+sa(dp485
+g200
+S'Who was the first doctor to successfully transplant a liver'
+p486
+sg202
+S'other'
+p487
+sa(dp488
+g200
+S'What is the diameter of a kumquat?'
+p489
+sg202
+S'other'
+p490
+sa(dp491
+g200
+S'Who won the Nobel Peace Prize in'
+p492
+sg202
+S'other'
+p493
+sa(dp494
+g200
+S'Name the first private citizen to fly in space'
+p495
+sg202
+S'other'
+p496
+sa(dp497
+g200
+S"Who was Kurt Weill's wife?"
+p498
+sg202
+S'other'
+p499
+sa.

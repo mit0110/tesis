@@ -13,12 +13,12 @@ for line in lines:
 		question = {
 			'question' : line[0],
 			'target' : line[1],
-			'recognized' : line[2]
+			'recognized' : line[2] == 's'
 		}
 	except IndexError:
-		import ipdb; ipdb.set_trace()
+		continue
 	result.append(question)
 
-f = open("annotated_corpus.pickle", 'w')
+f = open("original_quepy_corpus.pickle", 'w')
 pickle.dump(result, f)
 f.close()

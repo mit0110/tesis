@@ -2,113 +2,1856 @@
 (dp1
 S'question'
 p2
-S'list of actors of the show The Addams Family'
+S'On what TV show does Hammond regularly appear?'
 p3
 sS'target'
 p4
-S'castof'
+S'showswith'
 p5
 sS'recognized'
 p6
-S'n'
-p7
-sa(dp8
+I00
+sa(dp7
 g2
-S'in what year did the Sex Pistils start to make recitals?'
+S'definition of computer'
+p8
+sg4
+S'whatis'
 p9
-sg4
-S'bandfoundation'
-p10
 sg6
-g7
-sa(dp11
+I00
+sa(dp10
 g2
-S'what is the capital of the country Germany?'
+S'where is the Statue of Liberty'
+p11
+sg4
+S'whereis'
 p12
-sg4
-S'capitalcityof'
-p13
 sg6
-g7
-sa(dp14
+I00
+sa(dp13
 g2
-S'in what year was Madonna born?'
-p15
-sg4
-S'howoldis'
-p16
-sg6
-g7
-sa(dp17
-g2
-S'Where did he grow up?'
-p18
-sg4
-S'whereisfrom'
-p19
-sg6
-g7
-sa(dp20
-g2
-S'who have been presidents of the Republic of Egypt?'
-p21
+S'who are the presidents of Bolivia?'
+p14
 sg4
 S'presidentsof'
-p22
+p15
 sg6
-g7
-sa(dp23
+I00
+sa(dp16
 g2
-S'who create The Neverending Story?'
-p24
+S'who have been presidents of the Republic of Egypt?'
+p17
 sg4
-S'creatorof'
-p25
+S'presidentsof'
+p18
 sg6
-g7
-sa(dp26
+I00
+sa(dp19
+g2
+S'who have been presidents of the Arab Republic of Egypt?'
+p20
+sg4
+S'presidentsof'
+p21
+sg6
+I00
+sa(dp22
+g2
+S'who are the past liders of Brazil?'
+p23
+sg4
+S'presidentsof'
+p24
+sg6
+I00
+sa(dp25
+g2
+S'what is the capital city of the United Kingdom?'
+p26
+sg4
+S'capitalcityof'
+p27
+sg6
+I00
+sa(dp28
+g2
+S'what is the capital of the country Germany?'
+p29
+sg4
+S'capitalcityof'
+p30
+sg6
+I00
+sa(dp31
+g2
+S'What is the main spoken language in Poland?'
+p32
+sg4
+S'spokenlanguageof'
+p33
+sg6
+I00
+sa(dp34
+g2
+S'what is the main language in th republic of Argentina?'
+p35
+sg4
+S'spokenlanguageof'
+p36
+sg6
+I00
+sa(dp37
+g2
+S'how many people is in Paraguay?'
+p38
+sg4
+S'populationof'
+p39
+sg6
+I00
+sa(dp40
+g2
+S"how many people there is in the People's Republic of China?"
+p41
+sg4
+S'populationof'
+p42
+sg6
+I00
+sa(dp43
+g2
+S'what movies there are?'
+p44
+sg4
+S'listmovies'
+p45
+sg6
+I00
+sa(dp46
+g2
+S'steven spielberg was the director of what movies?'
+p47
+sg4
+S'moviesbydirector'
+p48
+sg6
+I00
+sa(dp49
+g2
+S'how many minutes long is the lord of the rings?'
+p50
+sg4
+S'movieduration'
+p51
+sg6
+I00
+sa(dp52
 g2
 S'when was Harry Potter the movie released?'
-p27
+p53
 sg4
 S'moviereleasedate'
-p28
+p54
 sg6
-g7
-sa(dp29
+I00
+sa(dp55
 g2
-S'actors of Memoirs of a Geisha'
-p30
+S'what actors worked on the matrix?'
+p56
 sg4
 S'actedon'
-p31
+p57
 sg6
-g7
-sa(dp32
+I00
+sa(dp58
+g2
+S'actors of Memoirs of a Geisha'
+p59
+sg4
+S'actedon'
+p60
+sg6
+I00
+sa(dp61
+g2
+S'actors that worked in the movie Matrix?'
+p62
+sg4
+S'actedon'
+p63
+sg6
+I00
+sa(dp64
+g2
+S'list the actors that worked in Alice in Wonderland'
+p65
+sg4
+S'actedon'
+p66
+sg6
+I00
+sa(dp67
+g2
+S'list actors starring in the movie The Nightmare Before Christmas'
+p68
+sg4
+S'actedon'
+p69
+sg6
+I00
+sa(dp70
+g2
+S'plot of Frozen?'
+p71
+sg4
+S'plotof'
+p72
+sg6
+I00
+sa(dp73
+g2
+S"what is the hitchhiker's guide to the galaxy about?"
+p74
+sg4
+S'plotof'
+p75
+sg6
+I00
+sa(dp76
+g2
+S'When was the Red Hot Chili Peppers founded?'
+p77
+sg4
+S'bandfoundation'
+p78
+sg6
+I00
+sa(dp79
+g2
+S'when was the Rolling Stones born?'
+p80
+sg4
+S'bandfoundation'
+p81
+sg6
+I00
+sa(dp82
+g2
+S'when did My Chemical Romance start to perform?'
+p83
+sg4
+S'bandfoundation'
+p84
+sg6
+I00
+sa(dp85
+g2
+S'in what year did the Sex Pistols start to make recitals?'
+p86
+sg4
+S'bandfoundation'
+p87
+sg6
+I00
+sa(dp88
+g2
+S'what type of music does AC DC?'
+p89
+sg4
+S'musicgenre'
+p90
+sg6
+I00
+sa(dp91
+g2
+S'what type of songs does the Rolling Stones?'
+p92
+sg4
+S'musicgenre'
+p93
+sg6
+I00
+sa(dp94
+g2
+S'what works did the Beatles do?'
+p95
+sg4
+S'albumsofband'
+p96
+sg6
+I00
+sa(dp97
+g2
+S'which works did Linkin Park make?'
+p98
+sg4
+S'albumsofband'
+p99
+sg6
+I00
+sa(dp100
+g2
+S"albums recorded by the Guns n' Roses"
+p101
+sg4
+S'albumsofband'
+p102
+sg6
+I00
+sa(dp103
+g2
+S'What are titles of albums featuring The Black Eyed Peas?'
+p104
+sg4
+S'albumsofband'
+p105
+sg6
+I00
+sa(dp106
 g2
 S'biography of Charles Dickens'
-p33
+p107
 sg4
 S'whois'
-p34
+p108
 sg6
-g7
-sa(dp35
+I00
+sa(dp109
 g2
-S'shows where Matthew Perry worked in?'
-p36
+S"when is Angelina Jolie's birthday?"
+p110
 sg4
-S'showswith'
-p37
+S'howoldis'
+p111
 sg6
-g7
-sa(dp38
+I00
+sa(dp112
 g2
-S'what TV shows have been made?'
-p39
+S'what is the age of Katy Perry?'
+p113
+sg4
+S'howoldis'
+p114
+sg6
+I00
+sa(dp115
+g2
+S'in what year was Madonna born?'
+p116
+sg4
+S'howoldis'
+p117
+sg6
+I00
+sa(dp118
+g2
+S'in what date did Bryan Cranston born?'
+p119
+sg4
+S'howoldis'
+p120
+sg6
+I00
+sa(dp121
+g2
+S'when was George Clooney born?'
+p122
+sg4
+S'howoldis'
+p123
+sg6
+I00
+sa(dp124
+g2
+S'where was Matt Damon born?'
+p125
+sg4
+S'whereisfrom'
+p126
+sg6
+I00
+sa(dp127
+g2
+S'Where did he grow up?'
+p128
+sg4
+S'whereisfrom'
+p129
+sg6
+I00
+sa(dp130
+g2
+S'where did J. R. R. Tolkien born?'
+p131
+sg4
+S'whereisfrom'
+p132
+sg6
+I00
+sa(dp133
+g2
+S"which are the actors of Grey's Anatomy"
+p134
+sg4
+S'castof'
+p135
+sg6
+I00
+sa(dp136
+g2
+S'list of actors of the show The Addams Family'
+p137
+sg4
+S'castof'
+p138
+sg6
+I00
+sa(dp139
+g2
+S'which were the actors of the TV show Uggly Betty'
+p140
+sg4
+S'castof'
+p141
+sg6
+I00
+sa(dp142
+g2
+S'what TV shows are?'
+p143
 sg4
 S'listtvshows'
-p40
+p144
 sg6
-g7
+I00
+sa(dp145
+g2
+S'what TV shows have been made?'
+p146
+sg4
+S'listtvshows'
+p147
+sg6
+I00
+sa(dp148
+g2
+S'shows where Matthew Perry worked in?'
+p149
+sg4
+S'showswith'
+p150
+sg6
+I00
+sa(dp151
+g2
+S'who create Stargate Atlantis?'
+p152
+sg4
+S'creatorof'
+p153
+sg6
+I00
+sa(dp154
+S'question'
+p155
+S'What federal organization was Mr. Greenspan chairman of?'
+p156
+sS'target'
+p157
+S'other'
+p158
+sa(dp159
+g155
+S'How many bombers were killed in the London terror bombing attacks?'
+p160
+sg157
+S'other'
+p161
+sa(dp162
+g155
+S'What women have worn Chanel clothing to award ceremonies?'
+p163
+sg157
+S'other'
+p164
+sa(dp165
+g155
+S'What was the name of the helicopter pilot shot down over North Korea'
+p166
+sg157
+S'other'
+p167
+sa(dp168
+g155
+S'When did Nixon visit China'
+p169
+sg157
+S'other'
+p170
+sa(dp171
+g155
+S'What is the percent of alcohol by volume in Guinness Stout?'
+p172
+sg157
+S'other'
+p173
+sa(dp174
+g155
+S'Who won the 2005 Snooker World Championship?'
+p175
+sg157
+S'other'
+p176
+sa(dp177
+g155
+S'By what other name is the company known?'
+p178
+sg157
+S'other'
+p179
+sa(dp180
+g155
+S'In what countries were protests staged?'
+p181
+sg157
+S'other'
+p182
+sa(dp183
+g155
+S'Who fired Maria Ybarra from her position in San Diego council'
+p184
+sg157
+S'other'
+p185
+sa(dp186
+g155
+S'On what date was she nominated for the post?'
+p187
+sg157
+S'other'
+p188
+sa(dp189
+g155
+S'Which automaker was the first to introduce a hybrid car?'
+p190
+sg157
+S'other'
+p191
+sa(dp192
+g155
+S'On what date did this earthquake strike?'
+p193
+sg157
+S'other'
+p194
+sa(dp195
+g155
+S"What is Pamuk's year of birth?"
+p196
+sg157
+S'howoldis'
+p197
+sa(dp198
+g155
+S'How many people does BAT employ?'
+p199
+sg157
+S'other'
+p200
+sa(dp201
+g155
+S'In what year was the AMT added to the Tax Code?'
+p202
+sg157
+S'other'
+p203
+sa(dp204
+g155
+S'What is the approved designation for Dulles?'
+p205
+sg157
+S'other'
+p206
+sa(dp207
+g155
+S'How many versions of the Boeing 777 are there?'
+p208
+sg157
+S'other'
+p209
+sa(dp210
+g155
+S'List the ships in Cunard Cruise Lines.'
+p211
+sg157
+S'other'
+p212
+sa(dp213
+g155
+S'Who is the president of the House of Chanel?'
+p214
+sg157
+S'other'
+p215
+sa(dp216
+g155
+S"What architects were involved in building St. Peter's?"
+p217
+sg157
+S'other'
+p218
+sa(dp219
+g155
+S'What debts did Qintex group leave'
+p220
+sg157
+S'other'
+p221
+sa(dp222
+g155
+S'In what year did Sir Edmund Hillary search for Yeti?'
+p223
+sg157
+S'other'
+p224
+sa(dp225
+g155
+S'How many times can a person get a Fulbright award?'
+p226
+sg157
+S'other'
+p227
+sa(dp228
+g155
+S"What was Ella Fitzgerald's first hit record?"
+p229
+sg157
+S'other'
+p230
+sa(dp231
+g155
+S'Who is the reigning superstar of snooker?'
+p232
+sg157
+S'other'
+p233
+sa(dp234
+g155
+S'What were the settlements that were evacuated?'
+p235
+sg157
+S'other'
+p236
+sa(dp237
+g155
+S'What companies has BAT owned?'
+p238
+sg157
+S'other'
+p239
+sa(dp240
+g155
+S'Who was the judge in the trial?'
+p241
+sg157
+S'other'
+p242
+sa(dp243
+g155
+S"Name some of Australia's female winemakers."
+p244
+sg157
+S'other'
+p245
+sa(dp246
+g155
+S'Name a country that is developing a magnetic levitation railway system'
+p247
+sg157
+S'other'
+p248
+sa(dp249
+g155
+S"What is Curveball's real name?"
+p250
+sg157
+S'other'
+p251
+sa(dp252
+g155
+S'What diseases are prions associated with?'
+p253
+sg157
+S'other'
+p254
+sa(dp255
+g155
+S'What percentage of the votes did the winner receive?'
+p256
+sg157
+S'other'
+p257
+sa(dp258
+g155
+S'Where was the epicenter (latitude and longitude)?'
+p259
+sg157
+S'other'
+p260
+sa(dp261
+g155
+S'What year did she come to the United States?'
+p262
+sg157
+S'other'
+p263
+sa(dp264
+g155
+S'What is the largest meat-eating marsupial?'
+p265
+sg157
+S'other'
+p266
+sa(dp267
+g155
+S'Who is the founder of Scientology'
+p268
+sg157
+S'other'
+p269
+sa(dp270
+g155
+S'What cancer is commonly associated with'
+p271
+sg157
+S'other'
+p272
+sa(dp273
+g155
+S'Categories of Nobel Prizes.'
+p274
+sg157
+S'other'
+p275
+sa(dp276
+g155
+S'When did Nixon die'
+p277
+sg157
+S'other'
+p278
+sa(dp279
+g155
+S"What is 3M's web address?"
+p280
+sg157
+S'other'
+p281
+sa(dp282
+g155
+S'How many passengers will the Boeing 777 carry?'
+p283
+sg157
+S'other'
+p284
+sa(dp285
+g155
+S'Name the participants in the 2005 World Snooker Championships.'
+p286
+sg157
+S'other'
+p287
+sa(dp288
+g155
+S'Who were witnesses during the trial?'
+p289
+sg157
+S'other'
+p290
+sa(dp291
+g155
+S"What expression describes the Madness' semifinals?"
+p292
+sg157
+S'other'
+p293
+sa(dp294
+g155
+S'What companies has AARP endorsed?'
+p295
+sg157
+S'other'
+p296
+sa(dp297
+g155
+S'Where does she live?'
+p298
+sg157
+S'other'
+p299
+sa(dp300
+g155
+S'In what year did Kurt Weill die?'
+p301
+sg157
+S'other'
+p302
+sa(dp303
+g155
+S'What is the CSPI web site?'
+p304
+sg157
+S'other'
+p305
+sa(dp306
+g155
+S'In what city were the 2005 World Snooker Championships held?'
+p307
+sg157
+S'other'
+p308
+sa(dp309
+g155
+S'What countries offered condolences at his death?'
+p310
+sg157
+S'other'
+p311
+sa(dp312
+g155
+S'From what university did he get a degree?'
+p313
+sg157
+S'other'
+p314
+sa(dp315
+g155
+S'In 2005 Ella Fitzgerald was inducted into what hall of fame?'
+p316
+sg157
+S'other'
+p317
+sa(dp318
+g155
+S'In what state was the Sago mine?'
+p319
+sg157
+S'other'
+p320
+sa(dp321
+g155
+S'Who many people were killed in total in the attacks?'
+p322
+sg157
+S'other'
+p323
+sa(dp324
+g155
+S'How many lives were lost in the China Airlines crash in Nagoya Japan'
+p325
+sg157
+S'other'
+p326
+sa(dp327
+g155
+S'How many American Girl dolls have been sold?'
+p328
+sg157
+S'other'
+p329
+sa(dp330
+g155
+S'Who are the members of Insane Clown Poose?'
+p331
+sg157
+S'bandmembers'
+p332
+sa(dp333
+g155
+S'Who is the author of the book The Iron Lady Biography of Margaret Thatcher'
+p334
+sg157
+S'creatorof'
+p335
+sa(dp336
+g155
+S'What earlier publication about Mohammed created protests and death threats?'
+p337
+sg157
+S'other'
+p338
+sa(dp339
+g155
+S'In what town was he born?'
+p340
+sg157
+S'whereisfrom'
+p341
+sa(dp342
+g155
+S"Who was Ella Fitzgerald's husband?"
+p343
+sg157
+S'other'
+p344
+sa(dp345
+g155
+S'How many missions did the Memphis Belle fly?'
+p346
+sg157
+S'other'
+p347
+sa(dp348
+g155
+S'The Mint is part of which cabinet department?'
+p349
+sg157
+S'other'
+p350
+sa(dp351
+g155
+S'What company published his first book?'
+p352
+sg157
+S'other'
+p353
+sa(dp354
+g155
+S'Where is the Boeing 777 built?'
+p355
+sg157
+S'other'
+p356
+sa(dp357
+g155
+S'Who followed Willy Brandt as chancellor of the Federal Republic of Germany'
+p358
+sg157
+S'other'
+p359
+sa(dp360
+g155
+S'Why did David Koresh ask the for a word processor'
+p361
+sg157
+S'other'
+p362
+sa(dp363
+g155
+S'How old is Joseph Steffen?'
+p364
+sg157
+S'howoldis'
+p365
+sa(dp366
+g155
+S'Who was the sole survivor?'
+p367
+sg157
+S'other'
+p368
+sa(dp369
+g155
+S"What was author Jasper Fforde's first book?"
+p370
+sg157
+S'other'
+p371
+sa(dp372
+g155
+S'What is the fare cost for the round trip between New York and London on Concorde'
+p373
+sg157
+S'other'
+p374
+sa(dp375
+g155
+S'On what IRS tax form is the AMT calculation done?'
+p376
+sg157
+S'other'
+p377
+sa(dp378
+g155
+S'Name the historical dolls.'
+p379
+sg157
+S'other'
+p380
+sa(dp381
+g155
+S'What named landmarks were visited by one of these rovers?'
+p382
+sg157
+S'other'
+p383
+sa(dp384
+g155
+S'Who is considered to be the "fastest Rubik\'s Cube solver on the planet"?'
+p385
+sg157
+S'other'
+p386
+sa(dp387
+g155
+S'What is the tallest building in Japan'
+p388
+sg157
+S'other'
+p389
+sa(dp390
+g155
+S'How much does an American Girl doll cost?'
+p391
+sg157
+S'other'
+p392
+sa(dp393
+g155
+S'Which government department was FEMA under at the time of Hurricane Katrina?'
+p394
+sg157
+S'other'
+p395
+sa(dp396
+g155
+S"What are titles of Pamuk's works?"
+p397
+sg157
+S'booksbyauthor'
+p398
+sa(dp399
+g155
+S'What persons has Krugman criticized in his op-ed columns?'
+p400
+sg157
+S'other'
+p401
+sa(dp402
+g155
+S'In what countries can Fulbright scholars be found?'
+p403
+sg157
+S'other'
+p404
+sa(dp405
+g155
+S'For which Kurt Weill song did Bobby Darin receive a Grammy award?'
+p406
+sg157
+S'other'
+p407
+sa(dp408
+g155
+S'What is Grenada main commodity export'
+p409
+sg157
+S'other'
+p410
+sa(dp411
+g155
+S'Name characters in the strip besides Blondie.'
+p412
+sg157
+S'other'
+p413
+sa(dp414
+g155
+S'What schools did Eileen Marie Collins attend?'
+p415
+sg157
+S'other'
+p416
+sa(dp417
+g155
+S'How long did he serve in this position?'
+p418
+sg157
+S'other'
+p419
+sa(dp420
+g155
+S'On what date did the oil spill occur?'
+p421
+sg157
+S'other'
+p422
+sa(dp423
+g155
+S"Who founded the International Rubik's Cube Competition in the United States?"
+p424
+sg157
+S'other'
+p425
+sa(dp426
+g155
+S'What are titles of books written by Krugman?'
+p427
+sg157
+S'booksbyauthor'
+p428
+sa(dp429
+g155
+S'Which intelligence service employed Curveball?'
+p430
+sg157
+S'other'
+p431
+sa(dp432
+g155
+S'On what date was the second London terror bombing attack?'
+p433
+sg157
+S'other'
+p434
+sa(dp435
+g155
+S'List previous conductors of the Boston Pops.'
+p436
+sg157
+S'other'
+p437
+sa(dp438
+g155
+S'What drugs did Limbaugh take for back pain?'
+p439
+sg157
+S'other'
+p440
+sa(dp441
+g155
+S'What team was defeated in the 2004 World Series?'
+p442
+sg157
+S'other'
+p443
+sa(dp444
+g155
+S'On what date did the disaster occur?'
+p445
+sg157
+S'other'
+p446
+sa(dp447
+g155
+S'How much did Manchester United spend on players in'
+p448
+sg157
+S'other'
+p449
+sa(dp450
+g155
+S'What country other than Lebanon did he hold citizenship?'
+p451
+sg157
+S'other'
+p452
+sa(dp453
+g155
+S'In what year were the Buffalo Soldier regiments disbanded?'
+p454
+sg157
+S'other'
+p455
+sa(dp456
+g155
+S'What were her fictional publications (including novels, novelettes, and plays)?'
+p457
+sg157
+S'other'
+p458
+sa(dp459
+g155
+S"What school did he get his bachelor's degree from?"
+p460
+sg157
+S'other'
+p461
+sa(dp462
+g155
+S'Outside the US, in what countries can kumquat trees be found?'
+p463
+sg157
+S'other'
+p464
+sa(dp465
+g155
+S'Who is the head of the IMG golf division in North America?'
+p466
+sg157
+S'other'
+p467
+sa(dp468
+g155
+S'What is the number for "Harry Potter and the Goblet of Fire" in the series of '
+p469
+sg157
+S'other'
+p470
+sa(dp471
+g155
+S'How many years transpired between world championships for the winning team?'
+p472
+sg157
+S'other'
+p473
+sa(dp474
+g155
+S'What country did the UN investigator, Detlev Mehlis, accuse of responsibility for '
+p475
+sg157
+S'other'
+p476
+sa(dp477
+g155
+S'How long does it take to travel from Tokyo to Niigata'
+p478
+sg157
+S'other'
+p479
+sa(dp480
+g155
+S'What newspaper first published the cartoons?'
+p481
+sg157
+S'other'
+p482
+sa(dp483
+g155
+S"List some of Berlin's compositions."
+p484
+sg157
+S'albumsofband'
+p485
+sa(dp486
+g155
+S'What is the abbreviated ship designation for the USS Abraham Lincoln?'
+p487
+sg157
+S'other'
+p488
+sa(dp489
+g155
+S'What was the percentage of turnout for the election?'
+p490
+sg157
+S'other'
+p491
+sa(dp492
+g155
+S'What countries has IFC financed projects in?'
+p493
+sg157
+S'other'
+p494
+sa(dp495
+g155
+S'Which of the candidates was arrested for forgery?'
+p496
+sg157
+S'other'
+p497
+sa(dp498
+g155
+S"What is Pamuk's city of birth?"
+p499
+sg157
+S'whereisfrom'
+p500
+sa(dp501
+g155
+S"Who has been selected to be Mr. Greenspan's successor as chairman?"
+p502
+sg157
+S'other'
+p503
+sa(dp504
+g155
+S'Which US government officials accepted his claims regarding Iraqi weapons labs?'
+p505
+sg157
+S'other'
+p506
+sa(dp507
+g155
+S'What IMG agent represents Vijay Singh?'
+p508
+sg157
+S'other'
+p509
+sa(dp510
+g155
+S'What is the name of the promising anticancer compound derived from the pacific yew tree'
+p511
+sg157
+S'other'
+p512
+sa(dp513
+g155
+S'What color is a kumquat?'
+p514
+sg157
+S'other'
+p515
+sa(dp516
+g155
+S'How many books did he write in the Thursday Next series?'
+p517
+sg157
+S'other'
+p518
+sa(dp519
+g155
+S'When was Lyme disease named?'
+p520
+sg157
+S'other'
+p521
+sa(dp522
+g155
+S'Who was the first Taiwanese President'
+p523
+sg157
+S'other'
+p524
+sa(dp525
+g155
+S'What is the second highest mountain peak in the world'
+p526
+sg157
+S'other'
+p527
+sa(dp528
+g155
+S'What food did they eat?'
+p529
+sg157
+S'other'
+p530
+sa(dp531
+g155
+S'When was Limbaugh born?'
+p532
+sg157
+S'howoldis'
+p533
+sa(dp534
+g155
+S'What airlines have Concordes in their fleets?'
+p535
+sg157
+S'other'
+p536
+sa(dp537
+g155
+S'Where is the highest point in Japan'
+p538
+sg157
+S'other'
+p539
+sa(dp540
+g155
+S'Where is Merrill Lynch headquartered?'
+p541
+sg157
+S'whereis'
+p542
+sa(dp543
+g155
+S'How many pints of stout a day does Guinness sell in Ireland?'
+p544
+sg157
+S'other'
+p545
+sa(dp546
+g155
+S'Who are members of the board of the IMG?'
+p547
+sg157
+S'other'
+p548
+sa(dp549
+g155
+S'Who manages this mission?'
+p550
+sg157
+S'other'
+p551
+sa(dp552
+g155
+S'Who drove in the deciding runs in the first game of the 2004 World Series?'
+p553
+sg157
+S'other'
+p554
+sa(dp555
+g155
+S"List the Wiggles' Songs."
+p556
+sg157
+S'albumsofband'
+p557
+sa(dp558
+g155
+S'What company owned the Sago Mine?'
+p559
+sg157
+S'other'
+p560
+sa(dp561
+g155
+S'What company manufactured the B-17 bomber?'
+p562
+sg157
+S'other'
+p563
+sa(dp564
+g155
+S"What are titles of the group's releases?"
+p565
+sg157
+S'other'
+p566
+sa(dp567
+g155
+S'Which country is Australia largest export market'
+p568
+sg157
+S'other'
+p569
+sa(dp570
+g155
+S"What is Merrill Lynch's prime business?"
+p571
+sg157
+S'other'
+p572
+sa(dp573
+g155
+S"What part of the Soldiers' anatomy reminded the Indians of the buffalo?"
+p574
+sg157
+S'other'
+p575
+sa(dp576
+g155
+S'On what date did President Bush visit the USS Abraham Lincoln?'
+p577
+sg157
+S'other'
+p578
+sa(dp579
+g155
+S'How many teams compete in the Madness?'
+p580
+sg157
+S'other'
+p581
+sa(dp582
+g155
+S'Who leads the star ship Enterprise in Star Trek'
+p583
+sg157
+S'other'
+p584
+sa(dp585
+g155
+S'What composers wrote songs that Ella Fitzgerald recorded?'
+p586
+sg157
+S'other'
+p587
+sa(dp588
+g155
+S'In which US states has Barack Obama lived?'
+p589
+sg157
+S'other'
+p590
+sa(dp591
+g155
+S'Who played the part of the Godfather in the movie The Godfather'
+p592
+sg157
+S'other'
+p593
+sa(dp594
+g155
+S'In what province and country were Yeti vocalizations recorded?'
+p595
+sg157
+S'other'
+p596
+sa(dp597
+g155
+S'What is the name of the managing director of Apricot Computer'
+p598
+sg157
+S'other'
+p599
+sa(dp600
+g155
+S"What was the cause of the recipient's facial problem?"
+p601
+sg157
+S'other'
+p602
+sa(dp603
+g155
+S'What head coaches had teams in the Madness?'
+p604
+sg157
+S'other'
+p605
+sa(dp606
+g155
+S'In what year was the Prius concept car introduced?'
+p607
+sg157
+S'other'
+p608
+sa(dp609
+g155
+S'Under the original act, how many judges were to be on the court?'
+p610
+sg157
+S'other'
+p611
+sa(dp612
+g155
+S'In what countries as Abu Nidal operated from?'
+p613
+sg157
+S'other'
+p614
+sa(dp615
+g155
+S'According to CSPI, which artificial sweetener is the safest?'
+p616
+sg157
+S'other'
+p617
+sa(dp618
+g155
+S'Into how many languages has "Harry Potter and the Goblet of Fire" been translated?'
+p619
+sg157
+S'other'
+p620
+sa(dp621
+g155
+S'Where does Curveball now live?'
+p622
+sg157
+S'other'
+p623
+sa(dp624
+g155
+S'What was the make of the winning vehicle?'
+p625
+sg157
+S'other'
+p626
+sa(dp627
+g155
+S'What is the 3-character airport code for Dulles?'
+p628
+sg157
+S'other'
+p629
+sa(dp630
+g155
+S'What are the different types of quarks?'
+p631
+sg157
+S'other'
+p632
+sa(dp633
+g155
+S"Who is Cunard's president and managing director?"
+p634
+sg157
+S'other'
+p635
+sa(dp636
+g155
+S"What school did she get her bachelor's degree from?"
+p637
+sg157
+S'other'
+p638
+sa(dp639
+g155
+S'What public health group did BAT help fund?'
+p640
+sg157
+S'other'
+p641
+sa(dp642
+g155
+S'Name the judges serving on this court in November 2005.'
+p643
+sg157
+S'other'
+p644
+sa(dp645
+g155
+S'In what state was Steffen employed?'
+p646
+sg157
+S'other'
+p647
+sa(dp648
+g155
+S'What insect repellent works against the ticks that carry Lyme disease?'
+p649
+sg157
+S'other'
+p650
+sa(dp651
+g155
+S'What is the name of the American Girl store in New York?'
+p652
+sg157
+S'other'
+p653
+sa(dp654
+g155
+S'Who is he planning to marry?'
+p655
+sg157
+S'other'
+p656
+sa(dp657
+g155
+S'What was the cost of the oil clean-up?'
+p658
+sg157
+S'other'
+p659
+sa(dp660
+g155
+S'On what date was he born?'
+p661
+sg157
+S'howoldis'
+p662
+sa(dp663
+g155
+S'How many songs did Irving Berlin compose?'
+p664
+sg157
+S'other'
+p665
+sa(dp666
+g155
+S'Who was chosen to be the first black chairman of the military Joint Chiefs of Staff'
+p667
+sg157
+S'other'
+p668
+sa(dp669
+g155
+S'Famous people who have been Rhodes scholars.'
+p670
+sg157
+S'other'
+p671
+sa(dp672
+g155
+S'What winery produces Yellowtail?'
+p673
+sg157
+S'other'
+p674
+sa(dp675
+g155
+S'How many engines does the Boeing 777 have?'
+p676
+sg157
+S'other'
+p677
+sa(dp678
+g155
+S"Who invented the Rubik's Cube?"
+p679
+sg157
+S'other'
+p680
+sa(dp681
+g155
+S'Who is the President of Ghana'
+p682
+sg157
+S'presidentsof'
+p683
+sa(dp684
+g155
+S'Where is WWE headquartered?'
+p685
+sg157
+S'whereis'
+p686
+sa(dp687
+g155
+S'Who wrote the song Stardust'
+p688
+sg157
+S'other'
+p689
+sa(dp690
+g155
+S'What percentage of new car sales in the U.S. in 2004 was for hybrid cars?'
+p691
+sg157
+S'other'
+p692
+sa(dp693
+g155
+S"What Pope finished building St. Peter's?"
+p694
+sg157
+S'other'
+p695
+sa(dp696
+g155
+S'How old was Ella Fitzgerald when she made her first hit record?'
+p697
+sg157
+S'other'
+p698
+sa(dp699
+g155
+S'What members of the U.S. House of Representatives opposed CAFTA?'
+p700
+sg157
+S'other'
+p701
+sa(dp702
+g155
+S'In what building was the 2005 World Snooker Championships held?'
+p703
+sg157
+S'other'
+p704
+sa(dp705
+g155
+S'When is the concluding night of the Madness?'
+p706
+sg157
+S'other'
+p707
+sa(dp708
+g155
+S'Where does Australia rank in exports of wine?'
+p709
+sg157
+S'other'
+p710
+sa(dp711
+g155
+S'Where did the annual meeting of forest experts take place'
+p712
+sg157
+S'other'
+p713
+sa(dp714
+g155
+S'What books has Walter Mosley written?'
+p715
+sg157
+S'booksbyauthor'
+p716
+sa(dp717
+g155
+S'What can be made from marsupial manure?'
+p718
+sg157
+S'other'
+p719
+sa(dp720
+g155
+S'In what state is Dulles located?'
+p721
+sg157
+S'other'
+p722
+sa(dp723
+g155
+S'What was the name of the fuel the winner used?'
+p724
+sg157
+S'other'
+p725
+sa(dp726
+g155
+S'What temples are at Angkor Wat?'
+p727
+sg157
+S'other'
+p728
+sa(dp729
+g155
+S'What Russian submarine sank in the Norwegian Sea on April'
+p730
+sg157
+S'other'
+p731
+sa(dp732
+g155
+S'In which year was New Zealand excluded from the alliance'
+p733
+sg157
+S'other'
+p734
+sa(dp735
+g155
+S'How many people live in the Falklands'
+p736
+sg157
+S'populationof'
+p737
+sa(dp738
+g155
+S'What other countries do Kurds live in?'
+p739
+sg157
+S'other'
+p740
+sa(dp741
+g155
+S'In what year was the firm founded?'
+p742
+sg157
+S'other'
+p743
+sa(dp744
+g155
+S'List Club Med spots in the US'
+p745
+sg157
+S'other'
+p746
+sa(dp747
+g155
+S'Who was the first American in space'
+p748
+sg157
+S'other'
+p749
+sa(dp750
+g155
+S'Where is the Taj Mahal'
+p751
+sg157
+S'whereis'
+p752
+sa(dp753
+g155
+S'Where does Buzz Aldrin want to build a permanent manned space station'
+p754
+sg157
+S'other'
+p755
 sa.

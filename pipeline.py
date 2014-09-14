@@ -1,4 +1,5 @@
 import pickle
+import sys
 
 from feature_extraction import get_features
 from random import choice
@@ -12,7 +13,7 @@ NUMBER_OF_OPTIONS = 30
 
 class ClassifierPipeline(object):
     """Pipeline for a classifier with the following steps:
-        1 - Training the classifier from an annotated corpus
+        1 - Training the classifier from an training corpus
         2 - Getting new evidence from the oracle:
             2.1 - Selecting a question from the unlabeled corpus to pass to
             the oracle.
@@ -20,6 +21,11 @@ class ClassifierPipeline(object):
     """
 
     def __init__(self):
+        if len(sys.argv) >= 2:
+            self.filename = sys.argv[1]
+        else:
+            self.filename = None
+        self.emulate = (len(sys.argv) == 3 and sys.argv[2] == 'emulate')
         mnb = MultinomialNB()
         self.steps = [
             ('vectorizer', get_features()),
@@ -32,20 +38,20 @@ class ClassifierPipeline(object):
         self.user_answers = []
         self.load_session()
         self._train()
-        self.classes = mnb.classes_.tolist() + ['None of the previuous']
+        self.classes = mnb.classes_.tolist()
         
     def _train(self):
         self.pipeline.fit(
-            self.annotated_question + self.user_questions,
-            self.annotated_target + self.user_answers
+            self.training_question + self.user_questions,
+            self.training_target + self.user_answers
         )
 
     def _get_corpus(self):
-        annotated_corpus_f = open('corpus/annotated_corpus.pickle', 'r')
-        self.annotated_corpus = pickle.load(annotated_corpus_f)
-        annotated_corpus_f.close()
-        self.annotated_question = [e['question'] for e in self.annotated_corpus]
-        self.annotated_target = [e['target'] for e in self.annotated_corpus]
+        training_corpus_f = open('corpus/training_corpus.pickle', 'r')
+        self.training_corpus = pickle.load(training_corpus_f)
+        training_corpus_f.close()
+        self.training_question = [e['question'] for e in self.training_corpus]
+        self.training_target = [e['target'] for e in self.training_corpus]
 
         unlabeled_corpus_f = open('corpus/unlabeled_corpus.pickle', 'r')
         self.unlabeled_corpus = pickle.load(unlabeled_corpus_f)
@@ -78,14 +84,13 @@ class ClassifierPipeline(object):
             print colored("Please insert one of the listed numbers", "red")
             return False
 
-        if answer != len(predicted_classes) - 1: # Class other not selected
-            print colored("Adding result", "green")
-            self.user_questions.append(question)
-            self.user_answers.append(prediction)
-            self._train()
-            print "New accuracy: TRAINING {}% - TEST {}%\n".format(
-                self.evaluate_training(), self.evaluate_test()
-            )
+        print colored("Adding result", "green")
+        self.user_questions.append(question)
+        self.user_answers.append(prediction)
+        self._train()
+        print "New accuracy: TRAINING {}% - TEST {}%\n".format(
+            self.evaluate_training(), self.evaluate_test()
+        )
         return False
 
     def _print_classes(self, predicted_classes):
@@ -96,7 +101,9 @@ class ClassifierPipeline(object):
     def _most_probable_classes(self, predicted_classes):
         indexes = predicted_classes.argsort()
         result = []
-        for index in indexes[0][:NUMBER_OF_OPTIONS]:
+        indexes = indexes[0].tolist()
+        indexes.reverse()
+        for index in indexes[:NUMBER_OF_OPTIONS]:
             result.append(self.classes[index])  # Class name
         result.append(self.classes[-1])
         return result
@@ -107,14 +114,20 @@ class ClassifierPipeline(object):
         stop = False
         while not stop:
             new_question = self.get_next_question()
-            print "**********************************************************"
-            print colored(new_question, "red", "on_white", attrs=["bold"])
-            predicted_classes = self.pipeline.predict_log_proba([new_question])
-            predicted_classes = self._most_probable_classes(predicted_classes)
-            print "\nWhat is the correct template? Write the number or STOP\n"
-            self._print_classes(predicted_classes)
-            line = raw_input(">>> ")
-            stop = self._process_answer(line, new_question, predicted_classes)
+            if self.emulate and 'target' in new_question:
+                self.user_questions.append(new_question['question'])
+                self.user_answers.append(new_question['target'])
+                self._train()
+            else:
+                new_question = new_question['question']
+                print "*******************************************************"
+                print colored(new_question, "red", "on_white", attrs=["bold"])
+                pred_classes = self.pipeline.predict_log_proba([new_question])
+                pred_classes = self._most_probable_classes(pred_classes)
+                print "\nWhat is the correct template? Write the number or STOP\n"
+                self._print_classes(pred_classes)
+                line = raw_input(">>> ")
+                stop = self._process_answer(line, new_question, pred_classes)
 
     def get_next_question(self):
         try:
@@ -143,25 +156,25 @@ class ClassifierPipeline(object):
         """Evaluate the accuracy of the classifier with the labeled data.
         """
         # Agregamos la evidencia del usuario para evaluacion?
-        predicted_targets = self.predict(self.annotated_question)
-        return self._get_accuracy(predicted_targets, self.annotated_target)
+        predicted_targets = self.predict(self.training_question)
+        return self._get_accuracy(predicted_targets, self.training_target)
 
     def save_session(self):
         if self.user_questions:
-            import time
-            f = open("sessions/saved_session{}".format(int(time.time())), 'w')
+            filename = raw_input("Insert the filename to save or press enter\n")
+            if not filename:
+                return
+            f = open("sessions/{}".format(filename), 'w')
             to_save = (self.user_questions, self.user_answers)
             pickle.dump(to_save, f)
             f.close()
 
     def load_session(self):
-        import sys
-        if len(sys.argv) > 1:
-            filename = sys.argv[1]
-            f = open(filename, 'r')
+        if self.filename:
+            f = open(self.filename, 'r')
             self.user_questions, self.user_answers = pickle.load(f)
             f.close()
-            print "Session {} loaded\n".format(filename)
+            print "Session {} loaded\n".format(self.filename)
 
 
 def main():
