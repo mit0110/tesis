@@ -1,15 +1,17 @@
+import argparse
 import pickle
 import sys
 
 from feature_extraction import get_features
 from random import choice
+from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
-from sklearn.pipeline import Pipeline
+from sklearn.pipeline import Pipeline, FeatureUnion
 from termcolor import colored
 
 
 NUMBER_OF_OPTIONS = 30
-
+U_CORPUS_F = 'corpus/unlabeled_corpus.pickle'
 
 class ClassifierPipeline(object):
     """Pipeline for a classifier with the following steps:
@@ -20,15 +22,14 @@ class ClassifierPipeline(object):
             2.2 - Re-training with the new information.
     """
 
-    def __init__(self):
-        if len(sys.argv) >= 2:
-            self.filename = sys.argv[1]
-        else:
-            self.filename = None
-        self.emulate = (len(sys.argv) == 3 and sys.argv[2] == 'emulate')
+    def __init__(self, session_filename='', emulate=False, label_corpus=False):
+        self.filename = session_filename
+        self.emulate = emulate
+        self.label_corpus = label_corpus
         mnb = MultinomialNB()
         self.steps = [
-            ('vectorizer', get_features()),
+            ('vect', FeatureUnion([('custom', get_features()),
+                                   ('n_grams', CountVectorizer())])),
             ('classifier', mnb),
         ]
         self._get_corpus()
@@ -53,7 +54,8 @@ class ClassifierPipeline(object):
         self.training_question = [e['question'] for e in self.training_corpus]
         self.training_target = [e['target'] for e in self.training_corpus]
 
-        unlabeled_corpus_f = open('corpus/unlabeled_corpus.pickle', 'r')
+        unlabeled_corpus_f = open(U_CORPUS_F, 'r')
+        # A list of dictionaries
         self.unlabeled_corpus = pickle.load(unlabeled_corpus_f)
         unlabeled_corpus_f.close()
 
@@ -74,7 +76,7 @@ class ClassifierPipeline(object):
         """
         if answer.lower() == 'stop':
             print "Thank you for your time!"
-            self.save_session()
+            self.exit()
             return True
 
         try:
@@ -115,16 +117,20 @@ class ClassifierPipeline(object):
         while not stop:
             new_question = self.get_next_question()
             if self.emulate and 'target' in new_question:
-                self.user_questions.append(new_question['question'])
-                self.user_answers.append(new_question['target'])
+                question = new_question['question']
+                target = new_question['target']
+                self.user_questions.append(question)
+                self.user_answers.append(target)
                 self._train()
-            else:
+                message = "Adding question {}, {}".format(question, target)
+                print colored(message, "red")
+            if not self.emulate or 'target' not in new_question:
                 new_question = new_question['question']
                 print "*******************************************************"
+                print "\nWhat is the correct template? Write the number or STOP\n"
                 print colored(new_question, "red", "on_white", attrs=["bold"])
                 pred_classes = self.pipeline.predict_log_proba([new_question])
                 pred_classes = self._most_probable_classes(pred_classes)
-                print "\nWhat is the correct template? Write the number or STOP\n"
                 self._print_classes(pred_classes)
                 line = raw_input(">>> ")
                 stop = self._process_answer(line, new_question, pred_classes)
@@ -159,15 +165,29 @@ class ClassifierPipeline(object):
         predicted_targets = self.predict(self.training_question)
         return self._get_accuracy(predicted_targets, self.training_target)
 
-    def save_session(self):
+    def exit(self):
         if self.user_questions:
-            filename = raw_input("Insert the filename to save or press enter\n")
-            if not filename:
-                return
-            f = open("sessions/{}".format(filename), 'w')
-            to_save = (self.user_questions, self.user_answers)
-            pickle.dump(to_save, f)
+            self.save_session()
+        if self.label_corpus:
+            for index, question in enumerate(self.user_questions):
+                u_question = next((q for q in self.unlabeled_corpus
+                                  if q['question'] == question), None)
+                if u_question and u_question['question'] == question:
+                    u_question['target'] = self.user_answers[index]
+            # Save file
+            print "Adding {} new questions".format(len(self.user_questions))
+            f = open(U_CORPUS_F, 'w')
+            pickle.dump(self.unlabeled_corpus, f)
             f.close()
+
+    def save_session(self):
+        filename = raw_input("Insert the filename to save or press enter\n")
+        if not filename:
+            return
+        f = open("sessions/{}".format(filename), 'w')
+        to_save = (self.user_questions, self.user_answers)
+        pickle.dump(to_save, f)
+        f.close()
 
     def load_session(self):
         if self.filename:
@@ -178,7 +198,15 @@ class ClassifierPipeline(object):
 
 
 def main():
-    pipe = ClassifierPipeline()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-f', '--output_file', required=False,
+                        type=str)
+    parser.add_argument('-e', '--emulate', action='store_true')
+    parser.add_argument('-l', '--label_corpus', action='store_true')
+    args = parser.parse_args()
+    pipe = ClassifierPipeline(session_filename=args.output_file,
+                              emulate=args.emulate,
+                              label_corpus=args.label_corpus)
     pipe.bootstrap()
 
 
