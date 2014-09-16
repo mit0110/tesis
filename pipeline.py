@@ -5,6 +5,7 @@ import sys
 from feature_extraction import get_features
 from random import choice
 from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics import precision_score, classification_report
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline, FeatureUnion
 from termcolor import colored
@@ -12,6 +13,10 @@ from termcolor import colored
 
 NUMBER_OF_OPTIONS = 30
 U_CORPUS_F = 'corpus/unlabeled_corpus.pickle'
+TEST_CORPUS_F = 'corpus/test_corpus.pickle'
+TRAINING_CORPUS_F = 'corpus/training_corpus.pickle'
+MAX_NGRAMS = 3
+
 
 class ClassifierPipeline(object):
     """Pipeline for a classifier with the following steps:
@@ -27,9 +32,10 @@ class ClassifierPipeline(object):
         self.emulate = emulate
         self.label_corpus = label_corpus
         mnb = MultinomialNB()
+        countv = CountVectorizer(ngram_range=(1, MAX_NGRAMS))
         self.steps = [
             ('vect', FeatureUnion([('custom', get_features()),
-                                   ('n_grams', CountVectorizer())])),
+                                   ('n_grams', countv)])),
             ('classifier', mnb),
         ]
         self._get_corpus()
@@ -48,7 +54,7 @@ class ClassifierPipeline(object):
         )
 
     def _get_corpus(self):
-        training_corpus_f = open('corpus/training_corpus.pickle', 'r')
+        training_corpus_f = open(TRAINING_CORPUS_F, 'r')
         self.training_corpus = pickle.load(training_corpus_f)
         training_corpus_f.close()
         self.training_question = [e['question'] for e in self.training_corpus]
@@ -62,7 +68,7 @@ class ClassifierPipeline(object):
     def _get_test_corpus(self):
         if self.test_corpus:
             return
-        test_corpus_f = open('corpus/test_corpus.pickle', 'r')
+        test_corpus_f = open(TEST_CORPUS_F, 'r')
         self.test_corpus = pickle.load(test_corpus_f)
         test_corpus_f.close()
         self.test_questions = [e['question'] for e in self.test_corpus]
@@ -142,30 +148,23 @@ class ClassifierPipeline(object):
         except IndexError:
             return None
 
-    def _get_accuracy(self, predicted_targets, real_targets):
-        ok = 0
-        index = 0
-        for predicted_target in predicted_targets:
-            if predicted_target == real_targets[index]:
-                ok += 1
-            index += 1
-        return ok*100/len(predicted_targets)
-
     def evaluate_test(self):
         """Evaluates the classifier with the testing set.
         """
         self._get_test_corpus()
-        predicted_targets = self.predict(self.test_questions)
-        return self._get_accuracy(predicted_targets, self.test_targets)
+        return self.pipeline.score(self.test_questions, self.test_targets)
 
     def evaluate_training(self):
         """Evaluate the accuracy of the classifier with the labeled data.
         """
         # Agregamos la evidencia del usuario para evaluacion?
-        predicted_targets = self.predict(self.training_question)
-        return self._get_accuracy(predicted_targets, self.training_target)
+        return self.pipeline.score(self.training_question, self.training_target)
 
     def exit(self):
+        self._get_test_corpus()
+        predicted_targets = self.predict(self.test_questions)
+        print "Final Estimation on test corpus"
+        print classification_report(self.test_targets, predicted_targets)
         if self.user_questions:
             self.save_session()
         if self.label_corpus:

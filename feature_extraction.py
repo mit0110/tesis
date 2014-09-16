@@ -3,6 +3,8 @@ from featureforge.vectorizer import Vectorizer
 from nltk import word_tokenize, pos_tag, wordnet
 from nltk.stem.wordnet import WordNetLemmatizer
 
+NER_F = "data/literal_ners.pickle"
+
 wnl = WordNetLemmatizer()
 
 def _wordnet_pos(treebank_tag):
