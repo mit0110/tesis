@@ -3,9 +3,10 @@ from featureforge.vectorizer import Vectorizer
 from nltk import word_tokenize, pos_tag, wordnet
 from nltk.stem.wordnet import WordNetLemmatizer
 
-NER_F = "data/literal_ners.pickle"
+from literal_ner import LiteralNER
 
 wnl = WordNetLemmatizer()
+lner = LiteralNER()
 
 def _wordnet_pos(treebank_tag):
     if treebank_tag.startswith('J'):
@@ -31,5 +32,13 @@ def lemmas(question):
             for w, p in pos_tag(words)]
 
 
+def literal_ner(question):
+    ner_tuple = lner.find_ne(question)
+    if ner_tuple:
+        return [ner_tuple[0]] + ner_tuple[1]
+    else:
+        return ['No_NER']
+
+
 def get_features():
-    return Vectorizer([postags, lemmas], sparse=True)
+    return Vectorizer([postags, lemmas, literal_ner], sparse=True)
