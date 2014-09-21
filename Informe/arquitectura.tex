@@ -1,6 +1,6 @@
 \section{Arquitectura del sistema}
 
-Si bien el objetivo principal de este trabajo es incrementar la cobertura de Quepy, deseamos también que el sistema esté compartimentado de tal forma que sus componentes puedan utilizarse individualmente para otras aplicaciones. 
+Si bien el objetivo principal de este trabajo es incrementar la cobertura de Quepy, deseamos también que el sistema esté compartimentado de tal forma que sus componentes puedan utilizarse individualmente para otras aplicaciones.
 
 Trabajamos sobre dos grandes áreas: un clasificador automático entrenado utlizando aprendizaje activo sobre instancias y características, y la representación de las preguntas para maximizar los resultados del clasificador. El clasificador puede ser visto como una tarea general, y por lo tanto lo desarrollamos como una librería portable cuyos parámetros pueden ser definidos por el usuario. Sin embargo, la representación de las preguntas elegidas es algo completamente ligado al sistema de preguntas y por ello lo diseñamos como una extensión opcional de Quepy que puede utilizar cualquier clasificador.
 

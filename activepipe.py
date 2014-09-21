@@ -1,15 +1,12 @@
 import argparse
 import pickle
 
-from feature_extraction import get_features
 from random import choice
-from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics import precision_score, classification_report
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.pipeline import Pipeline, FeatureUnion
+from sklearn.pipeline import Pipeline
 from termcolor import colored
 
-from settings import *
+from defaults import default_config
 
 
 class ActivePipeline(object):
@@ -21,41 +18,40 @@ class ActivePipeline(object):
             2.2 - Re-training with the new information.
     """
 
-    def __init__(self, session_filename='', emulate=False, label_corpus=False):
+    def __init__(self, session_filename='', emulate=False, **kwargs):
         self.filename = session_filename
         self.emulate = emulate
-        self.label_corpus = label_corpus
-        mnb = MultinomialNB()
-        countv = CountVectorizer(ngram_range=(1, MAX_NGRAMS))
+        default_config.update(kwargs)
+        self.config = default_config
+        classifier = self.config['classifier']()
         self.steps = [
-            ('vect', countv),
-            # ('vect', FeatureUnion([('custom', get_features()),
-            #                        ('n_grams', countv)])),
-            ('classifier', mnb),
+            ('features', self.config['features']),
+            ('classifier', classifier),
         ]
-        self._get_corpus()
         self.pipeline = Pipeline(self.steps)
+        self._get_corpus()
         self.test_corpus = None
-        self.user_questions = []
-        self.user_answers = []
+        self.user_vectors = []
+        self.user_targets = []
         self.load_session()
         self._train()
-        self.classes = mnb.classes_.tolist()
+        self.classes = classifier.classes_.tolist()  # No todos los clasificadores
+        # van a tener esto.
 
     def _train(self):
         self.pipeline.fit(
-            self.training_question + self.user_questions,
-            self.training_target + self.user_answers
+            self.training_vectors + self.user_vectors,
+            self.training_target + self.user_targets
         )
 
     def _get_corpus(self):
-        training_corpus_f = open(TRAINING_CORPUS_F, 'r')
+        training_corpus_f = open(self.config['training_corpus_f'], 'r')
         self.training_corpus = pickle.load(training_corpus_f)
         training_corpus_f.close()
-        self.training_question = [e['question'] for e in self.training_corpus]
+        self.training_vectors = [e['question'] for e in self.training_corpus]
         self.training_target = [e['target'] for e in self.training_corpus]
 
-        unlabeled_corpus_f = open(U_CORPUS_F, 'r')
+        unlabeled_corpus_f = open(self.config['u_corpus_f'], 'r')
         # A list of dictionaries
         self.unlabeled_corpus = pickle.load(unlabeled_corpus_f)
         unlabeled_corpus_f.close()
@@ -63,80 +59,58 @@ class ActivePipeline(object):
     def _get_test_corpus(self):
         if self.test_corpus:
             return
-        test_corpus_f = open(TEST_CORPUS_F, 'r')
+        test_corpus_f = open(self.config['test_corpus_f'], 'r')
         self.test_corpus = pickle.load(test_corpus_f)
         test_corpus_f.close()
-        self.test_questions = [e['question'] for e in self.test_corpus]
+        self.test_vectors = [e['question'] for e in self.test_corpus]
         self.test_targets = [e['target'] for e in self.test_corpus]
 
     def predict(self, question):
         return self.pipeline.predict(question)
 
-    def _process_answer(self, answer, question, predicted_classes):
-        """
-        """
-        if answer.lower() == 'stop':
-            print "Thank you for your time!"
-            self.exit()
-            return True
+    def _process_prediction(self, instance, prediction):
+        """Retrains the classfier with the new instance and prediction."""
 
-        try:
-            answer = int(answer)
-            prediction = predicted_classes[answer]
-        except (ValueError, IndexError):
-            print colored("Please insert one of the listed numbers", "red")
-            return False
-
-        print colored("Adding result", "green")
-        self.user_questions.append(question)
-        self.user_answers.append(prediction)
+        self.user_vectors.append(instance)
+        self.user_targets.append(prediction)
         self._train()
-        print "New accuracy: TRAINING {}% - TEST {}%\n".format(
-            self.evaluate_training(), self.evaluate_test()
-        )
-        return False
-
-    def _print_classes(self, predicted_classes):
-        message = "{} - {}"
-        for (counter, class_name) in enumerate(predicted_classes):
-            print message.format(counter, class_name)
+        return True
 
     def _most_probable_classes(self, predicted_classes):
         indexes = predicted_classes.argsort()
         result = []
         indexes = indexes[0].tolist()
         indexes.reverse()
-        for index in indexes[:NUMBER_OF_OPTIONS]:
+        for index in indexes[:self.config['number_of_options']]:
             result.append(self.classes[index])  # Class name
         result.append(self.classes[-1])
         return result
 
-    def bootstrap(self):
-        """
+    def bootstrap(self, get_class):
+        """Presents a new question to the user until the answer is 'stop'.
+
+        Args:
+            get_class: A function that takes an instance and a list of possible
+            classes. Returns the correct class for the instance.
         """
         stop = False
         while not stop:
-            new_question = self.get_next_question()
-            if self.emulate and 'target' in new_question:
-                question = new_question['question']
-                target = new_question['target']
-                self.user_questions.append(question)
-                self.user_answers.append(target)
-                self._train()
-                message = "Adding question {}, {}".format(question, target)
+            new_instance = self.get_next_instance()
+            if self.emulate and 'target' in new_instance:
+                new_instance = new_instance['question']
+                prediction = new_instance['target']
+                message = "Adding instance {}, {}".format(new_instance, prediction)
                 print colored(message, "red")
-            if not self.emulate or 'target' not in new_question:
-                new_question = new_question['question']
-                print "*******************************************************"
-                print "\nWhat is the correct template? Write the number or STOP\n"
-                print colored(new_question, "red", "on_white", attrs=["bold"])
-                pred_classes = self.pipeline.predict_log_proba([new_question])
-                pred_classes = self._most_probable_classes(pred_classes)
-                self._print_classes(pred_classes)
-                line = raw_input(">>> ")
-                stop = self._process_answer(line, new_question, pred_classes)
+            if not self.emulate or 'target' not in new_instance:
+                new_instance = new_instance['question']
+                classes = self.pipeline.predict_log_proba([new_instance])
+                classes = self._most_probable_classes(classes)
+                prediction = get_class(new_instance, classes)
+            if prediction == 'stop':
+                break
+            self._process_prediction(new_instance, prediction)
 
-    def get_next_question(self):
+    def get_next_instance(self):
         try:
             question = choice(self.unlabeled_corpus)
             return question
@@ -147,46 +121,76 @@ class ActivePipeline(object):
         """Evaluates the classifier with the testing set.
         """
         self._get_test_corpus()
-        return self.pipeline.score(self.test_questions, self.test_targets)
+        return self.pipeline.score(self.test_vectors, self.test_targets)
 
     def evaluate_training(self):
         """Evaluate the accuracy of the classifier with the labeled data.
         """
         # Agregamos la evidencia del usuario para evaluacion?
-        return self.pipeline.score(self.training_question, self.training_target)
+        return self.pipeline.score(self.training_vectors, self.training_target)
 
-    def exit(self):
+    def get_report(self):
+        """
+        Returns:
+            A sklearn.metrics.classification_report on the performance
+            of the cassifier over the test corpus.
+        """
         self._get_test_corpus()
-        predicted_targets = self.predict(self.test_questions)
-        print "Final Estimation on test corpus"
-        print classification_report(self.test_targets, predicted_targets)
-        if self.user_questions:
-            self.save_session()
-        if self.label_corpus:
-            for index, question in enumerate(self.user_questions):
-                u_question = next((q for q in self.unlabeled_corpus
-                                  if q['question'] == question), None)
-                if u_question and u_question['question'] == question:
-                    u_question['target'] = self.user_answers[index]
-            # Save file
-            print "Adding {} new questions".format(len(self.user_questions))
-            f = open(U_CORPUS_F, 'w')
-            pickle.dump(self.unlabeled_corpus, f)
-            f.close()
+        predicted_targets = self.predict(self.test_vectors)
+        return classification_report(self.test_targets, predicted_targets)
 
-    def save_session(self):
-        filename = raw_input("Insert the filename to save or press enter\n")
-        if not filename:
-            return
-        f = open("sessions/{}".format(filename), 'w')
-        to_save = (self.user_questions, self.user_answers)
+    def label_corpus(self):
+        """Saves the classes of unlabeled vectors in the unlabeled_corpus file.
+
+        Returns:
+            The number of new classes added to the corpus.
+        """
+        for index, instances in enumerate(self.user_vectors):
+            u_question = next((q for q in self.unlabeled_corpus
+                              if q['question'] == instances), None)
+            if u_question and u_question['question'] == instances:
+                u_question['target'] = self.user_targets[index]
+        # Save file
+        f = open(self.config['u_corpus_f'], 'w')
+        pickle.dump(self.unlabeled_corpus, f)
+        f.close()
+        return len(self.user_vectors)
+
+    def save_session(self, filename):
+        """Saves the instances and targets introduced by the user in filename.
+
+        Writes a pickle tuple in the file that can be recovered using the
+        method load_session.
+
+        Returns:
+            False in case of error, True in case of success.
+        """
+        if not self.user_vectors or not filename:
+            return False
+
+        f = open(filename, 'w')
+        to_save = (self.user_vectors, self.user_targets)
         pickle.dump(to_save, f)
         f.close()
+        return True
 
     def load_session(self):
-        if self.filename:
-            f = open(self.filename, 'r')
-            self.user_questions, self.user_answers = pickle.load(f)
-            f.close()
-            print "Session {} loaded\n".format(self.filename)
+        """Loads the instances and targets stored on filename.
+
+        Overwrites the previous answers of the users.
+
+        Args:
+            filename: a string. The name of a file that has a  pickle tuple.
+            The first element of the tuple is a list of vectors, the second is
+            a list of targets.
+
+        Returns:
+            False in case of error, True in case of success.
+        """
+        if not self.filename:
+            return False
+        f = open(self.filename, 'r')
+        self.user_vectors, self.user_targets = pickle.load(f)
+        f.close()
+        return True
 

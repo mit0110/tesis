@@ -7,9 +7,30 @@ Usage:
 """
 
 import argparse
+from termcolor import colored
 
 from activepipe import ActivePipeline
 
+
+def get_class(question, classes):
+    print "*******************************************************"
+    print "\nWhat is the correct template? Write the number or STOP\n"
+    print colored(question, "red", "on_white", attrs=["bold"])
+    message = "{} - {}"
+    for (counter, class_name) in enumerate(classes):
+        print message.format(counter, class_name)
+    line = raw_input(">>> ")
+    if line.lower() == 'stop':
+        return 'stop'
+
+    try:
+        line = int(line)
+        prediction = classes[line]
+    except (ValueError, IndexError):
+        print colored("Please insert one of the listed numbers", "red")
+        return 'stop'
+    print colored("Adding result", "green")
+    return prediction
 
 
 def main():
@@ -20,9 +41,17 @@ def main():
     parser.add_argument('-l', '--label_corpus', action='store_true')
     args = parser.parse_args()
     pipe = ActivePipeline(session_filename=args.output_file,
-                          emulate=args.emulate,
-                          label_corpus=args.label_corpus)
-    pipe.bootstrap()
+                          emulate=args.emulate)
+    pipe.bootstrap(get_class)
+
+    print pipe.get_report()
+
+    filename = raw_input("Insert the filename to save or press enter\n")
+    if filename:
+        pipe.save_session("sessions/{}".format(filename))
+
+    if args.label_corpus:
+        print "Adding {} classes.".format(pipe.label_corpus())
 
 
 if __name__ == '__main__':
