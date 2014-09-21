@@ -22,3 +22,10 @@
 *.x86_64
 *.hex
 *.pyc
+
+# Latex
+*.aux
+*.toc
+*.log
+*.lof
+*.blg

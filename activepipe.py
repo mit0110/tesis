@@ -1,6 +1,5 @@
 import argparse
 import pickle
-import sys
 
 from feature_extraction import get_features
 from random import choice
@@ -10,15 +9,10 @@ from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline, FeatureUnion
 from termcolor import colored
 
-
-NUMBER_OF_OPTIONS = 30
-U_CORPUS_F = 'corpus/unlabeled_corpus.pickle'
-TEST_CORPUS_F = 'corpus/test_corpus.pickle'
-TRAINING_CORPUS_F = 'corpus/training_corpus.pickle'
-MAX_NGRAMS = 3
+from settings import *
 
 
-class ClassifierPipeline(object):
+class ActivePipeline(object):
     """Pipeline for a classifier with the following steps:
         1 - Training the classifier from an training corpus
         2 - Getting new evidence from the oracle:
@@ -34,8 +28,9 @@ class ClassifierPipeline(object):
         mnb = MultinomialNB()
         countv = CountVectorizer(ngram_range=(1, MAX_NGRAMS))
         self.steps = [
-            ('vect', FeatureUnion([('custom', get_features()),
-                                   ('n_grams', countv)])),
+            ('vect', countv),
+            # ('vect', FeatureUnion([('custom', get_features()),
+            #                        ('n_grams', countv)])),
             ('classifier', mnb),
         ]
         self._get_corpus()
@@ -46,7 +41,7 @@ class ClassifierPipeline(object):
         self.load_session()
         self._train()
         self.classes = mnb.classes_.tolist()
-        
+
     def _train(self):
         self.pipeline.fit(
             self.training_question + self.user_questions,
@@ -73,7 +68,7 @@ class ClassifierPipeline(object):
         test_corpus_f.close()
         self.test_questions = [e['question'] for e in self.test_corpus]
         self.test_targets = [e['target'] for e in self.test_corpus]
-        
+
     def predict(self, question):
         return self.pipeline.predict(question)
 
@@ -195,19 +190,3 @@ class ClassifierPipeline(object):
             f.close()
             print "Session {} loaded\n".format(self.filename)
 
-
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-f', '--output_file', required=False,
-                        type=str)
-    parser.add_argument('-e', '--emulate', action='store_true')
-    parser.add_argument('-l', '--label_corpus', action='store_true')
-    args = parser.parse_args()
-    pipe = ClassifierPipeline(session_filename=args.output_file,
-                              emulate=args.emulate,
-                              label_corpus=args.label_corpus)
-    pipe.bootstrap()
-
-
-if __name__ == '__main__':
-    main()

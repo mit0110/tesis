@@ -1,0 +1,37 @@
+\section{Arquitectura del sistema}
+
+Si bien el objetivo principal de este trabajo es incrementar la cobertura de Quepy, deseamos también que el sistema esté compartimentado de tal forma que sus componentes puedan utilizarse individualmente para otras aplicaciones. 
+
+Trabajamos sobre dos grandes áreas: un clasificador automático entrenado utlizando aprendizaje activo sobre instancias y características, y la representación de las preguntas para maximizar los resultados del clasificador. El clasificador puede ser visto como una tarea general, y por lo tanto lo desarrollamos como una librería portable cuyos parámetros pueden ser definidos por el usuario. Sin embargo, la representación de las preguntas elegidas es algo completamente ligado al sistema de preguntas y por ello lo diseñamos como una extensión opcional de Quepy que puede utilizar cualquier clasificador.
+
+A continuación detallaremos cada una de estos módulos, y finalmente abordaremos la estructura del sistema completo.
+
+\subsection{Framework para aprendizaje automático sobre instancias y características}
+% Basado en DUALIST Esto sería lo que haría conjuntamente con Rodri.
+% Necesitamos pensar un nombre!
+\subsubsection{Funcionalidad}
+	% Para entrenarlo con active learning
+	% Para obtener métricas (con esto lo vamos a medir)
+
+\subsubsection{Parámetros}
+\begin{description}
+	\item[Clasificador] El usuario debe definir qué clasificador de sklearn utilizar.
+	\item[Características]
+		% Debe ser un algo que encaje dentro de un Pipeline
+	\item[Corpus]
+		% Qué archivos usar
+		% Corpus training - no etiquetado - comprobación
+			% El no etiquetado puede tener etiquetas para testing.
+		% Formato que deben tener
+			% diccionario de la forma {'question': pregunta, 'target': clase}
+	\item[Función de representación al usuario] El usuario debe proveer una interfáz gráfica para presentar los datos al usuario y obtener una respuesta.
+\end{description}
+Si bien ésta aproximación es altamente paramétrica, cabe destacar que permite gran flexibilidad con respecto a los datos ingresados. Al permitir elegir tanto características como el corpus y el clasificador, puede ser utilizado dentro de cualquier ámbito incluso no relacionado al procesamiento del lenguaje natural.
+% En particular se utilizaría para iepy, y citamos la tesis de Rodri. Eso se puede?
+
+\subsection{Interfaz Quepy - Clasificador}
+% Tiene que servir para otros framework que no incluyan active learning.
+% Tiene que tener alguna forma de hacer testing, así podemos obtener los resultados que queremos.
+% Tomamos como base el ejemplo de quepy freebase.
+
+\subsection{Arquitectura general}

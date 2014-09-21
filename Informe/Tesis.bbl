@@ -1,0 +1,36 @@
+\begin{thebibliography}{5}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Gupta and Gupta(2012)]{gupta_survey}
+Poonam Gupta and Vishal Gupta.
+\newblock A survey of text question answering techniques.
+\newblock \emph{International Journal of Computer Applications}, 53\penalty0
+  (4):\penalty0 1--8, 2012.
+
+\bibitem[Ou and Zhu(??)]{ou_entailement}
+Shiyan Ou and Zhenyuan Zhu.
+\newblock An entailment-based question answering system over semantic web data.
+\newblock \emph{??}, ??\penalty0 (?):\penalty0 ?--?, ??
+
+\bibitem[Settles(2009)]{settles_active_learning_survey}
+Burr Settles.
+\newblock Active learning literature survey.
+\newblock Technical Report 1648, University of Wisconsin--Madison, 2009.
+
+\bibitem[Settles(2011)]{dualist}
+Burr Settles.
+\newblock Closing the loop: Fast, interactive semi-supervised annotation with
+  queries on features and instances.
+\newblock \emph{2011 Conference on Empirical Methods in Natural Language
+  Processing}, pages 1467--1478, 2011.
+
+\bibitem[Wang and Li(??)]{rui_relations}
+Rui Wang and Shuguang Li.
+\newblock Constructing a question corpus for textual semantic relations.
+\newblock \emph{??}, ??\penalty0 (?):\penalty0 ?--?, ??
+
+\end{thebibliography}
