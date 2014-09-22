@@ -17,8 +17,5 @@ default_config = {
 
     # Features
     'features': CountVectorizer(ngram_range=(1, MAX_NGRAMS)),
-    # from feature_extraction import get_features
-    # FEATURES = FeatureUnion([('custom', get_features()),
-    #                          ('n_grams', countv)])),
 
 }

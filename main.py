@@ -10,11 +10,13 @@ import argparse
 from termcolor import colored
 
 from activepipe import ActivePipeline
+from feature_extraction import get_features
 
 
-def get_class(question, classes):
+def get_class(words, classes):
     print "*******************************************************"
     print "\nWhat is the correct template? Write the number or STOP\n"
+    question = ' '.join([word.token for word in words])
     print colored(question, "red", "on_white", attrs=["bold"])
     message = "{} - {}"
     for (counter, class_name) in enumerate(classes):
@@ -33,6 +35,11 @@ def get_class(question, classes):
     return prediction
 
 
+config = {
+    'features': get_features(),
+}
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--output_file', required=False,
@@ -42,7 +49,7 @@ def main():
     args = parser.parse_args()
 
     pipe = ActivePipeline(session_filename=args.output_file,
-                          emulate=args.emulate)
+                          emulate=args.emulate, **config)
     pipe.bootstrap(get_class)
 
     print pipe.get_report()
