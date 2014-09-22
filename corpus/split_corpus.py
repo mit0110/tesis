@@ -1,4 +1,11 @@
 """
+SOURCE FILES
+-- original_quepy_corpus.pickle
+-- original_unlabeled_corpus.pickle
+Both have a list of dictionaries with keys 'question' and 'target'
+
+
+GENERATED FILES
 test_corpus.pickle
 -- 50 quepy questions
 -- 200 other labeled questions
@@ -6,6 +13,9 @@ test_corpus.pickle
 training_corpus.pickle
 -- remaining quepy questions
 -- 100 other labeled questions
+
+unlabeled_corpus.pickle
+-- All the other remaining questions
 
 Running this script would change the values according to random shuffles!
 """
@@ -78,7 +88,7 @@ def main():
     print ''
     print "New classes found"
     wrong_unlabeled_classes = [q['target'] for q in labeled_q
-                               if q['target'] not in quepy_classes and 
+                               if q['target'] not in quepy_classes and
                                q['target'] != 'other']
     print set(wrong_unlabeled_classes)
 

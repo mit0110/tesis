@@ -1,5 +1,6 @@
 from featureforge.feature import input_schema, output_schema
 from featureforge.vectorizer import Vectorizer
+from quepy import install
 from nltk import word_tokenize, pos_tag, wordnet
 from nltk.stem.wordnet import WordNetLemmatizer
 
@@ -7,6 +8,7 @@ from literal_ner import LiteralNER
 
 wnl = WordNetLemmatizer()
 lner = LiteralNER()
+# freebase_app = install('freebase_app')
 
 def _wordnet_pos(treebank_tag):
     if treebank_tag.startswith('J'):

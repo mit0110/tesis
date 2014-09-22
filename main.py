@@ -40,6 +40,7 @@ def main():
     parser.add_argument('-e', '--emulate', action='store_true')
     parser.add_argument('-l', '--label_corpus', action='store_true')
     args = parser.parse_args()
+
     pipe = ActivePipeline(session_filename=args.output_file,
                           emulate=args.emulate)
     pipe.bootstrap(get_class)
