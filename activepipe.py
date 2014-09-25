@@ -23,10 +23,11 @@ class ActivePipeline(object):
         self.emulate = emulate
         default_config.update(kwargs)
         self.config = default_config
-        classifier = self.config['classifier']()
+        self.classifier = self.config['classifier']()
+        self.features = self.config['features']
         self.steps = [
-            ('features', self.config['features']),
-            ('classifier', classifier),
+            ('features', self.features),
+            ('classifier', self.classifier),
         ]
         self.pipeline = Pipeline(self.steps)
         self._get_corpus()
@@ -35,7 +36,7 @@ class ActivePipeline(object):
         self.user_targets = []
         self.load_session()
         self._train()
-        self.classes = classifier.classes_.tolist()  # No todos los clasificadores
+        self.classes = self.classifier.classes_.tolist()  # No todos los clasificadores
         # van a tener esto.
 
     def _train(self):
@@ -86,15 +87,14 @@ class ActivePipeline(object):
         result.append(self.classes[-1])
         return result
 
-    def bootstrap(self, get_class):
+    def instance_bootstrap(self, get_class):
         """Presents a new question to the user until the answer is 'stop'.
 
         Args:
             get_class: A function that takes an instance and a list of possible
             classes. Returns the correct class for the instance.
         """
-        stop = False
-        while not stop:
+        while True:
             new_instance = self.get_next_instance()
             if self.emulate and 'target' in new_instance:
                 new_instance = new_instance['question']
@@ -110,12 +110,44 @@ class ActivePipeline(object):
                 break
             self._process_prediction(new_instance, prediction)
 
+    def feature_boostrap(self, get_correct_features):
+        """Presents a class and possible features until the predictio is stop.
+
+        Args:
+            get_correct_features: A function that receives a class and a list
+            of features. It must return a list of features associated with the
+            class.
+        """
+        stop = False
+        while not stop:
+            class_name, features = self.get_class_and_features()
+            prediction = get_correct_features(class_name, features)
+            if prediction == 'stop':
+                break
+
     def get_next_instance(self):
         try:
             question = choice(self.unlabeled_corpus)
             return question
         except IndexError:
             return None
+
+    def get_class_and_features(self):
+        """Selects a class and a list of features to be sent to the oracle.
+
+        Returns:
+            A tuple where the first element is a class and the second one a list
+            of features.
+        """
+        feature_prob = self.classifier.feature_log_prob_
+        max_prob_class = feature_prob.sum(axis=1).argmax()
+        selected_class = self.classes[max_prob_class]  # The class with more probabilitie.
+        selected_f_pos = feature_prob[max_prob_class].argsort()[-10:]
+        selected_features = []
+        for feature_pos in selected_f_pos:
+            feature_name = self.features.column_to_feature(feature_pos)[1]
+            selected_features.append(feature_name)
+        return selected_class, selected_features
 
     def evaluate_test(self):
         """Evaluates the classifier with the testing set.

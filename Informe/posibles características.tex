@@ -1,10 +1,31 @@
 Las características propuestas para el sistema.
 \begin{itemize}
-    \item POS
-    \item Lemmas
-    \item Matcheos parciales a templates (probablemente no a las partículas sino a los templates)
-    \item Named Entity Recognition
-    \item Tipos de cada Named Entity Recognition
+    \item POS.
+    \item Lemmas.
+    \item Matcheos parciales a templates (probablemente no a las partículas sino a los templates).
+    \item Named Entity Recognition.
+    \item Tipos de cada Named Entity.
     \item N-gramas combinando todos los conceptos anteriores.
 
+\end{itemize}
+
+
+Formas para ordenar los features de acuerdo a su relevancia.
+\begin{itemize}
+	\item Características que esten fuertemente asociadas con una clase. Si bien este método es muy poco utilizado, en una arquitectura con extreme bootstraping es lógico no asumir que la clasificación inicial es correcta.
+	\item Características que tengan baja probabilidad para una clase pero que
+	aparezcan frecuentemente.
+\end{itemize}
+
+En Dualist se presentaban al usuario dos listas de posibles características ordenadas de acuerdo a la correlación que tenían con cada clase. La principal diferencia con nuestra arquitectura es que tenemos 30 clases, no sólo dos, y por lo tanto debemos cambiar la forma de interacción. Por lo tanto no sólo debemos utilizar conceptos del aprendizaje activo para la selección de instancias y características, sino sobre las clases que vamos a mostrar. Cabe destacar también que en Dualist el active learning sobre ejemplos es totalmente independiente
+del active learning sobre instancias.
+
+Formas para ordenar las clases para preguntar al oráculo.
+\begin{itemize}
+	\item Clases que tengan la mayor probabilidad para un feature cualquiera.
+	\item Clases que tengan la mayor suma de probabilidades sobre todos sus features.
+	\item La clase con mayor probabilidad
+	\item La clase con menor probabilidad
+	\item La clase con mayor cantidad de instancias anotadas.
+	\item La clase con menor cantidad de instancias anotadas.
 \end{itemize}
