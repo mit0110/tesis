@@ -1,6 +1,8 @@
 import argparse
 import pickle
 
+from collections import defaultdict
+from math import log
 from random import choice
 from sklearn.metrics import precision_score, classification_report
 from sklearn.pipeline import Pipeline
@@ -34,16 +36,17 @@ class ActivePipeline(object):
         self.test_corpus = None
         self.user_vectors = []
         self.user_targets = []
+        self.user_features = defaultdict(lambda : [])
         self.load_session()
-        self._train()
+        self.pipeline.partial_fit(self.training_vectors, training_target)
+        self.new_instances = 0
         self.classes = self.classifier.classes_.tolist()  # No todos los clasificadores
         # van a tener esto.
 
     def _train(self):
-        self.pipeline.fit(
-            self.training_vectors + self.user_vectors,
-            self.training_target + self.user_targets
-        )
+        self.pipeline.partial_fit(self.user_vectors[-self.new_instances:],
+                                  self.user_targets[-self.new_instances:])
+        self.new_instances = 0
 
     def _get_corpus(self):
         training_corpus_f = open(self.config['training_corpus_f'], 'r')
@@ -71,7 +74,7 @@ class ActivePipeline(object):
 
     def _process_prediction(self, instance, prediction):
         """Retrains the classfier with the new instance and prediction."""
-
+        self.new_instances += 1
         self.user_vectors.append(instance)
         self.user_targets.append(prediction)
         self._train()
@@ -110,22 +113,43 @@ class ActivePipeline(object):
                 break
             self._process_prediction(new_instance, prediction)
 
-    def feature_boostrap(self, get_correct_features):
+    def feature_boostrap(self, get_features_4_class):
         """Presents a class and possible features until the predictio is stop.
 
         Args:
-            get_correct_features: A function that receives a class and a list
+            get_features_4_class: A function that receives a class and a list
             of features. It must return a list of features associated with the
             class.
         """
+        # Re train to get different classes.
+        # Don't ask for the same feature twice. Or not?
         stop = False
         while not stop:
-            class_name, features = self.get_class_and_features()
-            prediction = get_correct_features(class_name, features)
+            class_number, feature_numbers = self.get_class_and_features()
+            class_name = self.classes[class_number]
+            feature_names = [self.features.column_to_feature(pos)[1]
+                             for pos in feature_numbers]
+            prediction = get_features_4_class(class_name, feature_names)
             if prediction == 'stop':
                 break
+            prediction = [feature_names.index(f) for f in prediction]
+            self.user_features[class_name] += prediction
+
+            # Modify the classifier
+            for feature in prediction:
+                self.classifier.feature_log_prob_[class_number][feature] += \
+                    log(self.config['alpha'])
+
+            self._train()
 
     def get_next_instance(self):
+        """Selects an instance to be sent to the user.
+
+        This is the core of the active learning algorithm.
+
+        Returns:
+            An instance selected from the unlabeled_corpus.
+        """
         try:
             question = choice(self.unlabeled_corpus)
             return question
@@ -136,18 +160,13 @@ class ActivePipeline(object):
         """Selects a class and a list of features to be sent to the oracle.
 
         Returns:
-            A tuple where the first element is a class and the second one a list
-            of features.
+            A tuple where the first element is a class number and the second
+            one a list of features numbers.
         """
         feature_prob = self.classifier.feature_log_prob_
-        max_prob_class = feature_prob.sum(axis=1).argmax()
-        selected_class = self.classes[max_prob_class]  # The class with more probabilitie.
-        selected_f_pos = feature_prob[max_prob_class].argsort()[-10:]
-        selected_features = []
-        for feature_pos in selected_f_pos:
-            feature_name = self.features.column_to_feature(feature_pos)[1]
-            selected_features.append(feature_name)
-        return selected_class, selected_features
+        selected_class = feature_prob.sum(axis=1).argmax()
+        selected_f_pos = feature_prob[selected_class].argsort()[-10:]
+        return selected_class, selected_f_pos
 
     def evaluate_test(self):
         """Evaluates the classifier with the testing set.

@@ -1,6 +1,16 @@
 import unittest
 
-from featureforge.validate import BaseFeatureFixture, EQ, IN, APPROX, RAISES
+from activepipe import ActivePipeline
 
-class TestUnigrams(unittest.TestCase, BaseFeatureFixture):
-	feature = unigrams
+test_config = {
+
+}
+
+def test_corpus_mock(self):
+    self.user_vectors = []
+
+
+class TestActiveFeature(unittest.TestCase):
+
+    def test_parameter(self):
+        pipe = ActivePipeline()
