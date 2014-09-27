@@ -2,7 +2,7 @@
 Applies the quepy tagger to the questions of the corpus.
 
 Usage:
-    preprocess.py <input_filename> <output_filename>
+    POS_analisys.py <input_filename> <output_filename>
 
 The input file must have a pickled list of dictionaries with keys 'questions'.
 
