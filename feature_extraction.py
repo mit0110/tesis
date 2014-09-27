@@ -14,14 +14,17 @@ freebase_app = install('quepyapp_freebase')
 # @input_schema({'question': unicode})
 # @output_schema(list(str), lambda l: len(l) > 0)
 def postags(words):
+    words, _ = words
     return [word.pos for word in words]
 
 
 def lemmas(words):
+    words, _ = words
     return [word.lemma for word in words]
 
 
 def literal_ner(words):
+    words, _ = words
     sentence = ' '.join(lemmas(words))
     ner_tuple = lner.find_ne(sentence)
     if ner_tuple:
@@ -30,15 +33,9 @@ def literal_ner(words):
         return ['No_NER']
 
 
-_EOL = None
-
 def partial_matches(words):
-    result = []
-    for regex in freebase_app.partial_rules:
-        match = refo.match(regex + refo.Literal(_EOL), words + [_EOL])
-        if match:
-            result.append(repr(regex))
-    return result
+    _, rules = words
+    return rules
 
 
 def get_features():

@@ -17,5 +17,6 @@ default_config = {
 
     # Features
     'features': CountVectorizer(ngram_range=(1, MAX_NGRAMS)),
+    'alpha': 0.5
 
 }

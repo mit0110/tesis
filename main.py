@@ -34,7 +34,8 @@ def get_class(words, classes):
     print colored("Adding result", "green")
     return prediction
 
-def get_correct_features(class_name, features):
+
+def get_features_4_class(class_name, features):
     print "*******************************************************"
     print "Insert the asociated feature numbers separated by a blank space."
     print class_name
@@ -43,7 +44,15 @@ def get_correct_features(class_name, features):
     line = raw_input(">>> ")
     if line.lower() == 'stop':
         return 'stop'
-    return line.split()
+    indexes = line.split()
+    result = []
+    for index in indexes:
+        try:
+            index = int(index)
+            result.append(features[index])
+        except ValueError:
+            pass
+    return result
 
 
 config = {
@@ -62,7 +71,7 @@ def main():
     pipe = ActivePipeline(session_filename=args.output_file,
                           emulate=args.emulate, **config)
     #pipe.instance_bootstrap(get_class)
-    pipe.feature_boostrap(get_correct_features)
+    pipe.feature_boostrap(get_features_4_class)
 
     print pipe.get_report()
 

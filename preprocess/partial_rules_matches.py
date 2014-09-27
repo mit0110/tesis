@@ -32,7 +32,7 @@ def process_corpus(input_filename, output_filename):
         for regex in freebase_app.partial_rules:
             match = refo.match(regex + refo.Literal(_EOL), words + [_EOL])
             if match:
-                rules.append(repr(regex)     )
+                rules.append(repr(regex))
         instance['question'] = (instance['question'], rules)
 
     output_f = open(output_filename, 'w')
