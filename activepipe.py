@@ -3,6 +3,7 @@ import pickle
 
 from collections import defaultdict
 from math import log
+from numpy import array
 from random import choice
 from sklearn.metrics import precision_score, classification_report
 from sklearn.pipeline import Pipeline
@@ -36,16 +37,22 @@ class ActivePipeline(object):
         self.test_corpus = None
         self.user_vectors = []
         self.user_targets = []
-        self.user_features = defaultdict(lambda : [])
         self.load_session()
-        self.pipeline.partial_fit(self.training_vectors, training_target)
-        self.new_instances = 0
+        self.pipeline.fit(self.training_vectors, training_target)
+        self._build_feature_boost()
         self.classes = self.classifier.classes_.tolist()  # No todos los clasificadores
         # van a tener esto.
+        self.new_instances = 0
+
+    def _build_feature_boost(self):
+        """Creates the user_features array with defaults values."""
+        alpha = self.classifier.alpha
+        self.n_class, self.n_feat = self.classifier.feature_log_prob_.shape()
+        self.user_features = array([[alpha] * self.n_class] * self.n_feat)
 
     def _train(self):
-        self.pipeline.partial_fit(self.user_vectors[-self.new_instances:],
-                                  self.user_targets[-self.new_instances:])
+        self.pipeline.fit(self.user_vectors, self.user_targets,
+                          features=self.user_features)
         self.new_instances = 0
 
     def _get_corpus(self):
@@ -133,12 +140,10 @@ class ActivePipeline(object):
             if prediction == 'stop':
                 break
             prediction = [feature_names.index(f) for f in prediction]
-            self.user_features[class_name] += prediction
 
-            # Modify the classifier
             for feature in prediction:
-                self.classifier.feature_log_prob_[class_number][feature] += \
-                    log(self.config['alpha'])
+                self.user_features[class_number][feature] += \
+                    self.config['feature_boost']
 
             self._train()
 

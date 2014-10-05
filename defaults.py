@@ -1,4 +1,4 @@
-from sklearn.naive_bayes import MultinomialNB
+from featmultinomial import FeatMultinomalNB
 from sklearn.feature_extraction.text import CountVectorizer
 
 MAX_NGRAMS = 3
@@ -13,10 +13,10 @@ default_config = {
     'number_of_options': 30,
 
     # Classifier
-    'classifier': MultinomialNB,
+    'classifier': FeatMultinomalNB,
 
     # Features
     'features': CountVectorizer(ngram_range=(1, MAX_NGRAMS)),
-    'alpha': 0.5
+    'feature_boost': 0.5
 
 }

@@ -7,6 +7,7 @@ import unittest
 
 from featmultinomial import FeatMultinomalNB
 from copy import deepcopy
+from math import log
 
 # I should use random numbers here!
 X = [
@@ -17,6 +18,10 @@ X = [
 
 Y = [1, 0, 0]
 
+features = [
+            [1, 1, 1.5, 1],
+            [1, 1.5, 1, 1]
+           ]
 
 class TestFeatMultinomialNB(unittest.TestCase):
 
@@ -24,7 +29,11 @@ class TestFeatMultinomialNB(unittest.TestCase):
         fmnb = FeatMultinomalNB()
         fmnb.fit(X, Y)
         no_feat_prior = deepcopy(fmnb.feature_log_prob_)
-        print no_feat_prior
+        fmnb.fit(X, Y, features=features)
+        feat_prior = fmnb.feature_log_prob_
+        self.assertNotEqual(no_feat_prior[0][2], feat_prior[0][2])
+        self.assertEqual(fmnb.alpha, features)
+#        self.assertEqual(no_feat_prior[0][2], feat_prior[0][2] - log(0.5))
 
 if __name__ == '__main__':
     unittest.main()
