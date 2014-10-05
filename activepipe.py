@@ -221,11 +221,11 @@ class ActivePipeline(object):
         Returns:
             False in case of error, True in case of success.
         """
-        if not self.user_vectors or not filename:
+        if not (self.user_vectors or self.user_features) or not filename:
             return False
 
         f = open(filename, 'w')
-        to_save = (self.user_vectors, self.user_targets)
+        to_save = (self.user_vectors, self.user_targets, self.user_features)
         pickle.dump(to_save, f)
         f.close()
         return True
@@ -246,7 +246,11 @@ class ActivePipeline(object):
         if not self.filename:
             return False
         f = open(self.filename, 'r')
-        self.user_vectors, self.user_targets = pickle.load(f)
+        loaded_data = pickle.load(f)
         f.close()
+        if len(loaded_data) == 2:
+            self.user_vectors, self.user_targets = loaded_data
+        elif len(loaded_data) == 3:
+            self.user_vectors, self.user_targets, self.user_features = loaded_data
         return True
 
