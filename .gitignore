@@ -29,3 +29,6 @@
 *.log
 *.lof
 *.blg
+
+# Gedit autosave files
+*~
