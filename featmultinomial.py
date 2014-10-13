@@ -32,3 +32,15 @@ class FeatMultinomalNB(MultinomialNB):
         if features:
             self.alpha = features
         return super(FeatMultinomalNB, self).fit(X, Y, sample_weight)
+
+    def information_gain(self):
+        """Calculates the information gain for each feature.
+        
+        Returns
+        -------
+        array-like, shape = [n_features]
+        """
+        # Features present in a class
+        Ik_class = self.feature_count_ > 0
+        Ik_class_prob = Ik_class
+        ig = self.class_log_prior_

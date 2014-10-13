@@ -35,6 +35,14 @@ class TestFeatMultinomialNB(unittest.TestCase):
         self.assertEqual(fmnb.alpha, features)
 #        self.assertEqual(no_feat_prior[0][2], feat_prior[0][2] - log(0.5))
 
+    def test_information_gain(self):
+        fmnb = FeatMultinomalNB()
+        fmnb.fit(X, Y)
+        n_features = len(X[0])
+        ig = fmnb.information_gain()
+        self.assertEqual(ig.shape, (n_features, ))
+        answer = []
+
 if __name__ == '__main__':
     unittest.main()
 

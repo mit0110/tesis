@@ -4,7 +4,7 @@
 
 % Descripción de los corpus.
 	% Etiquetado
-		% Las semillas son muy importantes. Deberían ser elegidas al azar.
+		% Las semillas son muy importantes. Deberían ser elegidas al azar?
 		% La muestra debería ser representativa de la población? Aproximadamente un 10% de las preguntas son reconocidas por quepy, deberíamos incluir esto en el set de entrenamiento?
 	% No etiquetado
 	% Testing
@@ -26,6 +26,32 @@ Unlabeled corpus 6358
 
 % Automáticos sin usuarios
 % Con usuarios
+
+\subsubsection{Métricas utilizadas}
+\begin{description}
+    \item[Precisión] Mediremos cuántas preguntas del corpus de testing fueron etiquetadas correctamente por el clasificador.
+    \item[Precisión en preguntas reconocidas] Debido a la gran cantidad de preguntas no etiquetadas que no comparten semántica con las preguntas originales, mediremos cuántas preguntas del corpus que no corresponden a la clase "Otra" son correctamente clasificadas por el sistema.
+\end{description}
+
+\subsubsection{Baseline}
+Tomaremos como baseline dos métodos:
+\begin{description}
+    \item[]
+\end{description}
+
+\subsubsection{Experimento 1}
+\textbf{Hipótesis} El aprendizaje activo obtiene mejores resultados que un clasificador normal utilizando la misma cantidad de datos.
+Realizamos este experimento tanto sobre instancias como sobre características. Para eso, debimos elaborar un corpus etiquetado de instacias relacionándolas a una clase dada.
+
+\subsubsection{Experimento 2}
+\textbf{Hipótesis} El aprendizaje activo sobre instancias y características obtiene mejores resultados que el aprendizaje activo sobre instancias o características por separado.
+% Cómo lo medimos? Por tiempo? Por cantidad de datos etiquedos?
+% Por cantidad de acciones que realiza un usuario?
+% Probablemente termine siendo el mismo experimento que el anterior
+
+\subsubsection{Experimento 2}
+\textbf{Hipótesis} El aprendizaje activo sobre instancias y características obtiene mejores resultados que el aprendizaje activo sobre instancias o características por separado.
+
 
 
 Cosas que quedan para hacer:
