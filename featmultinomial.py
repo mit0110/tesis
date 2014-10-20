@@ -1,3 +1,4 @@
+import numpy as np
 from sklearn.naive_bayes import MultinomialNB
 
 
@@ -29,18 +30,40 @@ class FeatMultinomalNB(MultinomialNB):
         self : object
             Returns self.
         """
-        if features:
+        if features != None:
             self.alpha = features
-        return super(FeatMultinomalNB, self).fit(X, Y, sample_weight)
+        self.training_instances = X.shape[0]
+        return_value = super(FeatMultinomalNB, self).fit(X, Y, sample_weight)
+        self._information_gain()
+        return return_value
 
-    def information_gain(self):
+    def _information_gain(self):
         """Calculates the information gain for each feature.
-        
+
+        Stores the value in self.feat_information_gain
+
         Returns
         -------
         array-like, shape = [n_features]
         """
+        # Agrego el +1 para eliminar los 0, asi es como se hace?
+        # Probability of the presence of a feature and a class.
+        Ik_class_prob = (self.feature_count_ + 1.0) / (self.training_instances + 0.0)
+
         # Features present in a class
         Ik_class = self.feature_count_ > 0
-        Ik_class_prob = Ik_class
-        ig = self.class_log_prior_
+        # P(Ik)  -- Should we apply some smothing?
+        Ik_log_prob = np.log(Ik_class.sum(axis=0) / (len(self.classes_) + 0.0))
+        aux = np.log(Ik_class_prob) - Ik_log_prob  # Shape (n_class, n_feat)
+        aux = aux.T - self.class_log_prior_  # Shape (n_feat, n_class)
+        aux = Ik_class_prob.T * aux
+
+        Ik_class = self.feature_count_ == 0
+        # P(Ik)  -- Should we apply some smothing?
+        Ik_log_prob = np.log(Ik_class.sum(axis=0) / (len(self.classes_) + 0.0))
+        # Agrego el +1 para eliminar los 0, asi es como se hace?
+        aux2 = np.log(Ik_class_prob) - Ik_log_prob  # Shape (n_class, n_feat)
+        aux2 = aux2.T - self.class_log_prior_  # Shape (n_feat, n_class)
+        aux2 = Ik_class_prob.T * aux2
+
+        self.feat_information_gain = aux.sum(axis=1) + aux2.sum(axis=1) # Shape (n_feat)

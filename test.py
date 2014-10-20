@@ -43,6 +43,7 @@ class TestFeatMultinomialNB(unittest.TestCase):
         self.assertEqual(ig.shape, (n_features, ))
         answer = []
 
+
 if __name__ == '__main__':
     unittest.main()
 

@@ -30,18 +30,21 @@ Unlabeled corpus 6358
 \subsubsection{Métricas utilizadas}
 \begin{description}
     \item[Precisión] Mediremos cuántas preguntas del corpus de testing fueron etiquetadas correctamente por el clasificador.
-    \item[Precisión en preguntas reconocidas] Debido a la gran cantidad de preguntas no etiquetadas que no comparten semántica con las preguntas originales, mediremos cuántas preguntas del corpus que no corresponden a la clase "Otra" son correctamente clasificadas por el sistema.
+    \item[Precisión en preguntas reconocidas] Debido a la gran cantidad de preguntas no etiquetadas que no comparten semántica con las preguntas originales, mediremos cuántas preguntas del corpus que no corresponden a la clase ``Otra'' son correctamente clasificadas por el sistema.
 \end{description}
 
 \subsubsection{Baseline}
 Tomaremos como baseline dos métodos:
 \begin{description}
-    \item[]
+    \item[Selección de instancias y características al azar]
+    \item[Bootstraping normal utilizando EM]  % Vale la pena hacer esto?
 \end{description}
+
 
 \subsubsection{Experimento 1}
 \textbf{Hipótesis} El aprendizaje activo obtiene mejores resultados que un clasificador normal utilizando la misma cantidad de datos.
 Realizamos este experimento tanto sobre instancias como sobre características. Para eso, debimos elaborar un corpus etiquetado de instacias relacionándolas a una clase dada.
+
 
 \subsubsection{Experimento 2}
 \textbf{Hipótesis} El aprendizaje activo sobre instancias y características obtiene mejores resultados que el aprendizaje activo sobre instancias o características por separado.
@@ -49,9 +52,42 @@ Realizamos este experimento tanto sobre instancias como sobre características. 
 % Por cantidad de acciones que realiza un usuario?
 % Probablemente termine siendo el mismo experimento que el anterior
 
-\subsubsection{Experimento 2}
-\textbf{Hipótesis} El aprendizaje activo sobre instancias y características obtiene mejores resultados que el aprendizaje activo sobre instancias o características por separado.
+\subsubsection{Experimento 3}
+\textbf{Hipótesis} El aprendizaje supervisado sobre instancias y características obtiene mejores resultados que el aprendizaje supervisado sobre instancias, aún si las características son pocas.
 
+
+\subsubsection{Experimento 4}
+\textbf{Hipótesis} ??.
+
+La idea es ver qué método de selección de features es mejor:\\
+
+\textbf{Resultados}\\
+
+\begin{tabular}{||p{4cm} | l | l||}
+\hline
+ & Clase con probabilidad alta & Clase con probabilidad baja \\
+\hline
+Característica con probabilidad alta & medicion & medicion \\
+\hline
+Característica con probabilidad baja & medicion & medicion \\
+\hline
+\end{tabular}
+\hfill
+\begin{tabular}{||p{4cm} | l | l||}
+\hline
+ & Clase con probabilidad alta & Clase con probabilidad baja \\
+\hline
+Característica con IG alta & medicion & medicion \\
+\hline
+Característica con IG baja & medicion & medicion \\
+\hline
+
+\end{tabular}
+
+
+
+\subsubsection{Experimento 5}
+\textbf{Hipótesis} Seleccionar features para etiquetar que tengan alta confiabilidad/correlación, y luego de superado un cierto límite pasar a los que tiene baja confiabilidad/correlación permite al clasificador eliminar el ruido no introducido por la baja cantidad de ejemplos y al mismo tiempo expandir la cobertura.
 
 
 Cosas que quedan para hacer:

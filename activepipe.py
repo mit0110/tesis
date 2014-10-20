@@ -38,7 +38,7 @@ class ActivePipeline(object):
         self.user_vectors = []
         self.user_targets = []
         self.load_session()
-        self.pipeline.fit(self.training_vectors, training_target)
+        self.pipeline.fit(self.training_vectors, self.training_target)
         self._build_feature_boost()
         self.classes = self.classifier.classes_.tolist()  # No todos los clasificadores
         # van a tener esto.
@@ -47,12 +47,13 @@ class ActivePipeline(object):
     def _build_feature_boost(self):
         """Creates the user_features array with defaults values."""
         alpha = self.classifier.alpha
-        self.n_class, self.n_feat = self.classifier.feature_log_prob_.shape()
-        self.user_features = array([[alpha] * self.n_class] * self.n_feat)
+        self.n_class, self.n_feat = self.classifier.feature_log_prob_.shape
+        self.user_features = array([[alpha] * self.n_feat] * self.n_class)
 
     def _train(self):
-        self.pipeline.fit(self.user_vectors, self.user_targets,
-                          features=self.user_features)
+        self.pipeline.fit(self.training_vectors + self.user_vectors,
+                          self.training_target + self.user_targets,
+                          classifier__features=self.user_features)
         self.new_instances = 0
 
     def _get_corpus(self):
@@ -142,6 +143,7 @@ class ActivePipeline(object):
             prediction = [feature_names.index(f) for f in prediction]
 
             for feature in prediction:
+                print self.user_features.shape
                 self.user_features[class_number][feature] += \
                     self.config['feature_boost']
 
@@ -168,9 +170,11 @@ class ActivePipeline(object):
             A tuple where the first element is a class number and the second
             one a list of features numbers.
         """
+        selected_f_pos = self.classifier.feat_information_gain.argsort()[:20]
         feature_prob = self.classifier.feature_log_prob_
+        # This is the class with less certainty about its features.
         selected_class = feature_prob.sum(axis=1).argmax()
-        selected_f_pos = feature_prob[selected_class].argsort()[-10:]
+        # selected_f_pos = feature_prob[selected_class].argsort()[-10:]
         return selected_class, selected_f_pos
 
     def evaluate_test(self):
@@ -221,7 +225,9 @@ class ActivePipeline(object):
         Returns:
             False in case of error, True in case of success.
         """
-        if not (self.user_vectors or self.user_features) or not filename:
+        if not filename:
+            return False
+        if not (self.user_vectors != None or self.user_features != None):
             return False
 
         f = open(filename, 'w')

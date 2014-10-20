@@ -35,6 +35,7 @@ def literal_ner(words):
 
 def partial_matches(words):
     _, rules = words
+    import ipdb; ipdb.set_trace()
     return rules
 
 
