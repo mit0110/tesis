@@ -14,9 +14,10 @@ from feature_extraction import get_features
 
 
 def get_class(words, classes):
+    print classes
     print "*******************************************************"
     print "\nWhat is the correct template? Write the number or STOP\n"
-    question = ' '.join([word.token for word in words])
+    question = ' '.join([word.token for word in words[0]])
     print colored(question, "red", "on_white", attrs=["bold"])
     message = "{} - {}"
     for (counter, class_name) in enumerate(classes):
@@ -70,8 +71,8 @@ def main():
 
     pipe = ActivePipeline(session_filename=args.output_file,
                           emulate=args.emulate, **config)
-    #pipe.instance_bootstrap(get_class)
-    pipe.feature_boostrap(get_features_4_class)
+    pipe.instance_bootstrap(get_class)
+    #pipe.feature_bootstrap(get_features_4_class)
 
     print pipe.get_report()
 

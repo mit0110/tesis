@@ -55,7 +55,9 @@ def main():
     print "\tRecognized", len(recognized_q)
     print "\tUnrecognized", len(unrecognized_q)
 
-    quepy_classes = [q['target'] for q in q_corpus]
+    quepy_classes = []
+    for q in q_corpus:
+        quepy_classes += q['target']
 
     # Unlabeled
     o_u_corpus = pickle.load(original_unlabeled_corpus_f)
@@ -87,9 +89,11 @@ def main():
 
     print ''
     print "New classes found"
-    wrong_unlabeled_classes = [q['target'] for q in labeled_q
-                               if q['target'] not in quepy_classes and
-                               q['target'] != 'other']
+    wrong_unlabeled_classes = []
+    for q in labeled_q:
+        wrong_unlabeled_classes += [c for c in q['target']
+                                    if c not in quepy_classes and
+                                    c != 'other']
     print set(wrong_unlabeled_classes)
 
 if __name__ == '__main__':

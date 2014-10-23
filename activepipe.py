@@ -61,7 +61,7 @@ class ActivePipeline(object):
         self.training_corpus = pickle.load(training_corpus_f)
         training_corpus_f.close()
         self.training_vectors = [e['question'] for e in self.training_corpus]
-        self.training_target = [e['target'] for e in self.training_corpus]
+        self.training_target = [e['target'][0] for e in self.training_corpus]
 
         unlabeled_corpus_f = open(self.config['u_corpus_f'], 'r')
         # A list of dictionaries
@@ -75,7 +75,7 @@ class ActivePipeline(object):
         self.test_corpus = pickle.load(test_corpus_f)
         test_corpus_f.close()
         self.test_vectors = [e['question'] for e in self.test_corpus]
-        self.test_targets = [e['target'] for e in self.test_corpus]
+        self.test_targets = [e['target'][0] for e in self.test_corpus]
 
     def predict(self, question):
         return self.pipeline.predict(question)
@@ -85,6 +85,7 @@ class ActivePipeline(object):
         self.new_instances += 1
         self.user_vectors.append(instance)
         self.user_targets.append(prediction)
+        print self.user_vectors, self.user_targets, prediction
         self._train()
         return True
 
@@ -121,7 +122,7 @@ class ActivePipeline(object):
                 break
             self._process_prediction(new_instance, prediction)
 
-    def feature_boostrap(self, get_features_4_class):
+    def feature_bootstrap(self, get_features_4_class):
         """Presents a class and possible features until the predictio is stop.
 
         Args:
@@ -209,7 +210,7 @@ class ActivePipeline(object):
             u_question = next((q for q in self.unlabeled_corpus
                               if q['question'] == instances), None)
             if u_question and u_question['question'] == instances:
-                u_question['target'] = self.user_targets[index]
+                u_question['target'].append(self.user_targets[index])
         # Save file
         f = open(self.config['u_corpus_f'], 'w')
         pickle.dump(self.unlabeled_corpus, f)

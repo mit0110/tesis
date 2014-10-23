@@ -37,6 +37,8 @@ class FeatMultinomalNB(MultinomialNB):
         self._information_gain()
         return return_value
 
+    # def _update_feature_log_prob(self):
+
     def _information_gain(self):
         """Calculates the information gain for each feature.
 
