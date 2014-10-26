@@ -37,12 +37,14 @@ class ActivePipeline(object):
         self.test_corpus = None
         self.user_vectors = []
         self.user_targets = []
+        self.recorded_presition = []
         self.load_session()
         self.pipeline.fit(self.training_vectors, self.training_target)
         self._build_feature_boost()
         self.classes = self.classifier.classes_.tolist()  # No todos los clasificadores
         # van a tener esto.
         self.new_instances = 0
+        self.new_features = 0
 
     def _build_feature_boost(self):
         """Creates the user_features array with defaults values."""
@@ -51,10 +53,50 @@ class ActivePipeline(object):
         self.user_features = array([[alpha] * self.n_feat] * self.n_class)
 
     def _train(self):
+        """Fit the classifier with the training set plus the new vectors and
+        features. Then performs a step of EM.
+        """
         self.pipeline.fit(self.training_vectors + self.user_vectors,
                           self.training_target + self.user_targets,
                           classifier__features=self.user_features)
+        self.recorded_presition.append({
+            'testing_presition' : self.evaluate_test(),
+            'training_presition' : self.evaluate_training(),
+            'new_instances' : self.new_instances,
+            'new_features' : self.new_features,
+        })
         self.new_instances = 0
+        self.new_features = 0
+    
+    def _expectation_maximization(self):
+        """Performs one cicle of expectation maximization.
+
+        Adds to the training set the config['em_adding_instances'] most
+        probable instances and removes them from the unlabeled corpus.
+        """
+        # En este EM convendria agregar solo instancias que no sean de clase "otro"?
+        # Classify the unlabeled pool
+        u_questions = [e['question'] for e in self.unlabeled_corpus]
+        predicted_proba = self.pipeline.predict_proba(u_questions)
+        # Select the k most problable instances
+        # en el eje cero estan las clases
+        # cual es la clase mas probable para cada instancia
+        class_per_instance = array([x[len(self.classes)-1]
+                                   for x in predicted_proba.argsort(axis=1)])
+        # Probabilidad de la prediccion para la instancia i
+        prob_per_instance = predicted_proba.max(axis=1)
+        em_k = self.config['em_adding_instances']
+        selected_instances = prob_per_instance.argsort()[:em_k]
+        # Add the instances to the training_vectors
+        for i in selected_instances:
+            self.training_vectors.append(u_questions[i])
+            self.training_target.append(self.classes[class_per_instance[i]])
+
+        # Remove instances from the unlabeled corpus to avoid selecting them twice
+        selected_instances = selected_instances.tolist()
+        selected_instances.sort(reverse=True)
+        for i in selected_instances:
+            self.unlabeled_corpus.pop(i)
 
     def _get_corpus(self):
         training_corpus_f = open(self.config['training_corpus_f'], 'r')
@@ -120,6 +162,9 @@ class ActivePipeline(object):
                 prediction = get_class(new_instance, classes)
             if prediction == 'stop':
                 break
+            if prediction == 'train':
+                self._train()
+
             self._process_prediction(new_instance, prediction)
 
     def feature_bootstrap(self, get_features_4_class):
@@ -141,14 +186,17 @@ class ActivePipeline(object):
             prediction = get_features_4_class(class_name, feature_names)
             if prediction == 'stop':
                 break
+            if prediction == 'train':
+                self._train()
+
             prediction = [feature_names.index(f) for f in prediction]
 
             for feature in prediction:
                 print self.user_features.shape
                 self.user_features[class_number][feature] += \
                     self.config['feature_boost']
+                self.new_features += 1
 
-            self._train()
 
     def get_next_instance(self):
         """Selects an instance to be sent to the user.
@@ -255,9 +303,11 @@ class ActivePipeline(object):
         f = open(self.filename, 'r')
         loaded_data = pickle.load(f)
         f.close()
-        if len(loaded_data) == 2:
-            self.user_vectors, self.user_targets = loaded_data
-        elif len(loaded_data) == 3:
-            self.user_vectors, self.user_targets, self.user_features = loaded_data
+        if len(loaded_data) < 2:
+            return False
+        self.user_vectors = loaded_data[0]
+        self.user_targets = loaded_data[1]
+        self.user_features = loaded_data[2] if len(loaded_data) > 2 else None
+        self.recorded_presition = loaded_data[3] if len(loaded_data) > 3 else None
         return True
 

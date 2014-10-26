@@ -31,7 +31,7 @@ Unlabeled corpus 6358
 \begin{description}
     \item[Precisión] Mediremos cuántas preguntas del corpus de testing fueron etiquetadas correctamente por el clasificador.
     \item[Precisión en preguntas reconocidas] Debido a la gran cantidad de preguntas no etiquetadas que no comparten semántica con las preguntas originales, mediremos cuántas preguntas del corpus que no corresponden a la clase ``Otra'' son correctamente clasificadas por el sistema.
-    \item[Curva de aprendizaje]
+    \item[Curva de aprendizaje] Definimos la curva de aprendizaje como la presición del clasificador en función de la cantidad de ejemplos o características etiquetados necesarios.
 \end{description}
 
 \subsubsection{Baseline}
@@ -44,7 +44,9 @@ Tomaremos como baseline dos métodos:
 
 \subsubsection{Experimento 1}
 \textbf{Hipótesis} El aprendizaje activo obtiene mejores resultados que un clasificador normal utilizando la misma cantidad de datos.
-Realizamos este experimento tanto sobre instancias como sobre características. Para eso, debimos elaborar un corpus etiquetado de instacias relacionándolas a una clase dada.
+Realizamos este experimento tanto sobre instancias como sobre características. Para eso, debimos elaborar un corpus etiquetado de instacias relacionándolas a una o varias clases.
+Utilizamos un ciclo de bootstraping normal con EM donde en cada nueva iteración de agregan al conjunto de semillas las instancias que están más fuertemente asociadas a una clase.
+% Nota bibliográfica acá sobre bootstraping normal.
 
 
 \subsubsection{Experimento 2}

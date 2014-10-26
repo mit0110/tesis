@@ -1,4 +1,5 @@
 import numpy as np
+from math import log
 from sklearn.naive_bayes import MultinomialNB
 
 
@@ -55,7 +56,7 @@ class FeatMultinomalNB(MultinomialNB):
         # Features present in a class
         Ik_class = self.feature_count_ > 0
         # P(Ik)  -- Should we apply some smothing?
-        Ik_log_prob = np.log(Ik_class.sum(axis=0) / (len(self.classes_) + 0.0))
+        Ik_log_prob = np.log(Ik_class.sum(axis=0)) - log(len(self.classes_))
         aux = np.log(Ik_class_prob) - Ik_log_prob  # Shape (n_class, n_feat)
         aux = aux.T - self.class_log_prior_  # Shape (n_feat, n_class)
         aux = Ik_class_prob.T * aux

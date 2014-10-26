@@ -1,5 +1,6 @@
 from featmultinomial import FeatMultinomalNB
-from sklearn.feature_extraction.text import CountVectorizer
+from feature_extraction import get_features
+
 
 MAX_NGRAMS = 3
 
@@ -16,7 +17,7 @@ default_config = {
     'classifier': FeatMultinomalNB,
 
     # Features
-    'features': CountVectorizer(ngram_range=(1, MAX_NGRAMS)),
-    'feature_boost': 0.5
-
+    'features': get_features(),
+    'feature_boost': 0.5,
+    'em_adding_instances': 10
 }
