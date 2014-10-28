@@ -29,9 +29,11 @@ Unlabeled corpus 6358
 
 \subsubsection{Métricas utilizadas}
 \begin{description}
-    \item[Precisión] Mediremos cuántas preguntas del corpus de testing fueron etiquetadas correctamente por el clasificador.
+    \item[Precisión] Mediremos cuántas preguntas del corpus de testing fueron etiquetadas correctamente por el clasificador. (accuracy)
     \item[Precisión en preguntas reconocidas] Debido a la gran cantidad de preguntas no etiquetadas que no comparten semántica con las preguntas originales, mediremos cuántas preguntas del corpus que no corresponden a la clase ``Otra'' son correctamente clasificadas por el sistema.
     \item[Curva de aprendizaje] Definimos la curva de aprendizaje como la presición del clasificador en función de la cantidad de ejemplos o características etiquetados necesarios.
+    \item Factor kappa  -- Puede ser complejo
+    \item precision y recall fijando cada clase (como si fuera una clasificación binaria)
 \end{description}
 
 \subsubsection{Baseline}
@@ -44,10 +46,16 @@ Tomaremos como baseline dos métodos:
 
 \subsubsection{Experimento 1}
 \textbf{Hipótesis} El aprendizaje activo obtiene mejores resultados que un clasificador normal utilizando la misma cantidad de datos.
-Realizamos este experimento tanto sobre instancias como sobre características. Para eso, debimos elaborar un corpus etiquetado de instacias relacionándolas a una o varias clases.
+Realizamos este experimento tanto sobre instancias como sobre características.
 Utilizamos un ciclo de bootstraping normal con EM donde en cada nueva iteración de agregan al conjunto de semillas las instancias que están más fuertemente asociadas a una clase.
 % Nota bibliográfica acá sobre bootstraping normal.
+Para emular el aprendizaje activo sobre características utilizamos seleccionamos para agregar
+al nuevo conjunto de semillas las características con mayor ganancia de información asociadas a la clase más fuertemente asociada a ellas en base a coocurrencia. %cita a closing the loop
 
+aprendizaje sobre instancias
+sobre features
+sobre ambos
+sobre ninguno 
 
 \subsubsection{Experimento 2}
 \textbf{Hipótesis} El aprendizaje activo sobre instancias y características obtiene mejores resultados que el aprendizaje activo sobre instancias o características por separado.
@@ -63,6 +71,10 @@ Utilizamos un ciclo de bootstraping normal con EM donde en cada nueva iteración
 \textbf{Hipótesis} ??.
 
 La idea es ver qué método de selección de features es mejor:\\
+
+Puede ser trabajo futuro
+
+
 
 \textbf{Resultados}\\
 
@@ -91,6 +103,12 @@ Característica con IG baja & medicion & medicion \\
 
 \subsubsection{Experimento 5}
 \textbf{Hipótesis} Seleccionar features para etiquetar que tengan alta confiabilidad/correlación, y luego de superado un cierto límite pasar a los que tiene baja confiabilidad/correlación permite al clasificador eliminar el ruido no introducido por la baja cantidad de ejemplos y al mismo tiempo expandir la cobertura.
+Dejar para mas adelante
+
+
+Experimento Entrenamiento supervisado con y sin etiquetado de  features
+Validacion del etiquetado de features
+
 
 
 Experimento 6
@@ -100,5 +118,4 @@ IG sobre el corpus anotado + frecuencia en no anotado vs IG sobre todo el corpus
 
 Experimento 7
 Coocurrencia de features con otros features. (Información mutua)
-
-
+Un feature se rankea mas alto si coocurre con features que se rankean alto. Tomando como base la frecuencia.
