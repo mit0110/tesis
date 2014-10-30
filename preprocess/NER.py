@@ -15,9 +15,9 @@ import pickle
 from docopt import docopt
 from literal_ner import LiteralNER
 
-lner = LiteralNER()
 
 def process_corpus(input_filename, output_filename):
+    lner = LiteralNER()
     input_f = open(input_filename, 'r')
     original_corpus = pickle.load(input_f)
     input_f.close()
