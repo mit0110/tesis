@@ -6,9 +6,9 @@ MAX_NGRAMS = 3
 
 default_config = {
     # Corpus files
-    'u_corpus_f': 'corpus/unlabeled_corpus.pickle',
-    'test_corpus_f': 'corpus/test_corpus.pickle',
-    'training_corpus_f': 'corpus/training_corpus.pickle',
+    'u_corpus_f': 'corpus/unlabeled_new_corpus.pickle',
+    'test_corpus_f': 'corpus/test_new_corpus.pickle',
+    'training_corpus_f': 'corpus/training_new_corpus.pickle',
 
     # Options to be displayed
     'number_of_options': 30,

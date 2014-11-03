@@ -6,6 +6,7 @@ from corpus import Corpus
 from math import log
 from numpy import array
 from random import randint
+from scipy.sparse import vstack
 from sklearn.metrics import precision_score, classification_report
 from termcolor import colored
 
@@ -26,15 +27,15 @@ class ActivePipeline(object):
         self._get_corpus()
         self.recorded_precision = []
         self.load_session()
-        self._train()
-        self._build_feature_boost()
-        self.classes = self.classifier.classes_.tolist()
+        self.user_features = None
         self.new_instances = 0
         self.new_features = 0
+        self._train()
+        self._build_feature_boost()
 
     def _get_corpus(self):
-        training_corpus = Corpus()
-        training_corpus.load_from_file(self.config['training_corpus_f'])
+        self.training_corpus = Corpus()
+        self.training_corpus.load_from_file(self.config['training_corpus_f'])
 
         self.unlabeled_corpus = Corpus()
         self.unlabeled_corpus.load_from_file(self.config['u_corpus_f'])
@@ -54,11 +55,18 @@ class ActivePipeline(object):
         """Fit the classifier with the training set plus the new vectors and
         features. Then performs a step of EM.
         """
-        self.classifier.fit(
-            (self.training_corpus.instances + self.user_corpus.instances),
-            (self.training_corpus.targets + self.user_corpus.targets),
-            classifier__features=self.user_features
-        )
+        if len(self.user_corpus):
+            self.classifier.fit(
+                vstack((self.training_corpus.instances,
+                        self.user_corpus.instances), format='csr'),
+                (self.training_corpus.primary_targets +
+                 self.user_corpus.primary_targets),
+                features=self.user_features
+            )
+        else:
+            self.classifier.fit(self.training_corpus.instances,
+                                self.training_corpus.primary_targets,
+                                features=self.user_features)
         self.recorded_precision.append({
             'testing_presition' : self.evaluate_test(),
             'training_presition' : self.evaluate_training(),
@@ -67,7 +75,7 @@ class ActivePipeline(object):
         })
         self.new_instances = 0
         self.new_features = 0
-        self._expectation_maximization()
+        self.classes = self.classifier.classes_.tolist()
 
     def _expectation_maximization(self):
         """Performs one cicle of expectation maximization.
@@ -90,7 +98,8 @@ class ActivePipeline(object):
         em_k = self.config['em_adding_instances']
         selected_instances = prob_per_instance.argsort()[:em_k]
         # Add instances to training_corpus and remove them from unlabeled_corpus
-        for i in selected_instances:
+        selected_instances.sort()
+        for i in selected_instances[::-1]:
             self.training_corpus.add_instance(
                 *self.unlabeled_corpus.pop_instance(i)
             )
@@ -110,18 +119,21 @@ class ActivePipeline(object):
             new_index = self.get_next_instance()
             new_instance = self.unlabeled_corpus.instances[new_index]
             representation = self.unlabeled_corpus.representations[new_index]
-            if self.emulate and self.unlabeled_corpus.targets[new_index]:
-                prediction = self.unlabeled_corpus.targets[new_index][0]
+            if (self.emulate and
+                self.unlabeled_corpus.primary_targets[new_index]):
+                prediction = self.unlabeled_corpus.primary_targets[new_index][0]
                 message = "Adding instance {}, {}".format(representation,
                                                           prediction)
                 print colored(message, "red")
-            if not self.emulate or not self.unlabeled_corpus.targets[new_index]:
+            if (not self.emulate or
+                not self.unlabeled_corpus.primary_targets[new_index]):
                 classes = self._most_probable_classes(new_instance)
                 prediction = get_class(representation, classes)
             if prediction == 'stop':
                 break
             if prediction == 'train':
                 self._train()
+                self._expectation_maximization()
 
             self.new_instances += 1
             self.user_corpus.add_instance(
@@ -150,6 +162,7 @@ class ActivePipeline(object):
                 break
             if prediction == 'train':
                 self._train()
+                self._expectation_maximization()
 
             prediction = [feature_names.index(f) for f in prediction]
 
@@ -169,7 +182,8 @@ class ActivePipeline(object):
             A list of classes of len given by the number_of_options in the
             initial configuration.
         """
-        classes = self.classifier.predict_log_proba([new_instance])
+        import ipdb; ipdb.set_trace()
+        classes = self.classifier.predict_log_proba(instance)
         indexes = classes.argsort()
         result = []
         indexes = indexes[0].tolist()
@@ -188,7 +202,7 @@ class ActivePipeline(object):
             The index of an instance selected from the unlabeled_corpus.
         """
         try:
-            index = ranint(0, len(self.unlabeled_corpus))
+            index = randint(0, len(self.unlabeled_corpus))
             return index
         except IndexError:
             return None
@@ -214,7 +228,7 @@ class ActivePipeline(object):
             The score of the classifier over the test corpus
         """
         return self.classifier.score(self.test_corpus.instances,
-                                     self.test_corpus.targets)
+                                     self.test_corpus.primary_targets)
 
     def evaluate_training(self):
         """Evaluate the accuracy of the classifier with the labeled data.
@@ -224,7 +238,7 @@ class ActivePipeline(object):
         """
         # Agregamos la evidencia del usuario para evaluacion?
         return self.classifier.score(self.training_corpus.instances,
-                                     self.training_corpus.targets)
+                                     self.training_corpus.primary_targets)
 
     def get_report(self):
         """
@@ -233,7 +247,7 @@ class ActivePipeline(object):
             of the cassifier over the test corpus.
         """
         predicted_targets = self.predict(self.test_corpus.instances)
-        return classification_report(self.test_corpus.targets,
+        return classification_report(self.test_corpus.primary_targets,
                                      predicted_targets)
 
     def label_corpus(self):
