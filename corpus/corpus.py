@@ -32,11 +32,13 @@ class Corpus(object):
         (self.instances, self.full_targets, self.representations,
             self._features_vectorizer) = pickle.load(f)
         self.calculate_primary_targets()
+        f.close()
 
     def save_to_file(self, filename):
         f = open(filename, 'w')
         pickle.dump((self.instances, self.full_targets,
                      self.representations, self._features_vectorizer), f)
+        f.close()
 
     def calculate_primary_targets(self):
         """Selects the primary target for each instance from self.full_targets.
@@ -78,7 +80,7 @@ class Corpus(object):
             instance = csr_matrix(instance)
             self.instances = vstack((self.instances, instance), format='csr')
         else:
-            self.instances = csr_matrix([instance])
+            self.instances = csr_matrix(instance)
         self.full_targets.append(target)
         self.representations.append(representation)
         if target:

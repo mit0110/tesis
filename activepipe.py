@@ -182,7 +182,6 @@ class ActivePipeline(object):
             A list of classes of len given by the number_of_options in the
             initial configuration.
         """
-        import ipdb; ipdb.set_trace()
         classes = self.classifier.predict_log_proba(instance)
         indexes = classes.argsort()
         result = []

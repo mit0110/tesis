@@ -13,7 +13,8 @@ import pickle
 from docopt import docopt
 from feature_extraction import get_features
 from corpus import Corpus
-from sklearn.preprocessing import Normalizer
+from sklearn.preprocessing import Normalizer, MinMaxScaler
+from scipy.sparse import csr_matrix
 
 
 def _get_repr(word_list):
@@ -41,26 +42,29 @@ def process_corpus(tr_in_filename, te_in_filename, u_in_filename,
     vect = get_features()
     vect.fit(tr_instances + te_instances + u_instances)
     v_instances = vect.transform(tr_instances + te_instances + u_instances)
-    norm = Normalizer()
-    v_instances = norm.fit_transform(v_instances)
+    # norm = Normalizer()
+    # v_instances = norm.fit_transform(v_instances)
+    mm_scaler = MinMaxScaler()
+    v_instances = csr_matrix(mm_scaler.fit_transform(v_instances.todense()))
+
 
     tr_corpus = Corpus()
     tr_corpus.instances = v_instances[:len(tr_instances)]
-    tr_corpus.targets = [d['target'] for d in tr_original_corpus]
+    tr_corpus.full_targets = [d['target'] for d in tr_original_corpus]
     tr_corpus.representations = [_get_repr(i[0]) for i in tr_instances]
     tr_corpus._features_vectorizer = vect
     tr_corpus.save_to_file(tr_out_filename)
 
     te_corpus = Corpus()
     te_corpus.instances = v_instances[:len(te_instances)]
-    te_corpus.targets = [d['target'] for d in te_original_corpus]
+    te_corpus.full_targets = [d['target'] for d in te_original_corpus]
     te_corpus.representations = [_get_repr(i[0]) for i in te_instances]
     te_corpus._features_vectorizer = vect
     te_corpus.save_to_file(te_out_filename)
 
     u_corpus = Corpus()
     u_corpus.instances = v_instances[:len(u_instances)]
-    u_corpus.targets = [d['target'] if 'target' in d else []
+    u_corpus.full_targets = [d['target'] if 'target' in d else []
                         for d in u_original_corpus]
     u_corpus.representations = [_get_repr(i[0]) for i in u_instances]
     u_corpus._features_vectorizer = vect

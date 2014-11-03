@@ -51,22 +51,22 @@ class FeatMultinomalNB(MultinomialNB):
         """
         # Agrego el +1 para eliminar los 0, asi es como se hace?
         # Probability of the presence of a feature and a class.
-        Ik_class_prob = (self.feature_count_ + 1.0) / (self.training_instances + 0.0)
-
+        feat_and_class_prob = (self.feature_count_) / (self.training_instances + 0.0)
         # Features present in a class
-        Ik_class = self.feature_count_ > 0
+        feat_per_class = self.feature_count_ > 0
         # P(Ik)  -- Should we apply some smothing?
-        Ik_log_prob = np.log(Ik_class.sum(axis=0)) - log(len(self.classes_))
-        aux = np.log(Ik_class_prob) - Ik_log_prob  # Shape (n_class, n_feat)
+        Ik_log_prob = np.log(feat_per_class.sum(axis=0)) - log(len(self.classes_))
+        aux = np.log(feat_and_class_prob) - Ik_log_prob  # Shape (n_class, n_feat)
         aux = aux.T - self.class_log_prior_  # Shape (n_feat, n_class)
-        aux = Ik_class_prob.T * aux
+        aux = feat_and_class_prob.T * aux
 
-        Ik_class = self.feature_count_ == 0
+        feat_per_class = self.feature_count_ == 0
         # P(Ik)  -- Should we apply some smothing?
-        Ik_log_prob = np.log(Ik_class.sum(axis=0) / (len(self.classes_) + 0.0))
+        Ik_log_prob = np.log(feat_per_class.sum(axis=0) / (len(self.classes_) + 0.0))
         # Agrego el +1 para eliminar los 0, asi es como se hace?
-        aux2 = np.log(Ik_class_prob) - Ik_log_prob  # Shape (n_class, n_feat)
+        aux2 = np.log(1 - feat_and_class_prob) - Ik_log_prob  # Shape (n_class, n_feat)
         aux2 = aux2.T - self.class_log_prior_  # Shape (n_feat, n_class)
-        aux2 = Ik_class_prob.T * aux2
+        aux2 = (1 - feat_and_class_prob.T) * aux2
+
 
         self.feat_information_gain = aux.sum(axis=1) + aux2.sum(axis=1) # Shape (n_feat)
