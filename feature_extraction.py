@@ -14,12 +14,12 @@ freebase_app = install('quepyapp_freebase')
 # @output_schema(list(str), lambda l: len(l) > 0)
 def postags(words):
     words= words[0]
-    return [word.pos for word in words]
+    return set([word.pos for word in words])
 
 
 def lemmas(words):
     words = words[0]
-    return [word.lemma for word in words]
+    return set([word.lemma for word in words])
 
 
 def partial_matches(words):

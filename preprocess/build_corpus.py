@@ -15,6 +15,7 @@ from feature_extraction import get_features
 from corpus import Corpus
 from sklearn.preprocessing import Normalizer, MinMaxScaler
 from scipy.sparse import csr_matrix
+from scipy import int8
 
 
 def _get_repr(word_list):
@@ -42,11 +43,7 @@ def process_corpus(tr_in_filename, te_in_filename, u_in_filename,
     vect = get_features()
     vect.fit(tr_instances + te_instances + u_instances)
     v_instances = vect.transform(tr_instances + te_instances + u_instances)
-    # norm = Normalizer()
-    # v_instances = norm.fit_transform(v_instances)
-    mm_scaler = MinMaxScaler()
-    v_instances = csr_matrix(mm_scaler.fit_transform(v_instances.todense()))
-
+    v_instances = csr_matrix(v_instances > 0, dtype=int8)
 
     tr_corpus = Corpus()
     tr_corpus.instances = v_instances[:len(tr_instances)]

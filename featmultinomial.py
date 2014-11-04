@@ -68,5 +68,4 @@ class FeatMultinomalNB(MultinomialNB):
         aux2 = aux2.T - self.class_log_prior_  # Shape (n_feat, n_class)
         aux2 = (1 - feat_and_class_prob.T) * aux2
 
-
         self.feat_information_gain = aux.sum(axis=1) + aux2.sum(axis=1) # Shape (n_feat)
