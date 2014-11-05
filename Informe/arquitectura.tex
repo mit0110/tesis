@@ -38,7 +38,3 @@ Si bien ésta aproximación es altamente paramétrica, cabe destacar que permite
 
 % Descripción del ciclo usuario - reentrenamiento - EM
 
-
-Problemas que encontramos
-
-Una aproximación simple al aprendije activo incluye reentrenar el clasificador en cada una de las iteraciones del ciclo, cambiando así el modelo. Al introducir el etiquetado de características ya no se puede cambiar el modelo sin perder rastro de la ubicación de las características etiquetadas dentro de las matrices internas del clasificador. Por esto es que tuvimos que cambiar la implementación básica y extraer todos las características dentro de la instancia de preproceso. De esta forma, nuestras matrices tienen toda la información tanto del corpus anotado como no anotado.
