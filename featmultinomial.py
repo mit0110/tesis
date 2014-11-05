@@ -1,6 +1,11 @@
 import numpy as np
-from math import log
+from math import log, exp
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.utils.extmath import safe_sparse_dot
+
+def _sanitize_logarithms(X):
+    """Changes the nan
+    """
 
 
 class FeatMultinomalNB(MultinomialNB):
@@ -33,12 +38,17 @@ class FeatMultinomalNB(MultinomialNB):
         """
         if features != None:
             self.alpha = features
-        self.training_instances = X.shape[0]
+        self.instance_num = X.shape[0]
         return_value = super(FeatMultinomalNB, self).fit(X, Y, sample_weight)
         self._information_gain()
+        self._information_gain2()
         return return_value
 
-    # def _update_feature_log_prob(self):
+    def _count(self, X, Y):
+        super(FeatMultinomalNB, self)._count(X, Y)
+        # Number of intances with class j and precense of feature k
+        # shape class, feat.
+        self.count_feat_and_class = safe_sparse_dot(Y.T, (X > 0))
 
     def _information_gain(self):
         """Calculates the information gain for each feature.
@@ -49,23 +59,33 @@ class FeatMultinomalNB(MultinomialNB):
         -------
         array-like, shape = [n_features]
         """
-        # Agrego el +1 para eliminar los 0, asi es como se hace?
-        # Probability of the presence of a feature and a class.
-        feat_and_class_prob = (self.feature_count_) / (self.training_instances + 0.0)
-        # Features present in a class
-        feat_per_class = self.feature_count_ > 0
-        # P(Ik)  -- Should we apply some smothing?
-        Ik_log_prob = np.log(feat_per_class.sum(axis=0)) - log(len(self.classes_))
-        aux = np.log(feat_and_class_prob) - Ik_log_prob  # Shape (n_class, n_feat)
-        aux = aux.T - self.class_log_prior_  # Shape (n_feat, n_class)
-        aux = feat_and_class_prob.T * aux
+        prob_Ik1_and_class = self.count_feat_and_class / self.instance_num
+        prob_Ik1 = self.count_feat_and_class.sum(axis=0) / self.instance_num
+        term1 = (prob_Ik1_and_class *
+                 ((np.log(prob_Ik1_and_class) - np.log(prob_Ik1)).T -
+                  self.class_log_prior_).T)
+        prob_Ik0_and_class = ((self.count_feat_and_class.T -
+                               self.class_count_).T * -1 / self.instance_num)
+        term2 = (prob_Ik0_and_class *
+                 ((np.log(prob_Ik0_and_class) - np.log(1 - prob_Ik1)).T -
+                  self.class_log_prior_).T)
+        self.feat_information_gain = (np.nan_to_num(term1).sum(axis=0) +
+                                      np.nan_to_num(term2).sum(axis=0))
 
-        feat_per_class = self.feature_count_ == 0
-        # P(Ik)  -- Should we apply some smothing?
-        Ik_log_prob = np.log(feat_per_class.sum(axis=0) / (len(self.classes_) + 0.0))
-        # Agrego el +1 para eliminar los 0, asi es como se hace?
-        aux2 = np.log(1 - feat_and_class_prob) - Ik_log_prob  # Shape (n_class, n_feat)
-        aux2 = aux2.T - self.class_log_prior_  # Shape (n_feat, n_class)
-        aux2 = (1 - feat_and_class_prob.T) * aux2
 
-        self.feat_information_gain = aux.sum(axis=1) + aux2.sum(axis=1) # Shape (n_feat)
+    def _information_gain2(self):
+        # Remove the log
+        prob_Ik_given_class = exp(1) ** self.feature_log_prob_
+        prob_class = exp(1) ** self.class_log_prior_
+
+        log_prob_Ik_given_class = self.feature_log_prob_  # Asuncion fuerte
+        prob_Ik = np.dot(prob_Ik_given_class.T, prob_class)
+        log_prob_Ik = np.log(prob_Ik)
+        term1 = (prob_Ik_given_class * (log_prob_Ik_given_class - log_prob_Ik))
+        term1 = (term1.T * prob_class).sum(axis=1)
+
+        log_prob_Ik0_given_class = np.log(1 - prob_Ik_given_class)
+        term2 = ((1 - prob_Ik_given_class) * (log_prob_Ik0_given_class -
+                                              np.log(1-prob_Ik)))
+        term2 = (term2.T * prob_class).sum(axis=1)
+        self.feat_information_gain2 = term1 + term2
