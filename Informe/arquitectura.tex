@@ -38,3 +38,17 @@ Si bien ésta aproximación es altamente paramétrica, cabe destacar que permite
 
 % Descripción del ciclo usuario - reentrenamiento - EM
 
+\subsubsection{Maximización de la esperanza}
+El algoritmo de maximización de la esperanza es ampliamente utilizado para inferir parámetros desconocidos en una distribución que tiene estados latentes. Para esto, utiliza estimadores de máxima verosimilitud, y para clasificación el estado latente al que nos referimos es la misma clase. A grandes rasgos, el proceso funciona en dos pasos E y M, por sus siglas en inglés Expectation y Maximization.
+El paso E es el que calcula el valor esperado de la verosimilitud asumiendo que la distribución actual es verdadera y no existen variables no observadas. Para realizarlo, utilizamos el clasificador en su estado actual para etiquetar probabilisticamente el conjunto de datos no etiquetados, y asumimos dichas etiquetas como correctas. Con este conjunto de nuevos datos se calcula la verosimilitud del modelo.
+Recordemos que la verosimilitud es una función sobre los parámetros del modelo y un conjunto de datos que calcula la probabilidad de los valores tomados por cada variable aleatoria del modelo bajo dichos parámetros.
+Si los parámetros actuales fueran correctos, entonces la verosimilitud obtenida sería la verosimilitud real del modelo, pero si no lo son provee una cota inferior. Luego, como tenemos una función sin valores no observados, el paso M maximiza la función encontrando parámetros del modelo más adecuados. De esta forma optimizamos la cota inferior encontrada.
+Este paso se repite numerosas veces hasta lograr convengercia. Sin embargo tomamos ejemplo de Settles y realizamos una sola iteración, dado que argumenta que las siguientes iteraciones no aportan significativamente a la precisión del clasificador.
+
+%http://ai.stanford.edu/~chuongdo/papers/em_tutorial.pdf
+
+% http://stackoverflow.com/questions/11808074/what-is-an-intuitive-explanation-of-expectation-maximization-technique
+
+% http://cs.brown.edu/courses/cs195-5/fall2009/docs/lecture_11-12.pdf
+
+% http://cs229.stanford.edu/notes/cs229-notes8.pdf
