@@ -11,13 +11,21 @@ default_config = {
     'training_corpus_f': 'corpus/training_new_corpus.pickle',
 
     # Options to be displayed
-    'number_of_options': 10,
+    'number_of_classes': 10,
+    'number_of_features': 20,
 
     # Classifier
-    'classifier': FeatMultinomalNB,
+    'classifier': FeatMultinomalNB(),
 
     # Features
     'features': get_features(),
     'feature_boost': 0.5,
-    'em_adding_instances': 10
+    'em_adding_instances': 10,
+
+    # Active learning instance selection function
+    'get_next_instance': None,
+    # Active learning feature selection function
+    'get_next_features': None,
+    # Active learning class selection function
+    'get_class_options': None,
 }

@@ -20,10 +20,7 @@ class ActivePipeline(object):
     def __init__(self, session_filename='', emulate=False, **kwargs):
         self.filename = session_filename
         self.emulate = emulate
-        default_config.update(kwargs)
-        self.config = default_config
-        self.classifier = self.config['classifier']()
-        self.features = self.config['features']
+        self._set_config(kwargs)
         self._get_corpus()
         self.recorded_precision = []
         self.load_session()
@@ -33,15 +30,21 @@ class ActivePipeline(object):
         self._train()
         self._build_feature_boost()
 
+    def _set_config(self, config):
+        default_config.update(config)
+        for key, value in default_config.items():
+            if value is not None:
+                setattr(self, key, value)
+
     def _get_corpus(self):
         self.training_corpus = Corpus()
-        self.training_corpus.load_from_file(self.config['training_corpus_f'])
+        self.training_corpus.load_from_file(self.training_corpus_f)
 
         self.unlabeled_corpus = Corpus()
-        self.unlabeled_corpus.load_from_file(self.config['u_corpus_f'])
+        self.unlabeled_corpus.load_from_file(self.u_corpus_f)
 
         self.test_corpus = Corpus()
-        self.test_corpus.load_from_file(self.config['test_corpus_f'])
+        self.test_corpus.load_from_file(self.test_corpus_f)
 
         self.user_corpus = Corpus()
 
@@ -80,11 +83,11 @@ class ActivePipeline(object):
     def _expectation_maximization(self):
         """Performs one cicle of expectation maximization.
 
-        Adds to the training set the config['em_adding_instances'] most
+        Adds to the training set the em_adding_instances most
         probable instances and removes them from the unlabeled corpus.
         """
         # En este EM convendria agregar solo instancias que no sean de clase "otro"?
-        # Classify the unlabeled pool
+        # E-step: Classify the unlabeled pool
         predicted_proba = self.classifier.predict_proba(
             self.unlabeled_corpus.instances
         )
@@ -95,7 +98,7 @@ class ActivePipeline(object):
                                    for x in predicted_proba.argsort(axis=1)])
         # Probabilidad de la prediccion para la instancia i
         prob_per_instance = predicted_proba.max(axis=1)
-        em_k = self.config['em_adding_instances']
+        em_k = self.em_adding_instances
         selected_instances = prob_per_instance.argsort()[:em_k]
         # Add instances to training_corpus and remove them from unlabeled_corpus
         selected_instances.sort()
@@ -141,23 +144,27 @@ class ActivePipeline(object):
             )
 
 
-    def feature_bootstrap(self, get_class):
-        """Presents a class and possible features until the predictio is stop.
+    def feature_bootstrap(self, get_class, get_labeled_features):
+        """Presents a class and possible features until the prediction is stop.
 
         Args:
-            get_class: A function that receives a class and a list
+            get_class: A function that receives a list of classes and returns
+            one of them. Can return None in case of error.
+            get_labeled_features: A function that receives a class and a list
             of features. It must return a list of features associated with the
-            class.
+            class. Can return None in case of error.
         """
-        # Re train to get different classes.
-        # Don't ask for the same feature twice. Or not?
         stop = False
         while not stop:
-            class_number, feature_numbers = self.get_class_and_features()
-            class_name = self.classes[class_number]
+            class_name = get_class(self.get_class_options())
+            if not class_name:
+                continue
+            feature_numbers = self.get_next_features(class_name)
             feature_names = [self.training_corpus.get_feature_name(pos)
                              for pos in feature_numbers]
-            prediction = get_class(class_name, feature_names)
+            prediction = get_labeled_features(class_name, feature_names)
+            if not prediction:
+                continue
             if prediction == 'stop':
                 break
             if prediction == 'train':
@@ -168,7 +175,7 @@ class ActivePipeline(object):
 
             for feature in prediction:
                 self.user_features[class_number][feature] += \
-                    self.config['feature_boost']
+                    self.feature_boost
                 self.new_features += 1
 
 
@@ -179,7 +186,7 @@ class ActivePipeline(object):
             instance: a vector with the instance to be classified
 
         Returns:
-            A list of classes of len given by the number_of_options in the
+            A list of classes of len given by the number_of_classes in the
             initial configuration.
         """
         classes = self.classifier.predict_log_proba(instance)
@@ -187,7 +194,7 @@ class ActivePipeline(object):
         result = []
         indexes = indexes[0].tolist()
         indexes.reverse()
-        for index in indexes[:self.config['number_of_options']]:
+        for index in indexes[:self.number_of_classes]:
             result.append(self.classes[index])  # Class name
         result.append(self.classes[-1])
         return result
@@ -206,19 +213,24 @@ class ActivePipeline(object):
         except IndexError:
             return None
 
-    def get_class_and_features(self):
-        """Selects a class and a list of features to be sent to the oracle.
+    def get_class_options(self):
+        """Sorts a list of classes to present to the user by relevance.
+
+        The user will choose one to label features associated with the class.
 
         Returns:
-            A tuple where the first element is a class number and the second
-            one a list of features numbers.
+            A list of classes.
+        """
+        return self.classes
+
+    def get_next_features(self, class_name):
+        """Selects a  and a list of features to be sent to the oracle.
+
+        Returns:
+            A list of features numbers.
         """
         selected_f_pos = self.classifier.feat_information_gain.argsort()[:20]
-        feature_prob = self.classifier.feature_log_prob_
-        # This is the class with less certainty about its features.
-        selected_class = feature_prob.sum(axis=1).argmax()
-        # selected_f_pos = feature_prob[selected_class].argsort()[-10:]
-        return selected_class, selected_f_pos
+        return selected_f_pos
 
     def evaluate_test(self):
         """Evaluates the classifier with the testing set.
@@ -259,7 +271,7 @@ class ActivePipeline(object):
             The number of new classes added to the corpus.
         """
         self.unlabeled_corpus.concetenate_corpus(self.user_corpus)
-        self.unlabeled_corpus.save_to_file(self.config['u_corpus_f'])
+        self.unlabeled_corpus.save_to_file(self.u_corpus_f)
 
     def save_session(self, filename):
         """Saves the instances and targets introduced by the user in filename.

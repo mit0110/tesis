@@ -35,7 +35,24 @@ def get_class(instance, classes):
     return prediction
 
 
-def get_features_4_class(class_name, features):
+def get_class(classes_list):
+    print "*******************************************************"
+    print "Choose a class number to label its features"
+    for index, class_ in enumerate(classes_list):
+        print index, class_
+    line = raw_input(">>> ")
+    try:
+        index = int(index)
+    except ValueError:
+        print 'Choose a number'
+        return False
+    if index < 0 or index >= len(classes_list):
+        print 'Choose a number between 0 and ', len(classes_list)
+        return False
+    return classes_list[index]
+
+
+def get_labeled_features(class_name, features):
     print "*******************************************************"
     print "Insert the asociated feature numbers separated by a blank space."
     print class_name
@@ -71,7 +88,7 @@ def main():
     pipe = ActivePipeline(session_filename=args.output_file,
                           emulate=args.emulate, **config)
     # pipe.instance_bootstrap(get_class)
-    pipe.feature_bootstrap(get_features_4_class)
+    pipe.feature_bootstrap(get_class, get_labeled_features)
 
     print pipe.get_report()
 

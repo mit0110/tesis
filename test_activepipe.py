@@ -14,6 +14,7 @@ testing_config = {
     'u_corpus_f': 'test_files/unlabeled_corpus.pickle',
     'test_corpus_f': 'test_files/test_corpus.pickle',
     'training_corpus_f': 'test_files/training_corpus.pickle',
+    'dummy_config' : None
 }
 
 X = [
@@ -46,36 +47,7 @@ def _eq_crs_matrix(m1, m2):
 class TestActivePipe(unittest.TestCase):
 
     def setUp(self):
-        # def mock_get_corpus_fun(self):
-            # self.training_corpus = Corpus()
-            # self.training_corpus.instances = csr_matrix(X)
-            # self.training_corpus.full_targets = Y
-            # self.training_corpus.representations = ['r'] * len(X)
-            # self.training_corpus.calculate_primary_targets()
-            # self.training_corpus.save_to_file('test_files/training_corpus.pickle')
-            # self.unlabeled_corpus = Corpus()
-            # self.unlabeled_corpus.instances = csr_matrix(U_vectors)
-            # self.unlabeled_corpus.full_targets = [[]] * len(U_vectors)
-            # self.unlabeled_corpus.representations = ['u'] * len(U_vectors)
-            # self.unlabeled_corpus.calculate_primary_targets()
-            # self.unlabeled_corpus.save_to_file('test_files/unlabeled_corpus.pickle')
-            # self.user_corpus = Corpus()
-            # self.test_corpus = Corpus()
-            # self.test_corpus.instances = csr_matrix(T_vectors)
-            # self.test_corpus.full_targets = [[1]] * len(T_vectors)
-            # self.test_corpus.representations = ['u'] * len(T_vectors)
-            # self.test_corpus.calculate_primary_targets()
-            # self.test_corpus.save_to_file('test_files/test_corpus.pickle')
-
-        # self.mock_get_corpus = mock.patch(
-        #     'activepipe.ActivePipeline._get_corpus',
-        #     mock_get_corpus_fun
-        # )
-        # self.mock_get_corpus.start()
         self.pipe = ActivePipeline(**testing_config)
-
-    # def tearDown(self):
-    #     self.mock_get_corpus.stop()
 
     def test_em_select(self):
         """Tests if the rigth instances are selected to add in training vectors.
@@ -96,6 +68,15 @@ class TestActivePipe(unittest.TestCase):
         self.assertEqual(len(self.pipe.test_corpus), len(T_vectors))
         self.assertEqual(len(self.pipe.unlabeled_corpus), len(U_vectors))
         self.assertEqual(len(self.pipe.user_corpus), 0)
+
+    def test_set_config(self):
+        """Each configuration must be set as attribute if not None."""
+        for key, value in testing_config.items():
+            if value is not None:
+                self.assertTrue(hasattr(self.pipe, key))
+                self.assertEqual(getattr(self.pipe, key), value)
+            else:
+                self.assertFalse(hasattr(self.pipe, key))
 
 
 if __name__ == '__main__':

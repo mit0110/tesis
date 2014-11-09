@@ -9,6 +9,7 @@ import numpy as np
 from featmultinomial import FeatMultinomalNB
 from copy import deepcopy
 from math import log
+from sklearn import tree
 
 
 # I should use random numbers here!
@@ -110,6 +111,38 @@ class TestFeatMultinomialNB(unittest.TestCase):
         for i, answer in enumerate(ig):
             self.assertAlmostEqual(answer, ig_correct_anwers[i], places=4)
         self.assertTrue(np.all(ig.argsort() == [2, 3, 0, 1]))
+
+
+class TestIGwithDecisionTree(unittest.TestCase):
+    def setUp(self):
+      self.fmnb = FeatMultinomalNB()
+      self.dtree = tree.DecisionTreeClassifier(criterion='entropy',
+                                               min_samples_split=1,
+                                               min_samples_leaf=1)
+
+    def tearDown(self):
+      self.assertTrue(np.all(self.fmnb.feat_information_gain.argsort() ==
+                             self.dtree.feature_importances_.argsort()))
+
+    def test_ig_with_iris(self):
+      from sklearn.datasets import load_iris
+      iris = load_iris()
+      self.fmnb.fit((iris.data > 3), iris.target)
+      self.dtree.fit((iris.data > 3), iris.target)
+
+    def test_ig_with_bag_of_words(self):
+      from sklearn.feature_extraction.text import CountVectorizer
+      corpus = ['This is a corpus and the main',
+                'objective is to have senteces to simulate a sparse',
+                'matrix of features, on the opposite of the iris corpus',
+                'that has few features and all the features are present in all',
+                'the instances.',
+                'By the way, this all are documents.']
+      target = [1, 2, 3, 2, 1, 2]
+      vectorizer = CountVectorizer(min_df=1)
+      X = vectorizer.fit_transform(corpus)
+      self.fmnb.fit(X, target)
+      self.dtree.fit(X.todense(), target)
 
 
 if __name__ == '__main__':
