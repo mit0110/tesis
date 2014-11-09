@@ -4,8 +4,6 @@ from featureforge.feature import input_schema, output_schema
 from featureforge.vectorizer import Vectorizer
 from quepy import install
 
-from literal_ner import LiteralNER
-
 
 freebase_app = install('quepyapp_freebase')
 

@@ -14,7 +14,8 @@ testing_config = {
     'u_corpus_f': 'test_files/unlabeled_corpus.pickle',
     'test_corpus_f': 'test_files/test_corpus.pickle',
     'training_corpus_f': 'test_files/training_corpus.pickle',
-    'dummy_config' : None
+    'dummy_config' : None,
+    'number_of_features': 2,
 }
 
 X = [
@@ -77,6 +78,38 @@ class TestActivePipe(unittest.TestCase):
                 self.assertEqual(getattr(self.pipe, key), value)
             else:
                 self.assertFalse(hasattr(self.pipe, key))
+
+    def test_get_next_features(self):
+        """Tests if the features are selected in order of IG for the class."""
+        self.pipe.classifier.feat_information_gain = np.array([2, 0, 1])
+        feat_indexes = self.pipe.get_next_features(class_number=0)
+        self.assertEqual(feat_indexes, [2, 1])
+
+    def test_get_next_features_repeated(self):
+        """If the features where labeled, don't ask for them again."""
+        self.pipe.classifier.feat_information_gain = np.array([2, 0, 1])
+        self.pipe.user_features[0][0] = 5
+        self.pipe.user_features[0][2] = 5
+        feat_indexes = self.pipe.get_next_features(class_number=0)
+        self.assertEqual(feat_indexes, [1])
+
+    def test_handle_feature_prediction(self):
+        """Positive and negative examples must be added to user_features"""
+        class_number = 0
+        self.pipe.handle_feature_prediction(class_number, full_set=[0, 1, 2],
+                                            prediction=[1])
+        self.assertEqual(self.pipe.user_features[0][1],
+                         self.pipe.classifier.alpha + self.pipe.feature_boost,
+                         msg='Bad Positive Example')
+        self.assertEqual(self.pipe.user_features[0][2],
+                         self.pipe.classifier.alpha - self.pipe.feature_boost,
+                         msg='Bad negative Example')
+        self.assertEqual(self.pipe.user_features[0][0],
+                         self.pipe.classifier.alpha - self.pipe.feature_boost,
+                         msg='Bad negative Example')
+        self.assertTrue(np.all(self.pipe.user_features[1] ==
+                               self.pipe.classifier.alpha),
+                        msg='Change in non labeled feature')
 
 
 if __name__ == '__main__':

@@ -1,9 +1,6 @@
-import argparse
 import pickle
 
-from collections import defaultdict
 from corpus import Corpus
-from math import log
 from numpy import array
 from random import randint
 from scipy.sparse import vstack
@@ -31,6 +28,8 @@ class ActivePipeline(object):
         self._build_feature_boost()
 
     def _set_config(self, config):
+        """Sets the keys of config+default_config dict as an attribute of self.
+        """
         default_config.update(config)
         for key, value in default_config.items():
             if value is not None:
@@ -143,7 +142,6 @@ class ActivePipeline(object):
                 *self.unlabeled_corpus.pop_instance(new_index)
             )
 
-
     def feature_bootstrap(self, get_class, get_labeled_features):
         """Presents a class and possible features until the prediction is stop.
 
@@ -157,9 +155,13 @@ class ActivePipeline(object):
         stop = False
         while not stop:
             class_name = get_class(self.get_class_options())
+            print class_name
             if not class_name:
                 continue
-            feature_numbers = self.get_next_features(class_name)
+            if class_name == 'stop':
+                break
+            class_number = self.classes.index(class_name)
+            feature_numbers = self.get_next_features(class_number)
             feature_names = [self.training_corpus.get_feature_name(pos)
                              for pos in feature_numbers]
             prediction = get_labeled_features(class_name, feature_names)
@@ -170,14 +172,36 @@ class ActivePipeline(object):
             if prediction == 'train':
                 self._train()
                 self._expectation_maximization()
+                continue
 
             prediction = [feature_names.index(f) for f in prediction]
 
-            for feature in prediction:
-                self.user_features[class_number][feature] += \
-                    self.feature_boost
-                self.new_features += 1
+            self.handle_feature_prediction(class_number, feature_numbers,
+                                           prediction)
 
+    def handle_feature_prediction(self, class_number, full_set, prediction):
+        """Adds the new information from prediction to user_features.
+
+        Args:
+            class_number: an interger. The position of the class in self.classes
+            full_set: a list of positions of features that was given to the
+            user.
+            prediction: a list of positions of features selected for the class.
+            The features not present in this class are considered as negative
+            examples.
+        """
+        for feature in full_set:
+            if feature in prediction:
+                self.user_features[class_number][feature] += \
+                     self.feature_boost
+            else:
+                self.user_features[class_number][feature] -= \
+                     self.feature_boost
+        self.new_features += len(prediction)
+        # for feature in prediction:
+        #     self.user_features[class_number][feature] += \
+        #         self.feature_boost
+        #     self.new_features += 1
 
     def _most_probable_classes(self, instance):
         """Return a list of the most probable classes for the given instance.
@@ -223,14 +247,38 @@ class ActivePipeline(object):
         """
         return self.classes
 
-    def get_next_features(self, class_name):
+    def get_next_features(self, class_number):
         """Selects a  and a list of features to be sent to the oracle.
+
+        Args:
+            class_number: An interger. The position of the class where the
+            features will belong in the array self.classes.
 
         Returns:
             A list of features numbers.
         """
-        selected_f_pos = self.classifier.feat_information_gain.argsort()[:20]
-        return selected_f_pos
+        # Select the positions of the features that cooccur most with the class
+        selected_f_pos = self.classifier.feature_count_[class_number].argsort()
+        selected_f_pos = selected_f_pos[:-(self.number_of_features+1):-1]
+        selected_f_pos = selected_f_pos.tolist()
+        # Sort the features by IG
+        def sort_fun(i): return -1*self.classifier.feat_information_gain[i]
+        selected_f_pos.sort(key=sort_fun)
+        return [i for i in selected_f_pos
+                if self.user_features[class_number][i] ==
+                self.classifier.alpha]
+        # selected_f_pos = self.classifier.feat_information_gain.argsort()[:-100:-1]
+        # coocurrence_with_class = []
+        # for feat_pos in selected_f_pos:
+        #     coocurrence_with_class.append(
+        #         self.classifier.feature_count_[class_number][feat_pos]
+        #     )
+        # coocurrence_with_class = array(coocurrence_with_class)
+        # coocurrences_order = coocurrence_with_class.argsort()
+        # res = [selected_f_pos[i] for i in coocurrences_order[::-1]
+        #        if self.user_features[class_number][selected_f_pos[i]] ==
+        #           self.classifier.alpha]
+        # return array(res[:self.number_of_features])
 
     def evaluate_test(self):
         """Evaluates the classifier with the testing set.

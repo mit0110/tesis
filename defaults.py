@@ -24,8 +24,9 @@ default_config = {
 
     # Active learning instance selection function
     'get_next_instance': None,
-    # Active learning feature selection function
+    # Active learning feature selection functions
     'get_next_features': None,
+    'handle_feature_prediction': None,
     # Active learning class selection function
     'get_class_options': None,
 }

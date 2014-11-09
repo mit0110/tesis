@@ -37,6 +37,13 @@ Si bien ésta aproximación es altamente paramétrica, cabe destacar que permite
 \subsection{Arquitectura general}
 
 % Descripción del ciclo usuario - reentrenamiento - EM
+\subsubsection{Selección de instancias}
+\subsubsection{Selección de características}
+Las características son ordenadas luego del entrenamiento por su ganancia de información, que corresponde a:
+% fórmula IG
+La ganancia de información es propuesta por numerosos estudios como una forma de seleccionar las características más relevantes para clasificación de texto.
+% citar los textos que la mencionan.
+Para lograr una clasificación más sencilla, se crea una lista de las características más probables para cada clase. Luego, estas características se ordenan de acuerto a su ganancia de información.
 
 \subsubsection{Maximización de la esperanza}
 El algoritmo de maximización de la esperanza es ampliamente utilizado para inferir parámetros desconocidos en una distribución que tiene estados latentes. Para esto, utiliza estimadores de máxima verosimilitud, y para clasificación el estado latente al que nos referimos es la misma clase. A grandes rasgos, el proceso funciona en dos pasos E y M, por sus siglas en inglés Expectation y Maximization.

@@ -42,14 +42,14 @@ def get_class(classes_list):
         print index, class_
     line = raw_input(">>> ")
     try:
-        index = int(index)
+        line = int(line)
     except ValueError:
         print 'Choose a number'
-        return False
-    if index < 0 or index >= len(classes_list):
+        return line if (line == 'stop' or line == 'train') else None
+    if line < 0 or line >= len(classes_list):
         print 'Choose a number between 0 and ', len(classes_list)
         return False
-    return classes_list[index]
+    return classes_list[line]
 
 
 def get_labeled_features(class_name, features):
