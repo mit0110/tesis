@@ -231,6 +231,8 @@ class ActivePipeline(object):
         Returns:
             The index of an instance selected from the unlabeled_corpus.
         """
+
+        import ipdb; ipdb.set_trace()
         try:
             index = randint(0, len(self.unlabeled_corpus))
             return index
@@ -259,14 +261,16 @@ class ActivePipeline(object):
         """
         # Select the positions of the features that cooccur most with the class
         selected_f_pos = self.classifier.feature_count_[class_number].argsort()
+        # Eliminate labeled features
+        def non_seen_filter(i):
+            return self.user_features[class_number][i] == self.classifier.alpha
+        selected_f_pos = filter(non_seen_filter, selected_f_pos.tolist())
+
         selected_f_pos = selected_f_pos[:-(self.number_of_features+1):-1]
-        selected_f_pos = selected_f_pos.tolist()
         # Sort the features by IG
-        def sort_fun(i): return -1*self.classifier.feat_information_gain[i]
-        selected_f_pos.sort(key=sort_fun)
-        return [i for i in selected_f_pos
-                if self.user_features[class_number][i] ==
-                self.classifier.alpha]
+        def key_fun(i): return -1*self.classifier.feat_information_gain[i]
+        selected_f_pos.sort(key=key_fun)
+        return selected_f_pos
         # selected_f_pos = self.classifier.feat_information_gain.argsort()[:-100:-1]
         # coocurrence_with_class = []
         # for feat_pos in selected_f_pos:
