@@ -103,7 +103,6 @@ class TestFeatMultinomialNB(unittest.TestCase):
         feat_prior = self.fmnb.feature_log_prob_
         self.assertNotEqual(no_feat_prior[0][2], feat_prior[0][2])
         self.assertTrue(np.all(self.fmnb.alpha == features))
-#        self.assertEqual(no_feat_prior[0][2], feat_prior[0][2] - log(0.5))
 
     def test_information_gain(self):
         ig = self.fmnb.feat_information_gain
@@ -111,6 +110,28 @@ class TestFeatMultinomialNB(unittest.TestCase):
         for i, answer in enumerate(ig):
             self.assertAlmostEqual(answer, ig_correct_anwers[i], places=4)
         self.assertTrue(np.all(ig.argsort() == [2, 3, 0, 1]))
+
+    def test_instance_proba(self):
+        """
+        P(f0) = 0.4*0.25 + 0.6*0.75 = 0.55
+        P(f1) = 0.2*0.25 + 0.8*0.75 = 0.65
+        P(f2) = 0.5*0.25 + 0.5*0.75 = 0.5
+        P(I0) = 0.55**0 * 0.65**1 * 0.5**3 = 0.08125
+        P(I1) = 0.55**2 * 0.65**0 * 0.5**5 = 0.0094
+        P(I2) = 0.55**3 * 0.65**0 * 0.5**1 = 0.083
+        P(I3) = 0.55**0 * 0.65**4 * 0.5**0 = 0.1785
+        """
+        self.fmnb.feature_log_prob_ = np.log(np.array([[0.4, 0.2, 0.5],
+                                                       [0.6, 0.8, 0.5]]))
+        self.fmnb.class_log_prior_ = np.log(np.array([0.25, 0.75]))
+        instances = np.array([[0, 1, 3],
+                              [2, 0, 5],
+                              [3, 0, 1],
+                              [0, 4, 0]])
+        result = self.fmnb.instance_proba(instances)
+        expected = np.array([0.08125, 0.0094, 0.083, 0.1785])
+        self.assertEqual(result.shape, (4,))
+        np.testing.assert_array_almost_equal(result, expected, decimal=3)
 
 
 class TestIGwithDecisionTree(unittest.TestCase):

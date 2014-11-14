@@ -14,6 +14,7 @@ class TestCorpus(unittest.TestCase):
         self.co.full_targets = [[1], [2,3]]
         self.co.representations = ['representation1', 'representation2']
         self.co.calculate_primary_targets()
+        self.co.add_extra_info('extra_info1')
 
     def tearDown(self):
         self.assertTrue(self.co.check_consistency())
@@ -37,6 +38,22 @@ class TestCorpus(unittest.TestCase):
         self.assertEqual(len(self.co), 3)
         self.assertTrue(_eq_crs_matrix(csr_matrix([2, 3, 4]),
                                        self.co.instances[-1]))
+
+    def test_add_extra_info(self):
+        self.assertEqual(len(self.co.extra_info), 1)
+        self.assertIn('extra_info1', self.co.extra_info)
+
+    def test_add_extra_info_twice(self):
+        self.co.add_extra_info('extra_info1', values=[1, 1])
+        self.assertEqual(len(self.co.extra_info), 1)
+        self.assertIn('extra_info1', self.co.extra_info)
+        self.assertEqual(self.co.extra_info['extra_info1'], [1, 1])
+
+    def test_add_extra_info_second(self):
+        self.co.add_extra_info('extra_info2', values=[1, 1])
+        self.assertEqual(len(self.co.extra_info), 2)
+        self.assertIn('extra_info2', self.co.extra_info)
+        self.assertEqual(self.co.extra_info['extra_info2'], [1, 1])
 
     def test_pop_first_instance(self):
         result = self.co.pop_instance(0)
@@ -87,12 +104,14 @@ class TestCorpus(unittest.TestCase):
         new_corpus.add_instance([2, 3, 4], [2], 'representation3')
         new_corpus.add_instance([10, 4, 4], [1, 1, 2], 'representation3')
         new_corpus.calculate_primary_targets()
+        self.assertTrue(new_corpus.add_extra_info('extra_info1'))
 
         self.co.concetenate_corpus(new_corpus)
         self.assertEqual(len(self.co), 4)
 
     def test_concatenate_empty_corpus(self):
         new_corpus = Corpus()
+        self.assertTrue(new_corpus.add_extra_info('extra_info1'))
         self.co.concetenate_corpus(new_corpus)
         self.assertEqual(len(self.co), 2)
 

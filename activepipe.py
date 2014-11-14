@@ -1,10 +1,12 @@
 import pickle
+import numpy as np
 
 from corpus import Corpus
-from numpy import array
 from random import randint
 from scipy.sparse import vstack
 from sklearn.metrics import precision_score, classification_report
+from sklearn.utils.extmath import safe_sparse_dot
+from sklearn.preprocessing import normalize
 from termcolor import colored
 
 from defaults import default_config
@@ -48,10 +50,10 @@ class ActivePipeline(object):
         self.user_corpus = Corpus()
 
     def _build_feature_boost(self):
-        """Creates the user_features array with defaults values."""
+        """Creates the user_features np.array with defaults values."""
         alpha = self.classifier.alpha
         self.n_class, self.n_feat = self.classifier.feature_log_prob_.shape
-        self.user_features = array([[alpha] * self.n_feat] * self.n_class)
+        self.user_features = np.array([[alpha] * self.n_feat] * self.n_class)
 
     def _train(self):
         """Fit the classifier with the training set plus the new vectors and
@@ -78,33 +80,69 @@ class ActivePipeline(object):
         self.new_instances = 0
         self.new_features = 0
         self.classes = self.classifier.classes_.tolist()
+        self._retrained = True
 
     def _expectation_maximization(self):
         """Performs one cicle of expectation maximization.
 
-        Adds to the training set the em_adding_instances most
-        probable instances and removes them from the unlabeled corpus.
+        Re estimates the parameters of the multinomial (class_prior and
+        feature_log_prob_) to maximize the expected likelihood. The likelihood
+        is calculated with a probabilistic labeling of the unlabeled corpus
+        plus the known labels from the labeled corpus.
         """
-        # En este EM convendria agregar solo instancias que no sean de clase "otro"?
         # E-step: Classify the unlabeled pool
         predicted_proba = self.classifier.predict_proba(
             self.unlabeled_corpus.instances
         )
-        # Select the k most problable instances
-        # en el eje cero estan las clases
-        # cual es la clase mas probable para cada instancia
-        class_per_instance = array([x[len(self.classes)-1]
-                                   for x in predicted_proba.argsort(axis=1)])
-        # Probabilidad de la prediccion para la instancia i
-        prob_per_instance = predicted_proba.max(axis=1)
-        em_k = self.em_adding_instances
-        selected_instances = prob_per_instance.argsort()[:em_k]
-        # Add instances to training_corpus and remove them from unlabeled_corpus
-        selected_instances.sort()
-        for i in selected_instances[::-1]:
-            self.training_corpus.add_instance(
-                *self.unlabeled_corpus.pop_instance(i)
+        # M-step: Maximizing the likelihood
+        # Unlabeled component
+        instance_proba = self.classifier.instance_proba(
+            self.unlabeled_corpus.instances
+        )
+        predicted_proba = predicted_proba.T * instance_proba
+        class_prior = predicted_proba.sum(axis=1)
+        feature_prob = safe_sparse_dot(predicted_proba,
+                                      self.unlabeled_corpus.instances)
+
+        if len(self.training_corpus) != 0:
+            # Labeled component
+            instance_proba = self.classifier.instance_proba(
+                self.training_corpus.instances
             )
+            instance_class_matrix = self._get_instance_class_matrix()
+            predicted_proba = instance_class_matrix.T * instance_proba
+            l_class_prior = predicted_proba.sum(axis=1)
+            l_feat_prob = safe_sparse_dot(predicted_proba,
+                                          self.training_corpus.instances)
+            class_prior = 0.1 * class_prior + 0.9 * l_class_prior
+            feature_prob = 0.1 * feature_prob + 0.9 * l_feat_prob
+
+        self.classifier.class_log_prior_ = np.log(class_prior /
+                                                  class_prior.sum())
+        self.classifier.feature_log_prob_ = np.log(normalize(feature_prob,
+                                                             norm='l1'))
+
+    def _get_instance_class_matrix(self):
+        """Returns a binary matrix for the training instances and its labels.
+
+        Returns:
+            An array like, shape = [n_instances, n_class]. Each element is
+            one if the instances is labeled with the class in the training
+            corpus.
+        """
+        m1 = np.arange(len(self.classes))
+        m1 = m1.reshape((1, len(self.classes)))
+        m1 = np.repeat(m1, len(self.training_corpus), axis=0)
+        m2 = np.zeros((len(self.training_corpus), len(self.classes)))
+        for i in range(len(self.training_corpus)):
+            class_index = self.classes.index(
+                self.training_corpus.primary_targets[i]
+            )
+            m2[i] = class_index
+        result = (m1 == m2).astype(np.int8, copy=False)
+        assert np.all(result.sum(axis=1) == 1)
+        assert result.sum() == len(self.training_corpus)
+        return result
 
     def predict(self, question):
         return self.classifier.predict(question)
@@ -136,10 +174,12 @@ class ActivePipeline(object):
             if prediction == 'train':
                 self._train()
                 self._expectation_maximization()
+                continue
 
             self.new_instances += 1
+            instance, targets, r = self.unlabeled_corpus.pop_instance(new_index)
             self.user_corpus.add_instance(
-                *self.unlabeled_corpus.pop_instance(new_index)
+                instance, [prediction] + targets, r
             )
 
     def feature_bootstrap(self, get_class, get_labeled_features):
@@ -224,20 +264,31 @@ class ActivePipeline(object):
         return result
 
     def get_next_instance(self):
-        """Selects an instance to be sent to the user.
-
-        This is the core of the active learning algorithm.
+        """Selects the index of an unlabeled instance to be sent to the user.
 
         Returns:
             The index of an instance selected from the unlabeled_corpus.
         """
-
-        import ipdb; ipdb.set_trace()
-        try:
-            index = randint(0, len(self.unlabeled_corpus))
-            return index
-        except IndexError:
+        if len(self.unlabeled_corpus) == 0:
             return None
+        if self._retrained:
+            self.u_clasifications = self.classifier.predict_proba(
+                self.unlabeled_corpus.instances
+            )
+            entropy = self.u_clasifications * np.log(self.u_clasifications)
+            entropy = entropy.sum(axis=1)
+            entropy *= -1
+            self.unlabeled_corpus.add_extra_info('entropy', entropy.tolist())
+
+            self._retrained = False
+        # Select the instance
+        min_entropy = min(self.unlabeled_corpus.extra_info['entropy'])
+        return self.unlabeled_corpus.extra_info['entropy'].index(min_entropy)
+        # try:
+        #     index = randint(0, len(self.unlabeled_corpus))
+        #     return index
+        # except IndexError:
+        #     return None
 
     def get_class_options(self):
         """Sorts a list of classes to present to the user by relevance.
@@ -254,7 +305,7 @@ class ActivePipeline(object):
 
         Args:
             class_number: An interger. The position of the class where the
-            features will belong in the array self.classes.
+            features will belong in the np.array self.classes.
 
         Returns:
             A list of features numbers.
@@ -277,12 +328,12 @@ class ActivePipeline(object):
         #     coocurrence_with_class.append(
         #         self.classifier.feature_count_[class_number][feat_pos]
         #     )
-        # coocurrence_with_class = array(coocurrence_with_class)
+        # coocurrence_with_class = np.array(coocurrence_with_class)
         # coocurrences_order = coocurrence_with_class.argsort()
         # res = [selected_f_pos[i] for i in coocurrences_order[::-1]
         #        if self.user_features[class_number][selected_f_pos[i]] ==
         #           self.classifier.alpha]
-        # return array(res[:self.number_of_features])
+        # return np.array(res[:self.number_of_features])
 
     def evaluate_test(self):
         """Evaluates the classifier with the testing set.

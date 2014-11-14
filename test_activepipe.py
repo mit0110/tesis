@@ -4,9 +4,10 @@ import numpy as np
 import mock
 
 from activepipe import ActivePipeline
-from featureforge.vectorizer import Vectorizer
 from corpus import Corpus
+from featureforge.vectorizer import Vectorizer
 from scipy.sparse import csr_matrix
+from sklearn.preprocessing import normalize
 
 testing_config = {
     'features': Vectorizer([lambda x : x]),
@@ -41,27 +42,113 @@ T_vectors = [
 
 T_targets = [[1], [2]]
 
-def _eq_crs_matrix(m1, m2):
-    return not (m1 != m2).todense().any()
-
 
 class TestActivePipe(unittest.TestCase):
 
     def setUp(self):
         self.pipe = ActivePipeline(**testing_config)
+        self.instance_class_prob = np.array(
+            [[0.5, 0.5],
+             [0.25, 0.75],
+             [0.7, 0.3],
+             [0.1, 0.9],
+             [0.8, 0.2]]
+        )
+        self.instance_prob = np.array([0.02, 0.09, 0.01, 0.12, 0.08])
 
-    def test_em_select(self):
-        """Tests if the rigth instances are selected to add in training vectors.
+    def test_em_feat_class_no_labeled(self):
+        """Tests if the feature_log_prob matrix is calculated correctly.
+        P(fj|ck) = sum_i(P(xi) * fj(xi) * P(ck|xi))
+        P(f0|c0) = 0.5*0.02*1 + 0.25*0.09*1 + 0.7*0*0.01 + 0.1*1*0.12 + 0.8*2*0.08 = 0.1725
+        P(f0|c1) = 0.5*0.02*1 + 0.75*0.09*1 + 0.3*0*0.01 + 0.9*1*0.12 + 0.2*2*0.08 = 0.2175
+        P(f1|c0) = 0.5*0.02*1 + 0.25*0.09*1 + 0.7*0*0.01 + 0.1*0*0.12 + 0.8*2*0.08 = 0.1605
+        P(f1|c1) = 0.5*0.02*1 + 0.75*0.09*1 + 0.3*0*0.01 + 0.9*0*0.12 + 0.2*2*0.08 = 0.1095
+        P(f2|c0) = 0.5*0.02*1 + 0.25*0.09*2 + 0.7*1*0.01 + 0.1*0*0.12 + 0.8*2*0.08 = 0.19
+        P(f2|c1) = 0.5*0.02*1 + 0.75*0.09*2 + 0.3*1*0.01 + 0.9*0*0.12 + 0.2*2*0.08 = 0.18
         """
-        self.pipe._expectation_maximization()
-        self.assertTrue(_eq_crs_matrix(csr_matrix([1.0, 1.0, 1.0]),
-                                       self.pipe.training_corpus.instances[-1]))
-        self.assertTrue(_eq_crs_matrix(csr_matrix([1.0, 0.0, 0.0]),
-                                       self.pipe.training_corpus.instances[-2]))
-        self.assertTrue(_eq_crs_matrix(csr_matrix([2.0, 2.0, 2.0]),
-                                       self.pipe.training_corpus.instances[-3]))
+        expected = np.array([[0.32982792, 0.30688337, 0.36328872],
+                             [0.42899408, 0.21597633, 0.35502959]])
+        with mock.patch('featmultinomial.FeatMultinomalNB.predict_proba',
+                        return_value=self.instance_class_prob) as mock_pred:
+            with mock.patch('featmultinomial.FeatMultinomalNB.instance_proba',
+                            return_value=self.instance_prob) as mock_inst_p:
+                self.pipe.training_corpus = Corpus()
+                self.pipe._expectation_maximization()
+                np.testing.assert_array_almost_equal(
+                    self.pipe.classifier.feature_log_prob_,
+                    np.log(expected)
+                )
 
-        self.assertEqual(len(self.pipe.unlabeled_corpus), 2)
+    def test_em_class_no_labeled(self):
+        """Tests if the class_log_prior_ matrix is calculated correctly.
+        P(ck) = sum_i(P(xi) * P(ck|xi))
+        P(c0) = 0.5*0.02 + 0.25*0.09 + 0.7*0.01 + 0.1*0.12 + 0.8*0.08 = 0.1155
+        P(c1) = 0.5*0.02 + 0.75*0.09 + 0.3*0.01 + 0.9*0.12 + 0.2*0.08 = 0.2045
+        """
+        expected = np.array([0.3609375, 0.6390625])
+
+        with mock.patch('featmultinomial.FeatMultinomalNB.predict_proba',
+                        return_value=self.instance_class_prob) as mock_pred:
+            with mock.patch('featmultinomial.FeatMultinomalNB.instance_proba',
+                            return_value=self.instance_prob) as mock_inst_p:
+                self.pipe.training_corpus = Corpus()
+                self.pipe._expectation_maximization()
+                np.testing.assert_array_almost_equal(
+                    self.pipe.classifier.class_log_prior_,
+                    np.log(expected)
+                )
+
+    def test_em_feat_class(self):
+        """
+        P(fj|ck) = Pu(fj|ck) * 0.1 + 0.9* sum_i(P(xl_i) * fj(xl_i) * {0,1})
+        P(f0|c0) = 0.1 * 0.1725 + 0.9 * (0.02*0*0 + 0.09*1*1 + 0.01*0*1) = 0.09825
+        P(f0|c1) = 0.1 * 0.2175 + 0.9 * (0.02*0*1 + 0.09*1*0 + 0.01*0*0) = 0.02175
+        P(f1|c0) = 0.1 * 0.1605 + 0.9 * (0.02*1*0 + 0.09*1*1 + 0.01*1*1) = 0.10605
+        P(f1|c1) = 0.1 * 0.1095 + 0.9 * (0.02*1*1 + 0.09*1*0 + 0.01*1*0) = 0.02895
+        P(f2|c0) = 0.1 * 0.19 + 0.9 * (0.02*0*0 + 0.09*1*1 + 0.01*1*1) = 0.109
+        P(f2|c1) = 0.1 * 0.18 + 0.9 * (0.02*0*1 + 0.09*1*0 + 0.01*1*0) = 0.018
+        """
+        expected = np.array([[0.31359719, 0.3384934, 0.34790935],
+                             [0.31659388, 0.421397379, 0.262008733]])
+        instance_prob_fun = lambda s, x: self.instance_prob[:x.shape[0]]
+        with mock.patch('featmultinomial.FeatMultinomalNB.predict_proba',
+                        return_value=self.instance_class_prob) as mock_pred:
+            with mock.patch('featmultinomial.FeatMultinomalNB.instance_proba',
+                            new=instance_prob_fun) as mock_inst_p:
+                self.pipe._expectation_maximization()
+                np.testing.assert_array_almost_equal(
+                    self.pipe.classifier.feature_log_prob_,
+                    np.log(expected)
+                )
+
+    def test_em_class(self):
+        """Tests if the class_log_prior_ matrix is calculated correctly.
+        P(ck) = sum_i(P(xui) * P(ck|xui)) * 0.1 + sum_i(P(xli) * P(ck|xli)) * 0.9
+        P(c0) = 0.1155 * 0.1 + 0.9 * (0*0.02 + 1*0.09 + 1*0.01) = 0.10155
+        P(c1) = 0.2045 * 0.1 + 0.9 * (1*0.02 + 0*0.09 + 0*0.01) = 0.03845
+        """
+        expected = np.array([0.725357142, 0.27464285714])
+        instance_prob_fun = lambda s, x: self.instance_prob[:x.shape[0]]
+        with mock.patch('featmultinomial.FeatMultinomalNB.predict_proba',
+                        return_value=self.instance_class_prob) as mock_pred:
+            with mock.patch('featmultinomial.FeatMultinomalNB.instance_proba',
+                            new=instance_prob_fun) as mock_inst_p:
+                self.pipe._expectation_maximization()
+                np.testing.assert_array_almost_equal(
+                    self.pipe.classifier.class_log_prior_,
+                    np.log(expected)
+                )
+
+    def test_em_sum_to_one(self):
+        """Checks that both parameters estimated by the em step sums one."""
+        self.pipe._expectation_maximization()
+        self.assertAlmostEqual(
+            (np.exp(self.pipe.classifier.class_log_prior_)).sum(), 1
+        )
+        np.testing.assert_array_almost_equal(
+            (np.exp(self.pipe.classifier.feature_log_prob_)).sum(axis=1),
+            np.ones(2)
+        )
 
     def test_get_corpus(self):
         """Test the three corpus loaded from files."""
@@ -110,6 +197,25 @@ class TestActivePipe(unittest.TestCase):
         self.assertTrue(np.all(self.pipe.user_features[1] ==
                                self.pipe.classifier.alpha),
                         msg='Change in non labeled feature')
+
+    def test_get_next_instance(self):
+        """Checks next instance selection using entropy.
+        -E(1) = 0.5*log(0.5) + 0.5*log(0.5) = -0.6931471805599453
+        -E(2) = 0.25*log(0.25) + 0.75*log(0.75) = -0.5623351446188083
+        -E(3) = 0.7*log(0.7) + 0.3*log(0.3) = -0.6108643020548935
+        -E(4) = 0.1*log(0.1) + 0.9*log(0.9) = -0.3250829733914482
+        -E(5) = 0.8*log(0.8) + 0.2*log(0.2) = -0.5004024235381879
+        """
+        with mock.patch('featmultinomial.FeatMultinomalNB.predict_proba',
+                        return_value=self.instance_class_prob) as mock_method:
+            indexes = []
+            while len(self.pipe.unlabeled_corpus) != 0:
+                indexes.append(self.pipe.get_next_instance())
+                self.pipe.unlabeled_corpus.pop_instance(indexes[-1])
+            rigth_order = [3, 3, 1, 1, 0]
+            self.assertEqual(indexes, rigth_order)
+
+            self.assertIsNone(self.pipe.get_next_instance())
 
 
 if __name__ == '__main__':

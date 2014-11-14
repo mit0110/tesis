@@ -13,8 +13,7 @@ from activepipe import ActivePipeline
 from feature_extraction import get_features
 
 
-def get_class(instance, classes):
-    print classes
+def get_class_for_instance(instance, classes):
     print "*******************************************************"
     print "\nWhat is the correct template? Write the number or STOP\n"
     print colored(instance, "red", "on_white", attrs=["bold"])
@@ -22,15 +21,11 @@ def get_class(instance, classes):
     for (counter, class_name) in enumerate(classes):
         print message.format(counter, class_name)
     line = raw_input(">>> ")
-    if line.lower() == 'stop':
-        return 'stop'
-
     try:
         line = int(line)
         prediction = classes[line]
     except (ValueError, IndexError):
-        print colored("Please insert one of the listed numbers", "red")
-        return 'stop'
+        return line
     print colored("Adding result", "green")
     return prediction
 
@@ -87,8 +82,12 @@ def main():
 
     pipe = ActivePipeline(session_filename=args.output_file,
                           emulate=args.emulate, **config)
-    # pipe.instance_bootstrap(get_class)
-    pipe.feature_bootstrap(get_class, get_labeled_features)
+    try:
+        pipe.instance_bootstrap(get_class_for_instance)
+        #pipe.feature_bootstrap(get_class, get_labeled_features)
+    except:
+        pipe.save_session('sessions/error')
+        import ipdb; ipdb.set_trace()
 
     print pipe.get_report()
 

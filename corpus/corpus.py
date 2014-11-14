@@ -18,6 +18,9 @@ class Corpus(object):
         each instance.
         -- representations: a natural language representation for each of the
         instances.
+        -- extra_info: a dictionary where the values are lists. Each list
+        represents extra information about each instance, for example, entropy.
+        The default value for each list is 0.
 
     """
     def __init__(self):
@@ -26,6 +29,7 @@ class Corpus(object):
         self.primary_targets = []
         self.full_targets = []
         self._features_vectorizer = None
+        self.extra_info = {}
 
     def load_from_file(self, filename):
         f = open(filename, 'r')
@@ -84,10 +88,37 @@ class Corpus(object):
         self.full_targets.append(target)
         self.representations.append(representation)
         if target:
-            p_target = mode(target)[0] if mode(target)[1][0] != 1 else target[0]
-            self.primary_targets.append(p_target)
+            if mode(target)[1][0] != 1:
+                self.primary_targets.append(mode(target)[0][0])
+            else:
+                self.primary_targets.append(target[0])
         else:
             self.primary_targets.append(None)
+
+        for key in self.extra_info:
+            self.extra_info[key].append(0)
+
+    def add_extra_info(self, name, values=None):
+        """Appends a field into the extra_info dictionary with values.
+
+        If there is a field with that name in extra info, it will be replaced.
+
+        Args:
+            name: a string. It will be the key of the extra_info dictionary.
+            values: a list. The len of values must be the same as the len of the
+            corpus. If values is not provided, the extra_info field will be
+            assigned to a list of 0 of correct len.
+
+        Returns:
+            True in case of success, False in case of error.
+        """
+        if not values:
+            self.extra_info[name] = [0] * len(self)
+        elif isinstance(values, list) and len(values) == len(self):
+            self.extra_info[name] = values
+        else:
+            return False
+        return True
 
     def pop_instance(self, index):
         """Deletes the instance and returns a copy.
@@ -109,6 +140,8 @@ class Corpus(object):
         target = self.full_targets.pop(index)
         representation = self.representations.pop(index)
         self.primary_targets.pop(index)
+        for _, v in self.extra_info.items():
+            v.pop(index)
         return (row, target, representation)
 
     def __len__(self):
@@ -121,6 +154,8 @@ class Corpus(object):
 
         Does not check for duplicated values. The object owns the element of the
         new corpus after this call, consider passing a copy.
+
+        Both corpus must have the same extra_info fields.
 
         Args:
             new_corpus: an instance of Corpus. It must have the same amount
@@ -135,7 +170,15 @@ class Corpus(object):
         self.full_targets += new_corpus.full_targets
         self.representations += new_corpus.representations
         self.primary_targets += new_corpus.primary_targets
+        for k in self.extra_info:
+            self.extra_info[k] += new_corpus.extra_info[k]
 
     def check_consistency(self):
-        return (self.instances.shape[0] == len(self.full_targets) ==
-                len(self.primary_targets) == len(self.representations))
+        len_components = (self.instances.shape[0] == len(self.full_targets) ==
+                          len(self.primary_targets) ==
+                          len(self.representations))
+        len_extra_info = reduce(lambda x, y: x and y,
+                                [len(self.primary_targets) == len(i)
+                                 for i in self.extra_info.values()],
+                                True)
+        return len_components and len_extra_info

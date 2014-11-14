@@ -1,5 +1,5 @@
 import numpy as np
-from math import log, exp
+from math import log
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.utils.extmath import safe_sparse_dot
 
@@ -41,7 +41,6 @@ class FeatMultinomalNB(MultinomialNB):
         self.instance_num = X.shape[0]
         return_value = super(FeatMultinomalNB, self).fit(X, Y, sample_weight)
         self._information_gain()
-        self._information_gain2()
         return return_value
 
     def _count(self, X, Y):
@@ -54,10 +53,6 @@ class FeatMultinomalNB(MultinomialNB):
         """Calculates the information gain for each feature.
 
         Stores the value in self.feat_information_gain
-
-        Returns
-        -------
-        array-like, shape = [n_features]
         """
         prob_Ik1_and_class = self.count_feat_and_class / self.instance_num
         prob_Ik1 = self.count_feat_and_class.sum(axis=0) / self.instance_num
@@ -72,20 +67,18 @@ class FeatMultinomalNB(MultinomialNB):
         self.feat_information_gain = (np.nan_to_num(term1).sum(axis=0) +
                                       np.nan_to_num(term2).sum(axis=0))
 
+    def instance_proba(self, X):
+        """Calculates the probability of each instance in X.
 
-    def _information_gain2(self):
-        # Remove the log
-        prob_Ik_given_class = exp(1) ** self.feature_log_prob_
-        prob_class = exp(1) ** self.class_log_prior_
+        Parameters
+        ----------
+        X : {array-like, sparse matrix}, shape = [n_samples, n_features]
 
-        log_prob_Ik_given_class = self.feature_log_prob_  # Asuncion fuerte
-        prob_Ik = np.dot(prob_Ik_given_class.T, prob_class)
-        log_prob_Ik = np.log(prob_Ik)
-        term1 = (prob_Ik_given_class * (log_prob_Ik_given_class - log_prob_Ik))
-        term1 = (term1.T * prob_class).sum(axis=1)
-
-        log_prob_Ik0_given_class = np.log(1 - prob_Ik_given_class)
-        term2 = ((1 - prob_Ik_given_class) * (log_prob_Ik0_given_class -
-                                              np.log(1-prob_Ik)))
-        term2 = (term2.T * prob_class).sum(axis=1)
-        self.feat_information_gain2 = term1 + term2
+        Returns
+        -------
+        array-like, shape = [n_samples]
+        """
+        feat_prob = safe_sparse_dot(np.exp(self.class_log_prior_),
+                                    np.exp(self.feature_log_prob_)).T
+        instance_log_prob = safe_sparse_dot(X, np.log(feat_prob))
+        return np.exp(instance_log_prob)
