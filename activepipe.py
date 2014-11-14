@@ -54,6 +54,7 @@ class ActivePipeline(object):
         alpha = self.classifier.alpha
         self.n_class, self.n_feat = self.classifier.feature_log_prob_.shape
         self.user_features = np.array([[alpha] * self.n_feat] * self.n_class)
+        self.asked_features = self.user_features != alpha
 
     def _train(self):
         """Fit the classifier with the training set plus the new vectors and
@@ -234,9 +235,7 @@ class ActivePipeline(object):
             if feature in prediction:
                 self.user_features[class_number][feature] += \
                      self.feature_boost
-            else:
-                self.user_features[class_number][feature] -= \
-                     self.feature_boost
+            self.asked_features[class_number][feature] = True
         self.new_features += len(prediction)
         # for feature in prediction:
         #     self.user_features[class_number][feature] += \
@@ -314,7 +313,7 @@ class ActivePipeline(object):
         selected_f_pos = self.classifier.feature_count_[class_number].argsort()
         # Eliminate labeled features
         def non_seen_filter(i):
-            return self.user_features[class_number][i] == self.classifier.alpha
+            return not self.asked_features[class_number][i]
         selected_f_pos = filter(non_seen_filter, selected_f_pos.tolist())
 
         selected_f_pos = selected_f_pos[:-(self.number_of_features+1):-1]

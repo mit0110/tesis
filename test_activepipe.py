@@ -175,28 +175,31 @@ class TestActivePipe(unittest.TestCase):
     def test_get_next_features_repeated(self):
         """If the features where labeled, don't ask for them again."""
         self.pipe.classifier.feat_information_gain = np.array([2, 0, 1])
-        self.pipe.user_features[0][0] = 5
-        self.pipe.user_features[0][2] = 5
+        self.pipe.asked_features[0][0] = True
+        self.pipe.asked_features[0][2] = True
         feat_indexes = self.pipe.get_next_features(class_number=0)
         self.assertEqual(feat_indexes, [1])
 
     def test_handle_feature_prediction(self):
-        """Positive and negative examples must be added to user_features"""
+        """Positive and negative examples must be added to aked_features.
+
+        For positive examples, the user_features must be changed.
+        """
         class_number = 0
         self.pipe.handle_feature_prediction(class_number, full_set=[0, 1, 2],
                                             prediction=[1])
         self.assertEqual(self.pipe.user_features[0][1],
                          self.pipe.classifier.alpha + self.pipe.feature_boost,
                          msg='Bad Positive Example')
-        self.assertEqual(self.pipe.user_features[0][2],
-                         self.pipe.classifier.alpha - self.pipe.feature_boost,
-                         msg='Bad negative Example')
         self.assertEqual(self.pipe.user_features[0][0],
-                         self.pipe.classifier.alpha - self.pipe.feature_boost,
-                         msg='Bad negative Example')
+                         self.pipe.classifier.alpha,
+                         msg='Change in non labeled feature')
         self.assertTrue(np.all(self.pipe.user_features[1] ==
                                self.pipe.classifier.alpha),
                         msg='Change in non labeled feature')
+        self.assertTrue(self.pipe.asked_features[class_number][0])
+        self.assertTrue(self.pipe.asked_features[class_number][1])
+        self.assertTrue(self.pipe.asked_features[class_number][2])
 
     def test_get_next_instance(self):
         """Checks next instance selection using entropy.
