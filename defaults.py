@@ -18,7 +18,6 @@ default_config = {
     'classifier': FeatMultinomalNB(),
 
     # Features
-    'features': get_features(),
     'feature_boost': 0.5,
     'em_adding_instances': 10,
 

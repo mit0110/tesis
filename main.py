@@ -10,7 +10,6 @@ import argparse
 from termcolor import colored
 
 from activepipe import ActivePipeline
-from feature_extraction import get_features
 
 
 def get_class_for_instance(instance, classes):
@@ -67,11 +66,6 @@ def get_labeled_features(class_name, features):
     return result
 
 
-config = {
-    'features': get_features(),
-}
-
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--output_file', required=False,
@@ -81,10 +75,10 @@ def main():
     args = parser.parse_args()
 
     pipe = ActivePipeline(session_filename=args.output_file,
-                          emulate=args.emulate, **config)
+                          emulate=args.emulate)
     try:
-        pipe.instance_bootstrap(get_class_for_instance)
-        #pipe.feature_bootstrap(get_class, get_labeled_features)
+        #pipe.instance_bootstrap(get_class_for_instance)
+        pipe.feature_bootstrap(get_class, get_labeled_features)
     except:
         pipe.save_session('sessions/error')
         import ipdb; ipdb.set_trace()

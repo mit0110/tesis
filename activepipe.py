@@ -148,15 +148,19 @@ class ActivePipeline(object):
     def predict(self, question):
         return self.classifier.predict(question)
 
-    def instance_bootstrap(self, get_class):
+    def instance_bootstrap(self, get_class, max_iterations=None):
         """Presents a new question to the user until the answer is 'stop'.
 
         Args:
             get_class: A function that takes the representation of an instance
-            and a list of possible classes. Returns the correctclass for the
+            and a list of possible classes. Returns the correct class for the
             instance.
+            max_iterations: Optional. An interger. The cicle will execute at
+            most max_iterations times if the user does not enter stop before.
         """
-        while True:
+        it = 0
+        while not max_iterations or it < max_iterations:
+            it += 1
             new_index = self.get_next_instance()
             new_instance = self.unlabeled_corpus.instances[new_index]
             representation = self.unlabeled_corpus.representations[new_index]
@@ -183,7 +187,8 @@ class ActivePipeline(object):
                 instance, [prediction] + targets, r
             )
 
-    def feature_bootstrap(self, get_class, get_labeled_features):
+    def feature_bootstrap(self, get_class, get_labeled_features,
+                          max_iterations=None):
         """Presents a class and possible features until the prediction is stop.
 
         Args:
@@ -192,15 +197,21 @@ class ActivePipeline(object):
             get_labeled_features: A function that receives a class and a list
             of features. It must return a list of features associated with the
             class. Can return None in case of error.
+            max_iterations: Optional. An interger. The cicle will execute at
+            most max_iterations times if the user does not enter stop before.
         """
-        stop = False
-        while not stop:
+        it = 0
+        while not max_iterations or it < max_iterations:
+            it += 1
             class_name = get_class(self.get_class_options())
-            print class_name
             if not class_name:
                 continue
             if class_name == 'stop':
                 break
+            if class_name == 'train':
+                self._train()
+                self._expectation_maximization()
+                continue
             class_number = self.classes.index(class_name)
             feature_numbers = self.get_next_features(class_number)
             feature_names = [self.training_corpus.get_feature_name(pos)
@@ -237,10 +248,6 @@ class ActivePipeline(object):
                      self.feature_boost
             self.asked_features[class_number][feature] = True
         self.new_features += len(prediction)
-        # for feature in prediction:
-        #     self.user_features[class_number][feature] += \
-        #         self.feature_boost
-        #     self.new_features += 1
 
     def _most_probable_classes(self, instance):
         """Return a list of the most probable classes for the given instance.
@@ -258,7 +265,7 @@ class ActivePipeline(object):
         indexes = indexes[0].tolist()
         indexes.reverse()
         for index in indexes[:self.number_of_classes]:
-            result.append(self.classes[index])  # Class name
+            result.append(self.classes[index])
         result.append(self.classes[-1])
         return result
 
@@ -283,11 +290,6 @@ class ActivePipeline(object):
         # Select the instance
         min_entropy = min(self.unlabeled_corpus.extra_info['entropy'])
         return self.unlabeled_corpus.extra_info['entropy'].index(min_entropy)
-        # try:
-        #     index = randint(0, len(self.unlabeled_corpus))
-        #     return index
-        # except IndexError:
-        #     return None
 
     def get_class_options(self):
         """Sorts a list of classes to present to the user by relevance.
@@ -307,7 +309,7 @@ class ActivePipeline(object):
             features will belong in the np.array self.classes.
 
         Returns:
-            A list of features numbers.
+            A list of features numbers of size self.number_of_features.
         """
         # Select the positions of the features that cooccur most with the class
         selected_f_pos = self.classifier.feature_count_[class_number].argsort()
@@ -386,7 +388,7 @@ class ActivePipeline(object):
         """
         if not filename:
             return False
-        if not (self.user_vectors != None or self.user_features != None):
+        if not (len(self.user_corpus) != None or self.user_features != None):
             return False
 
         f = open(filename, 'w')
@@ -394,7 +396,8 @@ class ActivePipeline(object):
                    'unlabeled_corpus': self.unlabeled_corpus,
                    'user_corpus': self.user_corpus,
                    'user_features': self.user_features,
-                   'recorded_precision': self.recorded_precision}
+                   'recorded_precision': self.recorded_precision,
+                   'asked_features': self.asked_features}
         pickle.dump(to_save, f)
         f.close()
         return True
@@ -422,4 +425,6 @@ class ActivePipeline(object):
         self.user_corpus = loaded_data['user_corpus']
         self.user_features = loaded_data['user_features']
         self.recorded_precision = loaded_data['recorded_precision']
+        self.asked_features = loaded_data['asked_features']
         return True
+
