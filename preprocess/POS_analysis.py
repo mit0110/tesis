@@ -17,14 +17,28 @@ from quepy.tagger import get_tagger
 tagger = get_tagger()
 
 
+def process_instaces(instances):
+    """Runs the tagger in each 'question' of instances.
+
+    Args:
+        instances: a list of dictionaries. Each dictionaries must have the
+        key question with the instance to be tagged.
+
+    Returns:
+        A list of dictionaries equal to the one passed as argument but with
+        the value of question tagged.
+    """
+    for instance in original_corpus:
+        question = instance['question']
+        instance['question'] = tagger(unicode(question))
+
+
 def process_corpus(input_filename, output_filename):
     input_f = open(input_filename, 'r')
     original_corpus = pickle.load(input_f)
     input_f.close()
 
-    for instance in original_corpus:
-        question = instance['question']
-        instance['question'] = tagger(unicode(question))
+    process_instaces(original_corpus)
 
     output_f = open(output_filename, 'w')
     pickle.dump(original_corpus, output_f)

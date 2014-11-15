@@ -11,32 +11,45 @@ freebase_app = install('quepyapp_freebase')
 # @input_schema({'question': unicode})
 # @output_schema(list(str), lambda l: len(l) > 0)
 def postags(words):
-    words= words[0]
-    return set([word.pos for word in words])
+    words = words[0]
+    return set(['POS:' + word.pos for word in words])
 
 
 def lemmas(words):
     words = words[0]
-    return set([word.lemma for word in words])
+    return set(['Lemma:' + word.lemma for word in words])
+
+
+def bigrams(words):
+    words = words[0]
+    return ['Bigram:{0},{1}'.format(words[i].lemma, words[i+1].lemma)
+            for i in range(len(words)-1)]
+
+
+def trigrams(words):
+    words = words[0]
+    return ['Trigram:{0},{1},{2}'.format(words[i].lemma, words[i+1].lemma,
+                                         words[i+2].lemma)
+            for i in range(len(words)-2)]
 
 
 def partial_matches(words):
     rules = words[1]
-    return rules
+    return ['Rule:' + str(r) for r in rules]
 
 
 def literal_ners(words):
     if not words[2]:
         print "error", words
-        return ('None',)
-    return (words[2],)
+        return ('Named Entity:None',)
+    return ('Named Entity:' + words[2],)
 
 
 def literal_ners_types(words):
     if not words[3]:
         print "error2", words
-        return ('None',)
-    return words[3]
+        return ('Named Entity Type:None',)
+    return ['Named Entity Type:' + t for t in words[3]]
 
 
 def get_features():

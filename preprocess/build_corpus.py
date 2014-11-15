@@ -1,7 +1,7 @@
 """
-Applies the quepy tagger to the questions of the corpus.
+Transforms each dictionary with questions into a pickle Corpus instance.
 
-Both input file must have a pickled list of dictionaries with keys 'questions'.
+All input file must have a pickled list of dictionaries with keys 'questions'.
 Each question will be procesed with the features in the file feature_extraction.
 
 The output file will have a pickled instance of Corpus
