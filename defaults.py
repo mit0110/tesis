@@ -11,8 +11,8 @@ default_config = {
     'training_corpus_f': 'corpus/training_new_corpus.pickle',
 
     # Options to be displayed
-    'number_of_classes': 20,
-    'number_of_features': 20,
+    'number_of_classes': 30,
+    'number_of_features': 30,
 
     # Classifier
     'classifier': FeatMultinomalNB(),

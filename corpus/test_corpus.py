@@ -109,6 +109,15 @@ class TestCorpus(unittest.TestCase):
         self.co.concetenate_corpus(new_corpus)
         self.assertEqual(len(self.co), 4)
 
+    def test_concatenate_corpus_no_extra_info(self):
+        new_corpus = Corpus()
+        new_corpus.add_instance([2, 3, 4], [2], 'representation3')
+        new_corpus.add_instance([10, 4, 4], [1, 1, 2], 'representation3')
+        new_corpus.calculate_primary_targets()
+
+        self.co.concetenate_corpus(new_corpus)
+        self.assertEqual(len(self.co), 4)
+
     def test_concatenate_empty_corpus(self):
         new_corpus = Corpus()
         self.assertTrue(new_corpus.add_extra_info('extra_info1'))

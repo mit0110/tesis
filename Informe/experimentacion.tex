@@ -17,11 +17,16 @@ Quepy questions 115
 	Unrecognized 57
 Other questions 6658
 	Labeled 607
-	Unlabeled 6051
+    Unlabeled 6051
 
 Test corpus 250
 Training corpus 165
 Unlabeled corpus 6358
+
+\section{Usuarios Emulados}
+
+Para poder realizar experimentos automáticos sin que el usuario tenga que ingresar la misma información repretidas veces decidimos guardar las respuestas obtenidas. Por ello agregamos etiquetas al corpus no etiquetados, que por supuesto no son consultadas, y creamos un corpus de asociaciones características-clases.
+El corpus de características no es más que una matriz ternaria con tres valores posibles: asociación positiva, no asociación, desconocido. De esta forma también evitamos preguntar a un usuario por las características que ya han sido vistas pero no están relacionadas a ninguna clase en particular. Observemos que esta forma de guardar la información soporta etiquetas múltiples.
 
 \section{Experimentos realizados}
 
@@ -33,8 +38,12 @@ Unlabeled corpus 6358
 \begin{description}
     \item[Precisión] Mediremos cuántas preguntas del corpus de testing fueron etiquetadas correctamente por el clasificador, sobre el total de preguntas clasificadas.
     \item[Curva de aprendizaje] Definimos la curva de aprendizaje como la precisión del clasificador en función de la cantidad de ejemplos o características etiquetados necesarios.
+    % aprendizaje sobre instancias
+    % sobre features
+    % sobre ambos
+    % sobre ninguno
     \item Factor kappa  -- Puede ser complejo
-    \item [Precisión y recall por clase] Definimos precisión como 
+    \item [Precisión y recall por clase] Definimos precisión como
     % Agregar definiciones
 \end{description}
 
@@ -48,20 +57,15 @@ Tomaremos como baseline dos métodos:
 Los experimentos que solicitan al oráculo información sobre instancias y características se realizaron alternando pocas preguntas relativas a instancias y la misma cantidad relativas a características. Si bien los dos ciclos de etiquetado son completamente independientes en el sistema, tomamos esta desición para eliminar las diferencias entre experimentos que puedan introducirse a partir de la elección de los usuarios. Otra punto en el que difieren nuestros experimentos de una sesión no simulada con un usuario es la cantidad de veces que se reentrena. Con objeto de obtener una medición precisa de la curva de aprendizaje reentrenamos el clasificador luego de cada ronda intancias-características descriptas anteriormente. Esto es
 costoso para grandes volúmenes de datos y podría hacer perder al sistema su interactividad.
 
-\subsection{Experimento 1}
-\textbf{Hipótesis} El aprendizaje activo obtiene mejores resultados que un clasificador normal utilizando la misma cantidad de datos.
+\subsection{Hipótesis 1}
+\textbf{El aprendizaje activo obtiene mejores resultados que un clasificador normal utilizando la misma cantidad de datos.}
+
+Para comprobar esta hipótesis realizamos sesiones de etiquetamiento sobre instancias y características, pero eligiendo al azar cuáles presentar al usuario. Luego compararemos las curvas de aprendizaje de ambos experimentos.
+
+\subsection{Hipótesis 2}
+\textbf{El aprendizaje activo sobre instancias y características obtiene mejores resultados que el aprendizaje activo sobre instancias o características por separado.}
 
 
-aprendizaje sobre instancias
-sobre features
-sobre ambos
-sobre ninguno
-
-\subsection{Experimento 2}
-\textbf{Hipótesis} El aprendizaje activo sobre instancias y características obtiene mejores resultados que el aprendizaje activo sobre instancias o características por separado.
-% Cómo lo medimos? Por tiempo? Por cantidad de datos etiquedos?
-% Por cantidad de acciones que realiza un usuario?
-% Probablemente termine siendo el mismo experimento que el anterior
 
 \subsection{Experimento 3}
 \textbf{Hipótesis} El aprendizaje supervisado sobre instancias y características obtiene mejores resultados que el aprendizaje supervisado sobre instancias, aún si las características son pocas.

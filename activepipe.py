@@ -26,6 +26,7 @@ class ActivePipeline(object):
         self.user_features = None
         self.new_instances = 0
         self.new_features = 0
+        self.classes = []
         self._train()
         self._build_feature_boost()
 
@@ -60,14 +61,17 @@ class ActivePipeline(object):
         """Fit the classifier with the training set plus the new vectors and
         features. Then performs a step of EM.
         """
-        if len(self.user_corpus):
-            self.classifier.fit(
-                vstack((self.training_corpus.instances,
-                        self.user_corpus.instances), format='csr'),
-                (self.training_corpus.primary_targets +
-                 self.user_corpus.primary_targets),
-                features=self.user_features
-            )
+        try:
+            if len(self.user_corpus):
+                self.classifier.fit(
+                    vstack((self.training_corpus.instances,
+                            self.user_corpus.instances), format='csr'),
+                    (self.training_corpus.primary_targets +
+                     self.user_corpus.primary_targets),
+                    features=self.user_features
+                )
+        except ValueError:
+            import ipdb; ipdb.set_trace()
         else:
             self.classifier.fit(self.training_corpus.instances,
                                 self.training_corpus.primary_targets,
@@ -148,13 +152,13 @@ class ActivePipeline(object):
     def predict(self, question):
         return self.classifier.predict(question)
 
-    def instance_bootstrap(self, get_class, max_iterations=None):
+    def instance_bootstrap(self, get_labeled_instance, max_iterations=None):
         """Presents a new question to the user until the answer is 'stop'.
 
         Args:
-            get_class: A function that takes the representation of an instance
-            and a list of possible classes. Returns the correct class for the
-            instance.
+            get_labeled_instance: A function that takes the representation of
+            an instance and a list of possible classes. Returns the correct
+            class for the instance.
             max_iterations: Optional. An interger. The cicle will execute at
             most max_iterations times if the user does not enter stop before.
 
@@ -171,13 +175,14 @@ class ActivePipeline(object):
             if (self.emulate and
                 self.unlabeled_corpus.primary_targets[new_index]):
                 prediction = self.unlabeled_corpus.primary_targets[new_index][0]
-                message = "Adding instance {}, {}".format(representation,
-                                                          prediction)
+                message = "Emulation: Adding instance {}, {}".format(
+                    representation, prediction
+                )
                 print colored(message, "red")
             if (not self.emulate or
                 not self.unlabeled_corpus.primary_targets[new_index]):
                 classes = self._most_probable_classes(new_instance)
-                prediction = get_class(representation, classes)
+                prediction = get_labeled_instance(representation, classes)
             if prediction == 'stop':
                 break
             if prediction == 'train':
@@ -192,8 +197,6 @@ class ActivePipeline(object):
                 instance, [prediction] + targets, r
             )
 
-        self._train()
-        self._expectation_maximization()
         return result
 
     def feature_bootstrap(self, get_class, get_labeled_features,
@@ -243,8 +246,6 @@ class ActivePipeline(object):
                                            prediction)
             result += len(prediction)
 
-        self._train()
-        self._expectation_maximization()
         return result
 
     def handle_feature_prediction(self, class_number, full_set, prediction):

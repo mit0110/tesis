@@ -78,7 +78,7 @@ def main():
                           emulate=args.emulate)
     try:
         #pipe.instance_bootstrap(get_class_for_instance)
-        pipe.feature_bootstrap(get_class, get_labeled_features)
+        res = pipe.feature_bootstrap(get_class, get_labeled_features)
     except:
         pipe.save_session('sessions/error')
         import ipdb; ipdb.set_trace()
@@ -91,6 +91,8 @@ def main():
 
     if args.label_corpus:
         print "Adding {} classes.".format(pipe.label_corpus())
+
+    print 'Thanks for labeling ', res, ' instaces'
 
 
 if __name__ == '__main__':

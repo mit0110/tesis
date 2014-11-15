@@ -155,7 +155,7 @@ class Corpus(object):
         Does not check for duplicated values. The object owns the element of the
         new corpus after this call, consider passing a copy.
 
-        Both corpus must have the same extra_info fields.
+        Only will be copied the extra_info fields that both corpus share.
 
         Args:
             new_corpus: an instance of Corpus. It must have the same amount
@@ -171,7 +171,10 @@ class Corpus(object):
         self.representations += new_corpus.representations
         self.primary_targets += new_corpus.primary_targets
         for k in self.extra_info:
-            self.extra_info[k] += new_corpus.extra_info[k]
+            if not k in new_corpus.extra_info:
+                self.extra_info[k] += [0] * len(new_corpus)
+            else:
+                self.extra_info[k] += new_corpus.extra_info[k]
 
     def check_consistency(self):
         len_components = (self.instances.shape[0] == len(self.full_targets) ==
