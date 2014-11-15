@@ -157,8 +157,12 @@ class ActivePipeline(object):
             instance.
             max_iterations: Optional. An interger. The cicle will execute at
             most max_iterations times if the user does not enter stop before.
+
+        Returns:
+            The number of instances the user has labeled.
         """
         it = 0
+        result = 0
         while not max_iterations or it < max_iterations:
             it += 1
             new_index = self.get_next_instance()
@@ -182,10 +186,15 @@ class ActivePipeline(object):
                 continue
 
             self.new_instances += 1
+            result += 1
             instance, targets, r = self.unlabeled_corpus.pop_instance(new_index)
             self.user_corpus.add_instance(
                 instance, [prediction] + targets, r
             )
+
+        self._train()
+        self._expectation_maximization()
+        return result
 
     def feature_bootstrap(self, get_class, get_labeled_features,
                           max_iterations=None):
@@ -199,8 +208,12 @@ class ActivePipeline(object):
             class. Can return None in case of error.
             max_iterations: Optional. An interger. The cicle will execute at
             most max_iterations times if the user does not enter stop before.
+
+        Returns:
+            The number of features the user has labeled.
         """
         it = 0
+        result = 0
         while not max_iterations or it < max_iterations:
             it += 1
             class_name = get_class(self.get_class_options())
@@ -225,11 +238,14 @@ class ActivePipeline(object):
                 self._train()
                 self._expectation_maximization()
                 continue
-
             prediction = [feature_names.index(f) for f in prediction]
-
             self.handle_feature_prediction(class_number, feature_numbers,
                                            prediction)
+            result += len(prediction)
+
+        self._train()
+        self._expectation_maximization()
+        return result
 
     def handle_feature_prediction(self, class_number, full_set, prediction):
         """Adds the new information from prediction to user_features.
