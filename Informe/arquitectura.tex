@@ -1,4 +1,4 @@
-\section{Arquitectura del sistema}
+\chapter{Arquitectura del sistema}
 
 Si bien el objetivo principal de este trabajo es incrementar la cobertura de Quepy, deseamos también que el sistema esté compartimentado de tal forma que sus componentes puedan utilizarse individualmente para otras aplicaciones.
 
@@ -6,14 +6,14 @@ Trabajamos sobre dos grandes áreas: un clasificador automático entrenado utliz
 
 A continuación detallaremos cada una de estos módulos, y finalmente abordaremos la estructura del sistema completo.
 
-\subsection{Framework para aprendizaje automático sobre instancias y características}
+\section{Framework para aprendizaje automático sobre instancias y características}
 % Basado en DUALIST Esto sería lo que haría conjuntamente con Rodri.
 % Necesitamos pensar un nombre!
-\subsubsection{Funcionalidad}
+\subsection{Funcionalidad}
 	% Para entrenarlo con active learning
 	% Para obtener métricas (con esto lo vamos a medir)
 
-\subsubsection{Parámetros}
+\subsection{Parámetros}
 \begin{description}
 	\item[Clasificador] El usuario debe definir qué clasificador de sklearn utilizar.
 	\item[Características]
@@ -29,16 +29,9 @@ A continuación detallaremos cada una de estos módulos, y finalmente abordaremo
 Si bien ésta aproximación es altamente paramétrica, cabe destacar que permite gran flexibilidad con respecto a los datos ingresados. Al permitir elegir tanto características como el corpus y el clasificador, puede ser utilizado dentro de cualquier ámbito incluso no relacionado al procesamiento del lenguaje natural.
 % En particular se utilizaría para iepy, y citamos la tesis de Rodri. Eso se puede?
 
-\subsection{Interfaz Quepy - Clasificador}
-% Tiene que servir para otros framework que no incluyan active learning.
-% Tiene que tener alguna forma de hacer testing, así podemos obtener los resultados que queremos.
-% Tomamos como base el ejemplo de quepy freebase.
-
-\subsection{Arquitectura general}
-
 % Descripción del ciclo usuario - reentrenamiento - EM
-\subsubsection{Selección de instancias}
-\subsubsection{Selección de características}
+\subsection{Selección de instancias}
+\subsection{Selección de características}
 Las características son ordenadas luego del entrenamiento por su ganancia de información, que corresponde a:
 % fórmula IG
 La ganancia de información es propuesta por numerosos estudios como una forma de seleccionar las características más relevantes para clasificación de texto.
@@ -46,7 +39,7 @@ La ganancia de información es propuesta por numerosos estudios como una forma d
 Para lograr una clasificación más sencilla, se crea una lista de las características más probables para cada clase. Luego, estas características se ordenan de acuerto a su ganancia de información.
 % http://burrsettles.com/pub/druck.emnlp09.pdf
 
-\subsubsection{Maximización de la esperanza}
+\subsection{Maximización de la esperanza}
 El algoritmo de maximización de la esperanza es ampliamente utilizado para inferir parámetros desconocidos en una distribución que tiene estados latentes. Para esto, utiliza estimadores de máxima verosimilitud, y para clasificación el estado latente al que nos referimos es la misma clase. A grandes rasgos, el proceso funciona en dos pasos E y M, por sus siglas en inglés Expectation y Maximization.
 El paso E es el que calcula el valor esperado de la verosimilitud asumiendo que la distribución actual es verdadera y no existen variables no observadas. Para realizarlo, utilizamos el clasificador en su estado actual para etiquetar probabilisticamente el conjunto de datos no etiquetados, y asumimos dichas etiquetas como correctas. Con este conjunto de nuevos datos se calcula la verosimilitud del modelo.
 Recordemos que la verosimilitud es una función sobre los parámetros del modelo y un conjunto de datos que calcula la probabilidad de los valores tomados por cada variable aleatoria del modelo bajo dichos parámetros.

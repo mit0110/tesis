@@ -1,6 +1,6 @@
-\section{Entorno de experimentación}
+\chapter{Entorno de experimentación}
 
-\subsection{Ejemplos seleccionados}
+\section{Ejemplos seleccionados}
 
 % Descripción de los corpus.
 	% Etiquetado
@@ -10,6 +10,7 @@
 	% Testing
 		% Las que reconoce quepy?
 		% 500 preguntas está bien?
+
 Distribución actual del corpus:
 Quepy questions 115
 	Recognized 58
@@ -22,53 +23,51 @@ Test corpus 250
 Training corpus 165
 Unlabeled corpus 6358
 
-\subsection{Experimentos realizados}
+\section{Experimentos realizados}
 
 % Automáticos sin usuarios
 % Con usuarios
 
 
-\subsubsection{Métricas utilizadas}
+\subsection{Métricas utilizadas}
 \begin{description}
-    \item[Precisión] Mediremos cuántas preguntas del corpus de testing fueron etiquetadas correctamente por el clasificador. (accuracy)
-    \item[Precisión en preguntas reconocidas] Debido a la gran cantidad de preguntas no etiquetadas que no comparten semántica con las preguntas originales, mediremos cuántas preguntas del corpus que no corresponden a la clase ``Otra'' son correctamente clasificadas por el sistema.
-    \item[Curva de aprendizaje] Definimos la curva de aprendizaje como la presición del clasificador en función de la cantidad de ejemplos o características etiquetados necesarios.
+    \item[Precisión] Mediremos cuántas preguntas del corpus de testing fueron etiquetadas correctamente por el clasificador, sobre el total de preguntas clasificadas.
+    \item[Curva de aprendizaje] Definimos la curva de aprendizaje como la precisión del clasificador en función de la cantidad de ejemplos o características etiquetados necesarios.
     \item Factor kappa  -- Puede ser complejo
-    \item precision y recall fijando cada clase (como si fuera una clasificación binaria)
+    \item [Precisión y recall por clase] Definimos precisión como 
+    % Agregar definiciones
 \end{description}
 
-\subsubsection{Baseline}
+\subsection{Baseline}
 Tomaremos como baseline dos métodos:
 \begin{description}
     \item[Selección de instancias y características al azar]
-    \item[Bootstraping normal utilizando EM]  % Vale la pena hacer esto?
+    \item[Bootstrapqing normal utilizando EM]  % Vale la pena hacer esto?
 \end{description}
 
+Los experimentos que solicitan al oráculo información sobre instancias y características se realizaron alternando pocas preguntas relativas a instancias y la misma cantidad relativas a características. Si bien los dos ciclos de etiquetado son completamente independientes en el sistema, tomamos esta desición para eliminar las diferencias entre experimentos que puedan introducirse a partir de la elección de los usuarios. Otra punto en el que difieren nuestros experimentos de una sesión no simulada con un usuario es la cantidad de veces que se reentrena. Con objeto de obtener una medición precisa de la curva de aprendizaje reentrenamos el clasificador luego de cada ronda intancias-características descriptas anteriormente. Esto es
+costoso para grandes volúmenes de datos y podría hacer perder al sistema su interactividad.
 
-\subsubsection{Experimento 1}
+\subsection{Experimento 1}
 \textbf{Hipótesis} El aprendizaje activo obtiene mejores resultados que un clasificador normal utilizando la misma cantidad de datos.
-Realizamos este experimento tanto sobre instancias como sobre características.
-Utilizamos un ciclo de bootstraping normal con EM donde en cada nueva iteración de agregan al conjunto de semillas las instancias que están más fuertemente asociadas a una clase.
-% Nota bibliográfica acá sobre bootstraping normal.
 
-Seleccionamos para agregar al nuevo conjunto de semillas las características con mayor ganancia de información asociadas a la clase más fuertemente asociada a ellas en base a coocurrencia. %cita a closing the loop
 
 aprendizaje sobre instancias
 sobre features
 sobre ambos
 sobre ninguno
 
-\subsubsection{Experimento 2}
+\subsection{Experimento 2}
 \textbf{Hipótesis} El aprendizaje activo sobre instancias y características obtiene mejores resultados que el aprendizaje activo sobre instancias o características por separado.
 % Cómo lo medimos? Por tiempo? Por cantidad de datos etiquedos?
 % Por cantidad de acciones que realiza un usuario?
 % Probablemente termine siendo el mismo experimento que el anterior
 
-\subsubsection{Experimento 3}
+\subsection{Experimento 3}
 \textbf{Hipótesis} El aprendizaje supervisado sobre instancias y características obtiene mejores resultados que el aprendizaje supervisado sobre instancias, aún si las características son pocas.
 
 
-\subsubsection{Experimento 4}
+\subsection{Experimento 4}
 \textbf{Hipótesis} ??.
 
 La idea es ver qué método de selección de features es mejor:\\
@@ -102,7 +101,7 @@ Característica con IG baja & medicion & medicion \\
 
 
 
-\subsubsection{Experimento 5}
+\subsection{Experimento 5}
 \textbf{Hipótesis} Seleccionar features para etiquetar que tengan alta confiabilidad/correlación, y luego de superado un cierto límite pasar a los que tiene baja confiabilidad/correlación permite al clasificador eliminar el ruido no introducido por la baja cantidad de ejemplos y al mismo tiempo expandir la cobertura.
 Dejar para mas adelante
 
@@ -120,3 +119,6 @@ IG sobre el corpus anotado + frecuencia en no anotado vs IG sobre todo el corpus
 Experimento 7
 Coocurrencia de features con otros features. (Información mutua)
 Un feature se rankea mas alto si coocurre con features que se rankean alto. Tomando como base la frecuencia.
+
+Experimento 8
+Information gain sirve o alcanza sólo con usar coocurrencia?
