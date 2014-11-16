@@ -129,8 +129,8 @@ class ActivePipeline(object):
         except ValueError:
             import ipdb; ipdb.set_trace()
         self.recorded_precision.append({
-            'testing_presition' : self.evaluate_test(),
-            'training_presition' : self.evaluate_training(),
+            'testing_precision' : self.evaluate_test(),
+            'training_precision' : self.evaluate_training(),
             'new_instances' : self.new_instances,
             'new_features' : self.new_features,
         })
@@ -479,6 +479,8 @@ class ActivePipeline(object):
         Returns:
             False in case of error, True in case of success.
         """
+        self._train()
+        self._expectation_maximization()
         if not filename:
             return False
         if not (len(self.user_corpus) != None or self.user_features != None):

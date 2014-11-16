@@ -71,14 +71,50 @@ def get_labeled_features(class_name, features):
 
 
 class BaseExperiment(object):
-    def __init__(self, ActivePipeline, *args):
+    """A base class to define experiments.
+
+    A new experiment must define the method run and the metrics as minimum.
+
+    Attributes:
+        pipe_class: The class to instanciate the active learn pipe.
+        get_labeled_instance: A function. Can be used as a parameter for the
+        instance bootstrap of the active pipe.
+        get_class: A function. Can be used as a parameter for the
+        feature bootstrap of the active pipe.
+        get_labeled_features: A function. Can be used as a parameter for the
+        feature bootstrap of the active pipe.
+        experiment_config: A dictionary with the default configuration to
+        run an experiment.
+        metrics: A list with Metric instances that must be obteined after
+        running the experiment from the session file.
+
+    """
+
+    def __init__(self, ActivePipeline):
+        """Sets the default attributes for an experiment.
+
+        Args:
+            ActivePipeline: The class for the active learn pipe that will be
+            tested.
+        """
         self.pipe_class = ActivePipeline
-        self.args = args
         self.get_labeled_instance = get_labeled_instance
         self.get_class = get_class
         self.get_labeled_features = get_labeled_features
         self.experiment_config = {}
+        self.metrics = []
+        self.number = 0
 
     def run(self):
+        """Runs the bootstrap cicles of the ActivePipeline."""
         raise NotImplementedError
 
+    def get_metrics(self):
+        """Extracts the metrics of self.metrics from the session file.
+
+        Saves the results into results/experimentN/self.results_filename
+        """
+        filename_base = 'experiments/results/experiment{}/'.format(self.number)
+        for metric in self.metrics:
+            metric.get_from_session_file(self.session_filename)
+            metric.store_in_file(filename_base + metric.name)

@@ -6,6 +6,7 @@ of them after each labeling.
 """
 from base_experiment import BaseExperiment
 from random import randint, sample
+from metrics import LearningCurve
 import time
 
 
@@ -30,8 +31,8 @@ def get_next_features_random(self, class_index):
 
 
 class Experiment1(BaseExperiment):
-    def __init__(self, *args):
-        super(Experiment1, self).__init__(*args)
+    def __init__(self, ActivePipeline):
+        super(Experiment1, self).__init__(ActivePipeline)
         # Active learning instance selection function
         self.pipe_class.get_next_instance = get_next_instance_random
         # Active learning feature selection functions
@@ -43,6 +44,7 @@ class Experiment1(BaseExperiment):
                             features randomly."""
         self.max_answers = 2
         self.cycle_len = 1
+        self.metrics = [LearningCurve()]
 
     def run(self):
         print "Running experiment number {0}: {1}".format(self.number,
@@ -56,12 +58,17 @@ class Experiment1(BaseExperiment):
             num_answers += self.pipe.feature_bootstrap(self.get_class,
                 self.get_labeled_features, max_iterations=self.cycle_len
             )
-        filename = raw_input("Insert the filename to save or press enter\n")
-        if not filename:
-            filename = 'nameless_experiment{}'.format(
+        self.session_filename = raw_input("Insert the filename to save or press"
+                                          " enter\n")
+        if not self.session_filename:
+            self.session_filename = 'nameless_experiment{}'.format(
                 time.strftime('%d-%m-%Y-%s', time.localtime())
             )
-        filename = "experiments/sessions/experiment1/{}".format(filename)
-        self.pipe.save_session(filename)
+        self.session_filename = "experiments/sessions/experiment1/{}".format(
+            self.session_filename
+        )
+        self.pipe.save_session(self.session_filename)
         self.pipe.label_corpus()
-        print "Exiting experiments, session saved in {}".format(filename)
+        print "Exiting experiments, session saved in {}".format(
+            self.session_filename
+        )

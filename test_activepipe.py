@@ -252,7 +252,6 @@ class TestActivePipe(unittest.TestCase):
         self.pipe.asked_features[0] = True
         self.pipe.user_features[0][0] += self.pipe.feature_boost
         self.pipe.user_features[0][2] += self.pipe.feature_boost
-        # import ipdb; ipdb.set_trace()
         self.pipe.feature_corpus_f = 'test_files/feature_corpus_saved.pickle'
         self.pipe.label_feature_corpus()
         self.pipe._get_feature_corpus()

@@ -17,5 +17,6 @@ if __name__ == '__main__':
     experiment_number = opts['<experiment_number>']
     args = opts['<args>']
     exp_class = getattr(experiments, 'Experiment{}'.format(experiment_number))
-    experiment = exp_class(ActivePipeline, *args)
+    experiment = exp_class(ActivePipeline)
     experiment.run()
+    experiment.get_metrics()
