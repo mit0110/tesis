@@ -1,6 +1,7 @@
 """
 BaseExperiment class and default functions to run the activepipe bootstraps.
 """
+import time
 from termcolor import colored
 
 
@@ -17,8 +18,7 @@ def get_labeled_instance(instance, classes):
         A string. One of the classes names listed in the argument classes,
         stop to finish the bootstrap or train to retrain the classifier.
     """
-    print "*******************************************************"
-    print "\nWhat is the correct template? Write the number or STOP\n"
+    print '*' * 79, "\nWhat is the correct template? Write the number or STOP\n"
     print colored(instance, "red", "on_white", attrs=["bold"])
     message = "{} - {}"
     for (counter, class_name) in enumerate(classes):
@@ -34,8 +34,7 @@ def get_labeled_instance(instance, classes):
 
 
 def get_class(classes_list):
-    print "*******************************************************"
-    print "Choose a class number to label its features"
+    print '*' * 79, "\nChoose a class number to label its features"
     for index, class_ in enumerate(classes_list):
         print index, class_
     line = raw_input(">>> ")
@@ -51,7 +50,7 @@ def get_class(classes_list):
 
 
 def get_labeled_features(class_name, features):
-    print "*******************************************************"
+    print '*' * 79
     print "Insert the asociated feature numbers separated by a blank space."
     print class_name
     for number, feature in enumerate(features):
@@ -77,16 +76,22 @@ class BaseExperiment(object):
 
     Attributes:
         pipe_class: The class to instanciate the active learn pipe.
+
         get_labeled_instance: A function. Can be used as a parameter for the
         instance bootstrap of the active pipe.
+
         get_class: A function. Can be used as a parameter for the
         feature bootstrap of the active pipe.
+
         get_labeled_features: A function. Can be used as a parameter for the
         feature bootstrap of the active pipe.
+
         experiment_config: A dictionary with the default configuration to
         run an experiment.
+
         metrics: A list with Metric instances that must be obteined after
         running the experiment from the session file.
+
         instance_name: A string. The name that uniquely indentifies an instance
         of experiment. It will be used to create the files for the session
         and for the result.
@@ -105,7 +110,7 @@ class BaseExperiment(object):
         self.get_labeled_features = get_labeled_features
         self.experiment_config = {}
         self.metrics = []
-        self.number = 0
+        self.number = None
 
     def run(self):
         """Runs the bootstrap cicles of the ActivePipeline."""
@@ -121,3 +126,29 @@ class BaseExperiment(object):
             metric.get_from_session_file(self.session_filename)
             metric.save_to_file(filename_base + metric.name + '-' +
                                 self.instance_name)
+
+    def get_name(self):
+        """Asks the user for the content of self.instance_name"""
+        self.instance_name = raw_input('Insert the filename to save or press'
+                                       ' enter\n')
+        if not self.instance_name:
+            self.instance_name = 'nameless_experiment{}'.format(
+                time.strftime('%d-%m-%Y-%s', time.localtime())
+            )
+
+    def save_session(self):
+        """Creates the session_filename and saves the pipe session."""
+        self.session_filename = 'experiments/sessions/experiment{0}/{1}'.format(
+            self.number, self.instance_name
+        )
+        self.pipe.save_session(self.session_filename)
+        print "Exiting experiments, session saved in {}".format(
+            self.session_filename
+        )
+
+    def end_experiment(self):
+        """Performs the last steps of an experiment."""
+        self.get_name()
+        self.save_session()
+        self.pipe.label_corpus()
+        self.pipe.label_feature_corpus()

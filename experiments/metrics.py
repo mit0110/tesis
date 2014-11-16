@@ -51,3 +51,25 @@ class LearningCurve(Metric):
             result += '{}\t{}\n'.format(total_labels,
                                         value['testing_precision'])
         self.info = result
+
+
+class PrecisionRecall(Metric):
+    """Precision and recall for each of the classes for the last classifier.
+
+    The information is a csv table separated by tabs where the content of each
+    column is:
+        class_name  precision   recall  F1_score
+
+    The information is extracted from the classification_report element of
+    the session.
+    """
+
+    def get_from_session(self):
+        if not self.session or not 'classification_report' in self.session:
+            self.info = ''
+            return
+        report = self.session['classification_report']
+        result = []
+        result = ['\t'.join(line.split()[:-1])
+                  for line in report.split('\n')[3:-3]]
+        self.info = '\n'.join(result)

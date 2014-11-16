@@ -490,7 +490,8 @@ class ActivePipeline(object):
                    'user_corpus': self.user_corpus,
                    'user_features': self.user_features,
                    'recorded_precision': self.recorded_precision,
-                   'asked_features': self.asked_features}
+                   'asked_features': self.asked_features,
+                   'classification_report': self.get_report()}
         pickle.dump(to_save, f)
         f.close()
         return True

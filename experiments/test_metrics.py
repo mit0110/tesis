@@ -1,5 +1,5 @@
 import unittest
-from metrics import LearningCurve
+from metrics import LearningCurve, PrecisionRecall
 
 
 class TestLearningCurve(unittest.TestCase):
@@ -20,6 +20,24 @@ class TestLearningCurve(unittest.TestCase):
         self.metric.session = {'recorded_precision': [p1, p2]}
         self.metric.get_from_session()
         expected = '6\t0.6\n9\t0.7\n'
+        self.assertEqual(expected, self.metric.info)
+
+
+class TestPrecisionRecall(TestLearningCurve):
+
+    def setUp(self):
+        self.metric = PrecisionRecall()
+
+    def test_full_session(self):
+        fake_report = ('blank\ntitles\nblank\nclass1\tp1\tp2\tp3\tp4\n'
+                       'class2\tr1\tr2\tr3\tr4\n'
+                       'class3\tq1\tq2\tq3\tq4\n'
+                       'blank\ntotal\nblank\n')
+        self.metric.session = {'classification_report': fake_report}
+        self.metric.get_from_session()
+        expected = ('class1\tp1\tp2\tp3\n'
+                    'class2\tr1\tr2\tr3\n'
+                    'class3\tq1\tq2\tq3\n')
         self.assertEqual(expected, self.metric.info)
 
 

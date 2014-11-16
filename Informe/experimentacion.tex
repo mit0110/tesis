@@ -36,22 +36,26 @@ El corpus de características no es más que una matriz ternaria con tres valore
 
 \subsection{Métricas utilizadas}
 \begin{description}
-    \item[Precisión] Mediremos cuántas preguntas del corpus de testing fueron etiquetadas correctamente por el clasificador, sobre el total de preguntas clasificadas.
-    \item[Curva de aprendizaje] Definimos la curva de aprendizaje como la precisión del clasificador en función de la cantidad de ejemplos o características etiquetados necesarios.
+    \item[Exactitud] Llamamos exactitud a la cantidad de preguntas etiquetadas correctamente sobre el total de preguntas clasificadas.
+    %Precisión se refiere a la dispersión del conjunto de valores obtenidos de mediciones repetidas de una magnitud (wikipedia)
+    \item[Curva de aprendizaje] Definimos la curva de aprendizaje como la exactitud del clasificador en función de la cantidad de ejemplos o características etiquetados necesarios.
     % aprendizaje sobre instancias
     % sobre features
     % sobre ambos
     % sobre ninguno
     \item Factor kappa  -- Puede ser complejo
-    \item [Precisión y recall por clase] Definimos precisión como
-    % Agregar definiciones
+    \item [Precisión y exahustividad por clase] Estas dos medidas puede utilizarse sólo en clasificación binaria, por lo que tomaremos sus valores para cada una de las clases posibles. Definimos precisión como la cantidad de instancias etiquetadas para una clase que son correctas (positivos verdaderos o $P_v$) sobre la cantidad de instancias etiquetadas para esa clase ($P_v$ y falsos positivos o $P_f$).
+    $$precision(C_i) = \frac{P_v}{P_v + P_f}$$
+    La exhaustividad, por otro lado, está definida como la cantidad de instancias etiquetadas correctamente ($P_v$) de una clase dada sobre la cantidad de instancias que pertenecen a la clase verdaderamente ($P_v$ y falsos negativos o $N_f$).
+    $$Exhaustividad(C_i) = \frac{P_v}{P_v + N_f}$$
 \end{description}
 
 \subsection{Baseline}
 Tomaremos como baseline dos métodos:
 \begin{description}
+    \item[Clasificador ingénuo] Este clasificador asigna la clase ``otro'' a cualquier instancia. Al tener una alta población de instancias con esta clase
     \item[Selección de instancias y características al azar]
-    \item[Bootstrapqing normal utilizando EM]  % Vale la pena hacer esto?
+    % \item[Bootstrapqing normal utilizando EM]  % Vale la pena hacer esto?
 \end{description}
 
 Los experimentos que solicitan al oráculo información sobre instancias y características se realizaron alternando pocas preguntas relativas a instancias y la misma cantidad relativas a características. Si bien los dos ciclos de etiquetado son completamente independientes en el sistema, tomamos esta desición para eliminar las diferencias entre experimentos que puedan introducirse a partir de la elección de los usuarios. Otra punto en el que difieren nuestros experimentos de una sesión no simulada con un usuario es la cantidad de veces que se reentrena. Con objeto de obtener una medición precisa de la curva de aprendizaje reentrenamos el clasificador luego de cada ronda intancias-características descriptas anteriormente. Esto es
