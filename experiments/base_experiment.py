@@ -87,7 +87,9 @@ class BaseExperiment(object):
         run an experiment.
         metrics: A list with Metric instances that must be obteined after
         running the experiment from the session file.
-
+        instance_name: A string. The name that uniquely indentifies an instance
+        of experiment. It will be used to create the files for the session
+        and for the result.
     """
 
     def __init__(self, ActivePipeline):
@@ -117,4 +119,5 @@ class BaseExperiment(object):
         filename_base = 'experiments/results/experiment{}/'.format(self.number)
         for metric in self.metrics:
             metric.get_from_session_file(self.session_filename)
-            metric.store_in_file(filename_base + metric.name)
+            metric.save_to_file(filename_base + metric.name + '-' +
+                                self.instance_name)

@@ -6,6 +6,8 @@ class Metric(object):
     To create a custom metric, redefine the get_from_session method saves in
     self.info the content of the metric extracted from self.session.
     """
+    def __init__(self):
+        self.name = self.__class__.__name__.lower()
 
     def get_from_session(self):
         raise NotImplementedError

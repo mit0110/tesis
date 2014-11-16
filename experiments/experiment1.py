@@ -4,10 +4,12 @@
 Run the boostrap for features and instances given the user the choice for one
 of them after each labeling.
 """
-from base_experiment import BaseExperiment
-from random import randint, sample
-from metrics import LearningCurve
 import time
+
+from termcolor import colored
+from base_experiment import BaseExperiment
+from metrics import LearningCurve
+from random import randint, sample
 
 
 def get_next_instance_random(self):
@@ -42,8 +44,8 @@ class Experiment1(BaseExperiment):
         self.number = 1
         self.description = """No active learning. Selecting instances and
                             features randomly."""
-        self.max_answers = 2
-        self.cycle_len = 1
+        self.max_answers = 100
+        self.cycle_len = 4
         self.metrics = [LearningCurve()]
 
     def run(self):
@@ -52,23 +54,31 @@ class Experiment1(BaseExperiment):
         self.pipe = self.pipe_class(emulate=True, **self.experiment_config)
         num_answers = 0
         while num_answers < self.max_answers:
+            print '\n'.join(["************************************"] * 10)
+            print colored("Instance labeling", "red", "on_white", attrs=["bold"])
             num_answers += self.pipe.instance_bootstrap(
                 self.get_labeled_instance, max_iterations=self.cycle_len
             )
+            print '\n'.join(["************************************"] * 10)
+            print colored("Feature labeling", "red", "on_white", attrs=["bold"])
             num_answers += self.pipe.feature_bootstrap(self.get_class,
                 self.get_labeled_features, max_iterations=self.cycle_len
             )
-        self.session_filename = raw_input("Insert the filename to save or press"
+            self.pipe._train()
+            self.pipe._expectation_maximization()
+        self.instance_name = raw_input("Insert the filename to save or press"
                                           " enter\n")
-        if not self.session_filename:
+
+        if not self.instance_name:
             self.session_filename = 'nameless_experiment{}'.format(
                 time.strftime('%d-%m-%Y-%s', time.localtime())
             )
         self.session_filename = "experiments/sessions/experiment1/{}".format(
-            self.session_filename
+            self.instance_name
         )
         self.pipe.save_session(self.session_filename)
         self.pipe.label_corpus()
+        self.pipe.label_feature_corpus()
         print "Exiting experiments, session saved in {}".format(
             self.session_filename
         )

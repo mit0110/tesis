@@ -226,7 +226,7 @@ class ActivePipeline(object):
             representation = self.unlabeled_corpus.representations[new_index]
             if (self.emulate and
                 self.unlabeled_corpus.primary_targets[new_index]):
-                prediction = self.unlabeled_corpus.primary_targets[new_index][0]
+                prediction = self.unlabeled_corpus.primary_targets[new_index]
                 message = "Emulation: Adding instance {}, {}".format(
                     representation, prediction
                 )
@@ -288,7 +288,7 @@ class ActivePipeline(object):
                 e_prediction = [f for f in feature_numbers
                                 if self.feature_corpus[class_number][f] == 1]
                 feature_numbers = [f for f in feature_numbers
-                                   if self.feature_corpus[class_number][f] == 0]
+                                   if f not in e_prediction]
                 print "Adding {} features from corpus".format(len(e_prediction))
             if feature_numbers:
                 feature_names = [self.training_corpus.get_feature_name(pos)
@@ -479,8 +479,6 @@ class ActivePipeline(object):
         Returns:
             False in case of error, True in case of success.
         """
-        self._train()
-        self._expectation_maximization()
         if not filename:
             return False
         if not (len(self.user_corpus) != None or self.user_features != None):
