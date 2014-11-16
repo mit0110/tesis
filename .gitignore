@@ -32,3 +32,8 @@
 
 # Gedit autosave files
 *~
+
+#Internal files
+sessions/*
+corpus/backups/*
+testing_file

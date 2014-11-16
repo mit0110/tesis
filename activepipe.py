@@ -14,13 +14,56 @@ from defaults import default_config
 
 class ActivePipeline(object):
     """
+    Attributes:
+        session_filename:
+
+        emulate: A boolean. If is set to True, the pipe will search for labels
+        in the unlabeled_corpus and in the feature_corpus and will only ask the
+        user if there is no information available.
+
+        training_corpus:
+
+        unlabeled_corpus:
+
+        test_corpus:
+
+        feature_corpus: A matrix of shape [n_class, n_feat] with three possible
+        values. -1 indicates that the feature was never asked to the user for
+        that class, 0 indicates no relation, and 1 indicates relation between
+        feature and class. The feature corpus will be loaded from the file
+        self.feature_label_f intruduced by the config, and will be used only
+        during user emulation. It can be updated using the function
+        label_feature_corpus.
+
+        recorded_precision:
+
+        new_instances:
+
+        new_features:
+
+        classes:
+
+        user_features:
+
+        user_corpus:
     """
 
     def __init__(self, session_filename='', emulate=False, **kwargs):
-        self.filename = session_filename
+        """
+        Args:
+            session_filename: Optional. The name of a file storing a session
+            that will be loaded using the method load_session.
+            emulate: a boolean. Will set the attribute emulate acordinly.
+            **kwargs: the configuration for the pipe. Each parameters passed
+            will be converted to an attribute of the pipe. The minimum
+            configuration possible is set in the defaults file, and each value
+            not passed as a parameter will be taken from there.
+        """
+        self.session_filename = session_filename
         self.emulate = emulate
         self._set_config(kwargs)
         self._get_corpus()
+        self._get_feature_corpus()
         self.recorded_precision = []
         self.load_session()
         self.user_features = None
@@ -50,12 +93,21 @@ class ActivePipeline(object):
 
         self.user_corpus = Corpus()
 
+    def _get_feature_corpus(self):
+        """Loads the feature corpus from self.feature_corpus_f"""
+        f = open(self.feature_corpus_f, 'r')
+        self.feature_corpus = pickle.load(f)
+        f.close()
+
     def _build_feature_boost(self):
         """Creates the user_features np.array with defaults values."""
         alpha = self.classifier.alpha
         self.n_class, self.n_feat = self.classifier.feature_log_prob_.shape
         self.user_features = np.array([[alpha] * self.n_feat] * self.n_class)
-        self.asked_features = self.user_features != alpha
+        if self.emulate:
+            self.asked_features = self.feature_corpus != -1
+        else:
+            self.asked_features = self.user_features != alpha # False
 
     def _train(self):
         """Fit the classifier with the training set plus the new vectors and
@@ -70,12 +122,12 @@ class ActivePipeline(object):
                      self.user_corpus.primary_targets),
                     features=self.user_features
                 )
+            else:
+                self.classifier.fit(self.training_corpus.instances,
+                                    self.training_corpus.primary_targets,
+                                    features=self.user_features)
         except ValueError:
             import ipdb; ipdb.set_trace()
-        else:
-            self.classifier.fit(self.training_corpus.instances,
-                                self.training_corpus.primary_targets,
-                                features=self.user_features)
         self.recorded_precision.append({
             'testing_presition' : self.evaluate_test(),
             'training_presition' : self.evaluate_training(),
@@ -230,22 +282,31 @@ class ActivePipeline(object):
                 continue
             class_number = self.classes.index(class_name)
             feature_numbers = self.get_next_features(class_number)
-            feature_names = [self.training_corpus.get_feature_name(pos)
-                             for pos in feature_numbers]
-            prediction = get_labeled_features(class_name, feature_names)
-            if not prediction:
-                continue
-            if prediction == 'stop':
-                break
-            if prediction == 'train':
-                self._train()
-                self._expectation_maximization()
-                continue
-            prediction = [feature_names.index(f) for f in prediction]
-            self.handle_feature_prediction(class_number, feature_numbers,
-                                           prediction)
-            result += len(prediction)
-
+            e_prediction = []
+            prediction = []
+            if self.emulate:
+                e_prediction = [f for f in feature_numbers
+                                if self.feature_corpus[class_number][f] == 1]
+                feature_numbers = [f for f in feature_numbers
+                                   if self.feature_corpus[class_number][f] == 0]
+                print "Adding {} features from corpus".format(len(e_prediction))
+            if feature_numbers:
+                feature_names = [self.training_corpus.get_feature_name(pos)
+                                 for pos in feature_numbers]
+                prediction = get_labeled_features(class_name, feature_names)
+                if not prediction:
+                    continue
+                if prediction == 'stop':
+                    break
+                if prediction == 'train':
+                    self._train()
+                    self._expectation_maximization()
+                    continue
+                prediction = [feature_names.index(f) for f in prediction]
+            self.handle_feature_prediction(class_number,
+                                           feature_numbers + e_prediction,
+                                           prediction + e_prediction)
+            result += len(prediction + e_prediction)
         return result
 
     def handle_feature_prediction(self, class_number, full_set, prediction):
@@ -383,16 +444,31 @@ class ActivePipeline(object):
                                      predicted_targets)
 
     def label_corpus(self):
-        """Saves the classes of the unlabeled_corpus in a file.
+        """Adds the user corpus to the unlabeled_corpus and saves it in a file.
 
         The filename must be passed into the configuration under the name
         u_corpus_f.
-
-        Returns:
-            The number of new classes added to the corpus.
         """
         self.unlabeled_corpus.concetenate_corpus(self.user_corpus)
         self.unlabeled_corpus.save_to_file(self.u_corpus_f)
+
+    def label_feature_corpus(self):
+        """Adds user_features and asked_features in feature_corpus and saves it.
+
+        The filename must be passed into the configuration under the name
+        feature_corpus_f.
+        """
+        self.feature_corpus = np.where(self.asked_features,
+                                       np.zeros((self.n_class, self.n_feat)),
+                                       self.feature_corpus)
+        self.feature_corpus = np.where(
+            self.user_features > self.classifier.alpha,
+            np.ones((self.n_class, self.n_feat)),
+            self.feature_corpus
+        )
+        f = open(self.feature_corpus_f, 'w')
+        pickle.dump(self.feature_corpus, f)
+        f.close()
 
     def save_session(self, filename):
         """Saves the instances and targets introduced by the user in filename.
@@ -432,9 +508,9 @@ class ActivePipeline(object):
         Returns:
             False in case of error, True in case of success.
         """
-        if not self.filename:
+        if not self.session_filename:
             return False
-        f = open(self.filename, 'r')
+        f = open(self.session_filename, 'r')
         loaded_data = pickle.load(f)
         f.close()
         self.training_corpus = loaded_data['training_corpus']

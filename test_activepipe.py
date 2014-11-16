@@ -15,7 +15,8 @@ testing_config = {
     'u_corpus_f': 'test_files/unlabeled_corpus.pickle',
     'test_corpus_f': 'test_files/test_corpus.pickle',
     'training_corpus_f': 'test_files/training_corpus.pickle',
-    'dummy_config' : None,
+    'feature_corpus_f': 'test_files/feature_corpus.pickle',
+    'dummy_config': None,
     'number_of_features': 2,
 }
 
@@ -41,6 +42,8 @@ T_vectors = [
 ]
 
 T_targets = [[1], [2]]
+
+feat_corpus = [[-1, -1, 0], [1, -1, 0]]
 
 
 class TestActivePipe(unittest.TestCase):
@@ -150,12 +153,35 @@ class TestActivePipe(unittest.TestCase):
             np.ones(2)
         )
 
-    def test_get_corpus(self):
-        """Test the three corpus loaded from files."""
+    def test_get_instance_corpus(self):
+        """Test the three instance corpus loaded from files."""
         self.assertEqual(len(self.pipe.training_corpus), len(X))
         self.assertEqual(len(self.pipe.test_corpus), len(T_vectors))
         self.assertEqual(len(self.pipe.unlabeled_corpus), len(U_vectors))
         self.assertEqual(len(self.pipe.user_corpus), 0)
+
+    def test_get_feature_corpus(self):
+        """Test the feature corpus loaded from file."""
+        self.assertEqual(self.pipe.feature_corpus.shape, (2, 3))
+        self.assertEqual(self.pipe.feature_corpus.tolist(), feat_corpus)
+
+    def test__build_feature_boost(self):
+        """Test the creation of matrices user_features and asked_features."""
+        self.pipe._build_feature_boost()
+        self.assertIsNotNone(self.pipe.user_features)
+        self.assertEqual(self.pipe.user_features.shape, (2, 3))
+        self.assertFalse(np.any(self.pipe.user_features !=
+                                self.pipe.classifier.alpha))
+        self.assertIsNotNone(self.pipe.asked_features)
+        self.assertEqual(self.pipe.asked_features.shape, (2, 3))
+        self.assertFalse(np.any(self.pipe.asked_features))
+
+    def test__build_feature_boost_emulate(self):
+        """The user corpus must be used to construct self.pipe.asked_features"""
+        self.pipe.emulate = True
+        self.pipe._build_feature_boost()
+        expected = np.array([[False, False, True], [True, False, True]])
+        np.testing.assert_array_almost_equal(self.pipe.asked_features, expected)
 
     def test_set_config(self):
         """Each configuration must be set as attribute if not None."""
@@ -220,6 +246,20 @@ class TestActivePipe(unittest.TestCase):
 
             self.assertIsNone(self.pipe.get_next_instance())
 
+    def test_label_feature_corpus(self):
+        """The new feature information must be saved into feature_corpus_f.
+        """
+        self.pipe.asked_features[0] = True
+        self.pipe.user_features[0][0] += self.pipe.feature_boost
+        self.pipe.user_features[0][2] += self.pipe.feature_boost
+        # import ipdb; ipdb.set_trace()
+        self.pipe.feature_corpus_f = 'test_files/feature_corpus_saved.pickle'
+        self.pipe.label_feature_corpus()
+        self.pipe._get_feature_corpus()
+        expected = np.array([[1, 0, 1], [1, -1, 0]])
+        np.testing.assert_array_equal(self.pipe.feature_corpus, expected)
+
 
 if __name__ == '__main__':
     unittest.main()
+

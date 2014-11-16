@@ -9,6 +9,7 @@ default_config = {
     'u_corpus_f': 'corpus/unlabeled_new_corpus.pickle',
     'test_corpus_f': 'corpus/test_new_corpus.pickle',
     'training_corpus_f': 'corpus/training_new_corpus.pickle',
+    'feature_corpus_f': 'corpus/feature_corpus.pickle',
 
     # Options to be displayed
     'number_of_classes': 30,
