@@ -32,6 +32,7 @@ def mixed_bigrams(words):
                     for i in range(len(words)-1)]
     pos_first = ['MBigram:{0},{1}'.format(words[i].pos, words[i+1].lemma)
                  for i in range(len(words)-1)]
+    return lemma_first + pos_first
 
 
 def trigrams(words):
