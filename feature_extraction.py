@@ -26,6 +26,14 @@ def bigrams(words):
             for i in range(len(words)-1)]
 
 
+def mixed_bigrams(words):
+    words = words[0]
+    lemma_first = ['MBigram:{0},{1}'.format(words[i].lemma, words[i+1].pos)
+                    for i in range(len(words)-1)]
+    pos_first = ['MBigram:{0},{1}'.format(words[i].pos, words[i+1].lemma)
+                 for i in range(len(words)-1)]
+
+
 def trigrams(words):
     words = words[0]
     return ['Trigram:{0},{1},{2}'.format(words[i].lemma, words[i+1].lemma,
@@ -55,6 +63,6 @@ def literal_ners_types(words):
 def get_features():
     return Vectorizer(
         [postags, lemmas, partial_matches, literal_ners, literal_ners_types,
-         bigrams, trigrams],
+         bigrams, trigrams, mixed_bigrams],
         sparse=True
     )
