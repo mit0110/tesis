@@ -1,10 +1,11 @@
 import pickle
 
+
 class Metric(object):
     """Represents information and a method to obtained from a session file.
 
-    To create a custom metric, redefine the get_from_session method saves in
-    self.info the content of the metric extracted from self.session.
+    To create a custom metric, redefine the get_from_session method that saves
+    in self.info the content of the metric extracted from self.session.
     """
     def __init__(self):
         self.name = self.__class__.__name__.lower()
@@ -73,3 +74,23 @@ class PrecisionRecall(Metric):
         result = ['\t'.join(line.split()[:-1])
                   for line in report.split('\n')[3:-3]]
         self.info = '\n'.join(result)
+
+
+class KappaStatistic(Metric):
+    """Calculates the Kappa Statistic for the last classifier.
+
+    The information is a float number and it's obtained from the
+    confusion_matrix element of the session.
+    """
+
+    def get_from_session(self):
+        if not self.session or not 'confusion_matrix' in self.session:
+            self.info = ''
+            return
+        confusion_m = self.session['confusion_matrix']
+        total_instances = float(confusion_m.sum())
+        real_accuracy = confusion_m.diagonal().sum() / total_instances
+        e_accuracy = (confusion_m.sum(axis=1) * confusion_m.sum(axis=0) /
+                      total_instances)
+        e_accuracy = e_accuracy.sum() / total_instances
+        self.info = (real_accuracy - e_accuracy) / (1 - e_accuracy)

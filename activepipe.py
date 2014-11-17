@@ -4,7 +4,8 @@ import numpy as np
 from corpus import Corpus
 from random import randint
 from scipy.sparse import vstack
-from sklearn.metrics import precision_score, classification_report
+from sklearn.metrics import (precision_score, classification_report,
+                             confusion_matrix)
 from sklearn.utils.extmath import safe_sparse_dot
 from sklearn.preprocessing import normalize
 from termcolor import colored
@@ -491,7 +492,11 @@ class ActivePipeline(object):
                    'user_features': self.user_features,
                    'recorded_precision': self.recorded_precision,
                    'asked_features': self.asked_features,
-                   'classification_report': self.get_report()}
+                   'classification_report': self.get_report(),
+                   'confusion_matrix': confusion_matrix(
+                        self.test_corpus.primary_targets,
+                        self.predict(self.test_corpus.instances)
+                   )}
         pickle.dump(to_save, f)
         f.close()
         return True

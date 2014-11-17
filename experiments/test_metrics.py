@@ -1,5 +1,6 @@
 import unittest
-from metrics import LearningCurve, PrecisionRecall
+import numpy as np
+from metrics import LearningCurve, PrecisionRecall, KappaStatistic
 
 
 class TestLearningCurve(unittest.TestCase):
@@ -39,6 +40,28 @@ class TestPrecisionRecall(TestLearningCurve):
                     'class2\tr1\tr2\tr3\n'
                     'class3\tq1\tq2\tq3\n')
         self.assertEqual(expected, self.metric.info)
+
+
+class TestKappaStatistic(TestLearningCurve):
+
+    def setUp(self):
+        self.metric = KappaStatistic()
+
+    def test_full_session(self):
+        # http://stats.stackexchange.com/questions/82162/kappa-statistic-in-plain-english
+        fake_confusion_matrix = np.array([[22, 9], [7, 13]])
+        expected = 0.3534
+        self.metric.session = {'confusion_matrix': fake_confusion_matrix}
+        self.metric.get_from_session()
+        self.assertAlmostEqual(expected, float(self.metric.info), 3)
+
+    def test_full_session2(self):
+        # http://en.wikipedia.org/wiki/Cohen%27s_kappa
+        fake_confusion_matrix = np.array([[20, 5], [10, 15]])
+        expected = 0.39999999
+        self.metric.session = {'confusion_matrix': fake_confusion_matrix}
+        self.metric.get_from_session()
+        self.assertAlmostEqual(expected, float(self.metric.info), 3)
 
 
 if __name__ == '__main__':

@@ -43,9 +43,15 @@ El corpus de características no es más que una matriz ternaria con tres valore
     % sobre features
     % sobre ambos
     % sobre ninguno
-    \item Factor kappa  -- Puede ser complejo
-    \item [Precisión y exahustividad por clase] Estas dos medidas puede utilizarse sólo en clasificación binaria, por lo que tomaremos sus valores para cada una de las clases posibles. Definimos precisión como la cantidad de instancias etiquetadas para una clase que son correctas (positivos verdaderos o $P_v$) sobre la cantidad de instancias etiquetadas para esa clase ($P_v$ y falsos positivos o $P_f$).
-    $$precision(C_i) = \frac{P_v}{P_v + P_f}$$
+    \item [Coeficiente Kappa de Cohen] Esta medida ajusta la exactitud del clasificador obtenido a la de un clasificador aleatorio. Una exactitud del 80\% no es muy sorprendente si asignando etiquetas al azar obtenemos una exactitud del 70\%. En nuestro caso el corpus de evaluación contiene aproximadamente un 75\% de instacias de clase ``otro'', por lo tanto un clasificador que elija esta etiqueta todas las veces obtendría una exactitud semejante. Esta métrica nos permitirá superar este inconveniente y obtener valores más reales.\\
+    Una definición más formal del Coeficiente de Kappa es la que propone \citet{KappaCarletta}:
+    $$K = \frac{P(A)-P(E)}{1-P(E)}$$
+    donde $P(A)$ es la proporción de veces que los clasificadores acuerdan y $P(E)$ es la proporción de veces que se esperaría que acuerden por casualidad. En este caso, uno de los clasificadores es el Multinomial Bayesiano entrenado y el otro son las etiquetas del corpus de evaluación. Por lo tanto, $P(A)$ no es otra cosa más que la exactitud calculada en el primer item. Adicionalmente, calculamos $P(E)$ de la siguiente forma:
+    $$P(E) = \frac{\sum_{i\in\mathcal{C}}Pr(\hat{x_i})*Pr(x_i)}{|\mathcal{E}|}$$
+    donde $\mathcal{C}$ es el conjunton de clases, $\mathcal{E}$ es el corpus de evaluación, $Pr(\hat{x_i})$ es la proporción de instancias etiquetadas por el clasificador con la clase i, y $Pr(x_i)$ es la proporción de instancias que pertenecen realmente a la clase i.
+    % http://stats.stackexchange.com/questions/82162/kappa-statistic-in-plain-english
+    \item [Precisión y exhaustividad por clase] Estas dos medidas puede utilizarse sólo en clasificación binaria, por lo que tomaremos sus valores para cada una de las clases posibles. Definimos precisión como la cantidad de instancias etiquetadas para una clase que son correctas (positivos verdaderos o $P_v$) sobre la cantidad de instancias etiquetadas para esa clase ($P_v$ y falsos positivos o $P_f$).
+    $$Precision(C_i) = \frac{P_v}{P_v + P_f}$$
     La exhaustividad, por otro lado, está definida como la cantidad de instancias etiquetadas correctamente ($P_v$) de una clase dada sobre la cantidad de instancias que pertenecen a la clase verdaderamente ($P_v$ y falsos negativos o $N_f$).
     $$Exhaustividad(C_i) = \frac{P_v}{P_v + N_f}$$
 \end{description}
@@ -53,7 +59,6 @@ El corpus de características no es más que una matriz ternaria con tres valore
 \subsection{Baseline}
 Tomaremos como baseline dos métodos:
 \begin{description}
-    \item[Clasificador ingénuo] Este clasificador asigna la clase ``otro'' a cualquier instancia. Al tener una alta población de instancias con esta clase
     \item[Selección de instancias y características al azar]
     % \item[Bootstrapqing normal utilizando EM]  % Vale la pena hacer esto?
 \end{description}
