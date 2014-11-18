@@ -29,56 +29,57 @@ Paralelamente, los sistemas de respuesta a preguntas pueden obtener grandes bene
 
 Extraer información de una ontología no es difícil, sin embargo, como describe \citet{ungerQALD}, indentificar el sector de datos relevante a una consulta en lenguaje natural es un gran desafío. Se requiere para esto traducir el texto ingresado por el usuario en una consulta formal que pueda ser procesada por un motor de búsqueda tradicional sobre datos enlazados. Una vez que se ha obtenido la información de la base, otra etapa de procesamiento convierte estos datos del formato legible por una computadora a un formato legible por el usuario. A continuación ilustramos con un ejemplo estas etapas utilizando una consulta en lenguaje MQL sobre la estructura de FreeBase.
 
-\begin{enumerate}
-    \item Obtención de la pregunta.
-        \begin{lstlisting}
-        What is the capital city of Argentina?
-        \end{lstlisting}
-    \item Generación de la consulta MQL.
-        \begin{lstlisting}
-        {
-            "type":"/location/country",
-            "id":"/en/argentina",
-            "capital":null
+\begin{example}\label{QALD-etapas}\hfill
+    \begin{enumerate}
+        \item Obtención de la pregunta.
+            \begin{lstlisting}
+    What is the capital city of Argentina?
+            \end{lstlisting}
+        \item Generación de la consulta MQL.
+            \begin{lstlisting}
+    {
+        "type":"/location/country",
+        "id":"/en/argentina",
+        "capital":null
+    }
+            \end{lstlisting}
+        \item Obtención de la información.
+            \begin{lstlisting}
+    {
+        "result": {
+            "capital": "Buenos Aires",
+            "type": "/location/country",
+            "id": "/en/argentina"
         }
-        \end{lstlisting}
-    \item Obtención de la información.
-        \begin{lstlisting}
-        {
-            "result": {
-                "capital": "Buenos Aires",
-                "type": "/location/country",
-                "id": "/en/argentina"
-            }
-        }
-        \end{lstlisting}
-    \item Generación de la respuesta en leguaje natural.
-        \begin{lstlisting}
-        The capital city of Argentina is Buenos Aires.
-        \end{lstlisting}
-\end{enumerate}
+    }
+            \end{lstlisting}
+        \item Generación de la respuesta en leguaje natural.
+            \begin{lstlisting}
+    The capital city of Argentina is Buenos Aires.
+            \end{lstlisting}
+    \end{enumerate}
+\end{example}
 
 El primer desafío es identificar la entidad a la que se hace referencia en la pregunta, en nuestro caso, ``Argentina''. Esta tarea se complicaría con nombre más complejos como ``People's Republic of China''. Las complicaciones de este etilo está ligadas a los sistemas externos de parseo y asignación de etiquetas morfosintácticas. Sin un buen procesamiento del lenguaje natural poco puede contruirse.
 
 Adicionalmente, las consultas contienen no sólo información brindada por la pregunta del usuario, sino también datos asociados a la estructura de la base. Si en lugar de ``/location/country'' hubieramos utilizado ``/location/location'' la consulta hubiera devuelto un error, a pesar de que Argentina es también de tipo ``/location/location''. \citet{ungerQALD} menciona también otros problemas que frecuentemente enfrentan este tipo de sistemas.
 
-En las consultas utilizando MQL se detalla la estuctura de la información y se completan los datos necesarios para identificar el objeto en la base de datos. Para obtener información sobre la entidad se nombran sus atributos, pero se les da un valor de $null$. El motor de búsqueda identifica estos campos y completa la información faltante. Este lenguaje es muy intuitivo y fue diseñado para ser accesible, pero no todos los lenguajes de consulta son tan simples como SPARQL.
-
-Veamos un ejemplo de una consulta en SPARQL para la pregunta ``How many episodes does Seinfeld have?'':
+En las consultas utilizando MQL se detalla la estuctura de la información y se completan los datos necesarios para identificar el objeto en la base de datos. Para obtener información sobre la entidad se nombran sus atributos, pero se les da un valor de $null$. El motor de búsqueda identifica estos campos y completa la información faltante. Este lenguaje es muy intuitivo y fue diseñado para ser accesible, pero no todos los lenguajes de consulta son tan simples como MQL.
 
 \vspace{5mm}
+\begin{example} Consulta en SPARQL para la pregunta ``How many episodes does Seinfeld have?''
+    \begin{lstlisting}
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    PREFIX dbpprop: <http://dbpedia.org/property/>
+    PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
 
-\begin{lstlisting}
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX dbpprop: <http://dbpedia.org/property/>
-PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
-
-SELECT DISTINCT ?x1 WHERE {
-  ?x0   rdf:type                        dbpedia-owl:TelevisionShow.
-  ?x0   dbpprop:showName                "Seinfeld"@en.
-  ?x0   dbpedia-owl:numberOfEpisodes    ?x1.
-}
-\end{lstlisting}
+    SELECT DISTINCT ?x1 WHERE {
+      ?x0   rdf:type                        dbpedia-owl:TelevisionShow.
+      ?x0   dbpprop:showName                "Seinfeld"@en.
+      ?x0   dbpedia-owl:numberOfEpisodes    ?x1.
+    }
+    \end{lstlisting}
+\end{example}
 
 La cantidad de información necesaria para construir esta consulta es mucho mayor mientras que su estructura no es simple de comprender. Sin embargo, pone en relevancia el uso de tripletas para representar la relación entre distintos nodos. En particular, la variable $?x1$ representa el resultado, mientras que la variable $?x0$ representa a la entidad de nombre ``Seinfield'' y tipo ``TelevisionShow''.
 
@@ -100,19 +101,17 @@ A grandes rasgos, Quepy utiliza dos etapas que traducen una pregunta a una Expre
 
 \subsection{Construcción de las consultas}
 
-Para entender mejor cómo funciona Quepy internamente veamos en ejemplo en particular, extraído de la documentación oficial \footnote{http://quepy.readthedocs.org/en/latest/tutorial.html}. Este ejemplo corresponde a una aplicación realizada para generar consultas SPARQL para ser enviadas a un motor de la DBPedia. Analicemos primero cómo se definen los elementos del DSL en el siguiente código.
+Para entender mejor cómo funciona Quepy internamente veamos en ejemplo en particular, extraído de la documentación oficial \footnote{http://quepy.readthedocs.org/en/latest/tutorial.html}. Este ejemplo corresponde a una aplicación realizada para generar consultas SPARQL para ser enviadas a un motor de la DBPedia. Analicemos primero cómo se definen los elementos del DSL para luego seguir con las plantilla propiamente dichas.
 
-\vspace{5mm}
+\begin{example}Definición de un elemento del DSL.
+    \begin{lstlisting}
+    from quepy.dsl import FixedRelation
 
-\begin{lstlisting}
-from quepy.dsl import FixedRelation
-
-class IsDefinedIn(FixedRelation):
-    relation = "rdfs:comment"
-    reverse = True
-\end{lstlisting}
-
-\vspace{5mm}
+    class IsDefinedIn(FixedRelation):
+        relation = "rdfs:comment"
+        reverse = True
+    \end{lstlisting}
+\end{example}
 
 La clase $IsDefinedIn$ es una Expresión que representa una relación entre dos objetos, como vimos anteriormente en RDF. Dependiendo del lenguaje de consulta tendrá distinas traducciones, y en particular para SPARQL es equivalente a:
 
@@ -122,30 +121,28 @@ La clase $IsDefinedIn$ es una Expresión que representa una relación entre dos 
 
 donde $?target$ y $?definition$ son parámetros que tomará la Expresión al instanciarse.
 
-Las expresiones pueden construirse progresivamente a partir de otras expresiones como veremos a continuación. El siguiente código corresponde a una plantilla para las preguntas de tipo ``What is ... ?''.
+Las expresiones pueden construirse progresivamente a partir de otras expresiones como veremos a continuación.
 
-\vspace{5mm}
+\begin{example}\label{plantilla-quepy} Plantilla para las preguntas de tipo ``What is ... ?''.
+    \begin{lstlisting}
+    from refo import Group, Question
+    from quepy.dsl import HasKeyword
+    from quepy.parsing import Lemma, Pos, QuestionTemplate
 
-\begin{lstlisting}
-from refo import Group, Question
-from quepy.dsl import HasKeyword
-from quepy.parsing import Lemma, Pos, QuestionTemplate
+    from dsl import IsDefinedIn
 
-from dsl import IsDefinedIn
+    class WhatIs(QuestionTemplate):
 
-class WhatIs(QuestionTemplate):
+        aux = Question(Pos("DT")) + Group(Pos("NN"), "target")
+        regex = Lemma("what") + Lemma("be") + aux + Question(Pos("."))
 
-    aux = Question(Pos("DT")) + Group(Pos("NN"), "target")
-    regex = Lemma("what") + Lemma("be") + aux + Question(Pos("."))
-
-    def interpret(self, match):
-        thing = match.target.tokens
-        target = HasKeyword(thing)
-        definition = IsDefinedIn(target)
-        return definition
-\end{lstlisting}
-
-\vspace{5mm}
+        def interpret(self, match):
+            thing = match.target.tokens
+            target = HasKeyword(thing)
+            definition = IsDefinedIn(target)
+            return definition
+    \end{lstlisting}
+\end{example}
 
 Observemos que la clase tiene un attributo llamado $regex$ que corresponde a la expresión regular que define la plantilla. Profundizaremos en la estructura de estas expresiones regulares más adelante, pero ahora notemos que uno de los elementos tiene una etiqueta $target$. Si la pregunta ingresada por el usuario concuerda con esta expresión regular, entonces los elementos que concuerden con las sub expresiones etiquetadas serán pasados al método $interpret$ de la clase. En este caso, el segmento de oración que corresponda a $Group(Pos("NN"))$ (un conjunto de sustantivos) será un atributo del parámetro $match$ recibido por $interpret$.
 
@@ -167,16 +164,14 @@ SELECT DISTINCT ?x1 WHERE {
 
 \subsection{Plantillas y sus expresiones regulares}
 
-Describiremos a continuación más en detalle la estructura de las plantillas que permiten crear una Expresión a partir de una pregunta. Cada una de las plantillas está construida en base a la librería REfO\footnote{https://github.com/machinalis/refo}, que define expresiones regulares entre objetos complejos de Python, no solamente cadenas de caracteres. Retomemos el ejemplo anterior, donde la expresión regular era\footnote{Reemplazamos la variable aux por su contenido para mayor claridad, lo cual no afecta el significado de la expresión regular.}:
+Describiremos a continuación más en detalle la estructura de las plantillas que permiten crear una Expresión a partir de una pregunta. Cada una de las plantillas está construida en base a la librería REfO\footnote{https://github.com/machinalis/refo}, que define expresiones regulares entre objetos complejos de Python, no solamente cadenas de caracteres.
 
-\vspace{5mm}
-
-\begin{lstlisting}
-regex = Lemma("what") + Lemma("be") + Question(Pos("DT"))
-        + Group(Pos("NN"), "target") + Question(Pos("."))
-\end{lstlisting}
-
-\vspace{5mm}
+\begin{example}\label{regex} Expresión regular del ejemplo \ref{plantilla-quepy}\footnote{Reemplazamos la variable aux por su contenido para mayor claridad, lo cual no afecta el significado de la expresión regular.}.
+    \begin{lstlisting}
+    regex = Lemma("what") + Lemma("be") + Question(Pos("DT"))
+            + Group(Pos("NN"), "target") + Question(Pos("."))
+    \end{lstlisting}
+\end{example}
 
 Para analizar si un frase concuerda o no con una expresión regular, Quepy transformará la oración con el analizador sintáctico indicado para obtener el lemma y las etiqueta POS de cada una de sus palabras. Luego, utilizará esa información para compararla con la expresión regular. Entonces, nuestro ejemplo concordará con una frase cuya primera palabra tenga lemma ``what'', su segunda palabra tenga lemma ``be'', su tercera palabra (opcionalmente) tenga etiqueta POS ``DT'', etc.
 
@@ -198,11 +193,11 @@ Lo que nos proponemos entonces lograr con este trabajo es ampliar la cobertura d
 
 \section{Solución propuesta}
 
-Como la generación de nuevas plantillas manualmente no es viable, entonces proponemos una solución automática: agregar al sistema un clasificador que identifique (si existiera) el patrón que corresponde a la pregunta. Es tarea del clasificador identificar reformulaciones de un patrón que tengan la misma semántica. Una vez obtenida a clase semántica e identificado el objeto de la pregunta, Quepy u otro sistema puede construir la consulta. Dejaremos como trabajo futuro el reconocimiento de la entidad base y nos centraremos en la clasificación de las preguntas.
+Como la generación de nuevas plantillas manualmente no es viable, entonces proponemos una solución automática: agregar al sistema un clasificador que identifique (si existiera) el patrón que corresponde a la pregunta. Es tarea del clasificador asociar reformulaciones que tengan la misma semántica a solo patrón. Una vez obtenida la clase semántica e identificado el objeto de la pregunta, Quepy u otro sistema puede construir la consulta directamente. Dejaremos como trabajo futuro el reconocimiento de la entidad base y nos centraremos en la clasificación de las preguntas.
 
 Este enfoque de encontrar reformulaciones de una misma pregunta está enmarcado dentro del reconocimiento de implicaciones textuales y ha sido utilizado previamente para sistema de respuesta a preguntas del usuario. \citet{ou_entailement} utilizan esta técnica tomando como base preguntas modelo construidas automáticamente desde la ontología, y se centran también en la composición de patrones simples para formar otros más complejos. Sin embargo, se limitan a un dominio muy restringido que permite formar texto en lenguaje natural desde las relaciones formales entre las entidades, lo cual sería dificultoso en ontologías complejas como FreeBase. \citet{rui_relations} explican otros posibles usos de identificar estas relaciones entre las preguntas para sugerencia de preguntas relacionadas o útiles para el usuario. El trabajo de \citet{Kosseimmuyparecido}, por otra parte, utiliza la reformulación para obtener patrones semánticamente equivalente, pero utiliza durante el entrenamiento del clasificador la respuesta de la pregunta.
 
-Nuestro trabajo será construir y entrenar un clasificador capaz de recibir una pregunta y decidir a qué clase semántica pertenece, siguiendo la definición:
+Nuestro trabajo será construir y entrenar un clasificador capaz de recibir una pregunta y decidir a qué clase semántica pertenece, siguiendo la definición de \citet{Sebastiani-text-categorization}:
 
 \begin{definition}
 La clasificación de una instancia es la asignación de un valor booleano a cada par $\langle x_i, c_j \rangle \in \mathcal{X} \times \mathcal{C}$, donde $\mathcal{X}$ es el dominio de las instancias y $\mathcal{C}$ es el conjunto de clases posibles.
@@ -210,7 +205,7 @@ La clasificación de una instancia es la asignación de un valor booleano a cada
 
 Asignaremos el valor $Verdadero$ a los pares $\langle x_i, c_i \rangle$ si la clase $c_j$ corresponde a la instancia $x_i$, y $Falso$ en el caso contrario.
 
-bla bla bla es necesaria la formalización así?
+bla bla bla es necesaria la formalización así? Falta lña definición de entrenamiento.
 
 $\mathcal{C}$ para esta clasificación es el conjunto de clases semánticas de Quepy, es decir, cada una de las plantillas o patrones. El ejemplo que describimos en la sección anterior corresponde a la clase ``Whatis''. Todas las preguntas que puedan responderse a través de la consulta generada por esta plantilla serán clasificadas dentro de esta clase. La cantidad total de clases es 29, las agregamos en un APENDICE?
 
@@ -219,38 +214,55 @@ $\mathcal{C}$ para esta clasificación es el conjunto de clases semánticas de Q
 %Pocas preguntas como semillas, muchas preguntas no etiquetadas => aprendizaje activo
 % Cómo representar la clase semántica de una pregunta => características usadas y aprendizaje sobre características.
 
-Aunque la tarea a realizar no parece compleja y ha sido ampliamente estudiada, nos encontramos con numerosos obstáculos que impiden utilizar algún método estándar de clasificación de texto. A continuación discutiremos dos de estos incovenientes y las desiciones que tomamos para resolverlos.
+Aunque la tarea a realizar no parece compleja y ha sido ampliamente estudiada, nos encontramos con numerosos obstáculos que impiden utilizar algún método estándar de clasificación de texto. A continuación discutiremos dos de estos incovenientes y las decisiones que tomamos para resolverlos.
 
-\subsection{De la Clasificación Semisupervisada al Aprendizaje Activo}
+\subsection{De la Clasificación Supervisada al Aprendizaje Activo}
 
-En primer lugar, no contamos con un corpus anotado que permita utilizar clasificación supervisada común. Desarrollamos entonces un pequeño corpus a partir de los ejemplos que trae Quepy. Por cada clase agregamos también algunos casos de reformulaciones no reconocidos por la aplicación y también las etiquetamos. El resultados final fueron 106 preguntas, un número más que modesto y que difícilmente cubre el universo de posibles reformulaciones de todas las clases.
+En primer lugar, no contamos con un corpus anotado que permita utilizar clasificación supervisada común. Desarrollamos entonces un pequeño corpus a partir de los ejemplos incuidos en Quepy. Por cada clase agregamos también algunos casos de reformulaciones no reconocidos por la aplicación y también las etiquetamos. El resultados final fueron 106 preguntas, un número más que modesto y que difícilmente cubre el universo de posibles reformulaciones de todas las clases.
 
 Sin embargo, existen numerosos corpus de preguntas utilizados para otras tareas de clasificación que no están etiquetados. Por lo tanto, decidimos utilizar un enfoque semiautomático que comience con un conjunto de semillas y que utilice las preguntas no etiquetadas paulatinamente para aprender la clasificación. Esto nos permitirá compensar la falta de cobertura sobre el dominio.
 
 La fuente más importante de preguntas para la construcción del corpus no anotado fueron las preguntas de entrenamiento y evaluación de las tareas del TREC\footnote{http://trec.nist.gov/data/qamain.html} desde el año 2008. Por lo tanto, consideramos que nuestro conjunto representativo de las posibles preguntas que un usuario podría esperar que un sistema responda. Sin embargo sólo una porción muy pequeña del ellas se corresponde con alguna de las clases de Quepy. Por lo tanto, entrenar un casificador con tan alta cantidad de ruido sería una tarea muy difícil.
 
-Tengamos en cuenta también que los límites de una clase semántica no siempre están claros y algunas veces dependen fuertemente de la estructura de los datos en la ontología. Por ejemplo, las preguntas ``What is the tallest mountain?'' y ``What is the Everest mountain?'' son muy similares, y sin embargo sólo la segunda pertenece a la case ``whatis'': para responder la primera pregunta debe obtenerse la altura de todas las montañas de la base de datos y seleccionar la mayor.
+Tengamos en cuenta también que los límites de una clase semántica no siempre están claros y algunas veces dependen fuertemente de la estructura de los datos en la ontología.
+
+\begin{example}\label{preguntas-similares}\hfill
+    \begin{enumerate}
+    \item ``What is the tallest mountain?''
+    \item ``What is the Everest mountain?''
+    \end{enumerate}
+\end{example}
+
+Estas preguntas son muy similares, y sin embargo sólo la segunda pertenece a la case ``whatis'': para responder la primera pregunta debe obtenerse la altura de todas las montañas de la base de datos y seleccionar la mayor.
 
 Por este motivo decidimos utilizar una plataforma de aprendizaje activo donde un oráculo humano ayudará al sistema a delimitar estas sutilezas semánticas. \citet{rare-classes-holpedales} y \citet{AL-imbalanced-Ertekin} describe clasificadores adaptados a través del aprendizaje activo para encontrar y clasificar ejemplos raros de clases minoritarias. Además de ello, el aprendizaje activo es una estrategia que obtiene buenos resultados para problemas con una gran cantidad de clases, de acuerdo con \citet{al-multiclass-jain}.
 
-Tengo que agregar mucho más sobre aprendizaje activo verdad?
+\citet{settles_active_learning_survey} explica que el aprendizaje activo es un paradigma donde el aprendedor selecciona preguntas para que un humano u oráculo las etiquete. Si el aprendedor elige las instancias de las cuales puede aprender más información, entonces se minimiza la cantidad de instancias etiquetadas necesarias para lograr el mismo desempeño. La mayor motivación para este tipo de estrategias es la dificultad de conseguir dato etiquetados al mismo tiempo que se disponen de grandes cantidad de ejemplos no etiquetados, tal y como es nuestro caso. Utilizaremos aprendizaje activo para conseguir un corpus etiquetado de entrenamiento con el menor esfuerzo posible.
 
-\subsection{Representación de las preguntas}
+\begin{figure}[h]
+\caption{Arquitectura de un sistema de aprendizaje activo}
+\includegraphics[width=8cm]{cicloaa.png}
+\centering
+\end{figure}
 
-Una importante parte de cualquier problema que aborde el lenguaje natural es la representación del mismo. Las características relevantes son propias de cada problema, si bien existen numerosos ejemplos bibliográficos a tomar como modelo.
-La mayoría de los estudios que abordan la clasificación de texto se basan en las
+\subsection{Aprendizaje activo sobre características}
 
-Las características propuestas para el sistema.
-\begin{itemize}
-    \item POS.
-    \item Lemmas.
-    \item Matcheos parciales a templates (probablemente no a las partículas sino a los templates).
-    \item Named Entity Recognition.
-    \item Tipos de cada Named Entity.
-    \item N-gramas combinando todos los conceptos anteriores.
+Durante las primeras etapas de desarrollo y especificación del problema debimos definir la representación de las instancias ante el clasificador. Sin embargo, al no existir trabajos previos con la misma proximación al problema no tenemos un punto de referencia para tomar como ejemplo. Por esto, decidimos incluir características tentativamente y realizar experimentos con aprendizaje activos sobre características e instancias.
 
-\end{itemize}
+En un enfoque como este se pedirá al usuario que etiquete las características seleccionadas con una clase si la presencia de la característica en una instancia es indicativa de la clase. \citet{settles-al-features} han realizado experimentos sobre clasificación de texto en donde se demuestra que el aprendizaje activo sobre características puede dar mejores resultados incluso que el aprendijase sobre instancias. Durante este trabajo ayudará a identificar las características que mejor describen las instancias para la clasificación descripta.
 
-Si bien las características anteriores pueden tomar valores en un amplio rango de enteros, decidimos sólo medir la presencia o ausencia de cada una de ellas. Por un lado, consideramos que el usuario no debería etiquetar cada característica en base a su valor, ya que este no es distintivo de la clase. Por ejemplo, si el lemma de una palabra como ``movie'' aparece más de 3 veces o menos no influye en las etiquetas que puedan asignarse a ellas.
+Las etiquetas obtenidas se utilizarán también para entrenar el clasificador reforzando la probabilidad de una característica dada una clase, como veremos en detalle en la implementación.
 
 \subsection{Dualist}
+
+Dualist es un sistema muy similar al que estamos planteando desarrollado por \citet{dualist} que combina el aprendizaje sobre instancias y sobre características para diversas tareas como el análisis de sentimientos o la clasificación de documentos.
+
+Nuestra implementación seguirá los mismos lineamientos principales y pondremos en práctica las técnicas de selección de ejemplos con las de entrenamiento del clasificador para obtener resultados sobre nuestra configuración. Decidimos tomarlo como modelo ya que se centra en la interfaz con el usuario y en la capacidad del software de ser utilizado en tiempo real. Nosotros deseamos lograr un sistema que sea viable de integrar con Quepy y complementar aplicaciones reales, en lugar de ser utilizado sólo para demostrar los resultados de este trabajo.
+
+En escencia, Dualist es un marco de trabajo para construir aplicaciones de aprendizaje activo donde los usuarios pueden etiquetar ejemplos o características.
+
+\begin{figure}
+\caption{Captura de pantalla de la interfáz gráfica de Dualist.}
+\includegraphics[width=8cm]{dualist-screen}
+\centering
+\end{figure}

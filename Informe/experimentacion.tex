@@ -23,6 +23,14 @@ Test corpus 250
 Training corpus 165
 Unlabeled corpus 6358
 
+\subsection{Proceso previo}
+
+Al momento de extraer las caraterísticas que mencionamos en la sección anterior encontramos varior problemas. Una aproximación simple al aprendije activo incluye reentrenar el clasificador en cada una de las iteraciones del ciclo, cambiando así el modelo. Al introducir el etiquetado de características ya no se puede cambiar el modelo sin perder rastro de la ubicación de las características etiquetadas dentro de las matrices internas del clasificador. Por esto es que tuvimos que cambiar la implementación básica y extraer todos las características dentro de la instancia de preproceso. De esta forma, nuestras matrices iniciales tienen toda la información tanto del corpus anotado como no anotado.
+
+% Por qué no usamos tdidf
+% Por qué binarizamos - el número más grande sin binarizar en 9. Hacer un mejor estudio sobre la cantidad de información que estamos perdiendo.
+Si bien las características anteriores pueden tomar valores en un amplio rango de enteros, decidimos sólo medir la presencia o ausencia de cada una de ellas. Por un lado, consideramos que el usuario no debería etiquetar cada característica en base a su valor, ya que este no es distintivo de la clase. Por ejemplo, si el lemma de una palabra como ``movie'' aparece más de 3 veces o menos no influye en las etiquetas que puedan asignarse a ellas.
+
 \section{Usuarios Emulados}
 
 Para poder realizar experimentos automáticos sin que el usuario tenga que ingresar la misma información repretidas veces decidimos guardar las respuestas obtenidas. Por ello agregamos etiquetas al corpus no etiquetados, que por supuesto no son consultadas, y creamos un corpus de asociaciones características-clases.

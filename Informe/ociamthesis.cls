@@ -16,6 +16,7 @@
 %\LoadClass[a4paper,twoside,openright]{report}
 
 \RequirePackage{graphicx} % needed for latest frontpage logo
+\graphicspath{ {./imagenes/} }
 \RequirePackage{ifthen}   % needed for option parsing for logo
 
 \raggedbottom
@@ -30,7 +31,7 @@
 % These macros are used to declare arguments needed for the
 % construction of the title page and other preamble.
 
-% The year and term the thesis is submitted 
+% The year and term the thesis is submitted
 \def\degreedate#1{\gdef\@degreedate{#1}}
 % The full (unabbreviated) name of the degree
 \def\degree#1{\gdef\@degree{#1}}
@@ -83,7 +84,7 @@
 % Environments
 %
 
-% This macro define an environment for front matter that is always 
+% This macro define an environment for front matter that is always
 % single column even in a double-column document.
 
 \newenvironment{alwayssingle}{%
@@ -141,7 +142,7 @@
 
 % ACKNOWLEDGEMENTS
 %
-% The acknowledgements environment puts a large, bold, centered 
+% The acknowledgements environment puts a large, bold, centered
 % "Acknowledgements" label at the top of the page. The acknowledgements
 % themselves appear in a quote environment, i.e. tabbed in at both sides, and
 % on its own page.
@@ -156,8 +157,8 @@
 \begin{quote}}
 {\end{quote}\end{alwayssingle}}
 
-% The acknowledgementslong environment puts a large, bold, centered 
-% "Acknowledgements" label at the top of the page. The acknowledgement itself 
+% The acknowledgementslong environment puts a large, bold, centered
+% "Acknowledgements" label at the top of the page. The acknowledgement itself
 % does not appears in a quote environment so you can get more in.
 
 \newenvironment{acknowledgementslong}
@@ -171,9 +172,9 @@
 
 % STATEMENT OF ORIGINALITY (AS SUGGESTED BY GSW)
 %
-% The originality environment puts a large, bold, centered 
-% "Statement of originality" label at the top of the page. The statement 
-% of originality itself appears in a quote environment, i.e. tabbed in at 
+% The originality environment puts a large, bold, centered
+% "Statement of originality" label at the top of the page. The statement
+% of originality itself appears in a quote environment, i.e. tabbed in at
 % both sides, and on its own page.
 
 \newenvironment{originality}
@@ -186,9 +187,9 @@
 \begin{quote}}
 {\end{quote}\end{alwayssingle}}
 
-% The originalitylong environment puts a large, bold, centered 
-% "Statement of originality" label at the top of the page. The statement 
-% of originality itself does not appears in a quote environment so you can 
+% The originalitylong environment puts a large, bold, centered
+% "Statement of originality" label at the top of the page. The statement
+% of originality itself does not appears in a quote environment so you can
 % get more in.
 
 \newenvironment{originalitylong}
@@ -238,7 +239,7 @@
     {{\large \vspace*{1ex} \@author} \par}
 {\large \vspace*{1ex}
     {{\@college} \par}
-    {University of Oxford \par}
+    {Universidad Nacional de Córdoba \par}
 \vspace*{1ex}
     {{\it \submittedtext} \par}
     {\it {\@degree} \par}

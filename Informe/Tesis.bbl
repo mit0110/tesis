@@ -1,4 +1,4 @@
-\begin{thebibliography}{14}
+\begin{thebibliography}{17}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -26,6 +26,20 @@ Tom~Heath Christian~Bizer and Tim Berners-Lee.
 \newblock Liked data-the story so far.
 \newblock \emph{International journal on semantic web and information systems},
   5(3):\penalty0 1--22, 2009.
+
+\bibitem[Danny~Roobaert and Chawla(??)]{infgain}
+Grigoris~Karakoulas Danny~Roobaert and Nitesh~V. Chawla.
+\newblock Information gain, correlation and support vector machines.
+\newblock \emph{??}, page~??, ??
+
+\bibitem[Druck et~al.(2009)Druck, Settles, and McCallum]{settles-al-features}
+Gregory Druck, Burr Settles, and Andrew McCallum.
+\newblock Active learning by labeling features.
+\newblock In \emph{Proceedings of the 2009 Conference on Empirical Methods in
+  Natural Language Processing: Volume 1 - Volume 1}, EMNLP '09, pages 81--90,
+  Stroudsburg, PA, USA, 2009. Association for Computational Linguistics.
+\newblock ISBN 978-1-932432-59-6.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=1699510.1699522}.
 
 \bibitem[Ertekin et~al.(2007)Ertekin, Huang, Bottou, and
   Giles]{AL-imbalanced-Ertekin}
@@ -71,6 +85,12 @@ Leila Kosseim and Jamileh Yousefi.
 Shiyan Ou and Zhenyuan Zhu.
 \newblock An entailment-based question answering system over semantic web data.
 \newblock \emph{??}, ??\penalty0 (?):\penalty0 ?--?, ??
+
+\bibitem[Sebastiani(2002)]{Sebastiani-text-categorization}
+Fabrizio Sebastiani.
+\newblock Machine learning in automated text categorization.
+\newblock \emph{ACM Comput. Surv.}, 34\penalty0 (1):\penalty0 1--47, 2002.
+\newblock ISSN 0360-0300.
 
 \bibitem[Settles(2009)]{settles_active_learning_survey}
 Burr Settles.

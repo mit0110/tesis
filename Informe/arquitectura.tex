@@ -2,9 +2,9 @@
 
 Si bien el objetivo principal de este trabajo es incrementar la cobertura de Quepy, deseamos también que el sistema esté compartimentado de tal forma que sus componentes puedan utilizarse individualmente para otras aplicaciones.
 
-Trabajamos sobre dos grandes áreas: un clasificador automático entrenado utlizando aprendizaje activo sobre instancias y características, y la representación de las preguntas para maximizar los resultados del clasificador. El clasificador puede ser visto como una tarea general, y por lo tanto lo desarrollamos como una librería portable cuyos parámetros pueden ser definidos por el usuario. Sin embargo, la representación de las preguntas elegidas es algo completamente ligado al sistema de preguntas y por ello lo diseñamos como una extensión opcional de Quepy que puede utilizar cualquier clasificador.
+Trabajamos sobre dos grandes áreas: un clasificador automático entrenado utlizando aprendizaje activo sobre instancias y características, y la representación de las preguntas para maximizar los resultados del clasificador. El clasificador puede ser visto como una tarea general, y por lo tanto lo desarrollamos como una librería portable cuyos parámetros pueden ser definidos por el usuario. Sin embargo, la representación de las preguntas ya descripta es algo completamente ligado al sistema de preguntas y por ello lo diseñamos como una extensión opcional de Quepy que puede utilizar cualquier clasificador.
 
-A continuación detallaremos cada una de estos módulos, y finalmente abordaremos la estructura del sistema completo.
+A continuación explicaremos el ciclo de aprendizaje activo y cada una de estos módulos.
 
 \section{Framework para aprendizaje automático sobre instancias y características}
 % Basado en DUALIST Esto sería lo que haría conjuntamente con Rodri.
@@ -32,12 +32,34 @@ Si bien ésta aproximación es altamente paramétrica, cabe destacar que permite
 % Descripción del ciclo usuario - reentrenamiento - EM
 \subsection{Selección de instancias}
 \subsection{Selección de características}
-Las características son ordenadas luego del entrenamiento por su ganancia de información, que corresponde a:
-% fórmula IG
-La ganancia de información es propuesta por numerosos estudios como una forma de seleccionar las características más relevantes para clasificación de texto.
-% citar los textos que la mencionan.
-Para lograr una clasificación más sencilla, se crea una lista de las características más probables para cada clase. Luego, estas características se ordenan de acuerto a su ganancia de información.
-% http://burrsettles.com/pub/druck.emnlp09.pdf
+En Dualist se presentaban al usuario dos listas de posibles características ordenadas de acuerdo a la correlación que tenían con cada clase. La principal diferencia con nuestra arquitectura es que tenemos 30 clases, no sólo dos, y por lo tanto debemos cambiar la forma de interacción. Por lo tanto no sólo debemos utilizar conceptos del aprendizaje activo para la selección de instancias y características, sino sobre las clases que vamos a mostrar. Cabe destacar también que en Dualist el active learning sobre ejemplos es totalmente independiente
+del active learning sobre instancias.
+
+Formas para ordenar las clases para preguntar al oráculo.
+\begin{itemize}
+	\item Clases que tengan la mayor probabilidad para un feature cualquiera.
+	\item Clases que tengan la mayor suma de probabilidades sobre todos sus features.
+	\item La clase con mayor probabilidad.
+	\item La clase con menor probabilidad.
+	\item La clase con mayor cantidad de instancias anotadas.
+	\item La clase con menor cantidad de instancias anotadas.
+\end{itemize}
+
+\subsubsection{Information Gain}
+Un criterio ampliamente utilizado para la selección de features es Information Gain.
+
+Definición wikipedia:
+In probability theory and information theory, the Kullback–Leibler divergence[1][2][3] (also information divergence, information gain, relative entropy, or KLIC; here abbreviated as KL divergence) is a non-symmetric measure of the difference between two probability distributions P and Q.
+
+\citet{infgain}
+Information gain (IG) measures the amount of information in bits about the
+class prediction, if the only information available is the presence of a feature
+and the corresponding class distribution. Concretely, it measures the expected
+reduction in entropy
+
+% http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=E6944FA8AB7813F0059807940A52159D?doi=10.1.1.32.9956&rep=rep1&type=pdf
+
+
 
 \subsection{Maximización de la esperanza}
 El algoritmo de maximización de la esperanza es ampliamente utilizado para inferir parámetros desconocidos en una distribución que tiene estados latentes. Para esto, utiliza estimadores de máxima verosimilitud, y para clasificación el estado latente al que nos referimos es la misma clase. A grandes rasgos, el proceso funciona en dos pasos E y M, por sus siglas en inglés Expectation y Maximization.
