@@ -1,15 +1,71 @@
-\begin{thebibliography}{5}
+\begin{thebibliography}{14}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[Berners-Lee(2014)]{BernersLeeLinkedDataGuide}
+Tim Berners-Lee.
+\newblock Linked data - design issues, November 2014.
+\newblock URL \url{http://www.w3.org/DesignIssues/LinkedData.html}.
+
+\bibitem[Brickley and Guha(2014)]{brickleyRDF}
+Dan Brickley and Ramanathan~V. Guha.
+\newblock Rdf vocabulary description language 1.0: Rdf schema - w3c
+  recommendation, November 2014.
+\newblock URL \url{http://www.w3.org/TR/rdf-schema/}.
+
+\bibitem[Carletta(1996)]{KappaCarletta}
+Jean Carletta.
+\newblock Assessing agreement on classification tasks: the kappa statistic.
+\newblock \emph{Computational Linguistics}, 22(2):\penalty0 249--254, 1996.
+
+\bibitem[Christian~Bizer and Berners-Lee(2009)]{BizerLinkedData}
+Tom~Heath Christian~Bizer and Tim Berners-Lee.
+\newblock Liked data-the story so far.
+\newblock \emph{International journal on semantic web and information systems},
+  5(3):\penalty0 1--22, 2009.
+
+\bibitem[Ertekin et~al.(2007)Ertekin, Huang, Bottou, and
+  Giles]{AL-imbalanced-Ertekin}
+Seyda Ertekin, Jian Huang, Leon Bottou, and Lee Giles.
+\newblock Learning on the border: Active learning in imbalanced data
+  classification.
+\newblock In \emph{Proceedings of the Sixteenth ACM Conference on Conference on
+  Information and Knowledge Management}, CIKM '07, pages 127--136. ACM, 2007.
+\newblock ISBN 978-1-59593-803-9.
+
 \bibitem[Gupta and Gupta(2012)]{gupta_survey}
 Poonam Gupta and Vishal Gupta.
 \newblock A survey of text question answering techniques.
 \newblock \emph{International Journal of Computer Applications}, 53\penalty0
   (4):\penalty0 1--8, 2012.
+
+\bibitem[Hospedales et~al.(2011)Hospedales, Gong, and
+  Xiang]{rare-classes-holpedales}
+TimothyM. Hospedales, Shaogang Gong, and Tao Xiang.
+\newblock Finding rare classes: Adapting generative and discriminative models
+  in active learning.
+\newblock In JoshuaZhexue Huang, Longbing Cao, and Jaideep Srivastava, editors,
+  \emph{Advances in Knowledge Discovery and Data Mining}, volume 6635 of
+  \emph{Lecture Notes in Computer Science}, pages 296--308. Springer Berlin
+  Heidelberg, 2011.
+\newblock ISBN 978-3-642-20846-1.
+
+\bibitem[Jain and Kapoor(2009)]{al-multiclass-jain}
+P.~Jain and A.~Kapoor.
+\newblock Active learning for large multi-class problems.
+\newblock In \emph{Computer Vision and Pattern Recognition, 2009. CVPR 2009.
+  IEEE Conference on}, pages 762--769, June 2009.
+
+\bibitem[Kosseim and Yousefi(2008)]{Kosseimmuyparecido}
+Leila Kosseim and Jamileh Yousefi.
+\newblock Improving the performance of question answering with semantically
+  equivalent answer patterns.
+\newblock \emph{Data Knowl. Eng.}, 66\penalty0 (1):\penalty0 53--67, 2008.
+\newblock ISSN 0169-023X.
+\newblock URL \url{http://dx.doi.org/10.1016/j.datak.2007.07.010}.
 
 \bibitem[Ou and Zhu(??)]{ou_entailement}
 Shiyan Ou and Zhenyuan Zhu.
@@ -27,6 +83,16 @@ Burr Settles.
   queries on features and instances.
 \newblock \emph{2011 Conference on Empirical Methods in Natural Language
   Processing}, pages 1467--1478, 2011.
+
+\bibitem[Unger et~al.(2014)Unger, Freitas, and Cimiano]{ungerQALD}
+Christina Unger, André Freitas, and Philipp Cimiano.
+\newblock An introduction to question answering over linked data.
+\newblock In Manolis Koubarakis, Giorgos Stamou, Giorgos Stoilos, Ian Horrocks,
+  Phokion Kolaitis, Georg Lausen, and Gerhard Weikum, editors, \emph{Reasoning
+  Web. Reasoning on the Web in the Big Data Era}, volume 8714 of \emph{Lecture
+  Notes in Computer Science}, pages 100--140. Springer International
+  Publishing, 2014.
+\newblock ISBN 978-3-319-10586-4.
 
 \bibitem[Wang and Li(??)]{rui_relations}
 Rui Wang and Shuguang Li.

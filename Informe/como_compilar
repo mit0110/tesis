@@ -1,0 +1,5 @@
+latex Tesis.tex
+bibtex Tesis.aux
+latex Tesis.tex
+# Cuantas veces sea necesario
+dvipdfm Tesis.dvi

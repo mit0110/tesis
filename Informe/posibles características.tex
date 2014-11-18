@@ -1,19 +1,19 @@
 
-Una importante parte de cualquier problema que aborde el lenguaje natural es la representación del mismo. Las características relevantes son propias de cada problema, si bien existen numerosos ejemplos bibliográficos a tomar como modelo.
-La mayoría de los estudios que abordan la clasificación de texto se basan en las
+% Una importante parte de cualquier problema que aborde el lenguaje natural es la representación del mismo. Las características relevantes son propias de cada problema, si bien existen numerosos ejemplos bibliográficos a tomar como modelo.
+% La mayoría de los estudios que abordan la clasificación de texto se basan en las
 
-Las características propuestas para el sistema.
-\begin{itemize}
-    \item POS.
-    \item Lemmas.
-    \item Matcheos parciales a templates (probablemente no a las partículas sino a los templates).
-    \item Named Entity Recognition.
-    \item Tipos de cada Named Entity.
-    \item N-gramas combinando todos los conceptos anteriores.
+% Las características propuestas para el sistema.
+% \begin{itemize}
+%     \item POS.
+%     \item Lemmas.
+%     \item Matcheos parciales a templates (probablemente no a las partículas sino a los templates).
+%     \item Named Entity Recognition.
+%     \item Tipos de cada Named Entity.
+%     \item N-gramas combinando todos los conceptos anteriores.
 
-\end{itemize}
+% \end{itemize}
 
-Si bien las características anteriores pueden tomar valores en un amplio rango de enteros, decidimos sólo medir la presencia o ausencia de cada una de ellas. Por un lado, consideramos que el usuario no debería etiquetar cada característica en base a su valor, ya que este no es distintivo de la clase. Por ejemplo, si el lemma de una palabra como ``movie'' aparece más de 3 veces o menos no influye en las etiquetas que puedan asignarse a ellas.
+% Si bien las características anteriores pueden tomar valores en un amplio rango de enteros, decidimos sólo medir la presencia o ausencia de cada una de ellas. Por un lado, consideramos que el usuario no debería etiquetar cada característica en base a su valor, ya que este no es distintivo de la clase. Por ejemplo, si el lemma de una palabra como ``movie'' aparece más de 3 veces o menos no influye en las etiquetas que puedan asignarse a ellas.
 
 
 Formas para ordenar los features de acuerdo a su relevancia.
