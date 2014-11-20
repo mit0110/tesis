@@ -1,12 +1,4 @@
-import refo
-
-from featureforge.feature import input_schema, output_schema
 from featureforge.vectorizer import Vectorizer
-from quepy import install
-
-
-freebase_app = install('quepyapp_freebase')
-
 
 # @input_schema({'question': unicode})
 # @output_schema(list(str), lambda l: len(l) > 0)

@@ -249,20 +249,23 @@ Por este motivo decidimos utilizar una plataforma de aprendizaje activo donde un
 
 Durante las primeras etapas de desarrollo y especificación del problema debimos definir la representación de las instancias ante el clasificador. Sin embargo, al no existir trabajos previos con la misma proximación al problema no tenemos un punto de referencia para tomar como ejemplo. Por esto, decidimos incluir características tentativamente y realizar experimentos con aprendizaje activos sobre características e instancias.
 
+%nos ayuda a entender mejor
+
 En un enfoque como este se pedirá al usuario que etiquete las características seleccionadas con una clase si la presencia de la característica en una instancia es indicativa de la clase. \citet{settles-al-features} han realizado experimentos sobre clasificación de texto en donde se demuestra que el aprendizaje activo sobre características puede dar mejores resultados incluso que el aprendijase sobre instancias. Durante este trabajo ayudará a identificar las características que mejor describen las instancias para la clasificación descripta.
 
 Las etiquetas obtenidas se utilizarán también para entrenar el clasificador reforzando la probabilidad de una característica dada una clase, como veremos en detalle en la implementación.
 
 \subsection{Dualist}
 
-Dualist es un sistema muy similar al que estamos planteando desarrollado por \citet{dualist} que combina el aprendizaje sobre instancias y sobre características para diversas tareas como el análisis de sentimientos o la clasificación de documentos.
+Dualist es un sistema muy similar al que estamos planteando desarrollado por \citet{dualist} que combina el aprendizaje sobre instancias y sobre características. Los resultados presentados son para diversas tareas como el análisis de sentimientos o la clasificación de documentos.
 
-Nuestra implementación seguirá los mismos lineamientos principales y pondremos en práctica las técnicas de selección de ejemplos con las de entrenamiento del clasificador para obtener resultados sobre nuestra configuración. Decidimos tomarlo como modelo ya que se centra en la interfaz con el usuario y en la capacidad del software de ser utilizado en tiempo real. Nosotros deseamos lograr un sistema que sea viable de integrar con Quepy y complementar aplicaciones reales, en lugar de ser utilizado sólo para demostrar los resultados de este trabajo.
-
-En escencia, Dualist es un marco de trabajo para construir aplicaciones de aprendizaje activo donde los usuarios pueden etiquetar ejemplos o características.
+La interfaz gráfica de una instancia tiene dos secciones principales. A la izquierda se muestra una lista de instancias con las clases para que el usuario pueda etiquetarlas sólo con un click. A la derecha, por cada clase hay una lista de objetos seleccionables representando las características (en este caso palabras) que están potencialmente asociadas a la clase. \citet{dualist} sostienen que presentar al usuario toda la información en conjunto hará que éste etiquete una mayor cantidad antes de esperar a que el clasificador de reentrene o le presente nuevas opciones.
 
 \begin{figure}
 \caption{Captura de pantalla de la interfáz gráfica de Dualist.}
-\includegraphics[width=8cm]{dualist-screen}
+\includegraphics[width=12cm]{dualist-screen}
 \centering
 \end{figure}
+
+Nuestra implementación seguirá los mismos lineamientos principales y pondremos en práctica las técnicas de selección de ejemplos con las de entrenamiento del clasificador para obtener resultados sobre nuestra configuración. Decidimos tomarlo como modelo ya que se centra en la interacción con el usuario y en la capacidad del software de ser utilizado en tiempo real. Nosotros deseamos lograr un sistema que sea viable de integrar con Quepy y complementar aplicaciones reales, en lugar de ser utilizado sólo para demostrar los resultados de este trabajo.
+

@@ -2,34 +2,34 @@
 
 Si bien el objetivo principal de este trabajo es incrementar la cobertura de Quepy, deseamos también que el sistema esté compartimentado de tal forma que sus componentes puedan utilizarse individualmente para otras aplicaciones.
 
-Trabajamos sobre dos grandes áreas: un clasificador automático entrenado utlizando aprendizaje activo sobre instancias y características, y la representación de las preguntas para maximizar los resultados del clasificador. El clasificador puede ser visto como una tarea general, y por lo tanto lo desarrollamos como una librería portable cuyos parámetros pueden ser definidos por el usuario. Sin embargo, la representación de las preguntas ya descripta es algo completamente ligado al sistema de preguntas y por ello lo diseñamos como una extensión opcional de Quepy que puede utilizar cualquier clasificador.
+La arquitectura de nuestro sistema integra tres grandes bloques que interactúan a través de interfaces:
 
-A continuación explicaremos el ciclo de aprendizaje activo y cada una de estos módulos.
-
-\section{Framework para aprendizaje automático sobre instancias y características}
-% Basado en DUALIST Esto sería lo que haría conjuntamente con Rodri.
-% Necesitamos pensar un nombre!
-\subsection{Funcionalidad}
-	% Para entrenarlo con active learning
-	% Para obtener métricas (con esto lo vamos a medir)
-
-\subsection{Parámetros}
 \begin{description}
-	\item[Clasificador] El usuario debe definir qué clasificador de sklearn utilizar.
-	\item[Características]
-		% Debe ser un algo que encaje dentro de un Pipeline
-	\item[Corpus]
-		% Qué archivos usar
-		% Corpus training - no etiquetado - comprobación
-			% El no etiquetado puede tener etiquetas para testing.
-		% Formato que deben tener
-			% diccionario de la forma {'question': pregunta, 'target': clase}
-	\item[Función de representación al usuario] El usuario debe proveer una interfáz gráfica para presentar los datos al usuario y obtener una respuesta.
+    \item[FeatMultinomialNB] Es el clasificador del sistema. Hereda del clasificador Multinomial Bayesiano de la librería sklearn y está adaptamos para soportar el entrenamiento utilizando tanto instancias como características. Agregamos algunas características más a la clase que simplifican algunos cálculos adicionales para el aprendizaje activo.
+    \item[ActivePipeline] Es una clase que abstrae los ciclos de aprendizaje activo. Recordemos que constan de dos pasos principales donde se seleccionan las instancias (o características) y luego se procesan las etiqueta devueltas por el usuario. Para llevar a cabo estas tareas el pipe necesita tener acceso a los corpus etiquetados y no etiquetados y al clasificador, lo cual lo convierte en el módulo central del proyecto.
+    \item[Preprocess] Es un módulo que convierte las preguntas de entrenamiento etiquetadas a su representación matricial utilizando las características descriptas en el capítulo anterior. La representación de las preguntas está completamente ligada a los patrones de la aplicación de Quepy. Por ello diseñamos el preproceso como una extensión opcional de Quepy que puede utilizar cualquier clasificador (que no necesariamente debe utilizar aprendizaje activo).
 \end{description}
-Si bien ésta aproximación es altamente paramétrica, cabe destacar que permite gran flexibilidad con respecto a los datos ingresados. Al permitir elegir tanto características como el corpus y el clasificador, puede ser utilizado dentro de cualquier ámbito incluso no relacionado al procesamiento del lenguaje natural.
-% En particular se utilizaría para iepy, y citamos la tesis de Rodri. Eso se puede?
 
-% Descripción del ciclo usuario - reentrenamiento - EM
+A continuación explicaremos el ciclo de aprendizaje activo y cada uno de estos módulos.
+
+\section{ActivePipeline: Un marco de trabajo de aprendizaje activo sobre características e instancias}
+
+
+ActivePipeline es una clase creada para simplificar la tarea del aprendizaje activo. Entre las actividades que realiza se encuentra la lectura de los corpus, la selección de instancias y características para presentar al usuario, la gestión de los datos ingresados y el reentrenamiento del clasificador. También agregamos funciones que no eran necesarias pero facilitan el entorno de experimentación como sessiones y métricas de evaluación parcial.
+
+Hasta el momento hemos realizado la prueba de concepto que demuestra que una aproximación de este estilo ayudaría a resolver el problema de la falta de cobertura de Quepy. Esta arquitectura está en desarrollo constante y no ha sido pulida para interactuar con un sistema real. Describiremos a continuación los puntos más centrales de la implementación ya que los detalles son altamente propensos a ser modificados en el futuro.
+
+Para crear una instancia de ActivePipeline se requiere un diccionario con los siguientes parámetros:
+\begin{description}
+	\item[Clasificador] Es una instancia de un clasificador. Para mantener generalidad, requerimos que tenga la interfaz estándar de sklearn. Los métodos que utilizamos son ``fit'', ``predict\_proba'', ``predict\_log\_proba'' y ``score''.
+	\item[Corpus] Se deben definir los archivos desde donde recuperar al menos tres corpus: el de entrenamiento, el de evaluación y el no etiquetado. Los corpus ya deben estar procesados antes de ser leídos por el ActivePipeline, y es recomendable que sean instancias de una clase Corpus también definida en el sistema.
+\end{description}
+Al permitir elegir tanto características como el corpus y el clasificador, puede ser utilizado dentro de cualquier ámbito incluso no relacionado al procesamiento del lenguaje natural.
+
+\subsection{Aprendizaje activo sobre instancias}
+Para comenzar a entrenar el clasificador utilizando instancias la clase ActivePipeline tiene un método llamado ``instance\_bootstrap''. Este método toma como argumento la función
+
+
 \subsection{Selección de instancias}
 \subsection{Selección de características}
 En Dualist se presentaban al usuario dos listas de posibles características ordenadas de acuerdo a la correlación que tenían con cada clase. La principal diferencia con nuestra arquitectura es que tenemos 30 clases, no sólo dos, y por lo tanto debemos cambiar la forma de interacción. Por lo tanto no sólo debemos utilizar conceptos del aprendizaje activo para la selección de instancias y características, sino sobre las clases que vamos a mostrar. Cabe destacar también que en Dualist el active learning sobre ejemplos es totalmente independiente
