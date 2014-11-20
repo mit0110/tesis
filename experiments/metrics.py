@@ -76,6 +76,49 @@ class PrecisionRecall(Metric):
         self.info = '\n'.join(result)
 
 
+def pr_from_confusion_matrix(cm):
+    """Precision and recall for each class from the confusion_matrix
+
+    Args:
+        cm: matrix like. Shape = (n_classes, n_classes). An sklearn confusion
+        matrix for the classifier.
+
+    Returns:
+        A list of 2-uples where the fist value is the precision and the
+        second is the recall.
+    """
+    result = []
+    for class_row in range(cm.shape):
+        tp = 1
+        fp = 1
+        fn = 1
+        result.append((tp/float(tp+fp), tp/(tp+fn)))
+    return []
+
+
+class PrecisionRecallCurve(Metric):
+    """Precision and recall for each of the classes for each training.
+
+    The information is a csv table separated by tabs where the content of each
+    column is:
+        class_name  number_of_instances precision   recall
+
+    The information is extracted from the classification_report element of
+    the session.
+    """
+
+    def get_from_session(self):
+        if not (self.session and 'recorded_precision' in self.session
+            and 'confusion_matrix' in self.session['recorded_precision'][-1]):
+            self.info = ''
+            return
+        report = self.session['classification_report']
+        result = []
+        result = ['\t'.join(line.split()[:-1])
+                  for line in report.split('\n')[3:-3]]
+        self.info = '\n'.join(result)
+
+
 class KappaStatistic(Metric):
     """Calculates the Kappa Statistic for the last classifier.
 
@@ -84,10 +127,12 @@ class KappaStatistic(Metric):
     """
 
     def get_from_session(self):
-        if not self.session or not 'confusion_matrix' in self.session:
-            self.info = ''
+        self.info = ''
+        if not (self.session and 'recorded_precision' in self.session
+            and 'confusion_matrix' in self.session['recorded_precision'][-1]):
             return
-        confusion_m = self.session['confusion_matrix']
+        # too hacky
+        confusion_m = self.session['recorded_precision'][-1]['confusion_matrix']
         total_instances = float(confusion_m.sum())
         real_accuracy = confusion_m.diagonal().sum() / total_instances
         e_accuracy = (confusion_m.sum(axis=1) * confusion_m.sum(axis=0) /

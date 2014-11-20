@@ -46,6 +46,12 @@ class Experiment1(BaseExperiment):
         self.pipe_class.get_next_features = get_next_features_random
         # Active learning class selection function
         self.pipe_class.get_class_options = lambda s: s.classes
+        self.experiment_config = {
+            'u_corpus_f': 'corpus/unlabeled_new_corpus.pickle',
+            'test_corpus_f': 'corpus/test_new_corpus.pickle',
+            'training_corpus_f': 'corpus/training_new_corpus.pickle',
+            'feature_corpus_f': 'corpus/feature_corpus.pickle',
+        }
 
     def run(self):
         print "Running experiment number {0}: {1}".format(self.number,

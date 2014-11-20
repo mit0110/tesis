@@ -134,6 +134,10 @@ class ActivePipeline(object):
             'training_precision' : self.evaluate_training(),
             'new_instances' : self.new_instances,
             'new_features' : self.new_features,
+            'confusion_matrix': confusion_matrix(
+                self.test_corpus.primary_targets,
+                self.predict(self.test_corpus.instances)
+            )
         })
         self.new_instances = 0
         self.new_features = 0
@@ -493,10 +497,8 @@ class ActivePipeline(object):
                    'recorded_precision': self.recorded_precision,
                    'asked_features': self.asked_features,
                    'classification_report': self.get_report(),
-                   'confusion_matrix': confusion_matrix(
-                        self.test_corpus.primary_targets,
-                        self.predict(self.test_corpus.instances)
-                   )}
+                   'classes': self.classes
+                  }
         pickle.dump(to_save, f)
         f.close()
         return True

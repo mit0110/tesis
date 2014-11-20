@@ -117,8 +117,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.38691277"
-     inkscape:cx="236.44062"
-     inkscape:cy="1188.5138"
+     inkscape:cx="241.60974"
+     inkscape:cy="1321.4498"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -137,7 +137,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1475,11 +1475,11 @@
          sodipodi:role="line"
          x="240.58711"
          y="-584.14423"
-         id="tspan4038">Instancias no</tspan><tspan
+         id="tspan4072">Selección de</tspan><tspan
          sodipodi:role="line"
          x="240.58711"
          y="-497.41653"
-         id="tspan4072">etiquetadas</tspan><tspan
+         id="tspan3294">instancias</tspan><tspan
          sodipodi:role="line"
          x="240.58711"
          y="-410.68881"
@@ -1700,5 +1700,38 @@
            inkscape:connector-curvature="0" />
       </g>
     </g>
+    <rect
+       style="fill:#d7f4d7"
+       id="rect3009-5-2-0-9-9-7-43"
+       width="539.4809"
+       height="231.12981"
+       x="-50.052731"
+       y="-1061.0691"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:69.382164px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="242.42067"
+       y="-875.70789"
+       id="text2997-6-1-7-0-4-8-0"
+       sodipodi:linespacing="125%"
+       transform="scale(0.90056201,1.1104177)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="242.42067"
+         y="-875.70789"
+         id="tspan4072-5">Ejemplos no</tspan><tspan
+         sodipodi:role="line"
+         x="242.42067"
+         y="-788.98016"
+         id="tspan3290">etiquetados</tspan><tspan
+         sodipodi:role="line"
+         x="242.42067"
+         y="-702.2525"
+         id="tspan3942-5-2-1-7-9-4" /></text>
   </g>
 </svg>
