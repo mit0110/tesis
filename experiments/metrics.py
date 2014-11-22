@@ -25,6 +25,7 @@ class Metric(object):
         self.info must be a string with data.
         """
         f = open(filename, 'w')
+        print self.info
         f.write(self.info)
         f.close()
 
@@ -120,11 +121,12 @@ class PrecisionRecallCurve(Metric):
         if not 'classes' in self.session:
             return
         result = []
+        num_instances = 0
         classes = self.session['classes']
         for rec_p in self.session['recorded_precision']:
             cm = rec_p['confusion_matrix']
             prec_rec_class = pr_from_confusion_matrix(cm)
-            num_instances = rec_p['new_instances'] + rec_p['new_features']
+            num_instances += rec_p['new_instances'] + rec_p['new_features']
             result += ['\t'.join((classes[i], str(num_instances), str(p), str(r)))
                        for i, (p, r) in enumerate(prec_rec_class)]
         self.info = '\n'.join(result)

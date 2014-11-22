@@ -228,7 +228,10 @@ class ActivePipeline(object):
               len(self.unlabeled_corpus)):
             it += 1
             new_index = self.get_next_instance()
-            new_instance = self.unlabeled_corpus.instances[new_index]
+            try:
+                new_instance = self.unlabeled_corpus.instances[new_index]
+            except IndexError:
+                import ipdb; ipdb.set_trace()
             representation = self.unlabeled_corpus.representations[new_index]
             if (self.emulate and
                 self.unlabeled_corpus.primary_targets[new_index]):

@@ -7,7 +7,8 @@ of them after each labeling.
 
 from termcolor import colored
 from base_experiment import BaseExperiment
-from metrics import LearningCurve, PrecisionRecall
+from metrics import (LearningCurve, PrecisionRecall, KappaStatistic,
+                     PrecisionRecallCurve)
 from random import randint, sample
 
 
@@ -19,7 +20,7 @@ def get_next_instance_random(self):
     """
     if not len(self.unlabeled_corpus):
         return None
-    index = randint(0, len(self.unlabeled_corpus))
+    index = randint(0, len(self.unlabeled_corpus) - 1)
     return index
 
 
@@ -58,9 +59,9 @@ class Experiment1(BaseExperiment):
         self.pipe = self.pipe_class(emulate=True, **self.experiment_config)
         num_answers = 0
         while num_answers < self.max_answers:
-            print colored('\n'.join(['*' * 79] * 10), 'green')
-            print colored('Instance labeling', 'red', 'on_white',
-                          attrs=['bold'])
+            # print colored('\n'.join(['*' * 79] * 10), 'green')
+            # print colored('Instance labeling', 'red', 'on_white',
+            #               attrs=['bold'])
             num_answers += self.pipe.instance_bootstrap(
                 self.get_labeled_instance, max_iterations=self.cycle_len
             )

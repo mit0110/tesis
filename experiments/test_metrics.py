@@ -130,8 +130,8 @@ class TestPrecisionRecallCurve(TestLearningCurve):
                                                       recorded_precision2]}
         expected = ('a\t7\t0.758620689655\t0.709677419355\n'
                     'b\t7\t0.590909090909\t0.65\n'
-                    'a\t1\t0.8\t0.869565217391\n'
-                    'b\t1\t0.833333333333\t0.75')
+                    'a\t8\t0.8\t0.869565217391\n'
+                    'b\t8\t0.833333333333\t0.75')
         self.metric.get_from_session()
 
         self.assertEqual(expected, self.metric.info)
