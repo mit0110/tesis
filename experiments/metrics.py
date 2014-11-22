@@ -113,14 +113,20 @@ class PrecisionRecallCurve(Metric):
     """
 
     def get_from_session(self):
+        self.info = ''
         if not (self.session and 'recorded_precision' in self.session
             and 'confusion_matrix' in self.session['recorded_precision'][-1]):
-            self.info = ''
             return
-        report = self.session['classification_report']
+        if not 'classes' in self.session:
+            return
         result = []
-        result = ['\t'.join(line.split()[:-1])
-                  for line in report.split('\n')[3:-3]]
+        classes = self.session['classes']
+        for rec_p in self.session['recorded_precision']:
+            cm = rec_p['confusion_matrix']
+            prec_rec_class = pr_from_confusion_matrix(cm)
+            num_instances = rec_p['new_instances'] + rec_p['new_features']
+            result += ['\t'.join((classes[i], str(num_instances), str(p), str(r)))
+                       for i, (p, r) in enumerate(prec_rec_class)]
         self.info = '\n'.join(result)
 
 

@@ -2,7 +2,7 @@ import unittest
 import numpy as np
 
 from metrics import (LearningCurve, PrecisionRecall, KappaStatistic,
-                     pr_from_confusion_matrix)
+                     pr_from_confusion_matrix, PrecisionRecallCurve)
 
 
 class TestLearningCurve(unittest.TestCase):
@@ -109,6 +109,33 @@ class TestPrecisionRecallCM(unittest.TestCase):
         for count, (x, y) in enumerate(result):
             self.assertAlmostEqual(expected[count][0], x)
             self.assertAlmostEqual(expected[count][1], y)
+
+
+class TestPrecisionRecallCurve(TestLearningCurve):
+
+    def setUp(self):
+        self.metric = PrecisionRecallCurve()
+
+    def test_full_session(self):
+        fake_confusion_matrix1 = np.array([[22, 9], [7, 13]])
+        fake_confusion_matrix2 = np.array([[20, 3], [5, 15]])
+        recorded_precision1 = {'new_instances': 3,
+                               'new_features': 4,
+                               'confusion_matrix': fake_confusion_matrix1}
+        recorded_precision2 = {'new_instances': 1,
+                               'new_features': 0,
+                               'confusion_matrix': fake_confusion_matrix2}
+        self.metric.session = {'classes': ['a', 'b'],
+                               'recorded_precision': [recorded_precision1,
+                                                      recorded_precision2]}
+        expected = ('a\t7\t0.758620689655\t0.709677419355\n'
+                    'b\t7\t0.590909090909\t0.65\n'
+                    'a\t1\t0.8\t0.869565217391\n'
+                    'b\t1\t0.833333333333\t0.75')
+        self.metric.get_from_session()
+
+        self.assertEqual(expected, self.metric.info)
+
 
 if __name__ == '__main__':
     unittest.main()
