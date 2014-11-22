@@ -73,10 +73,42 @@ class TestPrecisionRecallCM(unittest.TestCase):
     def test_from_cm(self):
         """Test the values of precision and recall from confusion matrix"""
         fake_confusion_matrix = np.array([[22, 9], [7, 13]])
-        expected = [(0.709677,0.75862069), (0.590909091, 0.65)]
+        expected = [(0.75862069, 0.709677), (0.590909091, 0.65)]
         result = pr_from_confusion_matrix(fake_confusion_matrix)
-        self.assertEqual(expected, result)
+        for count, (x, y) in enumerate(result):
+            self.assertAlmostEqual(expected[count][0], x, 6)
+            self.assertAlmostEqual(expected[count][1], y, 6)
 
+
+    def test_from_big_cm(self):
+        """
+             TP  FP  FN
+        ---------------
+        C1 | 22  11  16
+        C2 | 13  23  11
+        C3 | 17   7  14
+        C4 | 24  11  11
+        P(c1) = 22/(22+11) = 0.666666666667
+        P(c2) = 13/(13+23) = 0.361111111111
+        P(c3) = 17/(17+7) = 0.708333333333
+        P(c4) = 24/(24+11) = 0.685714285714
+        R(c1) = 22/(22+16) = 0.578947368421
+        R(c2) = 13/(13+11) = 0.541666666667
+        R(c3) = 17/(17+14) = 0.548387096774
+        R(c4) = 24/(24+11) = 0.685714285714
+        """
+        fake_confusion_matrix = np.array([[22,  9,  5,  2],
+                                          [ 7, 13,  0,  4],
+                                          [ 3,  6, 17,  5],
+                                          [ 1,  8,  2, 24]])
+        expected = [(0.6666666666666666, 0.5789473684210527),
+                    (0.3611111111111111, 0.5416666666666666),
+                    (0.7083333333333334, 0.5483870967741935),
+                    (0.6857142857142857, 0.6857142857142857)]
+        result = pr_from_confusion_matrix(fake_confusion_matrix)
+        for count, (x, y) in enumerate(result):
+            self.assertAlmostEqual(expected[count][0], x)
+            self.assertAlmostEqual(expected[count][1], y)
 
 if __name__ == '__main__':
     unittest.main()

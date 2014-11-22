@@ -77,7 +77,10 @@ class PrecisionRecall(Metric):
 
 
 def pr_from_confusion_matrix(cm):
-    """Precision and recall for each class from the confusion_matrix
+    """Precision and recall for each class from the confusion_matrix.
+
+    By definition, cm is such that cm[i][j] is the number of instances known
+    to be in the class c_i but predicted in the class c_j.
 
     Args:
         cm: matrix like. Shape = (n_classes, n_classes). An sklearn confusion
@@ -88,12 +91,14 @@ def pr_from_confusion_matrix(cm):
         second is the recall.
     """
     result = []
-    for class_row in range(cm.shape):
-        tp = 1
-        fp = 1
-        fn = 1
-        result.append((tp/float(tp+fp), tp/(tp+fn)))
-    return []
+    class_sum_v = cm.sum(axis=0)
+    class_sum_h = cm.sum(axis=1)
+    for class_row in range(cm.shape[0]):
+        tp = cm[class_row][class_row]
+        fp = class_sum_v[class_row] - tp
+        fn = class_sum_h[class_row] - tp
+        result.append((tp/float(tp+fp), tp/float(tp+fn)))
+    return result
 
 
 class PrecisionRecallCurve(Metric):
