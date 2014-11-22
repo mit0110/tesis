@@ -224,7 +224,8 @@ class ActivePipeline(object):
         """
         it = 0
         result = 0
-        while not max_iterations or it < max_iterations:
+        while ((not max_iterations or it < max_iterations) and
+              len(self.unlabeled_corpus)):
             it += 1
             new_index = self.get_next_instance()
             new_instance = self.unlabeled_corpus.instances[new_index]
