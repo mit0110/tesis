@@ -1,19 +1,17 @@
-\chapter{Arquitectura del sistema}
+\chapter{Implementación}
 
+\section{Arquitectura del sistema}
 Si bien el objetivo principal de este trabajo es incrementar la cobertura de Quepy, deseamos también que el sistema esté compartimentado de tal forma que sus componentes puedan utilizarse individualmente para otras aplicaciones.
 
 La arquitectura de nuestro sistema integra tres grandes bloques que interactúan a través de interfaces:
 
 \begin{description}
-    \item[FeatMultinomialNB] Es el clasificador del sistema. Hereda del clasificador Multinomial Bayesiano de la librería sklearn y está adaptamos para soportar el entrenamiento utilizando tanto instancias como características. Agregamos algunas características más a la clase que simplifican algunos cálculos adicionales para el aprendizaje activo.
+    \item[FeatMultinomialNB] Es el clasificador del sistema. Hereda del clasificador Multinomial Bayesiano de la librería sklearn y está adaptado para soportar el entrenamiento utilizando tanto instancias como características. Agregamos algunos métodos auxiliares más a la clase que simplifican algunos cálculos para el aprendizaje activo.
     \item[ActivePipeline] Es una clase que abstrae los ciclos de aprendizaje activo. Recordemos que constan de dos pasos principales donde se seleccionan las instancias (o características) y luego se procesan las etiqueta devueltas por el usuario. Para llevar a cabo estas tareas el pipe necesita tener acceso a los corpus etiquetados y no etiquetados y al clasificador, lo cual lo convierte en el módulo central del proyecto.
     \item[Preprocess] Es un módulo que convierte las preguntas de entrenamiento etiquetadas a su representación matricial utilizando las características descriptas en el capítulo anterior. La representación de las preguntas está completamente ligada a los patrones de la aplicación de Quepy. Por ello diseñamos el preproceso como una extensión opcional de Quepy que puede utilizar cualquier clasificador (que no necesariamente debe utilizar aprendizaje activo).
 \end{description}
 
-A continuación explicaremos el ciclo de aprendizaje activo y cada uno de estos módulos.
-
 \section{ActivePipeline: Un marco de trabajo de aprendizaje activo sobre características e instancias}
-
 
 ActivePipeline es una clase creada para simplificar la tarea del aprendizaje activo. Entre las actividades que realiza se encuentra la lectura de los corpus, la selección de instancias y características para presentar al usuario, la gestión de los datos ingresados y el reentrenamiento del clasificador. También agregamos funciones que no eran necesarias pero facilitan el entorno de experimentación como sessiones y métricas de evaluación parcial.
 
@@ -24,14 +22,15 @@ Para crear una instancia de ActivePipeline se requiere un diccionario con los si
 	\item[Clasificador] Es una instancia de un clasificador. Para mantener generalidad, requerimos que tenga la interfaz estándar de sklearn. Los métodos que utilizamos son ``fit'', ``predict\_proba'', ``predict\_log\_proba'' y ``score''.
 	\item[Corpus] Se deben definir los archivos desde donde recuperar al menos tres corpus: el de entrenamiento, el de evaluación y el no etiquetado. Los corpus ya deben estar procesados antes de ser leídos por el ActivePipeline, y es recomendable que sean instancias de una clase Corpus también definida en el sistema.
 \end{description}
-Al permitir elegir tanto características como el corpus y el clasificador, puede ser utilizado dentro de cualquier ámbito incluso no relacionado al procesamiento del lenguaje natural.
+Al permitir elegir tanto características como el corpus y el clasificador, la clase ActivePipeline puede ser utilizada dentro de cualquier ámbito incluso no relacionado al procesamiento del lenguaje natural.
 
-\subsection{Aprendizaje activo sobre instancias}
-Para comenzar a entrenar el clasificador utilizando instancias la clase ActivePipeline tiene un método llamado ``instance\_bootstrap''. Este método toma como argumento la función
+Tanto para el aprendizaje sobre características y sobre instancias el ActivePipeline cuenta con una función automática. El usuario debe definir sólo las funciones de interacción con el usuario, es decir, cómo mostrar la información, y pasarlas como parámetros al ActivePipeline.
 
 
-\subsection{Selección de instancias}
-\subsection{Selección de características}
+\section{Selección de instancias}
+Para
+
+\section{Selección de características}
 En Dualist se presentaban al usuario dos listas de posibles características ordenadas de acuerdo a la correlación que tenían con cada clase. La principal diferencia con nuestra arquitectura es que tenemos 30 clases, no sólo dos, y por lo tanto debemos cambiar la forma de interacción. Por lo tanto no sólo debemos utilizar conceptos del aprendizaje activo para la selección de instancias y características, sino sobre las clases que vamos a mostrar. Cabe destacar también que en Dualist el active learning sobre ejemplos es totalmente independiente
 del active learning sobre instancias.
 
@@ -45,7 +44,7 @@ Formas para ordenar las clases para preguntar al oráculo.
 	\item La clase con menor cantidad de instancias anotadas.
 \end{itemize}
 
-\subsubsection{Information Gain}
+\subsection{Ganancia de Información}
 Un criterio ampliamente utilizado para la selección de features es Information Gain.
 
 Definición wikipedia:
@@ -61,7 +60,7 @@ reduction in entropy
 
 
 
-\subsection{Maximización de la esperanza}
+\section{Maximización de la esperanza}
 El algoritmo de maximización de la esperanza es ampliamente utilizado para inferir parámetros desconocidos en una distribución que tiene estados latentes. Para esto, utiliza estimadores de máxima verosimilitud, y para clasificación el estado latente al que nos referimos es la misma clase. A grandes rasgos, el proceso funciona en dos pasos E y M, por sus siglas en inglés Expectation y Maximization.
 El paso E es el que calcula el valor esperado de la verosimilitud asumiendo que la distribución actual es verdadera y no existen variables no observadas. Para realizarlo, utilizamos el clasificador en su estado actual para etiquetar probabilisticamente el conjunto de datos no etiquetados, y asumimos dichas etiquetas como correctas. Con este conjunto de nuevos datos se calcula la verosimilitud del modelo.
 Recordemos que la verosimilitud es una función sobre los parámetros del modelo y un conjunto de datos que calcula la probabilidad de los valores tomados por cada variable aleatoria del modelo bajo dichos parámetros.

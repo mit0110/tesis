@@ -38,7 +38,7 @@ class Experiment1(BaseExperiment):
         self.number = 1
         self.description = ("No active learning. Selecting instances and "
                             "features randomly.")
-        self.max_answers = 300
+        self.max_answers = 459
         self.cycle_len = 1
         self.metrics = [LearningCurve(), PrecisionRecall(), KappaStatistic(),
                         PrecisionRecallCurve()]

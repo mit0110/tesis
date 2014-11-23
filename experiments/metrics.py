@@ -25,8 +25,10 @@ class Metric(object):
         self.info must be a string with data.
         """
         f = open(filename, 'w')
-        print self.info
-        f.write(self.info)
+        try:
+            f.write(str(self.info))
+        except TypeError:
+            import ipdb; ipdb.set_trace()
         f.close()
 
 
@@ -152,3 +154,15 @@ class KappaStatistic(Metric):
                       total_instances)
         e_accuracy = e_accuracy.sum() / total_instances
         self.info = (real_accuracy - e_accuracy) / (1 - e_accuracy)
+
+
+class ConfusionMatrix(Metric):
+    """Gets the confusion_matrix for the last classifier."""
+
+    def get_from_session(self):
+        self.info = ''
+        if not (self.session and 'recorded_precision' in self.session
+            and 'confusion_matrix' in self.session['recorded_precision'][-1]):
+            return
+        confusion_m = self.session['recorded_precision'][-1]['confusion_matrix']
+        self.info = str(confusion_m)
