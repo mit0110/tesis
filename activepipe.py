@@ -250,6 +250,9 @@ class ActivePipeline(object):
                 self._train()
                 self._expectation_maximization()
                 continue
+            # if prediction == 'other':
+            #     self.unlabeled_corpus.pop_instance(new_index)
+            #     continue
 
             self.new_instances += 1
             result += 1
@@ -499,7 +502,9 @@ class ActivePipeline(object):
                    'user_corpus': self.user_corpus,
                    'user_features': self.user_features,
                    'recorded_precision': self.recorded_precision,
-                   'asked_features': self.asked_features,
+                   'asked_features': (self.asked_features
+                                      if hasattr(self, 'asked_features')
+                                      else None),
                    'classification_report': self.get_report(),
                    'classes': self.classes
                   }
