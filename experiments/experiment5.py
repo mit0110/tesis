@@ -10,7 +10,7 @@ from termcolor import colored
 from base_experiment import BaseExperiment
 from metrics import (LearningCurve, PrecisionRecall, KappaStatistic,
                      PrecisionRecallCurve, ConfusionMatrix)
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
 
 
 def get_next_instance_max_entropy(self):
@@ -36,27 +36,25 @@ def get_next_instance_max_entropy(self):
     return self.unlabeled_corpus.extra_info['entropy'].index(max_entropy)
 
 
-class FeatDecisionTree(DecisionTreeClassifier):
+class FeatSVC(SVC):
 
-    def fit(self, X, y, sample_mask=None, X_argsorted=None, check_input=True,
-            sample_weight=None, features=None):
+    def fit(self, X, y, sample_weight=None, features=None):
+        self.probability = True
         self.alpha = 1
-        return super(FeatDecisionTree, self).fit(X.toarray(), y,
-                     sample_mask, X_argsorted,
-                     check_input, sample_weight)
+        return super(FeatSVC, self).fit(X, y, sample_weight)
 
-    def predict(self, X):
-        return super(FeatDecisionTree, self).predict(X.toarray())
+#    def predict(self, X):
+ #       return super(FeatDecisionTree, self).predict(X.toarray())
 
-    def predict_proba(self, X):
-        return super(FeatDecisionTree, self).predict_proba(X.toarray())
+#    def predict_proba(self, X):
+ #       return super(FeatDecisionTree, self).predict_proba(X.toarray())
 
 
-class Experiment4(BaseExperiment):
+class Experiment5(BaseExperiment):
     def __init__(self, ActivePipeline):
-        super(Experiment4, self).__init__(ActivePipeline)
-        self.number = 4
-        self.description = ("Active Learning with decision tree.")
+        super(Experiment5, self).__init__(ActivePipeline)
+        self.number = 5
+        self.description = ("Active Learning with svc support vector machine.")
         self.max_answers = 495
         self.cycle_len = 10
         self.metrics = [LearningCurve(), PrecisionRecall(), KappaStatistic(),
@@ -69,7 +67,7 @@ class Experiment4(BaseExperiment):
             'test_corpus_f': 'corpus/experimental/test_new_corpus.pickle',
             'training_corpus_f': 'corpus/experimental/training_new_corpus.pickle',
             'feature_corpus_f': 'corpus/experimental/feature_corpus.pickle',
-            'classifier' : FeatDecisionTree()
+            'classifier' : FeatSVC()
         }
 
     def run(self):
@@ -86,3 +84,4 @@ class Experiment4(BaseExperiment):
             # self.pipe._expectation_maximization()
         self.get_name()
         self.save_session()
+
