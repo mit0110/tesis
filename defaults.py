@@ -20,7 +20,6 @@ default_config = {
 
     # Features
     'feature_boost': 0.5,
-    'em_adding_instances': 10,
 
     # Active learning instance selection function
     'get_next_instance': None,

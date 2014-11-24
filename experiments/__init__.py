@@ -5,3 +5,4 @@ from experiment4 import Experiment4
 from experiment5 import Experiment5
 from experiment6 import Experiment6
 from experiment7 import Experiment7
+from experiment8 import Experiment8
