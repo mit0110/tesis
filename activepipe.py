@@ -102,13 +102,13 @@ class ActivePipeline(object):
 
     def _build_feature_boost(self):
         """Creates the user_features np.array with defaults values."""
-        alpha = self.classifier.alpha
+        self.alpha = self.classifier.alpha
         self.n_class, self.n_feat = self.classifier.feature_log_prob_.shape
-        self.user_features = np.array([[alpha] * self.n_feat] * self.n_class)
+        self.user_features = np.array([[self.alpha] * self.n_feat] * self.n_class)
         if self.emulate:
-            self.asked_features = self.feature_corpus != -1
+            self.asked_features = self.feature_corpus == 0
         else:
-            self.asked_features = self.user_features != alpha # False
+            self.asked_features = self.user_features != self.alpha # False
 
     def _train(self):
         """Fit the classifier with the training set plus the new vectors and
@@ -279,10 +279,8 @@ class ActivePipeline(object):
         Returns:
             The number of features the user has labeled.
         """
-        it = 0
         result = 0
-        while not max_iterations or it < max_iterations:
-            it += 1
+        while not max_iterations or result < max_iterations:
             class_name = get_class(self.get_class_options())
             if not class_name:
                 continue
@@ -301,12 +299,14 @@ class ActivePipeline(object):
                                 if self.feature_corpus[class_number][f] == 1]
                 feature_numbers = [f for f in feature_numbers
                                    if f not in e_prediction]
-                print "Adding {} features from corpus".format(len(e_prediction))
+                print "Adding {0} features from corpus for class {1}".format(
+                    len(e_prediction), class_name
+                )
             if feature_numbers:
                 feature_names = [self.training_corpus.get_feature_name(pos)
                                  for pos in feature_numbers]
                 prediction = get_labeled_features(class_name, feature_names)
-                if not prediction:
+                if not prediction and not e_prediction:
                     continue
                 if prediction == 'stop':
                     break
@@ -314,7 +314,8 @@ class ActivePipeline(object):
                     self._train()
                     self._expectation_maximization()
                     continue
-                prediction = [feature_names.index(f) for f in prediction]
+                prediction = [feature_numbers[feature_names.index(f)]
+                              for f in prediction]
             self.handle_feature_prediction(class_number,
                                            feature_numbers + e_prediction,
                                            prediction + e_prediction)
@@ -473,8 +474,9 @@ class ActivePipeline(object):
         self.feature_corpus = np.where(self.asked_features,
                                        np.zeros((self.n_class, self.n_feat)),
                                        self.feature_corpus)
+
         self.feature_corpus = np.where(
-            self.user_features > self.classifier.alpha,
+            self.user_features > self.alpha,
             np.ones((self.n_class, self.n_feat)),
             self.feature_corpus
         )
