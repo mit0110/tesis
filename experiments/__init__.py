@@ -6,3 +6,6 @@ from experiment5 import Experiment5
 from experiment6 import Experiment6
 from experiment7 import Experiment7
 from experiment8 import Experiment8
+from experiment9 import Experiment9
+from experiment10 import Experiment10
+from experiment11 import Experiment11
