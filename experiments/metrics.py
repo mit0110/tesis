@@ -166,3 +166,25 @@ class ConfusionMatrix(Metric):
             return
         confusion_m = self.session['recorded_precision'][-1]['confusion_matrix']
         self.info = str(confusion_m)
+
+class RecognitionCurve(Metric):
+    """Gets the accuracy over non 'other' instances."""
+
+    def get_from_session(self):
+        self.info = ''
+        if not (self.session and 'recorded_precision' in self.session
+            and 'confusion_matrix' in self.session['recorded_precision'][-1]):
+            return
+        result = []
+        new_examples = 0
+        for report in self.session['recorded_precision']:
+            cm = report['confusion_matrix']
+            other_index = self.session['classes'].index('other')
+            recog = 0
+            for index, row in enumerate(cm):
+                if index != other_index:
+                    recog += cm[index][index]
+            recog /= float(cm.sum() - cm[other_index].sum())
+            new_examples += report['new_features'] + report['new_instances']
+            result.append('{}\t{}'.format(new_examples, recog))
+        self.info = '\n'.join(result)
