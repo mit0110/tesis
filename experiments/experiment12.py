@@ -5,19 +5,20 @@ Run the boostrap for features and instances given the user the choice for one
 of them after each labeling.
 """
 
-import numpy as np
 from termcolor import colored
 from base_experiment import BaseExperiment
 from metrics import (LearningCurve, PrecisionRecall, KappaStatistic,
                      PrecisionRecallCurve, ConfusionMatrix)
-from sklearn.tree import DecisionTreeClassifier
+from random import randint, sample
+import numpy as np
 
+def get_next_instance(self):
+    """Selects the index of an unlabeled instance to be sent to the user.
 
-def get_next_instance_max_entropy(self):
-    """Selects a random instance from the unlabeled_corpus.
+    Uses min entropy.
 
     Returns:
-        An interger, the index of the instance.
+        The index of an instance selected from the unlabeled_corpus.
     """
     if len(self.unlabeled_corpus) == 0:
         return None
@@ -36,41 +37,26 @@ def get_next_instance_max_entropy(self):
     return self.unlabeled_corpus.extra_info['entropy'].index(max_entropy)
 
 
-class FeatDecisionTree(DecisionTreeClassifier):
-
-    def fit(self, X, y, sample_mask=None, X_argsorted=None, check_input=True,
-            sample_weight=None, features=None):
-        self.alpha = 1
-        return super(FeatDecisionTree, self).fit(X.toarray(), y,
-                     sample_mask, X_argsorted,
-                     check_input, sample_weight)
-
-    def predict(self, X):
-        return super(FeatDecisionTree, self).predict(X.toarray())
-
-    def predict_proba(self, X):
-        return super(FeatDecisionTree, self).predict_proba(X.toarray())
-
-
-class Experiment4(BaseExperiment):
+class Experiment12(BaseExperiment):
     def __init__(self, ActivePipeline):
-        super(Experiment4, self).__init__(ActivePipeline)
-        self.number = 4
-        self.description = ("Active Learning with decision tree.")
+        super(Experiment12, self).__init__(ActivePipeline)
+        self.number = 12
+        self.description = ("Active Learning on instaces using min entropy.")
         self.max_answers = 107
         self.cycle_len = 1
         self.metrics = [LearningCurve(), PrecisionRecall(), KappaStatistic(),
                         PrecisionRecallCurve(), ConfusionMatrix()]
         # Active learning instance selection function
-        self.pipe_class.get_next_instance = get_next_instance_max_entropy
-        self.pipe_class._build_feature_boost = lambda s: None
+        # self.pipe_class.get_next_instance = get_next_instance_random
+        # Active learning class selection function
+        # self.pipe_class.get_class_options = lambda s: s.classes
         self.experiment_config = {
             'u_corpus_f': 'corpus/experimental/unlabeled_new_corpus_balanced.pickle',
             'test_corpus_f': 'corpus/experimental/test_new_corpus.pickle',
             'training_corpus_f': 'corpus/experimental/training_new_corpus.pickle',
             'feature_corpus_f': 'corpus/experimental/feature_corpus.pickle',
-            'classifier' : FeatDecisionTree()
         }
+        self.pipe_class.get_next_instance = get_next_instance
 
     def run(self):
         print "Running experiment number {0}: {1}".format(self.number,
@@ -78,11 +64,20 @@ class Experiment4(BaseExperiment):
         self.pipe = self.pipe_class(emulate=True, **self.experiment_config)
         num_answers = 0
         while num_answers < self.max_answers:
+            # print colored('\n'.join(['*' * 79] * 10), 'green')
+            # print colored('Instance labeling', 'red', 'on_white',
+            #               attrs=['bold'])
             num_answers += self.pipe.instance_bootstrap(
                 self.get_labeled_instance, max_iterations=self.cycle_len
             )
             print "{} of {} answers".format(num_answers, self.max_answers)
+            # print colored('\n'.join(['*' * 79] * 10), 'green')
+            # print colored('Feature labeling', 'red', 'on_white',
+            #               attrs=['bold'])
+            # num_answers += self.pipe.feature_bootstrap(self.get_class,
+            #     self.get_labeled_features, max_iterations=self.cycle_len
+            # )
             self.pipe._train()
-            # self.pipe._expectation_maximization()
+            self.pipe._expectation_maximization()
         self.get_name()
         self.save_session()

@@ -3,7 +3,8 @@ BaseExperiment class and default functions to run the activepipe bootstraps.
 """
 import time
 from termcolor import colored
-
+from metrics import (LearningCurve, PrecisionRecall, KappaStatistic,
+                     PrecisionRecallCurve, ConfusionMatrix, RecognitionCurve)
 
 def get_labeled_instance(instance, classes):
     """Propose to the user an instance and a list of classes to label.
@@ -109,8 +110,17 @@ class BaseExperiment(object):
         self.get_class = get_class
         self.get_labeled_features = get_labeled_features
         self.experiment_config = {}
-        self.metrics = []
+        self.metrics = [LearningCurve(), PrecisionRecall(), KappaStatistic(),
+                        PrecisionRecallCurve(), ConfusionMatrix(),
+                        RecognitionCurve()]
         self.number = None
+        self.experiment_config = {
+            'u_corpus_f': 'corpus/experimental2/unlabeled_new_corpus_pm.pickle',
+            'test_corpus_f': 'corpus/experimental2/test_new2_corpus_pm.pickle',
+            'training_corpus_f': 'corpus/experimental2/training_new2_corpus_pm.pickle',
+            'feature_corpus_f': 'corpus/experimental/feature_corpus.pickle',
+        }
+        self.max_answers = 92
 
     def run(self):
         """Runs the bootstrap cicles of the ActivePipeline."""

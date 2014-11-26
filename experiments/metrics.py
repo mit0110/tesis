@@ -167,6 +167,7 @@ class ConfusionMatrix(Metric):
         confusion_m = self.session['recorded_precision'][-1]['confusion_matrix']
         self.info = str(confusion_m)
 
+
 class RecognitionCurve(Metric):
     """Gets the accuracy over non 'other' instances."""
 

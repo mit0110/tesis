@@ -12,6 +12,7 @@ from metrics import (LearningCurve, PrecisionRecall, KappaStatistic,
                      PrecisionRecallCurve, ConfusionMatrix)
 from random import randint, sample
 
+
 def get_next_instance_max_entropy(self):
     """Selects a random instance from the unlabeled_corpus.
 
@@ -34,23 +35,15 @@ def get_next_instance_max_entropy(self):
     max_entropy = max(self.unlabeled_corpus.extra_info['entropy'])
     return self.unlabeled_corpus.extra_info['entropy'].index(max_entropy)
 
+
 class Experiment3(BaseExperiment):
     def __init__(self, ActivePipeline):
         super(Experiment3, self).__init__(ActivePipeline)
         self.number = 3
         self.description = ("Active Learning on instaces using max entropy.")
-        self.max_answers = 45
-        self.cycle_len = 10
-        self.metrics = [LearningCurve(), PrecisionRecall(), KappaStatistic(),
-                        PrecisionRecallCurve(), ConfusionMatrix()]
+        self.cycle_len = 1
         # Active learning instance selection function
         self.pipe_class.get_next_instance = get_next_instance_max_entropy
-        self.experiment_config = {
-            'u_corpus_f': 'corpus/experimental/unlabeled_new_corpus.pickle',
-            'test_corpus_f': 'corpus/experimental/test_new_corpus.pickle',
-            'training_corpus_f': 'corpus/experimental/training_new_corpus.pickle',
-            'feature_corpus_f': 'corpus/experimental/feature_corpus.pickle',
-        }
 
     def run(self):
         print "Running experiment number {0}: {1}".format(self.number,

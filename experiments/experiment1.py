@@ -38,20 +38,11 @@ class Experiment1(BaseExperiment):
         self.number = 1
         self.description = ("No active learning. Selecting instances and "
                             "features randomly.")
-        self.max_answers = 459
         self.cycle_len = 1
-        self.metrics = [LearningCurve(), PrecisionRecall(), KappaStatistic(),
-                        PrecisionRecallCurve()]
         # Active learning instance selection function
         self.pipe_class.get_next_instance = get_next_instance_random
         # Active learning class selection function
         self.pipe_class.get_class_options = lambda s: s.classes
-        self.experiment_config = {
-            'u_corpus_f': 'corpus/experimental/unlabeled_new_corpus.pickle',
-            'test_corpus_f': 'corpus/experimental/test_new_corpus.pickle',
-            'training_corpus_f': 'corpus/experimental/training_new_corpus.pickle',
-            'feature_corpus_f': 'corpus/experimental/feature_corpus.pickle',
-        }
 
     def run(self):
         print "Running experiment number {0}: {1}".format(self.number,

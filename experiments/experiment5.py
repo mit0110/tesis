@@ -55,15 +55,15 @@ class Experiment5(BaseExperiment):
         super(Experiment5, self).__init__(ActivePipeline)
         self.number = 5
         self.description = ("Active Learning with svc support vector machine.")
-        self.max_answers = 495
-        self.cycle_len = 10
+        self.max_answers = 107
+        self.cycle_len = 1
         self.metrics = [LearningCurve(), PrecisionRecall(), KappaStatistic(),
                         PrecisionRecallCurve(), ConfusionMatrix()]
         # Active learning instance selection function
         self.pipe_class.get_next_instance = get_next_instance_max_entropy
         self.pipe_class._build_feature_boost = lambda s: None
         self.experiment_config = {
-            'u_corpus_f': 'corpus/experimental/unlabeled_new_corpus.pickle',
+            'u_corpus_f': 'corpus/experimental/unlabeled_new_corpus_balanced.pickle',
             'test_corpus_f': 'corpus/experimental/test_new_corpus.pickle',
             'training_corpus_f': 'corpus/experimental/training_new_corpus.pickle',
             'feature_corpus_f': 'corpus/experimental/feature_corpus.pickle',

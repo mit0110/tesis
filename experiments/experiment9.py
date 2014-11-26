@@ -28,18 +28,18 @@ class Experiment9(BaseExperiment):
         self.number = 9
         self.description = ("Feature active learning over all corpus "
                             "using class prior")
-        self.unlabeled_corpus_len = 495
+        self.unlabeled_corpus_len = 107
         self.max_answers = 200 + self.unlabeled_corpus_len
         self.cycle_len = 1
         self.metrics = [LearningCurve(), PrecisionRecall(), KappaStatistic(),
                         PrecisionRecallCurve()]
         class_prior = np.zeros((29,))
-        class_prior += 50
+        class_prior += 1
         class_prior[18] = 1  # Position of the class other
         class_prior = normalize(class_prior.reshape((1, 29)), norm='l1')[0]
 
         self.experiment_config = {
-            'u_corpus_f': 'corpus/experimental/unlabeled_new_corpus.pickle',
+            'u_corpus_f': 'corpus/experimental/unlabeled_new_corpus_balanced.pickle',
             'test_corpus_f': 'corpus/experimental/test_new_corpus.pickle',
             'training_corpus_f': 'corpus/experimental/training_new_corpus.pickle',
             'feature_corpus_f': 'corpus/experimental/feature_corpus.pickle',
