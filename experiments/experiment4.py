@@ -57,20 +57,11 @@ class Experiment4(BaseExperiment):
         super(Experiment4, self).__init__(ActivePipeline)
         self.number = 4
         self.description = ("Active Learning with decision tree.")
-        self.max_answers = 107
         self.cycle_len = 1
-        self.metrics = [LearningCurve(), PrecisionRecall(), KappaStatistic(),
-                        PrecisionRecallCurve(), ConfusionMatrix()]
         # Active learning instance selection function
         self.pipe_class.get_next_instance = get_next_instance_max_entropy
         self.pipe_class._build_feature_boost = lambda s: None
-        self.experiment_config = {
-            'u_corpus_f': 'corpus/experimental/unlabeled_new_corpus_balanced.pickle',
-            'test_corpus_f': 'corpus/experimental/test_new_corpus.pickle',
-            'training_corpus_f': 'corpus/experimental/training_new_corpus.pickle',
-            'feature_corpus_f': 'corpus/experimental/feature_corpus.pickle',
-            'classifier' : FeatDecisionTree()
-        }
+        self.experiment_config ['classifier'] = FeatDecisionTree()
 
     def run(self):
         print "Running experiment number {0}: {1}".format(self.number,
@@ -83,6 +74,5 @@ class Experiment4(BaseExperiment):
             )
             print "{} of {} answers".format(num_answers, self.max_answers)
             self.pipe._train()
-            # self.pipe._expectation_maximization()
         self.get_name()
         self.save_session()

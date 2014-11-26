@@ -43,32 +43,17 @@ class FeatSVC(SVC):
         self.alpha = 1
         return super(FeatSVC, self).fit(X, y, sample_weight)
 
-#    def predict(self, X):
- #       return super(FeatDecisionTree, self).predict(X.toarray())
-
-#    def predict_proba(self, X):
- #       return super(FeatDecisionTree, self).predict_proba(X.toarray())
-
 
 class Experiment5(BaseExperiment):
     def __init__(self, ActivePipeline):
         super(Experiment5, self).__init__(ActivePipeline)
         self.number = 5
         self.description = ("Active Learning with svc support vector machine.")
-        self.max_answers = 107
         self.cycle_len = 1
-        self.metrics = [LearningCurve(), PrecisionRecall(), KappaStatistic(),
-                        PrecisionRecallCurve(), ConfusionMatrix()]
         # Active learning instance selection function
         self.pipe_class.get_next_instance = get_next_instance_max_entropy
         self.pipe_class._build_feature_boost = lambda s: None
-        self.experiment_config = {
-            'u_corpus_f': 'corpus/experimental/unlabeled_new_corpus_balanced.pickle',
-            'test_corpus_f': 'corpus/experimental/test_new_corpus.pickle',
-            'training_corpus_f': 'corpus/experimental/training_new_corpus.pickle',
-            'feature_corpus_f': 'corpus/experimental/feature_corpus.pickle',
-            'classifier' : FeatSVC()
-        }
+        self.experiment_config['classifier'] = FeatSVC()
 
     def run(self):
         print "Running experiment number {0}: {1}".format(self.number,
@@ -81,7 +66,6 @@ class Experiment5(BaseExperiment):
             )
             print "{} of {} answers".format(num_answers, self.max_answers)
             self.pipe._train()
-            # self.pipe._expectation_maximization()
         self.get_name()
         self.save_session()
 
