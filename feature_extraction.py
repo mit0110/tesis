@@ -54,8 +54,8 @@ def literal_ners_types(words):
 
 
 def get_features():
-    return Vectorizer(
-        [postags, lemmas, partial_matches, literal_ners, literal_ners_types,
-         bigrams, trigrams, mixed_bigrams],
+    return Vectorizer([partial_matches],
+        # [postags, lemmas, partial_matches, literal_ners, literal_ners_types,
+        #  bigrams, trigrams, mixed_bigrams],
         sparse=True
     )

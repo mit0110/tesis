@@ -34,6 +34,14 @@ te_corpus = []
 
 print [(k,len(r_by_class[k])) for k in r_by_class]
 
+accepted_classes = [k for k in r_by_class
+                    if len(r_by_class[k]) + len(u_by_class[k]) >= 6]
+print accepted_classes
+for k in r_by_class.keys():
+    if not k in accepted_classes:
+        r_by_class.pop(k)
+        u_by_class.pop(k)
+
 # Testing corpus
 for q, v in r_by_class.items():
     original_len = len(v)
@@ -69,7 +77,16 @@ sep_tr_corpus = separate_by_class(tr_corpus)
 # Unlabeled corpus
 u_corpus += reduce(lambda x, y: x + y, r_by_class.values(), [])
 print "Unlabeled corpus {} recognized instances".format(len(u_corpus))
-u_corpus = reduce(lambda x, y: x + y, u_by_class.values(), [])
+# Add only a few of the "other" class
+max_other = sorted([len(u_by_class[k]) for k in u_by_class])[-2]
+for k, val in u_by_class.items():
+    if k == 'other':
+        u_corpus += val[:max_other]
+    elif k != 'other':
+        u_corpus += val
+# u_corpus = reduce(lambda x, y: x + y, u_by_class.values(), [])
+
+
 print "Unlabeled corpus total instances ", len(u_corpus)
 sep_u_corpus = separate_by_class(u_corpus)
 
@@ -78,9 +95,9 @@ for k in sep_te_corpus.keys():
     print '{0} & {1} & {2} & {3} \\\\'.format(*r)
 
 # Output files
-test_corpus = 'experimental/test_corpus.pickle'
-training_corpus = 'experimental/training_corpus.pickle'
-unlabeled_corpus = 'experimental/unlabeled_corpus.pickle'
+test_corpus = 'experimental2/test_corpus.pickle'
+training_corpus = 'experimental2/training_corpus.pickle'
+unlabeled_corpus = 'experimental2/unlabeled_corpus.pickle'
 
 test_corpus_f = open(test_corpus, 'w')
 training_corpus_f = open(training_corpus, 'w')
