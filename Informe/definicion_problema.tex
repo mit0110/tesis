@@ -258,13 +258,21 @@ En un enfoque como este se pedirá al usuario que etiquete las características 
 
 Las etiquetas obtenidas se utilizarán también para entrenar el clasificador reforzando la probabilidad de una característica dada una clase, como veremos en detalle en la implementación.
 
+El usuario también tendrá la posibilidad de entrenar el clasificador con las etiquetas que ya ha ingresado o de terminar la sesión en cualquier momento. El diagrama de iteracción queda configurado como se muestra en la imagen \ref{aa-features}.
+
+\begin{figure}[h!]\label{aa-features}
+\caption{Arquitectura de un sistema de aprendizaje activo sobre intancias y características.}
+\includegraphics[width=12cm]{cicloaa-features}
+\centering
+\end{figure}
+
 \subsection{Dualist}
 
 Dualist es un sistema muy similar al que estamos planteando desarrollado por \citet{dualist} que combina el aprendizaje sobre instancias y sobre características. Los resultados presentados son para diversas tareas como el análisis de sentimientos o la clasificación de documentos.
 
-La interfaz gráfica de una instancia tiene dos secciones principales. A la izquierda se muestra una lista de instancias con las clases para que el usuario pueda etiquetarlas sólo con un click. A la derecha, por cada clase hay una lista de objetos seleccionables representando las características (en este caso palabras) que están potencialmente asociadas a la clase. \citet{dualist} sostienen que presentar al usuario toda la información en conjunto hará que éste etiquete una mayor cantidad antes de esperar a que el clasificador de reentrene o le presente nuevas opciones.
+La interfaz gráfica de una instancia de Dualist tiene dos secciones principales. A la izquierda se muestra una lista de instancias con las clases para que el usuario pueda etiquetarlas sólo con un click. A la derecha, por cada clase hay una lista de objetos seleccionables representando las características (en este caso palabras) que están potencialmente asociadas a la clase. \citet{dualist} sostienen que presentar al usuario toda la información en conjunto hará que éste etiquete una mayor cantidad antes de esperar a que el clasificador de reentrene o le presente nuevas opciones.
 
-\begin{figure}
+\begin{figure}[h!]
 \caption{Captura de pantalla de la interfáz gráfica de Dualist.}
 \includegraphics[width=12cm]{dualist-screen}
 \centering
