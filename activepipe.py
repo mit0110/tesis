@@ -177,6 +177,7 @@ class ActivePipeline(object):
             l_feat_prob = safe_sparse_dot(predicted_proba,
                                           self.training_corpus.instances)
             class_prior = 0.1 * class_prior + 0.9 * l_class_prior
+            # Aca no deberia sumarle el alpha????
             feature_prob = 0.1 * feature_prob + 0.9 * l_feat_prob
 
         self.classifier.class_log_prior_ = np.log(class_prior /
@@ -306,7 +307,7 @@ class ActivePipeline(object):
                 feature_names = [self.training_corpus.get_feature_name(pos)
                                  for pos in feature_numbers]
                 prediction = get_labeled_features(class_name, feature_names)
-                if not prediction and not e_prediction:
+                if prediction == None and not e_prediction:
                     continue
                 if prediction == 'stop':
                     break

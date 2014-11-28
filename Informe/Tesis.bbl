@@ -1,9 +1,15 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{33}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Abney(2007)]{libro-abney}
+Steven Abney.
+\newblock \emph{Semisupervised Learning for Computational Linguistics}.
+\newblock Chapman \& Hall/CRC, 1st edition, 2007.
+\newblock ISBN 1584885599, 9781584885597.
 
 \bibitem[Berners-Lee(2014)]{BernersLeeLinkedDataGuide}
 Tim Berners-Lee.
@@ -27,10 +33,18 @@ Tom~Heath Christian~Bizer and Tim Berners-Lee.
 \newblock \emph{International journal on semantic web and information systems},
   5(3):\penalty0 1--22, 2009.
 
-\bibitem[Danny~Roobaert and Chawla(??)]{infgain}
-Grigoris~Karakoulas Danny~Roobaert and Nitesh~V. Chawla.
-\newblock Information gain, correlation and support vector machines.
-\newblock \emph{??}, page~??, ??
+\bibitem[Cover and Thomas(1991)]{information-theory-cover}
+Thomas~M. Cover and Joy~A. Thomas.
+\newblock \emph{Elements of Information Theory}.
+\newblock Wiley-Interscience, New York, NY, USA, 1991.
+\newblock ISBN 0-471-06259-6.
+
+\bibitem[Dempster et~al.(1977)Dempster, Laird, and
+  Rubin]{Dempster-maximumlikelihood}
+A.~P. Dempster, N.~M. Laird, and D.~B. Rubin.
+\newblock Maximum likelihood from incomplete data via the em algorithm.
+\newblock \emph{Journal of the Royal Statistical Society, Series B},
+  39\penalty0 (1):\penalty0 1--38, 1977.
 
 \bibitem[Druck et~al.(2009)Druck, Settles, and McCallum]{settles-al-features}
 Gregory Druck, Burr Settles, and Andrew McCallum.
@@ -50,11 +64,36 @@ Seyda Ertekin, Jian Huang, Leon Bottou, and Lee Giles.
   Information and Knowledge Management}, CIKM '07, pages 127--136. ACM, 2007.
 \newblock ISBN 978-1-59593-803-9.
 
+\bibitem[Forman(2003)]{forman-ig}
+George Forman.
+\newblock An extensive empirical study of feature selection metrics for text
+  classification.
+\newblock \emph{J. Mach. Learn. Res.}, 3:\penalty0 1289--1305, March 2003.
+\newblock ISSN 1532-4435.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=944919.944974}.
+
+\bibitem[Frank and Bouckaert(2006)]{multinomialnb-unbalanced}
+Eibe Frank and Remco~R. Bouckaert.
+\newblock Naive bayes for text classification with unbalanced classes.
+\newblock In \emph{Proceedings of the 10th European Conference on Principle and
+  Practice of Knowledge Discovery in Databases}, PKDD'06, pages 503--510,
+  Berlin, Heidelberg, 2006. Springer-Verlag.
+\newblock ISBN 3-540-45374-1, 978-3-540-45374-1.
+\newblock \doi{10.1007/11871637\_49}.
+\newblock URL \url{http://dx.doi.org/10.1007/11871637\_49}.
+
 \bibitem[Gupta and Gupta(2012)]{gupta_survey}
 Poonam Gupta and Vishal Gupta.
 \newblock A survey of text question answering techniques.
 \newblock \emph{International Journal of Computer Applications}, 53\penalty0
   (4):\penalty0 1--8, 2012.
+
+\bibitem[Holub et~al.(2008)Holub, Perona, and Burl]{entropy-or}
+A.~Holub, P.~Perona, and M.C. Burl.
+\newblock Entropy-based active learning for object recognition.
+\newblock In \emph{Computer Vision and Pattern Recognition Workshops, 2008.
+  CVPRW '08. IEEE Computer Society Conference on}, pages 1--8, June 2008.
+\newblock \doi{10.1109/CVPRW.2008.4563068}.
 
 \bibitem[Hospedales et~al.(2011)Hospedales, Gong, and
   Xiang]{rare-classes-holpedales}
@@ -66,6 +105,15 @@ TimothyM. Hospedales, Shaogang Gong, and Tao Xiang.
   \emph{Lecture Notes in Computer Science}, pages 296--308. Springer Berlin
   Heidelberg, 2011.
 \newblock ISBN 978-3-642-20846-1.
+
+\bibitem[Hwa(2004)]{Hwa-entropy}
+Rebecca Hwa.
+\newblock Sample selection for statistical parsing.
+\newblock \emph{Comput. Linguist.}, 30\penalty0 (3):\penalty0 253--276,
+  September 2004.
+\newblock ISSN 0891-2017.
+\newblock \doi{10.1162/0891201041850894}.
+\newblock URL \url{http://dx.doi.org/10.1162/0891201041850894}.
 
 \bibitem[Jain and Kapoor(2009)]{al-multiclass-jain}
 P.~Jain and A.~Kapoor.
@@ -81,10 +129,56 @@ Leila Kosseim and Jamileh Yousefi.
 \newblock ISSN 0169-023X.
 \newblock URL \url{http://dx.doi.org/10.1016/j.datak.2007.07.010}.
 
+\bibitem[Liu(2006)]{data-mining-Liu}
+Bing Liu.
+\newblock \emph{Web Data Mining: Exploring Hyperlinks, Contents, and Usage Data
+  (Data-Centric Systems and Applications)}.
+\newblock Springer-Verlag New York, Inc., Secaucus, NJ, USA, 2006.
+\newblock ISBN 3540378812.
+
+\bibitem[Manning et~al.(2008)Manning, Raghavan, and
+  Sch\"{u}tze]{multinomial-manning}
+Christopher~D. Manning, Prabhakar Raghavan, and Hinrich Sch\"{u}tze.
+\newblock \emph{Introduction to Information Retrieval}.
+\newblock Cambridge University Press, New York, NY, USA, 2008.
+\newblock ISBN 0521865719, 9780521865715.
+
+\bibitem[McCallum and Nigam(1998)]{multinomialnb-comparision-mccallum}
+Andrew McCallum and Kamal Nigam.
+\newblock A comparison of event models for naive bayes text classification.
+\newblock \emph{AAAI-98 workshop on learning for text categorization},
+  752:\penalty0 41--48, 1998.
+
 \bibitem[Ou and Zhu(??)]{ou_entailement}
 Shiyan Ou and Zhenyuan Zhu.
 \newblock An entailment-based question answering system over semantic web data.
 \newblock \emph{??}, ??\penalty0 (?):\penalty0 ?--?, ??
+
+\bibitem[Pedregosa et~al.(2011)Pedregosa, Varoquaux, Gramfort, Michel, Thirion,
+  Grisel, Blondel, Prettenhofer, Weiss, Dubourg, Vanderplas, Passos,
+  Cournapeau, Brucher, Perrot, and Duchesnay]{scikit-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay.
+\newblock Scikit-learn: Machine learning in {P}ython.
+\newblock \emph{Journal of Machine Learning Research}, 12:\penalty0 2825--2830,
+  2011.
+
+\bibitem[Roobaert et~al.(2006)Roobaert, Karakoulas, and Chawla]{infgain}
+Danny Roobaert, Grigoris Karakoulas, and NiteshV. Chawla.
+\newblock Information gain, correlation and support vector machines.
+\newblock In Isabelle Guyon, Masoud Nikravesh, Steve Gunn, and LotfiA. Zadeh,
+  editors, \emph{Feature Extraction}, volume 207 of \emph{Studies in Fuzziness
+  and Soft Computing}, pages 463--470. Springer Berlin Heidelberg, 2006.
+\newblock ISBN 978-3-540-35487-1.
+\newblock \doi{10.1007/978-3-540-35488-8\_23}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-540-35488-8\_23}.
+
+\bibitem[Schein(2005)]{al-logistic-regresion-schein}
+Andrew~Ian Schein.
+\newblock \emph{Active Learning for Logistic Regression}.
+\newblock PhD thesis, Philadelphia, PA, USA, 2005.
+\newblock AAI3197737.
 
 \bibitem[Sebastiani(2002)]{Sebastiani-text-categorization}
 Fabrizio Sebastiani.
@@ -104,6 +198,21 @@ Burr Settles.
 \newblock \emph{2011 Conference on Empirical Methods in Natural Language
   Processing}, pages 1467--1478, 2011.
 
+\bibitem[Settles and Craven(2008)]{settles-entropy}
+Burr Settles and Mark Craven.
+\newblock An analysis of active learning strategies for sequence labeling
+  tasks.
+\newblock In \emph{Proceedings of the Conference on Empirical Methods in
+  Natural Language Processing}, EMNLP '08, pages 1070--1079, Stroudsburg, PA,
+  USA, 2008. Association for Computational Linguistics.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=1613715.1613855}.
+
+\bibitem[Shannon(1948)]{entropy-shannon}
+C.~E. Shannon.
+\newblock A mathematical theory of communication.
+\newblock \emph{Bell System Technical Journal}, 27:\penalty0 379--423, July
+  1948.
+
 \bibitem[Unger et~al.(2014)Unger, Freitas, and Cimiano]{ungerQALD}
 Christina Unger, André Freitas, and Philipp Cimiano.
 \newblock An introduction to question answering over linked data.
@@ -118,5 +227,17 @@ Christina Unger, André Freitas, and Philipp Cimiano.
 Rui Wang and Shuguang Li.
 \newblock Constructing a question corpus for textual semantic relations.
 \newblock \emph{??}, ??\penalty0 (?):\penalty0 ?--?, ??
+
+\bibitem[Zipf(1935)]{zipf1}
+George~Kingsley Zipf.
+\newblock \emph{The psycho-biology of language: an introduction to dynamic
+  philology}.
+\newblock Houghton Mifflin company, Boston, 1935.
+
+\bibitem[Zipf(1949)]{zipf2}
+George~Kingsley Zipf.
+\newblock \emph{Human behavior and the principle of least effort: An
+  introduction to human ecology}.
+\newblock Hafner, 1949.
 
 \end{thebibliography}

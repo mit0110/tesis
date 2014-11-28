@@ -200,12 +200,15 @@ Este enfoque de encontrar reformulaciones de una misma pregunta está enmarcado 
 Nuestro trabajo será construir y entrenar un clasificador capaz de recibir una pregunta y decidir a qué clase semántica pertenece, siguiendo la definición de \citet{Sebastiani-text-categorization}:
 
 \begin{definition}
-La clasificación de una instancia es la asignación de un valor booleano a cada par $\langle x_i, c_j \rangle \in \mathcal{X} \times \mathcal{C}$, donde $\mathcal{X}$ es el dominio de las instancias y $\mathcal{C}$ es el conjunto de clases posibles.
+La clasificación de una instancia es una función $\Psi:\mathcal{X} \times \mathcal{C} \rightarrow \{0, 1\}$ que asigna valores booleanos donde $\mathcal{X}$ es el dominio de las instancias y $\mathcal{C}$ es el conjunto de clases posibles.
 \end{definition}
 
-Asignaremos el valor $Verdadero$ a los pares $\langle x_i, c_i \rangle$ si la clase $c_j$ corresponde a la instancia $x_i$, y $Falso$ en el caso contrario.
+Asignaremos el valor $1$ o $Verdadero$ a los pares $\langle x_i, c_j \rangle$ si la clase $c_j$ corresponde a la instancia $x_i$, y $0$ o $Falso$ en el caso contrario. Como en nuestro caso la clase asociada a cada instancia es única, podemos utilizar la siguiente definición:
 
-bla bla bla es necesaria la formalización así? Falta lña definición de entrenamiento.
+\begin{definition}\label{def-clasificacion}
+Un clasificador monoclase es una función $\Phi:\mathcal{X} \rightarrow \mathcal{C}$ tal que:
+$$ \Phi(x_i) = c_j \Leftrightarrow \Psi(x_i, c_j) = 1 $$
+\end{definition}
 
 $\mathcal{C}$ para esta clasificación es el conjunto de clases semánticas de Quepy, es decir, cada una de las plantillas o patrones. El ejemplo que describimos en la sección anterior corresponde a la clase ``Whatis''. Todas las preguntas que puedan responderse a través de la consulta generada por esta plantilla serán clasificadas dentro de esta clase. La cantidad total de clases es 29, las agregamos en un APENDICE?
 
