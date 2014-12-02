@@ -1,15 +1,12 @@
-\chapter{Entorno de experimentación}
-
-\section{Ejemplos seleccionados}
 
 % Descripción de los corpus.
-	% Etiquetado
-		% Las semillas son muy importantes. Deberían ser elegidas al azar?
-		% La muestra debería ser representativa de la población? Aproximadamente un 10% de las preguntas son reconocidas por quepy, deberíamos incluir esto en el set de entrenamiento?
-	% No etiquetado
-	% Testing
-		% Las que reconoce quepy?
-		% 500 preguntas está bien?
+    % Etiquetado
+        % Las semillas son muy importantes. Deberían ser elegidas al azar?
+        % La muestra debería ser representativa de la población? Aproximadamente un 10% de las preguntas son reconocidas por quepy, deberíamos incluir esto en el set de entrenamiento?
+    % No etiquetado
+    % Testing
+        % Las que reconoce quepy?
+        % 500 preguntas está bien?
 
 
 % Testing corpus: 31 recognized instances
@@ -51,48 +48,175 @@
 
 % Distribución actual del corpus:
 % Quepy questions 115
-% 	Recognized 58
-% 	Unrecognized 57
+%   Recognized 58
+%   Unrecognized 57
 % Other questions 6658
-% 	Labeled 607
-%     Unlabeled 6051
+%   Labeled 607
+%   Unlabeled 6051
 
 % Test corpus 250
 % Training corpus 165
 % Unlabeled corpus 6358
 
-\subsection{Proceso previo}
+% Testing corpus: 31 recognized instances
+% Testing corpus: 186 total instances
+% Numbers of classes in Testing corpus  29
+% Training corpus 19 recognized questions
+% Training corpus total instances  29
+% Unlabeled corpus 8 recognized instances
+% Unlabeled corpus total instances  115
+% booksbyauthor & 3 & 1 & 8 \\
+% listmovies & 1 & 1 & 0 \\
+% listtvshows & 1 & 1 & 1 \\
+% howoldis & 5 & 1 & 14 \\
+% movieduration & 1 & 1 & 1 \\
+% presidentsof & 2 & 1 & 3 \\
+% directorof & 1 & 1 & 0 \\
+% populationof & 1 & 1 & 3 \\
+% plotof & 1 & 1 & 2 \\
+% whois & 1 & 1 & 0 \\
+% whowrote & 1 & 1 & 0 \\
+% castof & 1 & 1 & 4 \\
+% whereis & 3 & 1 & 8 \\
+% other & 135 & 1 & 14 \\
+% moviereleasedate & 1 & 1 & 1 \\
+% actorsof & 2 & 1 & 1 \\
+% whereisfrom & 4 & 1 & 8 \\
+% spokenlanguageof & 1 & 1 & 3 \\
+% bandmembers & 2 & 1 & 6 \\
+% showswith & 1 & 1 & 4 \\
+% musicgenre & 1 & 1 & 3 \\
+% capitalcityof & 1 & 1 & 1 \\
+% albumsofband & 5 & 1 & 11 \\
+% creatorof & 2 & 1 & 4 \\
+% whatis & 1 & 1 & 2 \\
+% episodecount & 1 & 1 & 0 \\
+% actedon & 4 & 1 & 9 \\
+% bandfoundation & 2 & 1 & 2 \\
+% moviesbydirector & 1 & 1 & 2 \\
 
-Al momento de extraer las caraterísticas que mencionamos en la sección anterior encontramos varior problemas. Una aproximación simple al aprendije activo incluye reentrenar el clasificador en cada una de las iteraciones del ciclo, cambiando así el modelo. Al introducir el etiquetado de características ya no se puede cambiar el modelo sin perder rastro de la ubicación de las características etiquetadas dentro de las matrices internas del clasificador. Por esto es que tuvimos que cambiar la implementación básica y extraer todos las características dentro de la instancia de preproceso. De esta forma, nuestras matrices iniciales tienen toda la información tanto del corpus anotado como no anotado.
+% Testing corpus: 17 recognized instances
+% Testing corpus: 172 total instances
+% Numbers of classes in Testing corpus  16
+% Training corpus 10 recognized questions
+% Training corpus total instances  16
+% Unlabeled corpus 6 recognized instances
+% Unlabeled corpus total instances  104
+% booksbyauthor & 3 & 1 & 8 \\
+% creatorof & 2 & 1 & 4 \\
+% bandfoundation & 2 & 1 & 2 \\
+% whereisfrom & 4 & 1 & 8 \\
+% actedon & 4 & 1 & 9 \\
+% castof & 1 & 1 & 4 \\
+% musicgenre & 1 & 1 & 3 \\
+% whereis & 3 & 1 & 8 \\
+% spokenlanguageof & 1 & 1 & 3 \\
+% howoldis & 5 & 1 & 14 \\
+% showswith & 1 & 1 & 4 \\
+% presidentsof & 2 & 1 & 3 \\
+% populationof & 1 & 1 & 3 \\
+% other & 135 & 1 & 14 \\
+% albumsofband & 5 & 1 & 11 \\
+% bandmembers & 2 & 1 & 6 \\
 
-% Por qué no usamos tdidf
-% Por qué binarizamos - el número más grande sin binarizar en 9. Hacer un mejor estudio sobre la cantidad de información que estamos perdiendo.
-Si bien las características anteriores pueden tomar valores en un amplio rango de enteros, decidimos sólo medir la presencia o ausencia de cada una de ellas. Por un lado, consideramos que el usuario no debería etiquetar cada característica en base a su valor, ya que este no es distintivo de la clase. Por ejemplo, si el lemma de una palabra como ``movie'' aparece más de 3 veces o menos no influye en las etiquetas que puedan asignarse a ellas.
 
-\section{Usuarios Emulados}
+% Testing corpus: 13 recognized instances
+% Testing corpus: 167 total instances
+% Numbers of classes in Testing corpus  12
+% Training corpus 7 recognized questions
+% Training corpus total instances  12
+% Unlabeled corpus 6 recognized instances
+% Unlabeled corpus total instances  98
+% booksbyauthor & 3 & 1 & 8 \\
+% creatorof & 2 & 1 & 4 \\
+% whereisfrom & 4 & 1 & 8 \\
+% actedon & 4 & 1 & 9 \\
+% castof & 1 & 1 & 4 \\
+% whereis & 3 & 1 & 8 \\
+% other & 135 & 1 & 19 \\
+% howoldis & 5 & 1 & 14 \\
+% showswith & 1 & 1 & 4 \\
+% presidentsof & 2 & 1 & 3 \\
+% albumsofband & 5 & 1 & 11 \\
+% bandmembers & 2 & 1 & 6 \\
 
-Para poder realizar experimentos automáticos sin que el usuario tenga que ingresar la misma información repretidas veces decidimos guardar las respuestas obtenidas. Por ello agregamos etiquetas al corpus no etiquetados, que por supuesto no son consultadas, y creamos un corpus de asociaciones características-clases.
-El corpus de características no es más que una matriz ternaria con tres valores posibles: asociación positiva, no asociación, desconocido. De esta forma también evitamos preguntar a un usuario por las características que ya han sido vistas pero no están relacionadas a ninguna clase en particular. Observemos que esta forma de guardar la información soporta etiquetas múltiples.
 
-\section{Experimentos realizados}
+\chapter{Entorno de experimentación}
 
-% Automáticos sin usuarios
-% Con usuarios
+\section{Ejemplos seleccionados}\label{descripcion-corpus}
+
+El primer paso antes de comenzar a experimentar fue conseguir las preguntas para construir un corpus. Son necesarios tanto ejemplos etiquetados que fueran la semilla de entrenamiento inicial de nuestro clasificador como un gran conjunto de ejemplos no etiquetados a partir de los cuales seleccionar instancias para enviar al oráculo.
+
+Para el conjunto etiquetado comenzamos a partir de 58 ejemplos incluídos dentro de la aplicación de Quepy que describían posibles preguntas reconocidas por el programa. Es decir, estas 58 preguntas concuerdan con alguno de los patrones de la aplicación. Manualmente generamos reformulaciones para las cuales no existían patrones, aumentando el número de instancias etiquetadas a 115.
+
+A partir de este punto comenzamos a buscar preguntas no etiquetadas. Utilizamos los corpus de entrenamiento y evaluación de los concursos del \textit{Text REtrieval Conference} (TREC) desde el año 1999 hasta el año 2007 \footnote{http://trec.nist.gov/data/qamain.html}. Esta competencia incluye preguntas de variados dominios y por ello la consideramos suficientemente representativa. Agregamos también las preguntas compiladas por \citet{corpus-stanford}, aunque no utilizamos la información adicional de este corpus. Obtuvimos un total de 6658 preguntas no etiquetadas.
+
+Como último paso, etiquetamos otras 597 preguntas de este último conjunto que seleccionamos al azar. Aquí se introducen ejemplos etiquetados de preguntas que no pertenecen a ninguna clase semántica que pueda ser respondida por Quepy, y por lo tanto les asignamos la clase \textit{other}.
+
+A partir de este conjunto de preguntas etiquetado separamos un porcentaje para evaluar el desempeño del clasificador de tal forma de que todas las clases estuvieran representadas en él. La distribución final de instancias se explica en la tabla \ref{dist-corpus}.
+
+\begin{table}[h!]\label{dist-corpus}
+\centering
+\begin{tabular}{c c}
+     & Cantidad de Instancias\\ [0.5ex]
+    \hline
+    Etiquetadas & 526 \\ [0.5ex]
+    No etiquetadas & 6061 \\ [0.5ex]
+    Para evaluación & 186 \\[1ex]
+    \hline
+\end{tabular}
+\caption{Distribución de instancias.}
+\end{table}
+
+Sin embargo, algunos de los experimentos a realizar simularían las respuestas de un usuario a partir de etiquetas verdaderas. Dividimos entonces las instancias etiquetadas entre un corpus de entrenamiento y uno no etiquetado a partir del cual generar las respuestas simuladas. Para el corpus de entrenamiento seleccionamos una instancia de cada clase. El la tabla \ref{corpus-para-simulacion} se describe la configuración de estos corpus para simulaciones.
+
+% Testing corpus: 31 recognized instances
+% Testing corpus: 186 total instances
+% Numbers of classes in Testing corpus  29
+% Training corpus 19 recognized questions
+% Training corpus total instances  29
+% Unlabeled corpus 8 recognized instances
+% Unlabeled corpus total instances  497
+
+\begin{table}[h!]\label{corpus-para-simulacion}
+\centering
+\begin{tabular}{c c}
+     & Cantidad de Instancias\\ [0.5ex]
+    \hline
+    Corpus de entrenamiento & 29 \\ [0.5ex]
+    Corpus no etiquetado & 497 \\ [0.5ex]
+    Corpus de evaluación & 186 \\[1ex]
+    \hline
+\end{tabular}
+\caption{Distribución de instancias en los corpus para simulaciones}
+\end{table}
+
+\section{Preproceso}
+
+Para poder comparar las preguntas con los patrones definidos en Quepy utilizamos el módulo de preproceso incluído en el mismo. Para la lematización y la extracción de etiquetas POS Quepy utiliza la librería \textit{nltk} desarrollada por \citet{nltk}, y a partir de esta información construye automáticamente objetos que pueden ser comparados con un patrón. El siguiente paso es comparar cada una de las preguntas procesadas con los patrones parciales de Quepy que extraemos de la misma aplicación. Adicionalmente utilizamos lemmas y etiquetas POS para construir los bigramas, trigramas y bigramas mezclados.
+
+Para obtener las entidades nombradas en las preguntas primero descargamos directamente desde FreeBase los nombres de posibles entidades. Debido a que la cantidad de infomación disponible es muy grande, restringimos nuestra búsqueda a entidades que probablemente estuvieran involucrados en preguntas de nuestro corpus. FreeBase organiza sus nodos asignandoles a cada uno varios tipos y decidimos tomar ventaja de esta característica para la selección de entidades.
+
+Guiándonos por las clases de preguntas presenten en el corpus decidimos que los siguientes tipos eran relevantes: film\_actor, film\_director, books, book\_author, celebrities, locations, movies, musical\_group, musical\_group\_member, tv\_actor y tv\_show. Descargamos los nombres de todas las entidades de esos tipos y todos los otros tipos que tuvieran esas entidades.
+
+Una vez obtenida esa información, comparamos cada nombre con cada pregunta para identificar si estaba contenido en ella o no. Si lo estaba, agregamos el nombre y sus tipos a la representación de la pregunta.
+
+Al momento de procesar los corpus con las caraterísticas que ya mencionamos encontramos varios problemas. Una aproximación simple al aprendije activo incluye reentrenar el clasificador en cada una de las iteraciones del ciclo, cambiando así el modelo. Al introducir el etiquetado de características ya no se puede cambiar el modelo sin perder rastro de la ubicación de las características etiquetadas dentro de las matrices internas del clasificador. Por esto es que tuvimos que cambiar la implementación básica y extraer todos las características dentro del preproceso. De esta forma, nuestras matrices iniciales tienen todas las características tanto del corpus anotado como no anotado, aunque en cada corpus por separado muchas columnas contengan sólo ceros.
 
 
-\subsection{Métricas utilizadas}
+
+\section{Métricas utilizadas}
 \begin{description}
-    \item[Exactitud] Llamamos exactitud a la cantidad de preguntas etiquetadas correctamente sobre el total de preguntas clasificadas.
-    %Precisión se refiere a la dispersión del conjunto de valores obtenidos de mediciones repetidas de una magnitud (wikipedia)
-    \item[Curva de aprendizaje] Definimos la curva de aprendizaje como la exactitud del clasificador en función de la cantidad de ejemplos o características etiquetados necesarios.
+    \item[\textit{Accuracy}] Llamamos \textit{Accuracy} a la cantidad de preguntas etiquetadas correctamente sobre el total de preguntas clasificadas. Utilizamos el nombre en inglés debido a la falta de una traducción adecuada y para evitar confuciones con la métrica Precisión que describiremos a continuación.
+    \item[Curva de aprendizaje] Definimos la curva de aprendizaje como la \textit{accuracy} del clasificador en función de la cantidad de ejemplos o características etiquetados necesarios.
     % aprendizaje sobre instancias
     % sobre features
     % sobre ambos
     % sobre ninguno
-    \item [Coeficiente Kappa de Cohen] Esta medida ajusta la exactitud del clasificador obtenido a la de un clasificador aleatorio. Una exactitud del 80\% no es muy sorprendente si asignando etiquetas al azar obtenemos una exactitud del 70\%. En nuestro caso el corpus de evaluación contiene aproximadamente un 75\% de instacias de clase ``otro'', por lo tanto un clasificador que elija esta etiqueta todas las veces obtendría una exactitud semejante. Esta métrica nos permitirá superar este inconveniente y obtener valores más reales.\\
+    \item [Coeficiente Kappa de Cohen] Esta medida ajusta el \textit{accuracy} del clasificador utilizado a la de un clasificador aleatorio o tonto. Un \textit{accuracy} del 80\% no es muy sorprendente si asignando etiquetas al azar obtenemos un \textit{accuracy} del 70\%. En nuestro caso el corpus de evaluación contiene aproximadamente un 75\% de instacias de clase ``otro'', por lo tanto un clasificador que elija esta etiqueta todas las veces obtendría un \textit{accuracy} semejante. Esta métrica nos permitirá medir más adecuadamente el desempeño del clasificador.\\
     Una definición más formal del Coeficiente de Kappa es la que propone \citet{KappaCarletta}:
     $$K = \frac{P(A)-P(E)}{1-P(E)}$$
-    donde $P(A)$ es la proporción de veces que los clasificadores acuerdan y $P(E)$ es la proporción de veces que se esperaría que acuerden por casualidad. En este caso, uno de los clasificadores es el Multinomial Bayesiano entrenado y el otro son las etiquetas del corpus de evaluación. Por lo tanto, $P(A)$ no es otra cosa más que la exactitud calculada en el primer item. Adicionalmente, calculamos $P(E)$ de la siguiente forma:
+    donde $P(A)$ es la proporción de veces que los clasificadores acuerdan y $P(E)$ es la proporción de veces que se esperaría que acuerden por casualidad. En este caso, uno de los clasificadores es el Multinomial Bayesiano entrenado y el otro son las etiquetas del corpus de evaluación. Por lo tanto, $P(A)$ no es otra cosa más que la \textit{accuracy} calculada en el primer item. Adicionalmente, calculamos $P(E)$ de la siguiente forma:
     $$P(E) = \frac{\sum_{i\in\mathcal{C}}Pr(\hat{x_i})*Pr(x_i)}{|\mathcal{E}|}$$
     donde $\mathcal{C}$ es el conjunton de clases, $\mathcal{E}$ es el corpus de evaluación, $Pr(\hat{x_i})$ es la proporción de instancias etiquetadas por el clasificador con la clase i, y $Pr(x_i)$ es la proporción de instancias que pertenecen realmente a la clase i.
     % http://stats.stackexchange.com/questions/82162/kappa-statistic-in-plain-english
@@ -100,84 +224,384 @@ El corpus de características no es más que una matriz ternaria con tres valore
     $$Precision(C_i) = \frac{P_v}{P_v + P_f}$$
     La exhaustividad, por otro lado, está definida como la cantidad de instancias etiquetadas correctamente ($P_v$) de una clase dada sobre la cantidad de instancias que pertenecen a la clase verdaderamente ($P_v$ y falsos negativos o $N_f$).
     $$Exhaustividad(C_i) = \frac{P_v}{P_v + N_f}$$
+    \item[Reconocimiento] Definimos esta métrica como \textit{Accuracy} pero calculada sólo sobre la porción del corpus de evaluación que no es de la clase ``otro''. Con esto podremos medir si el clasificador está ampliando la cobertura de las clases semánticas, sin see abrumados por la gran cantidad de preguntas de la clase mayoritaria en el corpus de evaluación. Tengamos en cuenta que la pérdida acarreada por no identificar una pregunta que puede ser respondida por Quepy es mucho mayor que clasificar una pregunta con una clase semántica que no le corresponde. En el segundo escenario, el sistema simplemente constuirá una consulta y la enviará al motor de búsqueda, obteniendo en la mayoría de los casos una respuesta vacía. Por ello es que tomaremos el reconocimiento como una medida más importante que el \textit{accuracy}.
 \end{description}
 
-\subsection{Baseline}
-Tomaremos como baseline dos métodos:
-\begin{description}
-    \item[Selección de instancias y características al azar]
-    % \item[Bootstrapqing normal utilizando EM]  % Vale la pena hacer esto?
-\end{description}
+\section{Experimentos}
 
-Los experimentos que solicitan al oráculo información sobre instancias y características se realizaron alternando pocas preguntas relativas a instancias y la misma cantidad relativas a características. Si bien los dos ciclos de etiquetado son completamente independientes en el sistema, tomamos esta desición para eliminar las diferencias entre experimentos que puedan introducirse a partir de la elección de los usuarios. Otra punto en el que difieren nuestros experimentos de una sesión no simulada con un usuario es la cantidad de veces que se reentrena. Con objeto de obtener una medición precisa de la curva de aprendizaje reentrenamos el clasificador luego de cada ronda intancias-características descriptas anteriormente. Esto es
-costoso para grandes volúmenes de datos y podría hacer perder al sistema su interactividad.
+En esta sección explicaremos cada uno de los experimentos que realizamos. Las hipótesis a validar abarcan desde la representación elegida y preproceso hasta la utilidad del aprendizaje activo. Por ello, describimos los experimentos en el orden en que los fuimos desarrollando, ya que los resultados de cada uno de ellos cambiaron las suposiciones de los restantes e incluso generaron nuevos experimentos.
 
-\subsection{Hipótesis 1}
-\textbf{El aprendizaje activo obtiene mejores resultados que un clasificador normal utilizando la misma cantidad de datos.}
+\subsection{Experimento 1}
+\vspace{3 mm}
+\textbf{Hipótesis} El clasificador \textit{MultinomialNB} básico de la librería sklearn obteniene buenos resultados entrenando con el corpus etiquetado.
+\vspace{3 mm}
 
-Para comprobar esta hipótesis realizamos sesiones de etiquetamiento sobre instancias y características, pero eligiendo al azar cuáles presentar al usuario. Luego compararemos las curvas de aprendizaje de ambos experimentos.
+Este es el primer experimentos que realizamos para obtener una base de desempeño con la cual medir luego nuestro clasificador. Utilizamos el corpus completo de entrenamiento y obtenemos las métricas a partir del corpus de evaluación tal y como fueron descriptos en la sección \ref{descripcion-corpus}.
+Adicionalmente, realizamos el mismo proceso con otros clasificadores populares en clasificación de texto: \textit{Support Vector Machine} (SVM) desarrollado por \citet{svm-cortes} y \textit{Decision Trees} mencionados ambos en \citet{Sebastiani-text-categorization}.
 
-\subsection{Hipótesis 2}
-\textbf{El aprendizaje activo sobre instancias y características obtiene mejores resultados que el aprendizaje activo sobre instancias o características por separado.}
+Los dos nuevos clasificadores utilizados pertenecen también a la librería \textit{sklearn} de \citet{scikit-learn}. Son instancias de las clases \textit{sklearn.tree.DecisionTreeClassifier} y \textit{sklearn.svm.SCV} respectivamente que dejamos con sus parámetros predeterminados por defecto. \citet{svm-uso-Joachims} ha obtenido buenos resultados usando SVM y sostiene que elimina la necesidad de utilizar selección de características. Por estos dos motivos consideramos la comparación adecuada.
 
+Incluímos estos clasificadores dentro de un ciclo de aprendizaje activo sólo sobre instancias simulado para analizar el posible beneficio de este método. En todos los casos las instancias fueron seleccionadas eligiendo primero las de mayor entropía. Destacamos que aunque el aprendizaje activo es sólo sobre instancias, estamos utilizando el módulo \textit{ActivePipeline} y llevando a cabo un paso del algortimo Esperanza-Maximización para el clasificador \textit{MultinomialNB}.
+
+\vspace{3 mm}
+
+\textbf{Resultados} En la siguiente tabla se muestran el \textit{accuracy}, el reconocimiento y el coeficiente kappa para los tres clasificadores \textit{MultinomialNB} (MNB), \textit{Support Vector Machine} (SVM) y \textit{Decision Trees} (DT).
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l c c c}
+     & MNB & SVM & DT\\ [0.5ex]
+    \hline
+    \textit{Accuracy} & 0.725 & 0.725 & 0.655 \\ [0.5ex]
+    Coeficiente kappa & 0.000 & 0.000 & 0.235 \\ [0.5ex]
+    Reconocimiento & 0.000 & 0.000 & 0.235 \\[1ex]
+    \hline
+\end{tabular}
+\caption{Comparación de desempeño sobre el corpus de evaluación}
+\end{table}
+
+% python experiments/grapich_learning_curves.py experiments/results/experiment4/learningcurve-full-186-step2-unbalance "Curva de aprendizaje" experiments/results/experiment4/recognitioncurve-full-186-step2-unbalance "Curva de reconocimiento"
+\begin{figure}[h!]\label{curva-apr-vs-rec-dt}
+\includegraphics[width=12cm]{curva-apr-vs-rec-dt}
+\caption{Curvas de aprendizaje y reconocimiento para el clasificador DT.}
+\centering
+\end{figure}
+
+El valor las tres medidas en los clasificadores SVM y MNB durante el aprendizaje activo se mantiene constante luego de superar las 10 instancias agregadas al corpus de entrenamiento.
+
+\vspace{3 mm}
+
+\textbf{Conclusión}
+Si observaramos aisladamente la medida del \textit{accuracy} para este experimento podría pensarse que todos los clasificadores obtienen resultados significativos, o al menos aceptables. Sin embargo el reconocimiento y el factor kappa ponen en relevancia que los clasificadores MNB y SVM sólo reconocen la clase mayoritaria y etiquetan con ella a todas las instancias.
+
+La figura \ref{curva-apr-vs-rec-dt} con el desempeño en el aprendizaje activo del clasificador DT da indicios de porqué sucede este fenómeno. Si bien el \textit{accuracy} logrado es más bajo, el reconocimiento es más alto en el clasificador final. Analizando las dos curvas de aprendizaje podemos ver que el reconocimiento alcanza su punto máximo con un valor de 0.45 con 60 instancias agregadas al corpus de entrenamiento y posteriormente decae hasta su valor final. Como las primeras instancias agregadas son las de mayor entropía, corresponden a instancias que no pertenecen a la clase mayoritaria. Por lo tanto, formulamos la hipótesis de nuestro experimento número 2 de que entrenar el clasificador con pocas instancias de la clase mayoritaria aumentaría el reconocimiento final.
+
+% [('booksbyauthor', 2), ('listmovies', 1), ('listtvshows', 1), ('howoldis', 1), ('movieduration', 2), ('presidentsof', 1), ('directorof', 2), ('populationof', 2), ('plotof', 2), ('whois', 1), ('whowrote', 2), ('castof', 3), ('whereis', 1), ('moviereleasedate', 2), ('actorsof', 4), ('whereisfrom', 1), ('spokenlanguageof', 2), ('bandmembers', 3), ('showswith', 3), ('musicgenre', 2), ('capitalcityof', 1), ('albumsofband', 4), ('creatorof', 2), ('whatis', 2), ('episodecount', 2), ('actedon', 5), ('bandfoundation', 1), ('moviesbydirector', 3)]
+% Testing corpus: 31 recognized instances
+% Testing corpus: 186 total instances
+% Numbers of classes in Testing corpus  29
+% Training corpus 19 recognized questions
+% Training corpus total instances  29
+% Unlabeled corpus 8 recognized instances
+% Unlabeled corpus total instances  505
+% booksbyauthor & 3 & 1 & 8 \\
+% listmovies & 1 & 1 & 0 \\
+% listtvshows & 1 & 1 & 1 \\
+% howoldis & 5 & 1 & 14 \\
+% movieduration & 1 & 1 & 1 \\
+% presidentsof & 2 & 1 & 3 \\
+% directorof & 1 & 1 & 0 \\
+% populationof & 1 & 1 & 3 \\
+% plotof & 1 & 1 & 2 \\
+% whois & 1 & 1 & 0 \\
+% whowrote & 1 & 1 & 0 \\
+% castof & 1 & 1 & 4 \\
+% whereis & 3 & 1 & 8 \\
+% other & 135 & 1 & 404 \\
+% moviereleasedate & 1 & 1 & 1 \\
+% actorsof & 2 & 1 & 1 \\
+% whereisfrom & 4 & 1 & 8 \\
+% spokenlanguageof & 1 & 1 & 3 \\
+% bandmembers & 2 & 1 & 6 \\
+% showswith & 1 & 1 & 4 \\
+% musicgenre & 1 & 1 & 3 \\
+% capitalcityof & 1 & 1 & 1 \\
+% albumsofband & 5 & 1 & 11 \\
+% creatorof & 2 & 1 & 4 \\
+% whatis & 1 & 1 & 2 \\
+% episodecount & 1 & 1 & 0 \\
+% actedon & 4 & 1 & 9 \\
+% bandfoundation & 2 & 1 & 2 \\
+% moviesbydirector & 1 & 1 & 2 \\
+
+\subsection{Experimento 2}
+\vspace{3 mm}
+\textbf{Hipótesis} Entrenar el clasificador \textit{MultinomialNB} básico de la librería sklearn con un corpus de entrenamiento con menos cantidad de instancias de clase mayoritaria aumenta el reconocimiento, mientras reduce el \textit{accuracy}.
+\vspace{3 mm}
+
+Para realizar este experimento medimos cómo se comporta el \textit{accuracy} y el reconocimiento en función de la cantidad de instacias de clase mayoritaria con que se entrena al clasificador. Es decir, comenzamos con un clasificador entrenado con todas las instancias etiquetadas de clases minoritarias de las que disponemos, 129 en total. Luego agregamos paulatinamente instancias de clase mayoritaria y reentrenamos el clasificador.
+
+Para tener una línea de comparación, también realizamos el mismo proceso con los dos clasificadores utilizados en el experimento anterior.
+
+% Testing corpus: 31 recognized instances
+% Testing corpus: 186 total instances
+% Numbers of classes in Testing corpus  29
+% Training corpus 27 recognized questions
+% Training corpus total instances  129
+% Unlabeled corpus total instances  405
+% booksbyauthor & 3 & 9 & 0 \\
+% listmovies & 1 & 1 & 0 \\
+% listtvshows & 1 & 2 & 0 \\
+% howoldis & 5 & 15 & 0 \\
+% movieduration & 1 & 2 & 0 \\
+% presidentsof & 2 & 4 & 0 \\
+% directorof & 1 & 1 & 0 \\
+% populationof & 1 & 4 & 0 \\
+% plotof & 1 & 3 & 0 \\
+% whois & 1 & 1 & 0 \\
+% whowrote & 1 & 1 & 0 \\
+% castof & 1 & 5 & 0 \\
+% whereis & 3 & 9 & 0 \\
+% other & 135 & 0 & 405 \\
+% moviereleasedate & 1 & 2 & 0 \\
+% actorsof & 2 & 2 & 0 \\
+% whereisfrom & 4 & 9 & 0 \\
+% spokenlanguageof & 1 & 4 & 0 \\
+% bandmembers & 2 & 7 & 0 \\
+% showswith & 1 & 5 & 0 \\
+% musicgenre & 1 & 4 & 0 \\
+% capitalcityof & 1 & 2 & 0 \\
+% albumsofband & 5 & 12 & 0 \\
+% creatorof & 2 & 5 & 0 \\
+% whatis & 1 & 3 & 0 \\
+% episodecount & 1 & 1 & 0 \\
+% actedon & 4 & 10 & 0 \\
+% bandfoundation & 2 & 3 & 0 \\
+% moviesbydirector & 1 & 3 & 0 \\
+
+\vspace{3 mm}
+
+\textbf{Resultados} En las siguientes imágenes se muestran los valores del \textit{accuracy} y el reconocimiento para los tres clasificadores \textit{MultinomialNB} (MNB), \textit{Support Vector Machine} (SVM) y \textit{Decision Trees} (DT), utilizando una estrategia de selección de instancias priorizando máxima entropía.
+
+\begin{figure}[h!]\label{curva-apr-hip2}
+\includegraphics[width=8cm]{recognition-curve-hip2}
+% python experiments/grapich_learning_curves.py experiments/results/experiment4/recognitioncurve-full-186-step2-hip2 "DT" experiments/results/experiment5/recognitioncurve-full-186-step2-hip2 "SVM" experiments/results/experiment2/recognitioncurve-full-186-step1-hip2 "MNB"
+\includegraphics[width=8cm]{learning-curve-hip2}
+%python experiments/grapich_learning_curves.py experiments/results/experiment4/learningcurve-full-186-step2-hip2 "DT" experiments/results/experiment5/learningcurve-full-186-step2-hip2 "SVM" experiments/results/experiment2/learningcurve-full-186-step1-hip2 "MNB"
+\caption{Curvas de aprendizaje y reconocimiento.}
+\centering
+\end{figure}
+
+\vspace{3 mm}
+
+\textbf{Conclusión}
+Como esperabamos, el reconocimiento es inversamente proporcional a la cantidad de instancias de clase mayoritaria que se utilizan en el entrenamiento. Esto no quiere decir que no deban ser utilizadas, sino que pueden estar abrumando los pocos datos etiquetados de las otras clases que componen el corpus de entrenamiento.
+
+Estos resultados no son extraños en problemas donde se busca reconocer y clasificar una pequeña parte del universo de instancias, como ya hemos visto que plantea \citet{rare-classes-holpedales}. En nuestro caso, estamos clasificando el resto del universo dentro de una clase mayoritaria aunque esto no se corresponda con la realidad. Esta mega-clase engloba las instancias de todas las clases que no podemos reconocer, y como tal no existen características distintivas que permitan al clasificador reconocerlas. Ante tanta diversidad, como podemos observar el desempeño es pobre y se basa sólo en la probabilidad mayor de una etiqueta.
+
+
+\subsection{Nueva configuración del corpus}
+
+Como resultado del experimento anterior utilizaremos a partir de ahora un corpus no etiquetado (simulado) con la misma cantidad de instancias de la clase mayoritaria que de la segunda clase mayoritaria, es decir, 14 instancias. Si bien esto constituye un corpus muy pequeño, queremos identificar tendencias y no resultados contundentes dado los limitados recursos de los que disponemos.
+
+Al realizar las primeras pruebas tentativas para este corpus notamos que la precisión no podía ser calculada para aquellas clases que se entrenaban con menos de 4 instancias. Esto se debe a que el clasificador no clasifica ninguna instancia como perteneciente a esta clase, lo que resulta en una división por 0 al calcular la métrica. Tengamos en cuenta de que son sólo 4 las instancias que podemos incluir en el corpus de entrenamiento porque previamente seleccionamos 1 o 2 para el corpus de evaluación.
+
+La base de la clasificación es la generalización de la información de los datos de entrenamiento a instancias nunca vistas previamente. La poca cantidad de reformulaciones que pudimos encontrar para estas preguntas conduce a la conclusión de que estas clases no podrán ser discriminadas sin incluir más ejemplos. Por ello tomamos la decisión de excluir estas clases de los siguientes experimentos considerando que no aportan ningún beneficio ni perjuicio a los datos que queremos observar. Se eliminan en este paso 17 clases que representan un 37\% del corpus de entrenamiento y no etiquetado, mientras que sólo es un 10\% del corpus de evaluación.
 
 
 \subsection{Experimento 3}
-\textbf{Hipótesis} El aprendizaje supervisado sobre instancias y características obtiene mejores resultados que el aprendizaje supervisado sobre instancias, aún si las características son pocas.
+\vspace{3 mm}
+\textbf{Hipótesis} Las características como las concordancias parciales y los tipos de entidades nombradas son más significativas que las otras para el clasificador \textit{MultinomialNB}.
+\vspace{3 mm}
 
+Antes de comenzar con el entrenamiento a través de aprendizaje activo propiamente dicho queremos determinar la configuración de experimentos que maximizará el resultado final. Como mencionamos en el capítulo \ref{capitulo-features}, consideramos que este grupo de características representa mejor a las instancias para esta tarea de categorización en particular. Las preguntas que queremmos analizar tienen una longitud corta y un vocabulario similar, es decir, muchas preguntas contiene palabras como \textit{What}, \textit{Who} o \textit{is}. Sin embargo, estas palabras no son discriminativas de la clase en la mayoría de los casos, sino que dependemos del resto de la frase. Por otro lado, al tener una alta cantidad de clases distintas, es probable que cada una de estas palabras discriminativas esté presente en pocos ejemplos, si no sólo en uno, resultando en un matriz de representación muy esparsa. Por estos motivos suponemos que utilizar derivados simples de las lemmas no formará una frontera de decisión tan clara para el clasificador.
+
+Para probar esta hipótesis entrenamos el clasificador \textit{MultinomialNB} con el corpus de entrenamiento y no etiquetado (simulado) descriptos en la sección anterior preprocesados con distintas combinaciones de características. Compararemos su desempeño en cada una de ellas a través de \textit{accuracy} y reconocimiento. Para un mejor entendimiento de los datos, realizamos un análisis sobre el corpus usado para entrenamiento y obtenemos la distribución de ocurrencias de cada tipo de características en las instancias.
+
+\vspace{3 mm}
+
+\textbf{Resultados} En las siguientes tablas mostramos las mediciones más significativas de \textit{accuracy} y reconocimiento obtenidas sin aprendizaje activo para combinaciones de las siguientes características: Lemmas (L), Bigramas (B), Trigramas (T), Bigramas Mezclados (MB), Etiquetas POS (POS), Entidades nombradas (NE), Tipos de las entidades nombradas (NET) y Concordancia a patrones parciales (PM).
+
+\begin{table}[h!]\label{tabla-exp3}
+\centering
+\begin{tabular}{l c c}
+     & \textit{Accuracy} & Reconocimiento \\ [0.5ex]
+    \hline
+    L & 0.49 & 0.59 \\ [0.5ex]
+    L + B & 0.40 & 0.59 \\ [0.5ex]
+    \textbf{L + B + T} & 0.32 & \textbf{0.71} \\[0.5ex]
+    L + B + T + MB + POS & 0.30 & 0.59 \\[0.5ex]
+    L + B + T + NET + NE & 0.35 & 0.59 \\[0.5ex]
+    \textbf{PM} & 0.4 & \textbf{0.65} \\[0.5ex]
+    PM + NET & 0.6 & 0.53 \\[0.5ex]
+    PM + NET + NE & \textbf{0.64} & 0.43 \\[0.5ex]
+    L + PM & 0.43 & 0.59 \\[0.5ex]
+    L + B + T + PM & 0.40 & 0.59 \\[0.5ex]
+    L + PM + NET & 0.5 & 0.46 \\[0.5ex]
+    L + PM + NET + NE + B + T + MB + POS & 0.31 & 0.46 \\[0.5ex]
+    \hline
+\end{tabular}
+\caption{Comparación de desempeño sobre el corpus de evaluación}
+\end{table}
+
+En la figura \ref{fig-distribucion-features} cada gráfico de torta ilustra la cantidad de características que ocurren en un número fijo de instancias distribuídas según la clase a la que pertenecen. Es decir, en el primer gráfico la porción de color negro representa cuántos lemmas (L) aparecen sólo en una pregunta de todo el corpus.
+
+\begin{figure}[h!]\label{fig-distribucion-features}
+\centering
+\includegraphics[width=10cm]{clase-feat-inst-labels}
+\caption{Distribución de las clases de las características según la cantidad de instancias en las que están presentes.}
+\end{figure}
+
+\vspace{3 mm}
+
+\textbf{Conclusión} Primero realizaremos un análisis de los gráficos de torta y luego ahondaremos en el desempeño del clasificador a partir de esa base. Lo primero que notamos es que, como habíamos supuesto, la proporción de Concordancias parciales (PM) y Tipos de entidades nombradas (NET) aumenta mientras aumenta el número de instancias en las que están presentes. Es decir, en proporción hay muchas más reglas que concuerdan con muchas instancias que con una sola. Lo mismo ocurre con las etiquetas POS, pero recordemos que hay pocas de ellas y que en general ocurren muchas veces en el texto. Es decir, en todas las frases hay sustantivos y verbos. Por lo tanto, las consideraremos relevantes. Sin embargo, sí encontramos significativo que la proporción de los lemmas se mantenga constante con respecto a la cantidad de instancias en las que ocurren. Esto nos indica que esta característica podría ser mucho más útil de lo que esperabamos.
+
+El fenómeno contrario ocurre con los Bigramas (B) y Trigramas (T), junto con las Entidades Nombradas en sí (NE), que en general ocurren en pocas instancias dentro del corpus. Por lo tanto, esperaríamos que no se desempeñen bien aisladas sino en conjunto con otras características.
+
+Con respecto al rendimiento del clasificador, ninguna combinación de caraterísticas maximiza tanto el \textit{accuracy} como el reconocimiento. Es decir, que para identificar mejor las instancias de las clases minoritarias es necesario perder precisión sobre la clase mayoritaria. Recordemos que para el fin de nuestra clasificación preferimos lograr un alto reconocimiento.
+
+A partir de la tabla \ref{tabla-exp3} podemos observar claramente que el mayor reconocimiento se obtiene utilizando Concordancias a los patrones (PM) o la combinación Lemmas, Bigramas y Trigramas. Sin embargo, la combinación de estos no arroja buenos resultados. POR QUÉ?
+
+Por otra parte, los Tipos de las entidades nombradas, los Bigramas Mezclados y las Entidades nombradas sólo confunden al clasificador. Si observamos la figura \ref{fig-distribucion-features} estos tipos de características son muy esparsas y ocurren generalemente en menos de tres instancias.
 
 \subsection{Experimento 4}
-\textbf{Hipótesis} ??.
+\vspace{3 mm}
+\textbf{Hipótesis} La clasificación obtendrá mejores resultados si se aplica algún método de suavizado como \textit{Tf-idf} o \textit{LSA}.
+\vspace{3 mm}
 
-La idea es ver qué método de selección de features es mejor:\\
+Métodos de suavizado son utilizados comunmente para clasificación de texto y extracción de información para contrarestar la distribución de palabras descripta por la ley de Zipff, donde pocas palabras ocurren muchas veces mientras que la mayoría de los términos están presentes en pocas instancias.
 
-Puede ser trabajo futuro
+\textit{Tf-idf} hace referencia a Frecuencia de términos y frecuencia inversa de documentos, una medida estadística para determinar cuán importante es una palabra dentro de una instancia o documento. Se calcula como el producto de otras dos medidas: la Frecuencia del término es la cantidad de veces que el término ocurre en la instancia, y la Frecuencia inversa del documento que cuenta inversa de la cantidad de veces que el término aparece en todo el corpus. Como resultado, palabras que ocurren pocas veces en el corpus y se concentran sólo en una porción de instancias toman más relevancia con respecto a palabras que ocurren en muchas intancias, ya que se consideran más representativas de la instancia. Ha sido utilizado por \citet{tackling-mnb} como una forma de modelado alternativa para el clasificador Bayesiano ingénuo.
 
+\textit{LSA} o Análisis de semántica latente es una técnica introducida por \citet{lsa} para superar los problemas de utilizar aproximaciones basadas sólo en términos para el procesamiento de lenguaje natural. Supone que existe una estructura semántica oculta por la aleatoriedad del vocabulario e intenta minimizar el ruido a través de técnicas estadísticas. \textit{LSA} utiliza una técnica llamada Descomposición en valores singulares o \textit{SVD} que descompone la matriz de representación en un nuevo espacio vectorial de forma que se reduce la dimensionalidad (tiene menos características) mientras se preserva la relación entre las las características restantes y las instancias.
 
+Para aplicar estos dos métodos usamos las clases \textit{TfidfTransformer} y \textit{TruncatedSVD} de la librería \textit{scikit-learn}. Luego de preprocesar todos los corpus con estos métodos entrenamos el clasificador \textit{MultinomialNB} y comprobamos su rendimiento sobre el corpus de evaluación.
 
-\textbf{Resultados}\\
+\vspace{3 mm}
 
-\begin{tabular}{||p{4cm} | l | l||}
-\hline
- & Clase con probabilidad alta & Clase con probabilidad baja \\
-\hline
-Característica con probabilidad alta & medicion & medicion \\
-\hline
-Característica con probabilidad baja & medicion & medicion \\
-\hline
+\textbf{Resultados} En la siguiente tabla mostramos las mediciones más significativas de \textit{accuracy} y reconocimiento obtenidas sin aprendizaje activo para combinaciones de las siguientes características: Lemmas (L), Bigramas (B), Trigramas (T), Bigramas Mezclados (MB), Etiquetas POS (POS), Entidades nombradas (NE), Tipos de las entidades nombradas (NET) y Concordancia a patrones parciales (PM), aplicando métodos de suavizado de Tf-idf y LSA.
+
+\begin{table}[h]\label{tabla-exp3}
+\centering
+\begin{tabular}{l c c | c c}
+     & \multicolumn{2}{c|}{Tf-Idf} & \multicolumn{2}{c}{LSA}\\ [0.5ex]
+     & \textit{Accuracy} & Reconocimiento & \textit{Accuracy} & Reconocimiento \\ [0.5ex]
+    \hline
+    L & 0.45 & 0.4 & 0.72 & 0.37 \\[0.5ex]
+    L + B + T & 0.36 & 0.34 & 0.74 & 0.43 \\[0.5ex]
+    PM & 0.44 & \textbf{0.59} & 0.41 & 0.43 \\[0.5ex]
+    \textbf{PM + L} & 0.35 & 0.5 & 0.44 & \textbf{0.68} \\[0.5ex]
+    PM + L + LNT & 0.50 & 0.50 & 0.79 & 0.25\\[0.5ex]
+    \textbf{PM + L + B + T} & 0.32 & 0.46 & 0.49 & \textbf{0.68} \\[0.5ex]
+    PM + L + B + T + LNT & 0.40 & 0.43 & 0.79 & 0.31 \\[0.5ex]
+    PM + LTN + LN & \textbf{0.64} & 0.43 & 0.74 & 0.09 \\[0.5ex]
+    PM + LTN + LN + L & 0.52 & 0.46 & \textbf{0.76} & 0.21 \\[0.5ex]
+    Todos & 0.32 & 0.4 & 0.67 & 0.53 \\[0.5ex]
+    \hline
 \end{tabular}
-\hfill
-\begin{tabular}{||p{4cm} | l | l||}
-\hline
- & Clase con probabilidad alta & Clase con probabilidad baja \\
-\hline
-Característica con IG alta & medicion & medicion \\
-\hline
-Característica con IG baja & medicion & medicion \\
-\hline
+\caption{Comparación de desempeño sobre el corpus de evaluación con distintas caraterísticas y técnicas de suavizamiento.}
+\end{table}
+% L + PM + NET + NE + B + T + MB + POS
+No incluímos los resultados de los experimentos utilizando ambos métodos ya que ninguno de ellos dió mejores resultados que los mencionados anteriormente.
 
+Los datos expresados con el preprocesamiento de LSA tienen el número de dimensiones que maximizan el resultado. Para las combinaciones PM + L + B + T y PM + L se utilizaron 250 características.
+
+En la tabla \ref{prec-recall-mejor-solucion} se muestra la precisión y la exhaustividad para cada una de las clases utilizando las dos mejores combinaciones de características de la tabla \ref{tabla-exp3}. En la última columna se incluye el número de instancias para cada clase dentro del corpus de evaluación.
+
+\begin{table}[h]\label{prec-recall-mejor-solucion}
+\centering
+\begin{tabular}{l c c | c c | c}
+     & \multicolumn{2}{c|}{PM + L + B + T + LSA} & \multicolumn{2}{c}{PM + L + LSA} &\\ [0.5ex]
+    Clase & Precisión & Exhaustividad & Precisión & Exhaustividad & Instancias\\ [0.5ex]
+    \hline
+    actedon & 0.57 & 1.00 & 0.57 & 1.00 & 4\\ [0.5ex]
+    \textbf{albumsofband} & 0.33 & 0.80 & \textbf{0.36} & \textbf{0.86} & 5\\ [0.5ex]
+    bandmembers & 1.00 & 0.50 & 1.00 & 0.50 & 2\\ [0.5ex]
+    \textbf{booksbyauthor} & \textbf{1.00} & 0.67 & 0.50 & 0.67 & 3\\ [0.5ex]
+    castof & 0.00 & 0.00 & 0.00 & 0.00 & 1\\ [0.5ex]
+    \textbf{creatorof} & \textbf{0.17} & 1.00 & 0.15 & 1.00 & 2\\ [0.5ex]
+    \textbf{howoldis} & \textbf{0.09} & 1.00 & 0.08 & 1.00 & 5\\ [0.5ex]
+    \textbf{other} & 0.92 & 0.44 & \textbf{0.93} & 0.38 & 135\\ [0.5ex]
+    presidentsof & 0.50 & 0.50 & 0.50 & 0.50 & 2\\ [0.5ex]
+    showswith & 0.00 & 0.00 & 0.00 & 0.00 & 1\\ [0.5ex]
+    \textbf{whereis} & \textbf{0.38} & 1.00 & 0.33 & 1.00 & 3\\ [0.5ex]
+    whereisfrom & 0.00 & 0.00 & 0.00 & 0.00 & 4\\ [0.5ex]
+    & & & & & \\
+    Promedio/total & \textbf{0.82} & \textbf{0.49} & 0.81 & 0.44 & 167\\ [0.5ex]
+    \hline
 \end{tabular}
+\caption{Comparación de desempeño sobre el corpus de evaluación con distintas caraterísticas y técnicas de suavizamiento.}
+\end{table}
 
 
+\vspace{3 mm}
+
+\textbf{Conclusión}
+Cómo explico por qué el tdidf no funciona si en la mayoría de los casos anda bien???
+
+Podemos observar que, como esperabamos, agregar \textit{LSA} permite combinar mejor los Lemmas, Bigramas y Trigramas con las Concordancias a patrones. Aún sin esta combinación no alcanza los valores de reconocimiento que pudimos observar en el experimento anterior, aumenta significativamente el \textit{accuracy}. Vemos que este en un fenómeno general de todas las combinaciones, por lo que esperamos que con un corpus mayor esta técnica permita aumentar el rendimiento sobre todas las clases.
+
+Un resultado sorprendente es el bajo reconocimiento de la combinación L + B + T con LSA, que en el experimento anterior obtuvo los mejores resultados. Un fenómeno común que observamos al reducir la dimensionalidad es que la clase mayoritaria vuelve a adquirir un gran peso. Por ello aumenta tanto el \textit{accuracy} de todas las combinaciones.
+
+La tabla \ref{prec-recall-mejor-solucion} indica, con un análisis más detallado, que la mejor combinación de características es L + B + T + PM + LSA.
 
 \subsection{Experimento 5}
-\textbf{Hipótesis} Seleccionar features para etiquetar que tengan alta confiabilidad/correlación, y luego de superado un cierto límite pasar a los que tiene baja confiabilidad/correlación permite al clasificador eliminar el ruido no introducido por la baja cantidad de ejemplos y al mismo tiempo expandir la cobertura.
-Dejar para mas adelante
+\vspace{3 mm}
+\textbf{Hipótesis} El aprendizaje activo sobre instancias permite al clasificador obtener el mismo rendimiento con menor cantidad de instancias.
+\vspace{3 mm}
+
+En este experimento simulamos la interacción con un usuario como describimos en la sección \ref{descripcion-corpus}, comenzando con un corpus de entrenamiento pequeño el ciclo de aprendizaje activo. El aprendedor selecciona la siguiente instancia de un corpus etiquetado (sin conocer la verdadera clase) para enviar al oráculo, pero en lugar de interactuar con un usuario obtenemos las respuestas del mismo corpus.
+
+Para esta sección decidimos preprocesar los datos utilizando Lemmas, Bigramas, Trigramas y Concordancias a patrones y aplicando LSA, basándonos en los resultados del experimento anterior. Evaluaremos la curva de aprendizaje para el \textit{accuracy} y para el reconocimiento con tres estrategias de selección de instancias distintas: al azar, con mayor entropía y con menor entropía. El clasificador utilizado es \textit{MultinomialNB} junto con el módulo ActivePipeline.
+
+Recordemos que las instancias con menor entropía son aquellas sobre las que el clasificador tiene mayor seguridad, y por lo tanto aportan menos información. Seleccionar instancias con menor entropía primero permitirá al clasificador asegurar primero la información que se asume es verdadera. Consideramos que esta es una buena estrategia teniendo en cuenta la reducida cantidad de ejemplos con los que comienza el entrenamiento del clasificador.
+
+El clasificador se reentrenó y se aplicó un ciclo del algoritmo Esperanza-Maximización luego de agregar una instancia al corpus de entrenamiento.
+
+\vspace{3 mm}
+
+\textbf{Resultados} En la figura \ref{fig-aa-comparision} mostramos la evolución del \textit{accuracy} y del reconocimiento para las tres estrategias de selección de instancias: aleatoria, mayor entropía y menor entropía.
+
+\begin{figure}[h!]\label{fig-aa-comparision}
+\centering
+\includegraphics[width=10cm]{learningcurve-aa-exp5}
+\includegraphics[width=10cm]{recognitioncurve-aa-exp5}
+\caption{Desempeño del clasificador con aprendizaje activo y distintas estrategias de selección de instancias.}
+\end{figure}
 
 
-Experimento Entrenamiento supervisado con y sin etiquetado de  features
-Validacion del etiquetado de features
+\vspace{3 mm}
+
+\textbf{Conclusión}
+
+Como podemos observar en la curva de aprendizaje ambas estrategias se desempeñan mejor que un aprendizaje aleatorio. Sin embargo, la selección por mayor entropía maximiza tanto el \textit{accuracy} como el reconocimiento.
+
+Y qué más puedo decir????!!!!
+
+\subsection{Experimento 6}
+\vspace{3 mm}
+\textbf{Hipótesis} El aprendizaje activo sobre características incrementará el rendimiento del clasificador.
+\vspace{3 mm}
+
+Este experimento lo realizamos utilizando el clasificador \textit{FeatMultinomialNB} en conjunto con el módulo \texit{ActivePipeline}. El aprendizaje activo se desarrolló sólo sobre características interactuando con el usuario como se describe en la figura \ref{cicloaa-features}.
+El corpus fue preprocesado utilizando como características las concordancias a patrones, lemmas, bigramas y trigras. La cantidad total de características extraídas es 3781, incluyendo todos los corpus. No se utilizó la técnica de LSA aunque había arrojado buenos resultados ya que afecta la dimensionalidad del modelo y por lo tanto el mapeo entre las columnas de la matriz de representación y las características seleccionadas.
+
+\vspace{3 mm}
+
+\textbf{Resultados}
 
 
+%\subsection{Experimentos con características}
 
-Experimento 6
-Information gain sobre todo el corpus o solo el etiquetado.
-IG sobre el corpus anotado + frecuencia en no anotado vs IG sobre todo el corpus anotado y no anotado.
+%Los (siguientes) experimentos que solicitan al oráculo información sobre instancias y características se realizaron alternando pocas preguntas relativas a instancias y la misma cantidad relativas a características. Si bien los dos ciclos de etiquetado son completamente independientes en el sistema, tomamos esta desición para eliminar las diferencias entre experimentos que puedan introducirse a partir de la elección de los usuarios. Otra punto en el que difieren nuestros experimentos de una sesión no simulada con un usuario es la cantidad de veces que se reentrena. Con objeto de obtener una medición precisa de la curva de aprendizaje reentrenamos el clasificador luego de cada ronda intancias-características descriptas anteriormente. Esto es costoso para grandes volúmenes de datos y podría hacer perder al sistema su interactividad.
+
+%Para poder realizar experimentos automáticos sin que el usuario tenga que ingresar la misma información repretidas veces decidimos guardar las respuestas obtenidas. Por ello agregamos etiquetas al corpus no etiquetados, que por supuesto no son consultadas, y creamos un corpus de asociaciones características-clases.
+%El corpus de características no es más que una matriz ternaria con tres valores posibles: asociación positiva, no asociación, desconocido. De esta forma también evitamos preguntar a un usuario por las características que ya han sido vistas pero no están relacionadas a esa clase en particular. Observemos que esta forma de guardar la información soporta etiquetas múltiples para una misma característica.
+
+% \subsection{Hipótesis 2}
+% \textbf{El aprendizaje activo sobre instancias y características obtiene mejores resultados que el aprendizaje activo sobre instancias o características por separado.}
+
+% \subsection{Experimento 3}
+% \textbf{Hipótesis} El aprendizaje supervisado sobre instancias y características obtiene mejores resultados que el aprendizaje supervisado sobre instancias, aún si las características son pocas.
 
 
-Experimento 7
-Coocurrencia de features con otros features. (Información mutua)
-Un feature se rankea mas alto si coocurre con features que se rankean alto. Tomando como base la frecuencia.
+% \subsection{Experimento 4}
+% \textbf{Hipótesis} ??.
 
-Experimento 8
-Information gain sirve o alcanza sólo con usar coocurrencia?
+% \subsection{Experimento 5}
+% \textbf{Hipótesis} Seleccionar features para etiquetar que tengan alta confiabilidad/correlación, y luego de superado un cierto límite pasar a los que tiene baja confiabilidad/correlación permite al clasificador eliminar el ruido no introducido por la baja cantidad de ejemplos y al mismo tiempo expandir la cobertura.
+% Dejar para mas adelante
+
+% Experimento Entrenamiento supervisado con y sin etiquetado de  features
+% Validacion del etiquetado de features
+
+% Experimento 6
+% Information gain sobre todo el corpus o solo el etiquetado.
+% IG sobre el corpus anotado + frecuencia en no anotado vs IG sobre todo el corpus anotado y no anotado.
+
+% Experimento 7
+% Coocurrencia de features con otros features. (Información mutua)
+% Un feature se rankea mas alto si coocurre con features que se rankean alto. Tomando como base la frecuencia.
+
+% Experimento 8
+% Information gain sirve o alcanza sólo con usar coocurrencia? Para esto podemos ver la posicion de los features que elige el usuario.

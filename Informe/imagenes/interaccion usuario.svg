@@ -1798,7 +1798,11 @@
        sodipodi:rx="74.898743"
        sodipodi:ry="73.511734"
        d="m -893.23688,-655.05182 a 74.898743,73.511734 0 1 1 -149.79752,0 74.898743,73.511734 0 1 1 149.79752,0 z"
+<<<<<<< HEAD
        transform="translate(-1248.3125,492.38989)"
+=======
+       transform="matrix(1.206145,0,0,1.206145,-1033.1931,642.68273)"
+>>>>>>> f75bf85c879f510518a99cae85fe6725ce4c2e9e
        inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />

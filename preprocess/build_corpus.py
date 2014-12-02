@@ -57,11 +57,11 @@ def process_corpus(tr_in_filename, te_in_filename, u_in_filename,
     # v_instances = csr_matrix(v_instances > 0, dtype=int8)
     # transformer = TfidfTransformer()
     # v_instances = transformer.fit_transform(v_instances)
-    # svd = TruncatedSVD(n_components=150, random_state=42)
+    # svd = TruncatedSVD(n_components=210, random_state=42)
     # v_instances = svd.fit_transform(v_instances)
+    # v_instances = csr_matrix(v_instances - v_instances.min())
+    # #v_instances = csr_matrix(normalize(v_instances.T, norm='l1').T)
     # print v_instances.min(), v_instances.max()
-    # v_instances = csr_matrix(v_instances + 1)
-    # v_instances = csr_matrix(normalize(v_instances.T, norm='l1').T)
     print v_instances.shape
 
     tr_corpus = Corpus()

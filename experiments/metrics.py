@@ -189,3 +189,4 @@ class RecognitionCurve(Metric):
             new_examples += report['new_features'] + report['new_instances']
             result.append('{}\t{}'.format(new_examples, recog))
         self.info = '\n'.join(result)
+

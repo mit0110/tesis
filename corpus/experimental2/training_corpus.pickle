@@ -1,0 +1,2194 @@
+(lp0
+(dp1
+S'question'
+p2
+((lp3
+ccopy_reg
+_reconstructor
+p4
+(cquepy.tagger
+Word
+p5
+c__builtin__
+object
+p6
+Ntp7
+Rp8
+(dp9
+S'lemma'
+p10
+Vlist
+p11
+sS'token'
+p12
+g11
+sS'pos'
+p13
+VNN
+p14
+sS'prob'
+p15
+Nsbag4
+(g5
+g6
+Ntp16
+Rp17
+(dp18
+g10
+Vbook
+p19
+sg12
+Vbooks
+p20
+sg13
+VNNS
+p21
+sg15
+Nsbag4
+(g5
+g6
+Ntp22
+Rp23
+(dp24
+g10
+Vby
+p25
+sg12
+g25
+sg13
+VIN
+p26
+sg15
+Nsbag4
+(g5
+g6
+Ntp27
+Rp28
+(dp29
+g10
+Vgeorge
+p30
+sg12
+VGeorge
+p31
+sg13
+VNNP
+p32
+sg15
+Nsbag4
+(g5
+g6
+Ntp33
+Rp34
+(dp35
+g10
+Vorwell
+p36
+sg12
+VOrwell
+p37
+sg13
+VNNP
+p38
+sg15
+Nsba(lp39
+S"(Star(Any()) + Lemma(u'list') + Star(Any()))"
+p40
+aS'(Star(Any()) + Actor() + Star(Any()))'
+p41
+aS"(Star(Any()) + Pos(u'IN') + Star(Any()))"
+p42
+aS'(Star(Any()) + Movie() + Star(Any()))'
+p43
+aS'(Star(Any()) + Band() + Star(Any()))'
+p44
+aS"(Star(Any()) + Lemma(u'book') + Star(Any()))"
+p45
+aS"(Star(Any()) + Lemma(u'by') + Star(Any()))"
+p46
+aS'(Star(Any()) + Author() + Star(Any()))'
+p47
+aS"(Star(Any()) + Question(Lemma(u'list')) + Lemma(u'book') + Lemma(u'by') + Author() + Star(Any()))"
+p48
+aS'(Star(Any()) + Country() + Star(Any()))'
+p49
+aS'(Star(Any()) + TvShow() + Star(Any()))'
+p50
+aS'(Star(Any()) + Person() + Star(Any()))'
+p51
+aS'(Star(Any()) + Director() + Star(Any()))'
+p52
+aS'(Star(Any()) + Thing() + Star(Any()))'
+p53
+aS'(Star(Any()) + Book() + Star(Any()))'
+p54
+aS'None'
+p55
+(S'None'
+p56
+tp57
+tp58
+sS'target'
+p59
+(lp60
+S'booksbyauthor'
+p61
+asS'recognized'
+p62
+I01
+sa(dp63
+g2
+((lp64
+g4
+(g5
+g6
+Ntp65
+Rp66
+(dp67
+g10
+Vwho
+p68
+sg12
+VWho
+p69
+sg13
+VWP
+p70
+sg15
+Nsbag4
+(g5
+g6
+Ntp71
+Rp72
+(dp73
+g10
+Vworks
+p74
+sg12
+g74
+sg13
+VNNS
+p75
+sg15
+Nsbag4
+(g5
+g6
+Ntp76
+Rp77
+(dp78
+g10
+Vin
+p79
+sg12
+g79
+sg13
+VIN
+p80
+sg15
+Nsbag4
+(g5
+g6
+Ntp81
+Rp82
+(dp83
+g10
+Vbreaking
+p84
+sg12
+VBreaking
+p85
+sg13
+VNNP
+p86
+sg15
+Nsbag4
+(g5
+g6
+Ntp87
+Rp88
+(dp89
+g10
+Vbad
+p90
+sg12
+VBad
+p91
+sg13
+VNNP
+p92
+sg15
+Nsbag4
+(g5
+g6
+Ntp93
+Rp94
+(dp95
+g10
+V?
+p96
+sg12
+g96
+sg13
+V.
+p97
+sg15
+Nsba(lp98
+S'(Star(Any()) + Actor() + Star(Any()))'
+p99
+aS"(Star(Any()) + Pos(u'IN') + Star(Any()))"
+p100
+aS"(Star(Any()) + Pos(u'.') + Star(Any()))"
+p101
+aS"(Star(Any()) + Lemma(u'who') + Star(Any()))"
+p102
+aS'(Star(Any()) + Movie() + Star(Any()))'
+p103
+aS'(Star(Any()) + Band() + Star(Any()))'
+p104
+aS"(Star(Any()) + Pos(u'WP') + Star(Any()))"
+p105
+aS'(Star(Any()) + Author() + Star(Any()))'
+p106
+aS'(Star(Any()) + Country() + Star(Any()))'
+p107
+aS'(Star(Any()) + TvShow() + Star(Any()))'
+p108
+aS"(Star(Any()) + Lemma(u'works') + Star(Any()))"
+p109
+aS"(Star(Any()) + Lemma(u'who') + Lemma(u'works') + Pos(u'IN') + TvShow() + Question(Pos(u'.')) + Star(Any()))"
+p110
+aS"(Star(Any()) + ((Question((Lemma(u'what') + Lemma(u'be') + Pos(u'DT'))) + Lemma(u'cast') + Pos(u'IN') + TvShow() + Question(Pos(u'.'))) | (Lemma(u'who') + Lemma(u'works') + Pos(u'IN') + TvShow() + Question(Pos(u'.')))) + Star(Any()))"
+p111
+aS'(Star(Any()) + Person() + Star(Any()))'
+p112
+aS'(Star(Any()) + Director() + Star(Any()))'
+p113
+aS'(Star(Any()) + Thing() + Star(Any()))'
+p114
+aS"(Star(Any()) + Lemma(u'in') + Star(Any()))"
+p115
+aS'(Star(Any()) + Book() + Star(Any()))'
+p116
+aS'Breaking Bad'
+p117
+(S'Topic'
+p118
+tp119
+tp120
+sg59
+(lp121
+S'castof'
+p122
+asg62
+I01
+sa(dp123
+g2
+((lp124
+g4
+(g5
+g6
+Ntp125
+Rp126
+(dp127
+g10
+Vwhat
+p128
+sg12
+VWhat
+p129
+sg13
+VWP
+p130
+sg15
+Nsbag4
+(g5
+g6
+Ntp131
+Rp132
+(dp133
+g10
+Vbe
+p134
+sg12
+Vare
+p135
+sg13
+VVBP
+p136
+sg15
+Nsbag4
+(g5
+g6
+Ntp137
+Rp138
+(dp139
+g10
+Vthe
+p140
+sg12
+g140
+sg13
+VDT
+p141
+sg15
+Nsbag4
+(g5
+g6
+Ntp142
+Rp143
+(dp144
+g10
+Vmember
+p145
+sg12
+Vmembers
+p146
+sg13
+VNNS
+p147
+sg15
+Nsbag4
+(g5
+g6
+Ntp148
+Rp149
+(dp150
+g10
+Vof
+p151
+sg12
+g151
+sg13
+VIN
+p152
+sg15
+Nsbag4
+(g5
+g6
+Ntp153
+Rp154
+(dp155
+g10
+Vmetallica
+p156
+sg12
+VMetallica
+p157
+sg13
+VNNP
+p158
+sg15
+Nsbag4
+(g5
+g6
+Ntp159
+Rp160
+(dp161
+g10
+g96
+sg12
+g96
+sg13
+g97
+sg15
+Nsba(lp162
+S'(Star(Any()) + Actor() + Star(Any()))'
+p163
+aS"(Star(Any()) + Pos(u'IN') + Star(Any()))"
+p164
+aS"(Star(Any()) + Lemma(u'what') + Star(Any()))"
+p165
+aS"(Star(Any()) + (Lemma(u'what') | Lemma(u'which')) + Star(Any()))"
+p166
+aS"(Star(Any()) + Pos(u'.') + Star(Any()))"
+p167
+aS"(Star(Any()) + Lemma(u'be') + Star(Any()))"
+p168
+aS"(Star(Any()) + Pos(u'DT') + Star(Any()))"
+p169
+aS"(Star(Any()) + Lemma(u'be') + Pos(u'DT') + Star(Any()))"
+p170
+aS'(Star(Any()) + Movie() + Star(Any()))'
+p171
+aS'(Star(Any()) + Band() + Star(Any()))'
+p172
+aS"(Star(Any()) + Lemma(u'member') + Star(Any()))"
+p173
+aS"(Star(Any()) + Lemma(u'member') + Pos(u'IN') + Band() + Star(Any()))"
+p174
+aS"(Star(Any()) + ((Band() + Lemma(u'member')) | (Lemma(u'member') + Pos(u'IN') + Band())) + Star(Any()))"
+p175
+aS"(Star(Any()) + Pos(u'WP') + Star(Any()))"
+p176
+aS"(Star(Any()) + Pos(u'WP') + Lemma(u'be') + Pos(u'DT') + Lemma(u'member') + Pos(u'IN') + Band() + Star(Any()))"
+p177
+aS"(Star(Any()) + (((Band() + Lemma(u'member')) | (Lemma(u'member') + Pos(u'IN') + Band())) | (Pos(u'WP') + Lemma(u'be') + Pos(u'DT') + Lemma(u'member') + Pos(u'IN') + Band())) + Star(Any()))"
+p178
+aS'(Star(Any()) + Author() + Star(Any()))'
+p179
+aS"(Star(Any()) + (Lemma(u'which') | Lemma(u'what')) + Star(Any()))"
+p180
+aS'(Star(Any()) + Country() + Star(Any()))'
+p181
+aS"(Star(Any()) + Lemma(u'what') + Lemma(u'be') + Pos(u'DT') + Star(Any()))"
+p182
+aS'(Star(Any()) + TvShow() + Star(Any()))'
+p183
+aS"(Star(Any()) + Pos(u'WP') + Lemma(u'be') + Pos(u'DT') + Star(Any()))"
+p184
+aS'(Star(Any()) + Person() + Star(Any()))'
+p185
+aS'(Star(Any()) + Director() + Star(Any()))'
+p186
+aS"(Star(Any()) + Lemma(u'the') + Star(Any()))"
+p187
+aS"(Star(Any()) + Lemma(u'what') + Lemma(u'be') + Lemma(u'the') + Star(Any()))"
+p188
+aS'(Star(Any()) + Thing() + Star(Any()))'
+p189
+aS'(Star(Any()) + Book() + Star(Any()))'
+p190
+aS'Metallica'
+p191
+(S'Topic'
+p192
+S'Composer'
+p193
+S'Author'
+p194
+S'Lyricist'
+p195
+S'Interesting topic'
+p196
+S'Topic'
+p197
+S'Composer'
+p198
+S'Author'
+p199
+S'Lyricist'
+p200
+S'Interesting topic'
+p201
+tp202
+tp203
+sg59
+(lp204
+S'bandmembers'
+p205
+asg62
+I01
+sa(dp206
+g2
+((lp207
+g4
+(g5
+g6
+Ntp208
+Rp209
+(dp210
+g10
+Vin
+p211
+sg12
+VIn
+p212
+sg13
+VIN
+p213
+sg15
+Nsbag4
+(g5
+g6
+Ntp214
+Rp215
+(dp216
+g10
+Vwhat
+p217
+sg12
+g217
+sg13
+VWP
+p218
+sg15
+Nsbag4
+(g5
+g6
+Ntp219
+Rp220
+(dp221
+g10
+Vshow
+p222
+sg12
+Vshows
+p223
+sg13
+VNNS
+p224
+sg15
+Nsbag4
+(g5
+g6
+Ntp225
+Rp226
+(dp227
+g10
+Vdo
+p228
+sg12
+Vdoes
+p229
+sg13
+VVBZ
+p230
+sg15
+Nsbag4
+(g5
+g6
+Ntp231
+Rp232
+(dp233
+g10
+Vjennifer
+p234
+sg12
+VJennifer
+p235
+sg13
+VNNP
+p236
+sg15
+Nsbag4
+(g5
+g6
+Ntp237
+Rp238
+(dp239
+g10
+Vaniston
+p240
+sg12
+VAniston
+p241
+sg13
+VNNP
+p242
+sg15
+Nsbag4
+(g5
+g6
+Ntp243
+Rp244
+(dp245
+g10
+Vappear
+p246
+sg12
+Vappears
+p247
+sg13
+VVBZ
+p248
+sg15
+Nsbag4
+(g5
+g6
+Ntp249
+Rp250
+(dp251
+g10
+g96
+sg12
+g96
+sg13
+g97
+sg15
+Nsba(lp252
+S'(Star(Any()) + Actor() + Star(Any()))'
+p253
+aS"(Star(Any()) + Pos(u'IN') + Star(Any()))"
+p254
+aS"(Star(Any()) + Lemma(u'what') + Star(Any()))"
+p255
+aS"(Star(Any()) + (Lemma(u'what') | Lemma(u'which')) + Star(Any()))"
+p256
+aS"(Star(Any()) + Lemma(u'do') + Star(Any()))"
+p257
+aS"(Star(Any()) + Lemma(u'appear') + Star(Any()))"
+p258
+aS"(Star(Any()) + (Lemma(u'appear') | Lemma(u'act')) + Star(Any()))"
+p259
+aS"(Star(Any()) + ((Lemma(u'appear') | Lemma(u'act')) | Lemma(u'star')) + Star(Any()))"
+p260
+aS"(Star(Any()) + Pos(u'.') + Star(Any()))"
+p261
+aS'(Star(Any()) + Movie() + Star(Any()))'
+p262
+aS'(Star(Any()) + Band() + Star(Any()))'
+p263
+aS"(Star(Any()) + Pos(u'WP') + Star(Any()))"
+p264
+aS'(Star(Any()) + Author() + Star(Any()))'
+p265
+aS"(Star(Any()) + (Lemma(u'which') | Lemma(u'what')) + Star(Any()))"
+p266
+aS'(Star(Any()) + Country() + Star(Any()))'
+p267
+aS'(Star(Any()) + TvShow() + Star(Any()))'
+p268
+aS'(Star(Any()) + Person() + Star(Any()))'
+p269
+aS"(Star(Any()) + Lemma(u'show') + Star(Any()))"
+p270
+aS'(Star(Any()) + Director() + Star(Any()))'
+p271
+aS"(Star(Any()) + (Lemma(u'appear') | Lemma(u'work')) + Star(Any()))"
+p272
+aS"(Star(Any()) + Pos(u'IN') + (Lemma(u'what') | Lemma(u'which')) + Lemma(u'show') + Lemma(u'do') + Actor() + (Lemma(u'appear') | Lemma(u'work')) + Question(Pos(u'.')) + Star(Any()))"
+p273
+aS"(Star(Any()) + ((Lemma(u'list') + Lemma(u'show') + Pos(u'IN') + Actor()) | (Pos(u'IN') + (Lemma(u'what') | Lemma(u'which')) + Lemma(u'show') + Lemma(u'do') + Actor() + (Lemma(u'appear') | Lemma(u'work')) + Question(Pos(u'.')))) + Star(Any()))"
+p274
+aS"(Star(Any()) + (Lemma(u'show') | Lemma(u'shows')) + Star(Any()))"
+p275
+aS'(Star(Any()) + Thing() + Star(Any()))'
+p276
+aS"(Star(Any()) + Lemma(u'in') + Star(Any()))"
+p277
+aS'(Star(Any()) + Book() + Star(Any()))'
+p278
+aS'Jennifer Aniston'
+p279
+(S'Topic'
+p280
+S'Person'
+p281
+S'Celebrity'
+p282
+S'sww_base'
+p283
+S'Godparent'
+p284
+S'Godchild'
+p285
+S'Topic'
+p286
+S'Person'
+p287
+S'Celebrity'
+p288
+S'sww_base'
+p289
+S'Godparent'
+p290
+S'Godchild'
+p291
+tp292
+tp293
+sg59
+(lp294
+S'showswith'
+p295
+asg62
+I01
+sa(dp296
+g2
+((lp297
+g4
+(g5
+g6
+Ntp298
+Rp299
+(dp300
+g10
+Vwhat
+p301
+sg12
+VWhat
+p302
+sg13
+VWP
+p303
+sg15
+Nsbag4
+(g5
+g6
+Ntp304
+Rp305
+(dp306
+g10
+Valbum
+p307
+sg12
+Valbums
+p308
+sg13
+VNNS
+p309
+sg15
+Nsbag4
+(g5
+g6
+Ntp310
+Rp311
+(dp312
+g10
+Vdo
+p313
+sg12
+Vdid
+p314
+sg13
+VVBD
+p315
+sg15
+Nsbag4
+(g5
+g6
+Ntp316
+Rp317
+(dp318
+g10
+Vpearl
+p319
+sg12
+VPearl
+p320
+sg13
+VNNP
+p321
+sg15
+Nsbag4
+(g5
+g6
+Ntp322
+Rp323
+(dp324
+g10
+Vjam
+p325
+sg12
+VJam
+p326
+sg13
+VNNP
+p327
+sg15
+Nsbag4
+(g5
+g6
+Ntp328
+Rp329
+(dp330
+g10
+Vrecord
+p331
+sg12
+g331
+sg13
+VNN
+p332
+sg15
+Nsbag4
+(g5
+g6
+Ntp333
+Rp334
+(dp335
+g10
+g96
+sg12
+g96
+sg13
+g97
+sg15
+Nsba(lp336
+S'(Star(Any()) + Actor() + Star(Any()))'
+p337
+aS"(Star(Any()) + Lemma(u'what') + Star(Any()))"
+p338
+aS"(Star(Any()) + (Lemma(u'what') | Lemma(u'which')) + Star(Any()))"
+p339
+aS"(Star(Any()) + Lemma(u'do') + Star(Any()))"
+p340
+aS"(Star(Any()) + Pos(u'.') + Star(Any()))"
+p341
+aS'(Star(Any()) + Movie() + Star(Any()))'
+p342
+aS"(Star(Any()) + Lemma(u'album') + Star(Any()))"
+p343
+aS"(Star(Any()) + (Lemma(u'album') | Lemma(u'albums')) + Star(Any()))"
+p344
+aS'(Star(Any()) + Band() + Star(Any()))'
+p345
+aS"(Star(Any()) + Lemma(u'record') + Star(Any()))"
+p346
+aS"(Star(Any()) + (Lemma(u'record') | Lemma(u'make')) + Star(Any()))"
+p347
+aS"(Star(Any()) + Lemma(u'what') + Lemma(u'album') + Lemma(u'do') + Band() + (Lemma(u'record') | Lemma(u'make')) + Question(Pos(u'.')) + Star(Any()))"
+p348
+aS"(Star(Any()) + ((Question(Lemma(u'list')) + (Lemma(u'album') | Lemma(u'albums')) + Pos(u'IN') + Band()) | (Lemma(u'what') + Lemma(u'album') + Lemma(u'do') + Band() + (Lemma(u'record') | Lemma(u'make')) + Question(Pos(u'.')))) + Star(Any()))"
+p349
+aS"(Star(Any()) + Pos(u'WP') + Star(Any()))"
+p350
+aS'(Star(Any()) + Author() + Star(Any()))'
+p351
+aS"(Star(Any()) + (Lemma(u'which') | Lemma(u'what')) + Star(Any()))"
+p352
+aS'(Star(Any()) + Country() + Star(Any()))'
+p353
+aS'(Star(Any()) + TvShow() + Star(Any()))'
+p354
+aS'(Star(Any()) + Person() + Star(Any()))'
+p355
+aS'(Star(Any()) + Director() + Star(Any()))'
+p356
+aS'(Star(Any()) + Thing() + Star(Any()))'
+p357
+aS'(Star(Any()) + Book() + Star(Any()))'
+p358
+aS'Pearl Jam'
+p359
+(S'Topic'
+p360
+S'Rival'
+p361
+S'Topic'
+p362
+S'Rival'
+p363
+tp364
+tp365
+sg59
+(lp366
+S'albumsofband'
+p367
+asg62
+I01
+sa(dp368
+g2
+((lp369
+g4
+(g5
+g6
+Ntp370
+Rp371
+(dp372
+g10
+Vwho
+p373
+sg12
+VWho
+p374
+sg13
+VWP
+p375
+sg15
+Nsbag4
+(g5
+g6
+Ntp376
+Rp377
+(dp378
+g10
+Vbe
+p379
+sg12
+Vis
+p380
+sg13
+VVBZ
+p381
+sg15
+Nsbag4
+(g5
+g6
+Ntp382
+Rp383
+(dp384
+g10
+Vthe
+p385
+sg12
+g385
+sg13
+VDT
+p386
+sg15
+Nsbag4
+(g5
+g6
+Ntp387
+Rp388
+(dp389
+g10
+Vcreator
+p390
+sg12
+g390
+sg13
+VNN
+p391
+sg15
+Nsbag4
+(g5
+g6
+Ntp392
+Rp393
+(dp394
+g10
+Vof
+p395
+sg12
+g395
+sg13
+VIN
+p396
+sg15
+Nsbag4
+(g5
+g6
+Ntp397
+Rp398
+(dp399
+g10
+Vbreaking
+p400
+sg12
+VBreaking
+p401
+sg13
+VNNP
+p402
+sg15
+Nsbag4
+(g5
+g6
+Ntp403
+Rp404
+(dp405
+g10
+Vbad
+p406
+sg12
+VBad
+p407
+sg13
+VNNP
+p408
+sg15
+Nsbag4
+(g5
+g6
+Ntp409
+Rp410
+(dp411
+g10
+g96
+sg12
+g96
+sg13
+g97
+sg15
+Nsba(lp412
+S'(Star(Any()) + Actor() + Star(Any()))'
+p413
+aS"(Star(Any()) + Pos(u'IN') + Star(Any()))"
+p414
+aS"(Star(Any()) + Pos(u'.') + Star(Any()))"
+p415
+aS"(Star(Any()) + Lemma(u'who') + Star(Any()))"
+p416
+aS"(Star(Any()) + Lemma(u'be') + Star(Any()))"
+p417
+aS"(Star(Any()) + Pos(u'DT') + Star(Any()))"
+p418
+aS"(Star(Any()) + Lemma(u'be') + Pos(u'DT') + Star(Any()))"
+p419
+aS'(Star(Any()) + Movie() + Star(Any()))'
+p420
+aS'(Star(Any()) + Band() + Star(Any()))'
+p421
+aS"(Star(Any()) + Pos(u'WP') + Star(Any()))"
+p422
+aS'(Star(Any()) + Author() + Star(Any()))'
+p423
+aS"(Star(Any()) + Token(u'is') + Star(Any()))"
+p424
+aS'(Star(Any()) + Country() + Star(Any()))'
+p425
+aS'(Star(Any()) + TvShow() + Star(Any()))'
+p426
+aS"(Star(Any()) + Lemma(u'who') + Lemma(u'be') + Pos(u'DT') + Star(Any()))"
+p427
+aS"(Star(Any()) + Lemma(u'creator') + Star(Any()))"
+p428
+aS"(Star(Any()) + Pos(u'WP') + Lemma(u'be') + Pos(u'DT') + Star(Any()))"
+p429
+aS'(Star(Any()) + Person() + Star(Any()))'
+p430
+aS'(Star(Any()) + Director() + Star(Any()))'
+p431
+aS"(Star(Any()) + Lemma(u'the') + Star(Any()))"
+p432
+aS'(Star(Any()) + Thing() + Star(Any()))'
+p433
+aS'(Star(Any()) + Book() + Star(Any()))'
+p434
+aS'Breaking Bad'
+p435
+(S'Topic'
+p436
+tp437
+tp438
+sg59
+(lp439
+S'creatorof'
+p440
+asg62
+I01
+sa(dp441
+g2
+((lp442
+g4
+(g5
+g6
+Ntp443
+Rp444
+(dp445
+g10
+Vin
+p446
+sg12
+VIn
+p447
+sg13
+VIN
+p448
+sg15
+Nsbag4
+(g5
+g6
+Ntp449
+Rp450
+(dp451
+g10
+Vwhat
+p452
+sg12
+g452
+sg13
+VWP
+p453
+sg15
+Nsbag4
+(g5
+g6
+Ntp454
+Rp455
+(dp456
+g10
+Vmovie
+p457
+sg12
+Vmovies
+p458
+sg13
+VNNS
+p459
+sg15
+Nsbag4
+(g5
+g6
+Ntp460
+Rp461
+(dp462
+g10
+Vdo
+p463
+sg12
+Vdid
+p464
+sg13
+VVBD
+p465
+sg15
+Nsbag4
+(g5
+g6
+Ntp466
+Rp467
+(dp468
+g10
+Vjennifer
+p469
+sg12
+VJennifer
+p470
+sg13
+VNNP
+p471
+sg15
+Nsbag4
+(g5
+g6
+Ntp472
+Rp473
+(dp474
+g10
+Vaniston
+p475
+sg12
+VAniston
+p476
+sg13
+VNNP
+p477
+sg15
+Nsbag4
+(g5
+g6
+Ntp478
+Rp479
+(dp480
+g10
+Vappear
+p481
+sg12
+g481
+sg13
+VNN
+p482
+sg15
+Nsbag4
+(g5
+g6
+Ntp483
+Rp484
+(dp485
+g10
+g96
+sg12
+g96
+sg13
+g97
+sg15
+Nsba(lp486
+S"(Star(Any()) + Lemma(u'movie') + Star(Any()))"
+p487
+aS"(Star(Any()) + (Lemma(u'movie') | Lemma(u'movies')) + Star(Any()))"
+p488
+aS"(Star(Any()) + ((Lemma(u'movie') | Lemma(u'movies')) | Lemma(u'film')) + Star(Any()))"
+p489
+aS'(Star(Any()) + Actor() + Star(Any()))'
+p490
+aS"(Star(Any()) + Pos(u'IN') + Star(Any()))"
+p491
+aS"(Star(Any()) + Lemma(u'what') + Star(Any()))"
+p492
+aS"(Star(Any()) + (Lemma(u'what') | Lemma(u'which')) + Star(Any()))"
+p493
+aS"(Star(Any()) + Lemma(u'do') + Star(Any()))"
+p494
+aS"(Star(Any()) + Lemma(u'appear') + Star(Any()))"
+p495
+aS"(Star(Any()) + (Lemma(u'appear') | Lemma(u'act')) + Star(Any()))"
+p496
+aS"(Star(Any()) + ((Lemma(u'appear') | Lemma(u'act')) | Lemma(u'star')) + Star(Any()))"
+p497
+aS"(Star(Any()) + Pos(u'.') + Star(Any()))"
+p498
+aS"(Star(Any()) + Question(Pos(u'IN')) + (Lemma(u'what') | Lemma(u'which')) + ((Lemma(u'movie') | Lemma(u'movies')) | Lemma(u'film')) + Lemma(u'do') + Actor() + ((Lemma(u'appear') | Lemma(u'act')) | Lemma(u'star')) + Question(Pos(u'.')) + Star(Any()))"
+p499
+aS"(Star(Any()) + ((Question(Lemma(u'list')) + ((Lemma(u'movie') | Lemma(u'movies')) | Lemma(u'film')) + Lemma(u'with') + Actor()) | (Question(Pos(u'IN')) + (Lemma(u'what') | Lemma(u'which')) + ((Lemma(u'movie') | Lemma(u'movies')) | Lemma(u'film')) + Lemma(u'do') + Actor() + ((Lemma(u'appear') | Lemma(u'act')) | Lemma(u'star')) + Question(Pos(u'.')))) + Star(Any()))"
+p500
+aS"(Star(Any()) + (((Question(Lemma(u'list')) + ((Lemma(u'movie') | Lemma(u'movies')) | Lemma(u'film')) + Lemma(u'with') + Actor()) | (Question(Pos(u'IN')) + (Lemma(u'what') | Lemma(u'which')) + ((Lemma(u'movie') | Lemma(u'movies')) | Lemma(u'film')) + Lemma(u'do') + Actor() + ((Lemma(u'appear') | Lemma(u'act')) | Lemma(u'star')) + Question(Pos(u'.')))) | (Question(Pos(u'IN')) + Lemma(u'which') + ((Lemma(u'movie') | Lemma(u'movies')) | Lemma(u'film')) + Lemma(u'do') + Actor() + ((Lemma(u'appear') | Lemma(u'act')) | Lemma(u'star')))) + Star(Any()))"
+p501
+aS'(Star(Any()) + Movie() + Star(Any()))'
+p502
+aS'(Star(Any()) + Band() + Star(Any()))'
+p503
+aS"(Star(Any()) + Pos(u'WP') + Star(Any()))"
+p504
+aS'(Star(Any()) + Author() + Star(Any()))'
+p505
+aS"(Star(Any()) + (Lemma(u'which') | Lemma(u'what')) + Star(Any()))"
+p506
+aS'(Star(Any()) + Country() + Star(Any()))'
+p507
+aS'(Star(Any()) + TvShow() + Star(Any()))'
+p508
+aS'(Star(Any()) + Person() + Star(Any()))'
+p509
+aS"(Star(Any()) + (Lemma(u'movie') | Lemma(u'film')) + Star(Any()))"
+p510
+aS'(Star(Any()) + Director() + Star(Any()))'
+p511
+aS"(Star(Any()) + (Lemma(u'appear') | Lemma(u'work')) + Star(Any()))"
+p512
+aS'(Star(Any()) + Thing() + Star(Any()))'
+p513
+aS"(Star(Any()) + Lemma(u'in') + Star(Any()))"
+p514
+aS'(Star(Any()) + Book() + Star(Any()))'
+p515
+aS'Jennifer Aniston'
+p516
+(S'Topic'
+p517
+S'Person'
+p518
+S'Celebrity'
+p519
+S'sww_base'
+p520
+S'Godparent'
+p521
+S'Godchild'
+p522
+S'Topic'
+p523
+S'Person'
+p524
+S'Celebrity'
+p525
+S'sww_base'
+p526
+S'Godparent'
+p527
+S'Godchild'
+p528
+tp529
+tp530
+sg59
+(lp531
+S'actedon'
+p532
+asg62
+I01
+sa(dp533
+S'question'
+p534
+((lp535
+g4
+(g5
+g6
+Ntp536
+Rp537
+(dp538
+g10
+Vwhen
+p539
+sg12
+VWhen
+p540
+sg13
+VWRB
+p541
+sg15
+Nsbag4
+(g5
+g6
+Ntp542
+Rp543
+(dp544
+g10
+Vbe
+p545
+sg12
+Vwas
+p546
+sg13
+VVBD
+p547
+sg15
+Nsbag4
+(g5
+g6
+Ntp548
+Rp549
+(dp550
+g10
+Vbon
+p551
+sg12
+VBon
+p552
+sg13
+VNNP
+p553
+sg15
+Nsbag4
+(g5
+g6
+Ntp554
+Rp555
+(dp556
+g10
+Vjovi
+p557
+sg12
+VJovi
+p558
+sg13
+VNNP
+p559
+sg15
+Nsbag4
+(g5
+g6
+Ntp560
+Rp561
+(dp562
+g10
+Vborn
+p563
+sg12
+g563
+sg13
+VNN
+p564
+sg15
+Nsbag4
+(g5
+g6
+Ntp565
+Rp566
+(dp567
+g10
+V?
+p568
+sg12
+g568
+sg13
+V.
+p569
+sg15
+Nsba(lp570
+S'(Star(Any()) + Actor() + Star(Any()))'
+p571
+aS"(Star(Any()) + Pos(u'.') + Star(Any()))"
+p572
+aS"(Star(Any()) + Lemma(u'be') + Star(Any()))"
+p573
+aS'(Star(Any()) + Movie() + Star(Any()))'
+p574
+aS'(Star(Any()) + Band() + Star(Any()))'
+p575
+aS'(Star(Any()) + Author() + Star(Any()))'
+p576
+aS'(Star(Any()) + Country() + Star(Any()))'
+p577
+aS'(Star(Any()) + TvShow() + Star(Any()))'
+p578
+aS"(Star(Any()) + Pos(u'WRB') + Star(Any()))"
+p579
+aS'(Star(Any()) + Person() + Star(Any()))'
+p580
+aS"(Star(Any()) + Lemma(u'when') + Star(Any()))"
+p581
+aS'(Star(Any()) + Director() + Star(Any()))'
+p582
+aS'(Star(Any()) + Thing() + Star(Any()))'
+p583
+aS'(Star(Any()) + Book() + Star(Any()))'
+p584
+aS'Bon Jovi'
+p585
+(S'Topic'
+p586
+S'Composer'
+p587
+S'Author'
+p588
+S'Lyricist'
+p589
+S'Topic'
+p590
+S'Composer'
+p591
+S'Author'
+p592
+S'Lyricist'
+p593
+S'Topic'
+p594
+S'Composer'
+p595
+S'Author'
+p596
+S'Lyricist'
+p597
+tp598
+tp599
+sS'target'
+p600
+(lp601
+S'howoldis'
+p602
+asa(dp603
+g2
+((lp604
+g4
+(g5
+g6
+Ntp605
+Rp606
+(dp607
+g10
+Vwho
+p608
+sg12
+g608
+sg13
+VWP
+p609
+sg15
+Nsbag4
+(g5
+g6
+Ntp610
+Rp611
+(dp612
+g10
+Vbe
+p613
+sg12
+Vare
+p614
+sg13
+VVBP
+p615
+sg15
+Nsbag4
+(g5
+g6
+Ntp616
+Rp617
+(dp618
+g10
+Vthe
+p619
+sg12
+g619
+sg13
+VDT
+p620
+sg15
+Nsbag4
+(g5
+g6
+Ntp621
+Rp622
+(dp623
+g10
+Vpast
+p624
+sg12
+g624
+sg13
+VJJ
+p625
+sg15
+Nsbag4
+(g5
+g6
+Ntp626
+Rp627
+(dp628
+g10
+Vliders
+p629
+sg12
+g629
+sg13
+VNNS
+p630
+sg15
+Nsbag4
+(g5
+g6
+Ntp631
+Rp632
+(dp633
+g10
+Vof
+p634
+sg12
+g634
+sg13
+VIN
+p635
+sg15
+Nsbag4
+(g5
+g6
+Ntp636
+Rp637
+(dp638
+g10
+Vbrazil
+p639
+sg12
+VBrazil
+p640
+sg13
+VNNP
+p641
+sg15
+Nsbag4
+(g5
+g6
+Ntp642
+Rp643
+(dp644
+g10
+g96
+sg12
+g96
+sg13
+g97
+sg15
+Nsba(lp645
+S'(Star(Any()) + Actor() + Star(Any()))'
+p646
+aS"(Star(Any()) + Pos(u'IN') + Star(Any()))"
+p647
+aS"(Star(Any()) + Pos(u'.') + Star(Any()))"
+p648
+aS"(Star(Any()) + Lemma(u'who') + Star(Any()))"
+p649
+aS"(Star(Any()) + Lemma(u'be') + Star(Any()))"
+p650
+aS"(Star(Any()) + Pos(u'DT') + Star(Any()))"
+p651
+aS"(Star(Any()) + Lemma(u'be') + Pos(u'DT') + Star(Any()))"
+p652
+aS'(Star(Any()) + Movie() + Star(Any()))'
+p653
+aS'(Star(Any()) + Band() + Star(Any()))'
+p654
+aS"(Star(Any()) + Pos(u'WP') + Star(Any()))"
+p655
+aS'(Star(Any()) + Author() + Star(Any()))'
+p656
+aS'(Star(Any()) + Country() + Star(Any()))'
+p657
+aS'(Star(Any()) + TvShow() + Star(Any()))'
+p658
+aS"(Star(Any()) + Lemma(u'who') + Lemma(u'be') + Pos(u'DT') + Star(Any()))"
+p659
+aS"(Star(Any()) + Pos(u'WP') + Lemma(u'be') + Pos(u'DT') + Star(Any()))"
+p660
+aS'(Star(Any()) + Person() + Star(Any()))'
+p661
+aS'(Star(Any()) + Director() + Star(Any()))'
+p662
+aS"(Star(Any()) + Lemma(u'the') + Star(Any()))"
+p663
+aS'(Star(Any()) + Thing() + Star(Any()))'
+p664
+aS'(Star(Any()) + Book() + Star(Any()))'
+p665
+aS'Brazil'
+p666
+(S'Topic'
+p667
+S'Location'
+p668
+S'Inanimate'
+p669
+S'Abstract'
+p670
+S'sww_base'
+p671
+S'Concept'
+p672
+S'Country'
+p673
+S'Place'
+p674
+S'Explored place'
+p675
+tp676
+tp677
+sg59
+(lp678
+S'presidentsof'
+p679
+asg62
+I00
+sa(dp680
+g534
+((lp681
+g4
+(g5
+g6
+Ntp682
+Rp683
+(dp684
+g10
+Vwhere
+p685
+sg12
+VWhere
+p686
+sg13
+VWRB
+p687
+sg15
+Nsbag4
+(g5
+g6
+Ntp688
+Rp689
+(dp690
+g10
+Vbe
+p691
+sg12
+Vis
+p692
+sg13
+VVBZ
+p693
+sg15
+Nsbag4
+(g5
+g6
+Ntp694
+Rp695
+(dp696
+g10
+Vthe
+p697
+sg12
+g697
+sg13
+VDT
+p698
+sg15
+Nsbag4
+(g5
+g6
+Ntp699
+Rp700
+(dp701
+g10
+Vmassive
+p702
+sg12
+g702
+sg13
+VJJ
+p703
+sg15
+Nsbag4
+(g5
+g6
+Ntp704
+Rp705
+(dp706
+g10
+Vnorth
+p707
+sg12
+VNorth
+p708
+sg13
+VNNP
+p709
+sg15
+Nsbag4
+(g5
+g6
+Ntp710
+Rp711
+(dp712
+g10
+Vkorean
+p713
+sg12
+VKorean
+p714
+sg13
+VNNP
+p715
+sg15
+Nsbag4
+(g5
+g6
+Ntp716
+Rp717
+(dp718
+g10
+Vnuclear
+p719
+sg12
+g719
+sg13
+VNN
+p720
+sg15
+Nsbag4
+(g5
+g6
+Ntp721
+Rp722
+(dp723
+g10
+Vcomplex
+p724
+sg12
+g724
+sg13
+VNN
+p725
+sg15
+Nsbag4
+(g5
+g6
+Ntp726
+Rp727
+(dp728
+g10
+Vlocate
+p729
+sg12
+Vlocated
+p730
+sg13
+VVBD
+p731
+sg15
+Nsba(lp732
+S'(Star(Any()) + Actor() + Star(Any()))'
+p733
+aS"(Star(Any()) + Lemma(u'be') + Star(Any()))"
+p734
+aS"(Star(Any()) + Pos(u'DT') + Star(Any()))"
+p735
+aS"(Star(Any()) + Lemma(u'be') + Pos(u'DT') + Star(Any()))"
+p736
+aS'(Star(Any()) + Movie() + Star(Any()))'
+p737
+aS'(Star(Any()) + Band() + Star(Any()))'
+p738
+aS'(Star(Any()) + Author() + Star(Any()))'
+p739
+aS"(Star(Any()) + Token(u'is') + Star(Any()))"
+p740
+aS'(Star(Any()) + Country() + Star(Any()))'
+p741
+aS'(Star(Any()) + TvShow() + Star(Any()))'
+p742
+aS"(Star(Any()) + Pos(u'WRB') + Star(Any()))"
+p743
+aS'(Star(Any()) + Person() + Star(Any()))'
+p744
+aS'(Star(Any()) + Director() + Star(Any()))'
+p745
+aS"(Star(Any()) + Lemma(u'the') + Star(Any()))"
+p746
+aS'(Star(Any()) + Thing() + Star(Any()))'
+p747
+aS"(Star(Any()) + Lemma(u'where') + Star(Any()))"
+p748
+aS'(Star(Any()) + Book() + Star(Any()))'
+p749
+aS'North'
+p750
+(S'Topic'
+p751
+tp752
+tp753
+sg600
+(lp754
+S'whereis'
+p755
+asa(dp756
+g534
+((lp757
+g4
+(g5
+g6
+Ntp758
+Rp759
+(dp760
+g10
+Vwhat
+p761
+sg12
+VWhat
+p762
+sg13
+VWP
+p763
+sg15
+Nsbag4
+(g5
+g6
+Ntp764
+Rp765
+(dp766
+g10
+Varchitect
+p767
+sg12
+Varchitects
+p768
+sg13
+VNNS
+p769
+sg15
+Nsbag4
+(g5
+g6
+Ntp770
+Rp771
+(dp772
+g10
+Vbe
+p773
+sg12
+Vwere
+p774
+sg13
+VVBD
+p775
+sg15
+Nsbag4
+(g5
+g6
+Ntp776
+Rp777
+(dp778
+g10
+Vinvolve
+p779
+sg12
+Vinvolved
+p780
+sg13
+VVBN
+p781
+sg15
+Nsbag4
+(g5
+g6
+Ntp782
+Rp783
+(dp784
+g10
+Vin
+p785
+sg12
+g785
+sg13
+VIN
+p786
+sg15
+Nsbag4
+(g5
+g6
+Ntp787
+Rp788
+(dp789
+g10
+Vbuilding
+p790
+sg12
+g790
+sg13
+VNN
+p791
+sg15
+Nsbag4
+(g5
+g6
+Ntp792
+Rp793
+(dp794
+g10
+Vst
+p795
+sg12
+VSt
+p796
+sg13
+VNNP
+p797
+sg15
+Nsbag4
+(g5
+g6
+Ntp798
+Rp799
+(dp800
+g10
+g569
+sg12
+g569
+sg13
+g569
+sg15
+Nsbag4
+(g5
+g6
+Ntp801
+Rp802
+(dp803
+g10
+Vpeter
+p804
+sg12
+VPeter
+p805
+sg13
+VNNP
+p806
+sg15
+Nsbag4
+(g5
+g6
+Ntp807
+Rp808
+(dp809
+g10
+V'
+p810
+sg12
+g810
+sg13
+VPOS
+p811
+sg15
+Nsbag4
+(g5
+g6
+Ntp812
+Rp813
+(dp814
+g10
+Vs
+p815
+sg12
+g815
+sg13
+VNNS
+p816
+sg15
+Nsbag4
+(g5
+g6
+Ntp817
+Rp818
+(dp819
+g10
+g568
+sg12
+g568
+sg13
+g569
+sg15
+Nsba(lp820
+S'(Star(Any()) + Actor() + Star(Any()))'
+p821
+aS"(Star(Any()) + Pos(u'IN') + Star(Any()))"
+p822
+aS"(Star(Any()) + Lemma(u'what') + Star(Any()))"
+p823
+aS"(Star(Any()) + (Lemma(u'what') | Lemma(u'which')) + Star(Any()))"
+p824
+aS"(Star(Any()) + Pos(u'.') + Star(Any()))"
+p825
+aS"(Star(Any()) + Lemma(u'be') + Star(Any()))"
+p826
+aS'(Star(Any()) + Movie() + Star(Any()))'
+p827
+aS'(Star(Any()) + Band() + Star(Any()))'
+p828
+aS"(Star(Any()) + Pos(u'WP') + Star(Any()))"
+p829
+aS'(Star(Any()) + Author() + Star(Any()))'
+p830
+aS"(Star(Any()) + (Lemma(u'which') | Lemma(u'what')) + Star(Any()))"
+p831
+aS'(Star(Any()) + Country() + Star(Any()))'
+p832
+aS'(Star(Any()) + TvShow() + Star(Any()))'
+p833
+aS'(Star(Any()) + Person() + Star(Any()))'
+p834
+aS'(Star(Any()) + Director() + Star(Any()))'
+p835
+aS'(Star(Any()) + Thing() + Star(Any()))'
+p836
+aS"(Star(Any()) + Lemma(u'in') + Star(Any()))"
+p837
+aS'(Star(Any()) + Book() + Star(Any()))'
+p838
+aS'None'
+p839
+(S'None'
+p840
+tp841
+tp842
+sg600
+(lp843
+S'other'
+p844
+asa(dp845
+g534
+((lp846
+g4
+(g5
+g6
+Ntp847
+Rp848
+(dp849
+g10
+Vwhat
+p850
+sg12
+VWhat
+p851
+sg13
+VWP
+p852
+sg15
+Nsbag4
+(g5
+g6
+Ntp853
+Rp854
+(dp855
+g10
+Vnationality
+p856
+sg12
+g856
+sg13
+VNN
+p857
+sg15
+Nsbag4
+(g5
+g6
+Ntp858
+Rp859
+(dp860
+g10
+Vbe
+p861
+sg12
+Vis
+p862
+sg13
+VVBZ
+p863
+sg15
+Nsbag4
+(g5
+g6
+Ntp864
+Rp865
+(dp866
+g10
+Vnovelist
+p867
+sg12
+g867
+sg13
+VJJ
+p868
+sg15
+Nsbag4
+(g5
+g6
+Ntp869
+Rp870
+(dp871
+g10
+Vorhan
+p872
+sg12
+VOrhan
+p873
+sg13
+VNNP
+p874
+sg15
+Nsbag4
+(g5
+g6
+Ntp875
+Rp876
+(dp877
+g10
+Vpamuk
+p878
+sg12
+VPamuk
+p879
+sg13
+VNNP
+p880
+sg15
+Nsbag4
+(g5
+g6
+Ntp881
+Rp882
+(dp883
+g10
+g568
+sg12
+g568
+sg13
+g569
+sg15
+Nsba(lp884
+S'(Star(Any()) + Actor() + Star(Any()))'
+p885
+aS"(Star(Any()) + Lemma(u'what') + Star(Any()))"
+p886
+aS"(Star(Any()) + (Lemma(u'what') | Lemma(u'which')) + Star(Any()))"
+p887
+aS"(Star(Any()) + Pos(u'.') + Star(Any()))"
+p888
+aS"(Star(Any()) + Lemma(u'be') + Star(Any()))"
+p889
+aS'(Star(Any()) + Movie() + Star(Any()))'
+p890
+aS'(Star(Any()) + Band() + Star(Any()))'
+p891
+aS"(Star(Any()) + Pos(u'WP') + Star(Any()))"
+p892
+aS'(Star(Any()) + Author() + Star(Any()))'
+p893
+aS"(Star(Any()) + (Lemma(u'which') | Lemma(u'what')) + Star(Any()))"
+p894
+aS"(Star(Any()) + Token(u'is') + Star(Any()))"
+p895
+aS'(Star(Any()) + Country() + Star(Any()))'
+p896
+aS'(Star(Any()) + TvShow() + Star(Any()))'
+p897
+aS'(Star(Any()) + Person() + Star(Any()))'
+p898
+aS'(Star(Any()) + Director() + Star(Any()))'
+p899
+aS'(Star(Any()) + Thing() + Star(Any()))'
+p900
+aS'(Star(Any()) + Book() + Star(Any()))'
+p901
+ag839
+g841
+tp902
+sg600
+(lp903
+S'whereisfrom'
+p904
+asa.

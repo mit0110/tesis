@@ -4,12 +4,7 @@
 Run the boostrap for features and instances given the user the choice for one
 of them after each labeling.
 """
-
-from termcolor import colored
 from base_experiment import BaseExperiment
-from metrics import (LearningCurve, PrecisionRecall, KappaStatistic,
-                     PrecisionRecallCurve, ConfusionMatrix)
-from random import randint, sample
 
 
 class Experiment2(BaseExperiment):
@@ -30,6 +25,7 @@ class Experiment2(BaseExperiment):
             )
             print "{} of {} answers".format(num_answers, self.max_answers)
             self.pipe._train()
-            self.pipe._expectation_maximization()
+#            self.pipe._expectation_maximization()
         self.get_name()
         self.save_session()
+

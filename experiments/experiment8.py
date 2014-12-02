@@ -26,37 +26,27 @@ class Experiment8(BaseExperiment):
         self.number = 8
         self.description = ("Feature active learning over all corpus "
                             "with different boosts")
-        self.unlabeled_corpus_len = 495
-        self.max_answers = 300 + self.unlabeled_corpus_len
+        self.max_feat_answers = 350
         self.cycle_len = 1
-        self.metrics = [LearningCurve(), PrecisionRecall(), KappaStatistic(),
-                        PrecisionRecallCurve()]
-        self.experiment_config = {
-            'u_corpus_f': 'corpus/experimental/unlabeled_new_corpus.pickle',
-            'test_corpus_f': 'corpus/experimental/test_new_corpus.pickle',
-            'training_corpus_f': 'corpus/experimental/training_new_corpus.pickle',
-            'feature_corpus_f': 'corpus/experimental/feature_corpus.pickle',
-        }
 
     def run(self):
         print "Running experiment number {0}: {1}".format(self.number,
                                                           self.description)
-        feature_boost = 50
+        feature_boost = 120
         num_answers = 0
         self.experiment_config['feature_boost'] = feature_boost
         self.pipe = self.pipe_class(emulate=True, **self.experiment_config)
-        while num_answers < self.max_answers:
-            num_answers += self.pipe.instance_bootstrap(
-                self.get_labeled_instance,
-                max_iterations=self.unlabeled_corpus_len
-            )
-            print "{} of {} answers".format(num_answers, self.max_answers)
+        self.pipe.instance_bootstrap(
+            self.get_labeled_instance, max_iterations=self.max_answers
+        )
+        while num_answers < self.max_feat_answers:
+            print "{} of {} answers".format(num_answers, self.max_feat_answers)
             print colored('\n'.join(['*' * 79] * 3), 'green')
             num_answers += self.pipe.feature_bootstrap(get_class,
-                self.get_labeled_features, max_iterations=self.cycle_len
+                lambda x, y: [], max_iterations=self.cycle_len
             )
             self.pipe._train()
             self.pipe._expectation_maximization()
         self.instance_name = 'long-step1-boost{}'.format(feature_boost)
         self.save_session()
-        self.pipe.label_feature_corpus()
+        # self.pipe.label_feature_corpus()
