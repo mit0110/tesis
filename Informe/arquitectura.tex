@@ -85,7 +85,7 @@ La clasificación de una características es una función $\Psi_f:\mathcal{F} \t
 
 Seguimos la implementación de dualist para agregar esta clasificación adicional de la siguiente manera:
 
-\begin{equation}
+\begin{equation}\label{eq-feat-boost}
 m_{jk} = 1 + \Psi_f(f_k, c_j) \; \alpha
 \end{equation}
 
@@ -153,7 +153,7 @@ Este método ha sido utilizado previamente como parte del aprendizaje activo por
 
 % In the case of uncertainty sampling using the Shannon entropy measure of uncertainty, bad performance goes hand by hand with noise, as defined by the portion of squared error that is training set size independent. For margin sampling, inability to identify the pairs of categories forming the margin on multi-category problems is the biggest danger, as seen on the NewsGroups data set. In spite of this observation, margin sampling competes favorably with the alternative heurstics and is the most computationally efficient method examined.
 
-\section{Selección de características}
+\section{Selección de características}\label{instance-selection}
 
 Un criterio ampliamente utilizado para la selección de características es la Ganancia de Información o \textit{Information Gain}. Algunos estudios que destacan su uso como medida de relevancia son \citet{dualist}, \citet{forman-ig} y \citet{Sebastiani-text-categorization}
 

@@ -216,7 +216,7 @@ La clasificación de una instancia es una función $\Psi:\mathcal{X} \times \mat
 Asignaremos el valor $1$ o $Verdadero$ a los pares $\langle x_i, c_j \rangle$ si la clase $c_j$ corresponde a la instancia $x_i$, y $0$ o $Falso$ en el caso contrario. Como en nuestro caso la clase asociada a cada instancia es única, podemos definir también:
 
 \begin{definition}\label{def-clasificacion}
-Un clasificador monoclase es una función $\Phi:\mathcal{X} \rightarrow \mathcal{C}$ tal que:
+Un clasificador monoetiqueta es una función $\Phi:\mathcal{X} \rightarrow \mathcal{C}$ tal que:
 $$ \Phi(x_i) = c_j \Leftrightarrow \Psi(x_i, c_j) = 1 $$
 \end{definition}
 
@@ -266,21 +266,15 @@ Durante las primeras etapas de desarrollo y especificación del problema debimos
 
 En un enfoque como este se pedirá al usuario que etiquete las características seleccionadas con una clase si la presencia de la característica en una instancia es indicativa de la clase. \citet{settles-al-features} han realizado experimentos sobre clasificación de texto en donde se demuestra que el aprendizaje activo sobre características puede dar mejores resultados incluso que el aprendizaje sobre instancias. Durante este trabajo nos ayudará a identificar las características que mejor describen las instancias para la clasificación descripta.
 
-\begin{figure}[h!]\label{aa-features}
-\caption{Arquitectura de un sistema de aprendizaje activo sobre intancias y características.}
-\includegraphics[width=12cm]{cicloaa-features}
-\centering
-\end{figure}
-
 Las etiquetas obtenidas se utilizarán también para entrenar el clasificador reforzando la probabilidad de una característica dada una clase, como veremos en detalle en la implementación.
 
-El usuario también tendrá la posibilidad de entrenar el clasificador con las etiquetas que ya ha ingresado o de terminar la sesión en cualquier momento. El diagrama de iteracción queda configurado como se muestra en la imagen \ref{aa-features}.
-
 \begin{figure}[h!]\label{aa-features}
 \caption{Arquitectura de un sistema de aprendizaje activo sobre intancias y características.}
 \includegraphics[width=12cm]{cicloaa-features}
 \centering
 \end{figure}
+
+El usuario también tendrá la posibilidad de entrenar el clasificador con las etiquetas que ya ha ingresado o de terminar la sesión en cualquier momento. El diagrama de iteracción queda configurado como se muestra en la imagen \ref{aa-features}.
 
 \subsection{Dualist}
 
