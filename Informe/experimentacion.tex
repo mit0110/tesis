@@ -525,7 +525,7 @@ Un resultado sorprendente es el bajo reconocimiento de la combinación L + B + T
 
 La tabla \ref{prec-recall-mejor-solucion} indica, con un análisis más detallado, que la mejor combinación de características es L + B + T + PM + LSA.
 
-\subsection{Experimento 5}
+\subsection{Experimento 5}\label{experimento-aa-instancias}
 \vspace{3 mm}
 \textbf{Hipótesis} El aprendizaje activo sobre instancias permite al clasificador obtener el mismo rendimiento con menor cantidad de instancias.
 \vspace{3 mm}
@@ -534,13 +534,10 @@ En este experimento simulamos la interacción con un usuario como describimos en
 
 Para esta sección decidimos preprocesar los datos utilizando Lemmas, Bigramas, Trigramas y Concordancias a patrones y aplicando LSA, basándonos en los resultados del experimento anterior. Evaluaremos la curva de aprendizaje para el \textit{accuracy} y para el reconocimiento con tres estrategias de selección de instancias distintas: al azar, con mayor entropía y con menor entropía. El clasificador utilizado es \textit{MultinomialNB} junto con el módulo ActivePipeline.
 
-Recordemos que las instancias con menor entropía son aquellas sobre las que el clasificador tiene mayor seguridad, y por lo tanto aportan menos información. Seleccionar instancias con menor entropía primero permitirá al clasificador asegurar primero la información que se asume es verdadera. Consideramos que esta es una buena estrategia teniendo en cuenta la reducida cantidad de ejemplos con los que comienza el entrenamiento del clasificador.
+Recordemos que las instancias con menor entropía son aquellas sobre las que el clasificador tiene mayor seguridad, y por lo tanto aportan menos información. Seleccionar instancias con menor entropía primero permitirá al clasificador asegurar la información que se asume es verdadera. Consideramos que esta es una buena estrategia teniendo en cuenta la reducida cantidad de ejemplos con los que comienza el entrenamiento del clasificador.
 
 El clasificador se reentrenó y se aplicó un ciclo del algoritmo Esperanza-Maximización luego de agregar una instancia al corpus de entrenamiento.
 
-\vspace{3 mm}
-
-\textbf{Resultados} En la figura \ref{fig-aa-comparision} mostramos la evolución del \textit{accuracy} y del reconocimiento para las tres estrategias de selección de instancias: aleatoria, mayor entropía y menor entropía.
 
 \begin{figure}[h!]\label{fig-aa-comparision}
 \centering
@@ -548,6 +545,9 @@ El clasificador se reentrenó y se aplicó un ciclo del algoritmo Esperanza-Maxi
 \includegraphics[width=10cm]{recognitioncurve-aa-exp5}
 \caption{Desempeño del clasificador con aprendizaje activo y distintas estrategias de selección de instancias.}
 \end{figure}
+\vspace{3 mm}
+
+\textbf{Resultados} En la figura \ref{fig-aa-comparision} mostramos la evolución del \textit{accuracy} y del reconocimiento para las tres estrategias de selección de instancias: aleatoria, mayor entropía y menor entropía.
 
 
 \vspace{3 mm}
@@ -558,32 +558,121 @@ Como podemos observar en la curva de aprendizaje ambas estrategias se desempeña
 
 Y qué más puedo decir????!!!!
 
+\subsection{Corpus de características}
+
+% Los (siguientes) experimentos que solicitan al oráculo información sobre instancias y características se realizaron alternando pocas preguntas relativas a instancias y la misma cantidad relativas a características. Si bien los dos ciclos de etiquetado son completamente independientes en el sistema, tomamos esta desición para eliminar las diferencias entre experimentos que puedan introducirse a partir de la elección de los usuarios. Otra punto en el que difieren nuestros experimentos de una sesión no simulada con un usuario es la cantidad de veces que se reentrena. Con objeto de obtener una medición precisa de la curva de aprendizaje reentrenamos el clasificador luego de cada ronda intancias-características descriptas anteriormente. Esto es costoso para grandes volúmenes de datos y podría hacer perder al sistema su interactividad.
+
+% Para poder realizar experimentos automáticos sin que el usuario tenga que ingresar la misma información repretidas veces decidimos guardar las respuestas obtenidas. Por ello agregamos etiquetas al corpus no etiquetados, que por supuesto no son consultadas, y creamos un corpus de asociaciones características-clases.
+
+Antes de comenzar con estos experimentos utilizamos el módulo \textit{ActivePipeline} para etiquetar manualmente características. El corpus de características no es más que una matriz ternaria con tres valores posibles: asociación positiva, no asociación, desconocido. De esta forma también alamcenamos información para evitar preguntar a un usuario por las características que ya han sido vistas pero no están relacionadas a esa clase en particular. Observemos que esta forma de guardar la información soporta etiquetas de múltiples clases para una misma característica.
+
+Todas las instancias etiquetadas fueron preprocesadas utilizando como características las concordancias a patrones, lemmas, bigramas y trigras. La cantidad total de características extraídas es 3781, incluyendo todos los corpus. No se utilizó la técnica de LSA aunque había arrojado buenos resultados ya que afecta la dimensionalidad del modelo y por lo tanto el mapeo entre las columnas de la matriz de representación y las características seleccionadas.
+
+Para la creación del corpus de características se realizó una sesión de aproximadamente una hora utilizando un clasificador \textit{MultinomialNB} entrenado con el corpus de entrenamiento y el corpus no etiquetado (simulado). Para elegir las características a ser etiquetadas se las ordenó por mayor coocurrencia con la clase y por mayor ganancia de información.
+
+De las 2891 características que se presentaron al usuario, éste etiquetó como asociaciones positivas 355. En la tabla \ref{dist-feat-corpus} se muestra la distribución de características asociadas a cada clase.
+
+\begin{table}[h]\label{dist-feat-corpus}
+\centering
+\begin{tabular}{l c}
+    Clase & Características asociadas\\ [0.5ex]
+    \hline
+    actedon & 40 \\ [0.5ex]
+    albumsofband & 43 \\ [0.5ex]
+    bandmembers &  23 \\ [0.5ex]
+    booksbyauthor &  42 \\ [0.5ex]
+    castof & 42 \\ [0.5ex]
+    creatorof & 16 \\ [0.5ex]
+    howoldis & 45 \\ [0.5ex]
+    other & 0 \\ [0.5ex]
+    presidentsof & 20 \\ [0.5ex]
+    showswith & 30 \\ [0.5ex]
+    whereis & 26 \\ [0.5ex]
+    \hline
+\end{tabular}
+\caption{Distribución de la cantidad de etiquetas de características para cada una de las clases}
+\end{table}
+
+No se realizaron etiquetamientos sobre la clase \textit{other} ya que, al no constituir una clase semántica propiamente dicha, no hay características que indiquen que una pregunta pertenece a esa clase.
+
+Cabe destacar que en todos los experimentos siguientes hemos utilizado este corpus para el entrenamiento con características.
+
 \subsection{Experimento 6}
 \vspace{3 mm}
-\textbf{Hipótesis} El aprendizaje activo sobre características incrementará el rendimiento del clasificador.
+\textbf{Hipótesis} Entrenar el clasificador utilizando información sobre las características incrementará su rendimiento.
 \vspace{3 mm}
 
-Este experimento lo realizamos utilizando el clasificador \textit{FeatMultinomialNB} en conjunto con el módulo \texit{ActivePipeline}. El aprendizaje activo se desarrolló sólo sobre características interactuando con el usuario como se describe en la figura \ref{cicloaa-features}.
-El corpus fue preprocesado utilizando como características las concordancias a patrones, lemmas, bigramas y trigras. La cantidad total de características extraídas es 3781, incluyendo todos los corpus. No se utilizó la técnica de LSA aunque había arrojado buenos resultados ya que afecta la dimensionalidad del modelo y por lo tanto el mapeo entre las columnas de la matriz de representación y las características seleccionadas.
+Nuestro objetivo principal es medir el aumento del rendimiento de un clasificador \textit{FeatMultinomialNB} entrenado solamente con instancias y entrenado con instancias y características. Adicionalmente queremos analizar cómo varía este resultado de acuerdo a la cantidad de instancias utilizadas para el entrenamiento. Es posible que el impacto del corpus de características disminuya al agregar instancias.
+
+Un parámetro muy importante para esta tarea es el peso adicional de las características llamado $\alpha$ en la ecuación \ref{eq-feat-boost}. Este peso adicional será sumado directamente a la matriz de probabilidad $\hat{P}(f_k|c_j)$ si la característica $f_k$ ha sido asociada a la clase $c_j$. \citet{dualist} demuestra en sus experimentos que cualquier valor entre 0.5 y 100 para este parámetro es indistinto, pero probaremos si esta hipótesis es válida para nuestra configuración también.
+
+El primer experimento a realizar será entrenar el clasificador con el corpus de entrenamiento que tiene una instancia por clase y el corpus de features descripto anteriormente con distinto pesos adicionales. Realizaremos el mismo trabajo con entrenando con todo el conjunto de instancias anotadas y finalmente compararemos los resultados.
 
 \vspace{3 mm}
 
 \textbf{Resultados}
 
+En la figura \ref{comp-feature-boost} se comparan las tres medidas de desempeño del clasificador utilizando distintos pesos adicionales. Se comparan dichas medidas entre un clasificador que utiliza sólo el corpus de entrenamiento con 12 instancias y un clasificador que utiliza además el corpus no etiquetado (simulado).
 
-%\subsection{Experimentos con características}
+\begin{figure}[h!]\label{comp-feature-boost}
+\centering
+\includegraphics[width=6cm]{accuracy-vs-feat-boost-2corpus}
+\includegraphics[width=6cm]{recog-vs-feat-boost-2corpus}
+\includegraphics[width=6cm]{kappa-vs-feat-boost-2corpus}
+\caption{Rendimiento del clasificador entrenado con características para distintos pesos adicionales sobre dos corpus.}
+\end{figure}
 
-%Los (siguientes) experimentos que solicitan al oráculo información sobre instancias y características se realizaron alternando pocas preguntas relativas a instancias y la misma cantidad relativas a características. Si bien los dos ciclos de etiquetado son completamente independientes en el sistema, tomamos esta desición para eliminar las diferencias entre experimentos que puedan introducirse a partir de la elección de los usuarios. Otra punto en el que difieren nuestros experimentos de una sesión no simulada con un usuario es la cantidad de veces que se reentrena. Con objeto de obtener una medición precisa de la curva de aprendizaje reentrenamos el clasificador luego de cada ronda intancias-características descriptas anteriormente. Esto es costoso para grandes volúmenes de datos y podría hacer perder al sistema su interactividad.
+En la figura \ref{comp-feat-tr-inst} se muestra el \textit{accuracy} y reconocimiento para el clasificador entrenado con y sin características, utilizando distintas cantidades de instancias.
 
-%Para poder realizar experimentos automáticos sin que el usuario tenga que ingresar la misma información repretidas veces decidimos guardar las respuestas obtenidas. Por ello agregamos etiquetas al corpus no etiquetados, que por supuesto no son consultadas, y creamos un corpus de asociaciones características-clases.
-%El corpus de características no es más que una matriz ternaria con tres valores posibles: asociación positiva, no asociación, desconocido. De esta forma también evitamos preguntar a un usuario por las características que ya han sido vistas pero no están relacionadas a esa clase en particular. Observemos que esta forma de guardar la información soporta etiquetas múltiples para una misma característica.
+\begin{figure}[h!]\label{comp-feat-tr-inst}
+\centering
+\includegraphics[width=7cm]{accuracy-vs-instancia-feat}
+\includegraphics[width=7cm]{recog-vs-instancia-feat}
+\caption{Rendimiento del clasificador entrenado con características con un peso adicional de 100 sobre distintas cantidades de instancias.}
+\end{figure}
+\vspace{3 mm}
+
+\textbf{Conclusión}
+
+El entrenamiento con características obtuvo el mismo reconocimiento en ambos corpus.
+No tiene efecto en el accuracy porque no hay etiquetas de la clase otro.
+El boost no varía (tanto) para el reconocimiento (como decía \citet{dualist}) pero sí para el accuracy.
+Los resultados son extremos porque el corpus que estamos utilizando es extremo.
+El aprendizaje activo es una buena opción si conseguir instancias es muy dificultoso, ya que en cualquier conjunto de preguntas aleatorio el usuario estaría todo el tiempo etiquetando instancias que no son relevantes.
+
+
+\subsection{Experimento 7}
+\vspace{3 mm}
+\textbf{Hipótesis} El aprendizaje activo sobre características permite al clasificador aprender más rápidamente.
+\vspace{3 mm}
+
+Al igual que en el experimento \ref{experimento-aa-instancias}, compararemos estrategias inteligentes de selección de características para agregar al corpus contra selección aleatoria.
+
+Como propusimos en la sección \ref{instance-selection} utilizaremos la ganancia de información de cada característica como estrategia de selección. Realizaremos experimentos asignando mayor relevancia a mayor ganancia de información y viceversa.
+
+Por qué tiene sentido hacer IG al revés?
+
+Siguiendo los experimentos ateriores utilizaremos el clasificador \textit{FeatMultinomialNB} con un peso adicional de 100 para las características etiquetadas. Como no estamos interactuando con un usuario, no necesitamos decidir primero sobre que clase etiquetaremos sino simplemente agregaremos al conjunto de entrenamiento la característica seleccionada por la estrategia con todas las clases con las que esté asociada.
+
+Inicialmente vamos a utilizar el clasificador entrenado con todas las instancias para medir correctamente tanto el \textit{accuracy} como el reconocimiento.
+
+\vspace{3 mm}
+
+\textbf{Resultados}
+
+\begin{figure}[h!]\label{comp-feat-selection}
+\centering
+\includegraphics[width=8cm]{learningcurve-aa-feat}
+\includegraphics[width=8cm]{recognitioncurve-aa-feat}
+\caption{Curvas de aprendizaje del clasificador entrenado con características con un peso adicional de 100.}
+\end{figure}
+\vspace{3 mm}
+
+tomamos 5 promedios
+
 
 % \subsection{Hipótesis 2}
 % \textbf{El aprendizaje activo sobre instancias y características obtiene mejores resultados que el aprendizaje activo sobre instancias o características por separado.}
-
-% \subsection{Experimento 3}
-% \textbf{Hipótesis} El aprendizaje supervisado sobre instancias y características obtiene mejores resultados que el aprendizaje supervisado sobre instancias, aún si las características son pocas.
-
 
 % \subsection{Experimento 4}
 % \textbf{Hipótesis} ??.
@@ -591,9 +680,6 @@ El corpus fue preprocesado utilizando como características las concordancias a 
 % \subsection{Experimento 5}
 % \textbf{Hipótesis} Seleccionar features para etiquetar que tengan alta confiabilidad/correlación, y luego de superado un cierto límite pasar a los que tiene baja confiabilidad/correlación permite al clasificador eliminar el ruido no introducido por la baja cantidad de ejemplos y al mismo tiempo expandir la cobertura.
 % Dejar para mas adelante
-
-% Experimento Entrenamiento supervisado con y sin etiquetado de  features
-% Validacion del etiquetado de features
 
 % Experimento 6
 % Information gain sobre todo el corpus o solo el etiquetado.
