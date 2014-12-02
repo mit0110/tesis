@@ -65,7 +65,7 @@ def get_labeled_features(class_name, features):
         try:
             index = int(index)
             result.append(features[index])
-        except ValueError:
+        except ValueError, IndexError:
             pass
     return result
 
@@ -115,12 +115,12 @@ class BaseExperiment(object):
                         RecognitionCurve()]
         self.number = None
         self.experiment_config = {
-            'u_corpus_f': 'corpus/experimental2/unlabeled_new_corpus_pm.pickle',
-            'test_corpus_f': 'corpus/experimental2/test_new2_corpus_pm.pickle',
-            'training_corpus_f': 'corpus/experimental2/training_new2_corpus_pm.pickle',
-            'feature_corpus_f': 'corpus/experimental/feature_corpus.pickle',
+            'feature_corpus_f': 'corpus/experimental2/feature_corpus.pickle',
+            'u_corpus_f': 'corpus/experimental2/unlabeled_new_corpus.pickle',
+            'test_corpus_f': 'corpus/experimental2/test_new_corpus.pickle',
+            'training_corpus_f': 'corpus/experimental2/training_new_corpus.pickle'
         }
-        self.max_answers = 92
+        self.max_answers = 93
 
     def run(self):
         """Runs the bootstrap cicles of the ActivePipeline."""

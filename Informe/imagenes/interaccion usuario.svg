@@ -116,9 +116,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.38691277"
-     inkscape:cx="241.60974"
-     inkscape:cy="1321.4498"
+     inkscape:zoom="0.36048668"
+     inkscape:cx="-2202.058"
+     inkscape:cy="1069.5759"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -137,7 +137,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -156,29 +156,31 @@
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <rect
-       style="fill:#ffffff;fill-rule:evenodd;stroke:#000000;stroke-width:0.6885283px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       id="rect3209"
-       width="2169.5247"
-       height="1117.2693"
-       x="-3140.646"
-       y="-611.75586" />
-    <rect
        style="fill:#ffd5d5"
        id="rect3009-5"
        width="352.96341"
        height="104.6132"
        x="-2563.6333"
-       y="-451.52176" />
+       y="-451.52176"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <rect
        style="fill:#e3dbdb"
        id="rect3009"
        width="344"
        height="156"
        x="-3097.699"
-       y="-211.09451" />
+       y="-211.09451"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <g
        id="g3050"
-       transform="translate(-2582.986,-237.01261)">
+       transform="translate(-2582.986,-237.01261)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          transform="matrix(0.79752684,0,0,0.71502409,473.41766,-210.80796)"
          d="m -491.42855,382.36218 c 0,22.88037 -16.62943,41.42857 -37.14286,41.42857 -20.51343,0 -37.14286,-18.5482 -37.14286,-41.42857 0,-22.88036 16.62943,-41.42857 37.14286,-41.42857 20.51343,0 37.14286,18.54821 37.14286,41.42857 z"
@@ -219,7 +221,10 @@
        y="-365.77643"
        id="text2997-6"
        sodipodi:linespacing="125%"
-       transform="scale(0.962321,1.0391543)"><tspan
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          x="-2483.7163"
          y="-365.77643"
@@ -233,22 +238,28 @@
        id="rect3009-5-2"
        width="466.19974"
        height="106.70796"
-       x="-2710.0793"
-       y="71.846428" />
+       x="-2840.0793"
+       y="71.846428"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <text
        xml:space="preserve"
        style="font-size:56.97192001px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-2569.9202"
+       x="-2705.0142"
        y="139.24838"
        id="text2997-6-1"
        sodipodi:linespacing="125%"
-       transform="scale(0.962321,1.0391543)"><tspan
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
-         x="-2569.9202"
+         x="-2705.0142"
          y="139.24838"
          id="tspan3007-1-1">Características</tspan><tspan
          sodipodi:role="line"
-         x="-2569.9202"
+         x="-2705.0142"
          y="210.46329"
          id="tspan3942-5" /></text>
     <rect
@@ -257,7 +268,10 @@
        width="492"
        height="97.711708"
        x="-2520.4263"
-       y="321.47012" />
+       y="321.47012"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <text
        xml:space="preserve"
        style="font-size:50.00897217px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -265,14 +279,20 @@
        y="371.58929"
        id="text2997-7"
        sodipodi:linespacing="125%"
-       transform="scale(0.962321,1.0391543)"><tspan
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          x="-2363.4661"
          y="371.58929"
          id="tspan3007-5">¿Para qué clase?</tspan></text>
     <g
        id="g3050-9"
-       transform="translate(-1918.9704,319.01118)">
+       transform="translate(-1918.9704,319.01118)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          transform="matrix(0.79752684,0,0,0.71502409,473.41766,-210.80796)"
          d="m -491.42855,382.36218 c 0,22.88037 -16.62943,41.42857 -37.14286,41.42857 -20.51343,0 -37.14286,-18.5482 -37.14286,-41.42857 0,-22.88036 16.62943,-41.42857 37.14286,-41.42857 20.51343,0 37.14286,18.54821 37.14286,41.42857 z"
@@ -300,42 +320,54 @@
        id="rect3009-5-2-3"
        width="368.5632"
        height="96.062744"
-       x="-2185.5898"
-       y="-47.861351" />
+       x="-2224.4263"
+       y="-37.522366"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <text
        xml:space="preserve"
        style="font-size:47.15530396px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-2079.8293"
-       y="15.792072"
+       x="-2121.1763"
+       y="23.12219"
        id="text2997-6-1-5"
        sodipodi:linespacing="125%"
-       transform="scale(0.962321,1.0391543)"><tspan
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
-         x="-2079.8293"
-         y="15.792072"
+         x="-2121.1763"
+         y="23.12219"
          id="tspan4449">Etiquetas</tspan></text>
     <rect
        style="fill:#ffd5d5"
        id="rect3009-5-2-0-9"
        width="312.87964"
        height="88.32151"
-       x="-2132.5281"
-       y="-172.42519" />
+       x="-2196.5845"
+       y="-278.35913"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <text
        xml:space="preserve"
        style="font-size:47.15530396px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-2055.7515"
-       y="-106.57698"
+       x="-2122.3162"
+       y="-208.51964"
        id="text2997-6-1-7-0"
        sodipodi:linespacing="125%"
-       transform="scale(0.962321,1.0391543)"><tspan
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
-         x="-2055.7515"
-         y="-106.57698"
+         x="-2122.3162"
+         y="-208.51964"
          id="tspan3007-1-1-1-1">Entrenar</tspan><tspan
          sodipodi:role="line"
-         x="-2055.7515"
-         y="-47.632847"
+         x="-2122.3162"
+         y="-149.57552"
          id="tspan3942-5-2-1" /></text>
     <rect
        style="fill:#ffd5d5"
@@ -343,7 +375,10 @@
        width="348"
        height="98.235497"
        x="-1347.0226"
-       y="-181.24541" />
+       y="-181.24541"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <text
        xml:space="preserve"
        style="font-size:52.44843292px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -351,7 +386,10 @@
        y="-107.59552"
        id="text2997-6-1-7-0-7"
        sodipodi:linespacing="125%"
-       transform="scale(0.962321,1.0391543)"><tspan
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          x="-1218.8492"
          y="-107.59552"
@@ -366,7 +404,10 @@
        style="fill:#999999;stroke:#b3b3b3" />
     <g
        id="g3050-9-93"
-       transform="translate(-1630.2497,-266.84495)">
+       transform="translate(-1630.2497,-266.84495)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <path
          transform="matrix(0.79752684,0,0,0.71502409,473.41766,-210.80796)"
          d="m -491.42855,382.36218 c 0,22.88037 -16.62943,41.42857 -37.14286,41.42857 -20.51343,0 -37.14286,-18.5482 -37.14286,-41.42857 0,-22.88036 16.62943,-41.42857 37.14286,-41.42857 20.51343,0 37.14286,18.54821 37.14286,41.42857 z"
@@ -394,22 +435,28 @@
        id="rect3009-6"
        width="457.43588"
        height="195.3456"
-       x="-1816.6256"
-       y="80.58976" />
+       x="-1718.6256"
+       y="80.58976"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <text
        xml:space="preserve"
        style="font-size:52.58779144px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-1643.5487"
+       x="-1541.7153"
        y="154.40648"
        id="text2997-75"
        sodipodi:linespacing="125%"
-       transform="scale(0.962321,1.0391543)"><tspan
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
-         x="-1643.5487"
+         x="-1541.7153"
          y="154.40648"
          id="tspan3007-4">Características</tspan><tspan
          sodipodi:role="line"
-         x="-1643.5487"
+         x="-1541.7153"
          y="220.14122"
          id="tspan5298">más probables</tspan></text>
     <rect
@@ -418,7 +465,10 @@
        width="461.42596"
        height="197.68391"
        x="-2061.3435"
-       y="-581.7486" />
+       y="-581.7486"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <text
        xml:space="preserve"
        style="font-size:55.74307251px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -426,7 +476,10 @@
        y="-490.46185"
        id="text2997-75-4"
        sodipodi:linespacing="125%"
-       transform="scale(0.962321,1.0391543)"><tspan
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          x="-1910.8839"
          y="-490.46185"
@@ -442,7 +495,10 @@
        y="-159.62918"
        id="text2997"
        sodipodi:linespacing="125%"
-       transform="scale(0.962321,1.0391543)"><tspan
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          id="tspan2999"
          x="-3040.7297"
@@ -457,7 +513,10 @@
          id="tspan3007">instancias?</tspan></text>
     <g
        id="g6079"
-       transform="translate(-1430.6256,-34.426818)">
+       transform="translate(-1430.6256,-34.426818)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          transform="matrix(0.99317503,-0.1166334,0.1166334,0.99317503,-9.796796,-117.48688)"
          id="g6069">
@@ -517,7 +576,10 @@
     </g>
     <g
        id="g5331-3-9"
-       transform="matrix(0.45859727,0.88864422,-0.88864422,0.45859727,-1767.2815,512.91394)">
+       transform="matrix(0.45859727,0.88864422,-0.88864422,0.45859727,-1767.2815,512.91394)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          inkscape:transform-center-y="519.17063"
          inkscape:transform-center-x="239.30745"
@@ -575,7 +637,10 @@
     </g>
     <g
        id="g5331-3-9-9"
-       transform="matrix(-0.33019722,0.94391197,-0.94391197,-0.33019722,-2254.3175,551.7704)">
+       transform="matrix(-0.33019722,0.94391197,-0.94391197,-0.33019722,-2254.3175,551.7704)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          inkscape:transform-center-y="519.17063"
          inkscape:transform-center-x="239.30745"
@@ -633,7 +698,10 @@
     </g>
     <g
        id="g5331-3-9-9-5"
-       transform="matrix(-0.99983642,0.01808731,-0.01808731,-0.99983642,-2667.5125,-21.427732)">
+       transform="matrix(-0.99983642,0.01808731,-0.01808731,-0.99983642,-2667.5125,-21.427732)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          inkscape:transform-center-y="519.17063"
          inkscape:transform-center-x="239.30745"
@@ -690,182 +758,11 @@
       </g>
     </g>
     <g
-       id="g5331-3-9-9-5-4-72"
-       transform="matrix(0.21051647,-0.97759032,0.97759032,0.21051647,-1780.7585,-1132.8111)">
-      <g
-         inkscape:transform-center-y="519.17063"
-         inkscape:transform-center-x="239.30745"
-         style="fill:#999999;stroke:#b3b3b3"
-         transform="matrix(-0.11036543,-0.15426204,-0.15998952,0.1144631,-991.6209,190.13446)"
-         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-9-1-77">
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
-           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-4-5-5"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cccc" />
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
-           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-8-6-9"
-           inkscape:connector-curvature="0" />
-      </g>
-      <g
-         inkscape:transform-center-y="490.67477"
-         inkscape:transform-center-x="255.08414"
-         style="fill:#999999;stroke:#b3b3b3"
-         transform="matrix(-0.08694454,-0.16857627,-0.17483518,0.09017264,-998.8815,166.99291)"
-         id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-8-9-48">
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
-           id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-6-2-8-53"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cccc" />
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
-           id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-0-3-8-0"
-           inkscape:connector-curvature="0" />
-      </g>
-      <g
-         inkscape:transform-center-y="546.5158"
-         inkscape:transform-center-x="222.49815"
-         style="fill:#999999;stroke:#b3b3b3"
-         transform="matrix(-0.11023742,-0.15435355,-0.16008442,0.11433034,-972.7506,217.51116)"
-         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-4-6-5">
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
-           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-7-8-9"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cccc" />
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
-           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-3-5-27"
-           inkscape:connector-curvature="0" />
-      </g>
-    </g>
-    <g
-       id="g5331-3-9-9-5-4-72-5"
-       transform="matrix(0.7552744,0.65540873,-0.65540873,0.7552744,-1030.2735,219.50115)">
-      <g
-         inkscape:transform-center-y="519.17063"
-         inkscape:transform-center-x="239.30745"
-         style="fill:#999999;stroke:#b3b3b3"
-         transform="matrix(-0.11036543,-0.15426204,-0.15998952,0.1144631,-991.6209,190.13446)"
-         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-9-1-77-6">
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
-           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-4-5-5-4"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cccc" />
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
-           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-8-6-9-5"
-           inkscape:connector-curvature="0" />
-      </g>
-      <g
-         inkscape:transform-center-y="490.67477"
-         inkscape:transform-center-x="255.08414"
-         style="fill:#999999;stroke:#b3b3b3"
-         transform="matrix(-0.08694454,-0.16857627,-0.17483518,0.09017264,-998.8815,166.99291)"
-         id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-8-9-48-4">
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
-           id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-6-2-8-53-0"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cccc" />
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
-           id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-0-3-8-0-0"
-           inkscape:connector-curvature="0" />
-      </g>
-      <g
-         inkscape:transform-center-y="546.5158"
-         inkscape:transform-center-x="222.49815"
-         style="fill:#999999;stroke:#b3b3b3"
-         transform="matrix(-0.11023742,-0.15435355,-0.16008442,0.11433034,-972.7506,217.51116)"
-         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-4-6-5-7">
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
-           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-7-8-9-5"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cccc" />
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
-           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-3-5-27-2"
-           inkscape:connector-curvature="0" />
-      </g>
-    </g>
-    <g
-       id="g5331-3-9-9-5-4-72-5-0"
-       transform="matrix(-0.63673846,-0.77107986,0.77107986,-0.63673846,-2882.2189,-489.60429)">
-      <g
-         inkscape:transform-center-y="519.17063"
-         inkscape:transform-center-x="239.30745"
-         style="fill:#999999;stroke:#b3b3b3"
-         transform="matrix(-0.11036543,-0.15426204,-0.15998952,0.1144631,-991.6209,190.13446)"
-         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-9-1-77-6-4">
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
-           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-4-5-5-4-2"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cccc" />
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
-           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-8-6-9-5-1"
-           inkscape:connector-curvature="0" />
-      </g>
-      <g
-         inkscape:transform-center-y="490.67477"
-         inkscape:transform-center-x="255.08414"
-         style="fill:#999999;stroke:#b3b3b3"
-         transform="matrix(-0.08694454,-0.16857627,-0.17483518,0.09017264,-998.8815,166.99291)"
-         id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-8-9-48-4-9">
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
-           id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-6-2-8-53-0-2"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cccc" />
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
-           id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-0-3-8-0-0-0"
-           inkscape:connector-curvature="0" />
-      </g>
-      <g
-         inkscape:transform-center-y="546.5158"
-         inkscape:transform-center-x="222.49815"
-         style="fill:#999999;stroke:#b3b3b3"
-         transform="matrix(-0.11023742,-0.15435355,-0.16008442,0.11433034,-972.7506,217.51116)"
-         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-4-6-5-7-2">
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
-           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-7-8-9-5-1"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cccc" />
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
-           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-3-5-27-2-8"
-           inkscape:connector-curvature="0" />
-      </g>
-    </g>
-    <g
        id="g5331-3-9-9-5-4-72-5-0-7"
-       transform="matrix(-0.48420725,-0.87495334,0.87495334,-0.48420725,-2796.2759,-536.56852)">
+       transform="matrix(0.9087343,-0.41737511,0.41737511,0.9087343,-1516.9369,-702.28188)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          inkscape:transform-center-y="519.17063"
          inkscape:transform-center-x="239.30745"
@@ -922,54 +819,11 @@
       </g>
     </g>
     <g
-       id="g5331-3-9-9-5-4-72-5-1"
-       transform="matrix(0.63594033,0.77173826,-0.77173826,0.63594033,-1098.1123,267.62568)">
-      <g
-         inkscape:transform-center-y="519.17063"
-         inkscape:transform-center-x="239.30745"
-         style="fill:#999999;stroke:#b3b3b3"
-         transform="matrix(-0.11036543,-0.15426204,-0.15998952,0.1144631,-991.6209,190.13446)"
-         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-9-1-77-6-2">
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
-           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-4-5-5-4-7"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cccc" />
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
-           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-8-6-9-5-5"
-           inkscape:connector-curvature="0" />
-      </g>
-      <g
-         inkscape:transform-center-y="490.67477"
-         inkscape:transform-center-x="255.08414"
-         style="fill:#999999;stroke:#b3b3b3"
-         transform="matrix(-0.08694454,-0.16857627,-0.17483518,0.09017264,-998.8815,166.99291)"
-         id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-8-9-48-4-92" />
-      <g
-         inkscape:transform-center-y="546.5158"
-         inkscape:transform-center-x="222.49815"
-         style="fill:#999999;stroke:#b3b3b3"
-         transform="matrix(-0.11023742,-0.15435355,-0.16008442,0.11433034,-972.7506,217.51116)"
-         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-4-6-5-7-9">
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
-           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-7-8-9-5-3"
-           inkscape:connector-curvature="0"
-           sodipodi:nodetypes="cccc" />
-        <path
-           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
-           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-3-5-27-2-5"
-           inkscape:connector-curvature="0" />
-      </g>
-    </g>
-    <g
        id="g5331-3-9-9-5-4-72-1"
-       transform="matrix(-0.63187414,0.77507102,-0.77507102,-0.63187414,-1857.4911,817.03122)">
+       transform="matrix(-0.63187414,0.77507102,-0.77507102,-0.63187414,-1857.4911,817.03122)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          inkscape:transform-center-y="519.17063"
          inkscape:transform-center-x="239.30745"
@@ -1027,7 +881,10 @@
     </g>
     <g
        id="g5331-3-9-9-5-4-72-1-0"
-       transform="matrix(-0.63187414,0.77507102,-0.77507102,-0.63187414,-3119.5204,835.26832)">
+       transform="matrix(-0.63187414,0.77507102,-0.77507102,-0.63187414,-3119.5204,835.26832)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          inkscape:transform-center-y="519.17063"
          inkscape:transform-center-x="239.30745"
@@ -1085,7 +942,10 @@
     </g>
     <g
        transform="matrix(0.85701562,-0.51529042,0.51529042,0.85701562,-1512.5232,-343.03427)"
-       id="g6079-8">
+       id="g6079-8"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          transform="matrix(0.99317503,-0.1166334,0.1166334,0.99317503,-9.796796,-117.48688)"
          id="g6069-7">
@@ -1145,7 +1005,10 @@
     </g>
     <g
        transform="matrix(-0.03440069,-0.99940812,0.99940812,-0.03440069,-2093.7175,-653.43942)"
-       id="g6079-7">
+       id="g6079-7"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          transform="matrix(0.99317503,-0.1166334,0.1166334,0.99317503,-9.796796,-117.48688)"
          id="g6069-8">
@@ -1205,7 +1068,10 @@
     </g>
     <g
        transform="matrix(-0.59345149,-0.80486977,0.80486977,-0.59345149,-2437.852,-518.85496)"
-       id="g6079-1">
+       id="g6079-1"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          transform="matrix(0.99317503,-0.1166334,0.1166334,0.99317503,-9.796796,-117.48688)"
          id="g6069-5">
@@ -1265,7 +1131,10 @@
     </g>
     <g
        transform="matrix(-0.99675441,-0.08050246,0.08050246,-0.99675441,-2671.0983,-62.418263)"
-       id="g6079-15">
+       id="g6079-15"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
       <g
          transform="matrix(0.99317503,-0.1166334,0.1166334,0.99317503,-9.796796,-117.48688)"
          id="g6069-2">
@@ -1389,7 +1258,7 @@
        sodipodi:rx="449.46124"
        sodipodi:ry="495.36368"
        d="m -1595.1092,-100.93623 a 449.46124,495.36368 0 1 1 -898.9225,0 449.46124,495.36368 0 1 1 898.9225,0 z"
-       transform="matrix(1.0861634,0,0,0.98164757,214.45782,688.59122)" />
+       transform="matrix(1.0861634,0,0,0.98164757,1793.4707,907.89857)" />
     <g
        id="g5331-3-9-2"
        transform="matrix(0.57628114,1.174855,-1.174855,0.57628114,710.85954,603.64704)"
@@ -1733,5 +1602,292 @@
          x="242.42067"
          y="-702.2525"
          id="tspan3942-5-2-1-7-9-4" /></text>
+    <g
+       id="g5331-3-9-9-5-4-72-5-0-6"
+       transform="matrix(-0.07460548,-0.99721314,0.99721314,-0.07460548,-2096.2134,-1017.9797)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         inkscape:transform-center-y="519.17063"
+         inkscape:transform-center-x="239.30745"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11036543,-0.15426204,-0.15998952,0.1144631,-991.6209,190.13446)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-9-1-77-6-4-07">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-4-5-5-4-2-0"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-8-6-9-5-1-1"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="490.67477"
+         inkscape:transform-center-x="255.08414"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.08694454,-0.16857627,-0.17483518,0.09017264,-998.8815,166.99291)"
+         id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-8-9-48-4-9-1">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-6-2-8-53-0-2-9"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-0-3-8-0-0-0-9"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="546.5158"
+         inkscape:transform-center-x="222.49815"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11023742,-0.15435355,-0.16008442,0.11433034,-972.7506,217.51116)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-4-6-5-7-2-8">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-7-8-9-5-1-8"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-3-5-27-2-8-6"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       id="g5331-3-9-9-5-4-72-5-0-6-7"
+       transform="matrix(0.05721256,0.99836204,0.99836204,-0.05721256,-1960.9533,828.20451)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g4290"
+         transform="translate(-7.8482129,0.44975303)">
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-9-1-77-6-4-07-5"
+           transform="matrix(-0.10587319,-0.15737907,-0.16322228,0.10980407,-989.28031,190.88433)"
+           style="fill:#999999;stroke:#b3b3b3"
+           inkscape:transform-center-x="-0.62838698"
+           inkscape:transform-center-y="0.91128402">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-4-5-5-4-2-0-7"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-8-6-9-5-1-1-7"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-8-9-48-4-9-1-1"
+           transform="matrix(-0.08204945,-0.17101228,-0.17736164,0.0850958,-995.87087,167.54312)"
+           style="fill:#999999;stroke:#b3b3b3"
+           inkscape:transform-center-x="30.382152"
+           inkscape:transform-center-y="-16.605754">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-6-2-8-53-0-2-9-8"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-0-3-8-0-0-0-9-8"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-4-6-5-7-2-8-6"
+           transform="matrix(-0.1057426,-0.15746685,-0.16331332,0.10966863,-971.20694,218.79356)"
+           style="fill:#999999;stroke:#b3b3b3"
+           inkscape:transform-center-x="-29.488568"
+           inkscape:transform-center-y="17.285907">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-7-8-9-5-1-8-7"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-3-5-27-2-8-6-3"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="g5331-3-9-9-5-4-72-5-0-6-7-9"
+       transform="matrix(0.82651405,0.56291613,0.56291613,-0.82651405,-1638.6016,593.06557)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         inkscape:transform-center-y="519.17063"
+         inkscape:transform-center-x="239.30745"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11036543,-0.15426204,-0.15998952,0.1144631,-991.6209,190.13446)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-9-1-77-6-4-07-5-7">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-4-5-5-4-2-0-7-6"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-8-6-9-5-1-1-7-4"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="490.67477"
+         inkscape:transform-center-x="255.08414"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.08694454,-0.16857627,-0.17483518,0.09017264,-998.8815,166.99291)"
+         id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-8-9-48-4-9-1-1-8">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-6-2-8-53-0-2-9-8-1"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-0-3-8-0-0-0-9-8-4"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="546.5158"
+         inkscape:transform-center-x="222.49815"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11023742,-0.15435355,-0.16008442,0.11433034,-972.7506,217.51116)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-4-6-5-7-2-8-6-3">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-7-8-9-5-1-8-7-1"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-3-5-27-2-8-6-3-6"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <path
+       sodipodi:type="arc"
+       style="fill:#d7f4d7;stroke:#ffffff"
+       id="path4327"
+       sodipodi:cx="-968.13562"
+       sodipodi:cy="-655.05182"
+       sodipodi:rx="74.898743"
+       sodipodi:ry="73.511734"
+       d="m -893.23688,-655.05182 a 74.898743,73.511734 0 1 1 -149.79752,0 74.898743,73.511734 0 1 1 149.79752,0 z"
+       transform="matrix(1.206145,0,0,1.206145,-1033.1931,642.68273)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:63.26041794px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-2287.0798"
+       y="-118.79215"
+       id="text2997-6-1-7-0-7-7"
+       sodipodi:linespacing="125%"
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="-2287.0798"
+         y="-118.79215"
+         id="tspan3942-5-2-1-0-1">EM</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="fill:#d7f4d7;stroke:#ffffff"
+       id="path4377"
+       sodipodi:cx="-830.82129"
+       sodipodi:cy="-555.18683"
+       sodipodi:rx="270.46768"
+       sodipodi:ry="253.82353"
+       d="m -560.35361,-555.18683 a 270.46768,253.82353 0 1 1 -540.93539,0 270.46768,253.82353 0 1 1 540.93539,0 z"
+       transform="matrix(0.70004443,0,0,0.70004443,-975.48549,815.25105)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:51.74030685px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-1577.0892"
+       y="376.87823"
+       id="text2997-75-4-7-5"
+       sodipodi:linespacing="125%"
+       transform="scale(0.987419,1.0127413)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="-1577.0892"
+         y="376.87823"
+         id="tspan5298-5-6-1">Selección</tspan><tspan
+         sodipodi:role="line"
+         x="-1577.0892"
+         y="441.55362"
+         id="tspan4379">de</tspan><tspan
+         sodipodi:role="line"
+         x="-1577.0892"
+         y="506.229"
+         id="tspan4021-7">características</tspan></text>
+    <path
+       sodipodi:type="arc"
+       style="fill:#d7f4d7;stroke:#ffffff"
+       id="path4377-3"
+       sodipodi:cx="-830.82129"
+       sodipodi:cy="-555.18683"
+       sodipodi:rx="270.46768"
+       sodipodi:ry="253.82353"
+       d="m -560.35361,-555.18683 a 270.46768,253.82353 0 1 1 -540.93539,0 270.46768,253.82353 0 1 1 540.93539,0 z"
+       transform="matrix(0.75125409,0,0,0.75125409,-1728.2207,-212.74432)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:57.48464966px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-2467.7131"
+       y="-649.98291"
+       id="text2997-75-4-7"
+       sodipodi:linespacing="125%"
+       transform="scale(0.95376164,1.04848)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="-2467.7131"
+         y="-649.98291"
+         id="tspan5298-5-6">Selección</tspan><tspan
+         sodipodi:role="line"
+         x="-2467.7131"
+         y="-578.12708"
+         id="tspan4423">de</tspan><tspan
+         sodipodi:role="line"
+         x="-2467.7131"
+         y="-506.27127"
+         id="tspan4021">instancias</tspan></text>
   </g>
 </svg>

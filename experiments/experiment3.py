@@ -32,8 +32,8 @@ def get_next_instance_max_entropy(self):
 
         self._retrained = False
     # Select the instance
-    max_entropy = max(self.unlabeled_corpus.extra_info['entropy'])
-    return self.unlabeled_corpus.extra_info['entropy'].index(max_entropy)
+    min_entropy = max(self.unlabeled_corpus.extra_info['entropy'])
+    return self.unlabeled_corpus.extra_info['entropy'].index(min_entropy)
 
 
 class Experiment3(BaseExperiment):
@@ -56,6 +56,6 @@ class Experiment3(BaseExperiment):
             )
             print "{} of {} answers".format(num_answers, self.max_answers)
             self.pipe._train()
-            self.pipe._expectation_maximization()
+#            self.pipe._expectation_maximization()
         self.get_name()
         self.save_session()

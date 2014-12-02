@@ -463,7 +463,8 @@ class ActivePipeline(object):
         The filename must be passed into the configuration under the name
         u_corpus_f.
         """
-        self.unlabeled_corpus.concetenate_corpus(self.user_corpus)
+        if len(self.user_corpus):
+            self.unlabeled_corpus.concetenate_corpus(self.user_corpus)
         self.unlabeled_corpus.save_to_file(self.u_corpus_f)
 
     def label_feature_corpus(self):

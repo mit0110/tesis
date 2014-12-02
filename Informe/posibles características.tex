@@ -1,0 +1,56 @@
+
+Una importante parte de cualquier problema que aborde el lenguaje natural es la representación del mismo. Las características relevantes son propias de cada problema, si bien existen numerosos ejemplos bibliográficos a tomar como modelo.
+La mayoría de los estudios que abordan la clasificación de texto se basan en las
+
+Las características propuestas para el sistema.
+\begin{itemize}
+    \item POS.
+    \item Lemmas.
+    \item Matcheos parciales a templates (probablemente no a las partículas sino a los templates).
+    \item Named Entity Recognition.
+    \item Tipos de cada Named Entity.
+    \item N-gramas combinando todos los conceptos anteriores.
+
+\end{itemize}
+
+Si bien las características anteriores pueden tomar valores en un amplio rango de enteros, decidimos sólo medir la presencia o ausencia de cada una de ellas. Por un lado, consideramos que el usuario no debería etiquetar cada característica en base a su valor, ya que este no es distintivo de la clase. Por ejemplo, si el lemma de una palabra como ``movie'' aparece más de 3 veces o menos no influye en las etiquetas que puedan asignarse a ellas.
+
+
+Formas para ordenar los features de acuerdo a su relevancia.
+\begin{itemize}
+	\item Características que esten fuertemente asociadas con una clase. Si bien este método es muy poco utilizado, en una arquitectura con extreme bootstraping es lógico no asumir que la clasificación inicial es correcta.
+	\item Características que tengan baja probabilidad para una clase pero que
+	aparezcan frecuentemente.
+\end{itemize}
+
+En Dualist se presentaban al usuario dos listas de posibles características ordenadas de acuerdo a la correlación que tenían con cada clase. La principal diferencia con nuestra arquitectura es que tenemos 30 clases, no sólo dos, y por lo tanto debemos cambiar la forma de interacción. Por lo tanto no sólo debemos utilizar conceptos del aprendizaje activo para la selección de instancias y características, sino sobre las clases que vamos a mostrar. Cabe destacar también que en Dualist el active learning sobre ejemplos es totalmente independiente
+del active learning sobre instancias.
+
+Formas para ordenar las clases para preguntar al oráculo.
+\begin{itemize}
+	\item Clases que tengan la mayor probabilidad para un feature cualquiera.
+	\item Clases que tengan la mayor suma de probabilidades sobre todos sus features.
+	\item La clase con mayor probabilidad.
+	\item La clase con menor probabilidad.
+	\item La clase con mayor cantidad de instancias anotadas.
+	\item La clase con menor cantidad de instancias anotadas.
+\end{itemize}
+
+\subsubsection{Information Gain}
+Un criterio ampliamente utilizado para la selección de features es Information Gain.
+
+Definición wikipedia:
+In probability theory and information theory, the Kullback–Leibler divergence[1][2][3] (also information divergence, information gain, relative entropy, or KLIC; here abbreviated as KL divergence) is a non-symmetric measure of the difference between two probability distributions P and Q.
+
+\citet{infgain}
+Information gain (IG) measures the amount of information in bits about the
+class prediction, if the only information available is the presence of a feature
+and the corresponding class distribution. Concretely, it measures the expected
+reduction in entropy
+
+http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=E6944FA8AB7813F0059807940A52159D?doi=10.1.1.32.9956&rep=rep1&type=pdf
+
+
+\subsection{Proceso previo}
+
+Al momento de extraer las caraterísticas que mencionamos en la sección anterior encontramos varior problemas. Una aproximación simple al aprendije activo incluye reentrenar el clasificador en cada una de las iteraciones del ciclo, cambiando así el modelo. Al introducir el etiquetado de características ya no se puede cambiar el modelo sin perder rastro de la ubicación de las características etiquetadas dentro de las matrices internas del clasificador. Por esto es que tuvimos que cambiar la implementación básica y extraer todos las características dentro de la instancia de preproceso. De esta forma, nuestras matrices iniciales tienen toda la información tanto del corpus anotado como no anotado.
