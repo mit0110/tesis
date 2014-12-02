@@ -9,3 +9,8 @@ from experiment8 import Experiment8
 from experiment9 import Experiment9
 from experiment10 import Experiment10
 from experiment11 import Experiment11
+from experiment12 import Experiment12
+from experiment13 import Experiment13
+from experiment14 import Experiment14
+from experiment15 import Experiment15
+from experiment16 import Experiment16

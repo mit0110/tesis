@@ -137,7 +137,8 @@ class ActivePipeline(object):
             'confusion_matrix': confusion_matrix(
                 self.test_corpus.primary_targets,
                 self.predict(self.test_corpus.instances)
-            )
+            ),
+            'feature_boost': self.feature_boost
         })
         self.new_instances = 0
         self.new_features = 0
@@ -501,10 +502,10 @@ class ActivePipeline(object):
             return False
 
         f = open(filename, 'w')
-        to_save = {'training_corpus': self.training_corpus,
-                   'unlabeled_corpus': self.unlabeled_corpus,
-                   'user_corpus': self.user_corpus,
-                   'user_features': self.user_features,
+        to_save = {#'training_corpus': self.training_corpus,
+                   #'unlabeled_corpus': self.unlabeled_corpus,
+                   #'user_corpus': self.user_corpus,
+                   #'user_features': self.user_features,
                    'recorded_precision': self.recorded_precision,
                    'asked_features': (self.asked_features
                                       if hasattr(self, 'asked_features')

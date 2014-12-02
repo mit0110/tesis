@@ -42,9 +42,11 @@ class Experiment8(BaseExperiment):
         while num_answers < self.max_feat_answers:
             print "{} of {} answers".format(num_answers, self.max_feat_answers)
             print colored('\n'.join(['*' * 79] * 3), 'green')
+            orig_num_answers = num_answers
             num_answers += self.pipe.feature_bootstrap(get_class,
                 lambda x, y: [], max_iterations=self.cycle_len
             )
+            print num_answers - orig_num_answers
             self.pipe._train()
             self.pipe._expectation_maximization()
         self.instance_name = 'long-step1-boost{}'.format(feature_boost)

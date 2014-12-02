@@ -121,6 +121,7 @@ class BaseExperiment(object):
             'training_corpus_f': 'corpus/experimental2/training_new_corpus.pickle'
         }
         self.max_answers = 93
+        self.max_feat_answers = 350
 
     def run(self):
         """Runs the bootstrap cicles of the ActivePipeline."""

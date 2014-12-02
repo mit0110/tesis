@@ -190,3 +190,63 @@ class RecognitionCurve(Metric):
             result.append('{}\t{}'.format(new_examples, recog))
         self.info = '\n'.join(result)
 
+
+class RecognitionVsFeatBoost(Metric):
+
+    def get_from_session(self):
+        self.info = ''
+        if not (self.session and 'recorded_precision' in self.session
+            and 'confusion_matrix' in self.session['recorded_precision'][-1]
+            and 'feature_boost' in self.session['recorded_precision'][-1]):
+            return
+        result = []
+        for report in self.session['recorded_precision']:
+            cm = report['confusion_matrix']
+            other_index = self.session['classes'].index('other')
+            recog = 0
+            for index, row in enumerate(cm):
+                if index != other_index:
+                    recog += cm[index][index]
+            recog /= float(cm.sum() - cm[other_index].sum())
+            feat_boost = report['feature_boost']
+            result.append('{}\t{}'.format(feat_boost, recog))
+        self.info = '\n'.join(result)
+
+
+class AccuracyVsFeatBoost(Metric):
+
+    def get_from_session(self):
+        self.info = ''
+        if not (self.session and 'recorded_precision' in self.session
+            and 'feature_boost' in self.session['recorded_precision'][-1]):
+            return
+        recorded_precision = self.session['recorded_precision']
+        result = []
+        for value in recorded_precision:
+            feat_boost = value['feature_boost']
+            result.append('{}\t{}'.format(feat_boost,
+                                        value['testing_precision']))
+        self.info = '\n'.join(result)
+
+
+class KappaVsFeatBoost(Metric):
+
+    def get_from_session(self):
+        self.info = ''
+        if not (self.session and 'recorded_precision' in self.session
+            and 'confusion_matrix' in self.session['recorded_precision'][-1]
+            and 'feature_boost' in self.session['recorded_precision'][-1]):
+            return
+        # too hacky
+        result = []
+        for report in self.session['recorded_precision']:
+            confusion_m = report['confusion_matrix']
+            total_instances = float(confusion_m.sum())
+            real_accuracy = confusion_m.diagonal().sum() / total_instances
+            e_accuracy = (confusion_m.sum(axis=1) * confusion_m.sum(axis=0) /
+                          total_instances)
+            e_accuracy = e_accuracy.sum() / total_instances
+            kappa = (real_accuracy - e_accuracy) / (1 - e_accuracy)
+            feat_boost = report['feature_boost']
+            result.append('{}\t{}'.format(feat_boost, kappa))
+        self.info = '\n'.join(result)
