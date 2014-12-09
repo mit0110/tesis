@@ -1,4 +1,4 @@
-\chapter{Implementación}
+\chapter{Implementación}\label{implementacion}
 
 \section{Arquitectura del sistema}
 Si bien el objetivo principal de este trabajo es incrementar la cobertura de Quepy, deseamos también que el sistema esté compartimentado de tal forma que sus componentes puedan utilizarse individualmente para otras aplicaciones.
@@ -6,23 +6,24 @@ Si bien el objetivo principal de este trabajo es incrementar la cobertura de Que
 La arquitectura de nuestro sistema integra tres grandes bloques que interactúan a través de interfaces:
 
 \begin{description}
-    \item[FeatMultinomialNB] Es el clasificador del sistema. Hereda del clasificador multinomial bayesiano \textit{MultinomialNB} de la librería scikit-learn desarrollada por \citet{scikit-learn} y está adaptado para soportar el entrenamiento utilizando tanto instancias como características. Agregamos algunos métodos auxiliares más a la clase que simplifican algunos cálculos para el aprendizaje activo.
-    \item[ActivePipeline] Es una clase que abstrae los ciclos de aprendizaje activo. Recordemos que constan de dos pasos principales donde se seleccionan las instancias (o características) y luego se procesan las etiqueta devueltas por el usuario. Para llevar a cabo estas tareas el pipe necesita tener acceso a los corpus etiquetados y no etiquetados y al clasificador, lo cual lo convierte en el módulo central del proyecto.
-    \item[Preprocess] Es un módulo que convierte las preguntas de entrenamiento etiquetadas a su representación matricial utilizando las características descriptas en el capítulo anterior. La representación de las preguntas está completamente ligada a los patrones de la aplicación de Quepy. Por ello diseñamos el preproceso como una extensión opcional de Quepy que puede utilizar cualquier clasificador. En otras palabras, no es necesario que se integre con aprendizaje activo.
+    \item[FeatMultinomialNB] Es el clasificador del sistema. Hereda del clasificador multinomial bayesiano \textit{MultinomialNB} de la librería scikit-learn (\citet{scikit-learn}) y está adaptado para soportar el entrenamiento utilizando tanto instancias como características. Elegimos este clasificador siguiendo a \citet{dualist}.
+    \item[ActivePipeline] Es una clase que abstrae los ciclos de aprendizaje activo. Recordemos que constan de dos pasos principales donde se seleccionan las instancias o características y luego se procesan las etiqueta devueltas por el usuario. Para llevar a cabo estas tareas el ActivePipeline necesita tener acceso a los corpus etiquetados y no etiquetados y al clasificador, lo cual lo convierte en el módulo central del proyecto.
+    \item[Preprocess] Es un módulo que convierte las preguntas de entrenamiento etiquetadas a su representación vectorial utilizando las características descriptas en el capítulo anterior. La representación de las preguntas está completamente ligada a los patrones de la aplicación de Quepy. Por ello diseñamos el preproceso como una extensión opcional de Quepy que puede utilizar cualquier clasificador. En otras palabras, no es necesario que se integre con el aprendizaje activo.
 \end{description}
 
 \subsection{ActivePipeline: Un marco de trabajo de aprendizaje activo sobre características e instancias}
 
-ActivePipeline es una clase creada para simplificar la tarea del aprendizaje activo. Entre las actividades que realiza se encuentra la lectura de los corpus, la selección de instancias y características para presentar al usuario, la gestión de los datos ingresados y el reentrenamiento del clasificador. También agregamos funciones que no eran necesarias pero facilitan el entorno de experimentación como sesiones y métricas de evaluación parcial.
+ActivePipeline es una clase creada para simplificar la tarea del aprendizaje activo. Entre las actividades que realiza se encuentra la lectura de los conjuntos de datos, la selección de instancias y características para presentar al oráculo humano, la gestión de los datos ingresados y el reentrenamiento del clasificador. También agregamos funciones que facilitan el entorno de experimentación como sesiones y métricas de evaluación parcial.
 
-Hasta el momento hemos realizado la prueba de concepto que demuestra que una aproximación de este estilo ayudaría a resolver el problema de la falta de cobertura de Quepy. Esta arquitectura está en desarrollo constante y no ha sido pulida para interactuar con un sistema real. Describiremos a continuación los puntos más centrales de la implementación ya que los detalles son altamente propensos a ser modificados en el futuro.
+Hasta el momento hemos realizado una prueba de concepto que demuestra que una aproximación de este estilo ayudaría a resolver el problema de la falta de cobertura de Quepy. Esta arquitectura está en desarrollo constante y no ha sido terminada para integrarse en un sistema estable para interactuar con un sistema real. Describiremos a continuación los puntos más centrales de la implementación ya que los detalles son altamente propensos a ser modificados en el futuro.
 
 Para crear una instancia de ActivePipeline se requiere un diccionario con los siguientes parámetros:
 \begin{description}
-    \item[Clasificador] Es una instancia de un clasificador. Para mantener generalidad, requerimos que tenga la interfaz estándar de \textit{scikit-learn}. Los métodos que utilizamos son \textit{fit}, \textit{predict\_proba}, \textit{predict\_log\_proba} y \textit{score}.
-    \item[Corpus] Se deben definir los archivos desde donde recuperar al menos tres corpus: el de entrenamiento, el de evaluación y el no etiquetado. Los corpus ya deben estar procesados antes de ser leídos por el ActivePipeline, y es recomendable que sean instancias de una clase Corpus también definida en el sistema.
+    \item[Clasificador] Es una instancia entrenable de un clasificador. Para mantener generalidad, requerimos que tenga la interfaz estándar de \textit{scikit-learn}. Los métodos que utilizamos son \textit{fit} para contruir el modelo a partir de los datos anotados, \textit{predict\_proba}, \textit{predict\_log\_proba} para obtener la probabilidad de cada clase dado un conjunto de instancias y \textit{score} que calcula el rendimiento del clasificador.
+    \item[Conjuntos de datos] Se deben definir los archivos desde donde recuperar al menos tres conjuntos de datos: el de entrenamiento, el de evaluación y el no etiquetado. Ya deben estar preprocesados antes de ser leídos por el ActivePipeline, y es recomendable que sean instancias de una clase Corpus también definida en el sistema.
 \end{description}
-Al permitir elegir tanto características como el corpus y el clasificador, la clase ActivePipeline puede ser utilizada dentro de cualquier ámbito incluso no relacionado al procesamiento del lenguaje natural.
+
+Al permitir elegir tanto características como el conjunto de datos y el clasificador, la clase ActivePipeline puede ser utilizada dentro de cualquier ámbito de aprendizaje activo incluso no relacionado al procesamiento del lenguaje natural.
 
 Tanto para el aprendizaje sobre características y sobre instancias el ActivePipeline cuenta con una función automática. El usuario debe definir sólo las funciones de interacción con el usuario, es decir, cómo mostrar la información, y pasarlas como parámetros al ActivePipeline.
 
@@ -34,7 +35,7 @@ Un clasificador bayesiano, explica \citet{libro-abney}, es un ejemplo de un mode
 
 $$P(x|c) = \frac{P(c)P(x|y)}{P(x)}$$
 
-El \textit{MultinomialNB} descripto por \citet{multinomial-manning} se basa en la asunción ingenua de que el valor de cada una de las características de una instancia es independiente de las demás. Si bien sabemos que esto no es así y que cada característica sí se relaciona con las restantes, este clasificador ampliamente utilizado para la categorización de texto \citet{dualist}, \citet{multinomialnb-comparision-mccallum} y \citet{multinomialnb-unbalanced}. Su principal ventaja es la simplicidad, lo que en nuestro caso ayudó en la tarea de la modificación.
+El \textit{MultinomialNB} descripto por \citet{multinomial-manning} se basa en la asunción ingenua de que el valor de cada una de las características de una instancia es independiente de las demás. Si bien sabemos que esto no es así y que cada característica sí se relaciona con las restantes, este clasificador es ampliamente utilizado para la categorización de texto \citet{dualist}, \citet{multinomialnb-comparision-mccallum} y \citet{multinomialnb-unbalanced}. Su principal ventaja es la simplicidad, lo que en nuestro caso ayudó a su adaptación para esta tarea de aprendizaje activo.
 
 En gran parte de la bibliografía se asume que las características de una instancia serán sólo las palabras presentes en el documento o instancia, lo cual no se ajusta a la representación elegida para este problema. Por lo tanto, hemos cambiado levemente la notación que utilizan otros autores reemplazando palabras como \textit{words} o \textit{terms} por \textit{características}. También hemos reemplazado \textit{documents} por \textit{instancias}.
 
@@ -44,7 +45,7 @@ Bajo este modelo, la probabilidad de que una instancia $x_i$ sea de clase $c_j$ 
 \end{equation}
 donde $n_i$ es la cantidad de características que aparecen en la instancia $x_i$ y $P(f_k|c_j)$ es la probabilidad de que la característica $f_k$ esté presente en una instancia de clase $c_j$. \citet{multinomial-manning} explican que la intuición detrás de estos conceptos es que $P(f_k|c_j)$ indica de qué tan buen indicador es $f_k$ para la clase $c_j$, mientras que $P(c_j)$ pesa estos valores por la probabilidad de la clase. El producto de las probabilidades y pesos es una medida de cuánta evidencia existe de que la instancia pertenezca a la clase.
 
-La gran cantidad de multiplicaciones sobre probabilidades menores que uno puede llevar fácilmente a un desbordamiento aritmético debido la imposibilidad de representar números tan pequeños en una computadora. Utilizaremos logaritmos para manejar esta situación, manteniendo la proporción de los operandos ya que el logaritmo es una función monótona creciente y basándonos fuertemente en la propiedad que asegura $\log(ab) = \log(a) + \log(b)$. La ecuación \ref{eq-mnb-prob} es equivalente a:
+La gran cantidad de multiplicaciones sobre valores probabilísticos menores que uno puede llevar fácilmente a un desbordamiento aritmético debido la imposibilidad de representar números tan pequeños en una computadora. Utilizaremos logaritmos para manejar esta situación, manteniendo la proporción de los operandos ya que el logaritmo es una función monótona creciente y basándonos fuertemente en la propiedad que asegura $\log(ab) = \log(a) + \log(b)$. La ecuación \ref{eq-mnb-prob} es equivalente a:
 
 \begin{equation}
 \log P(c_j|x_i) \propto \log P(c_j) + \sum_{1\leq k \leq n_i} \log P(f_k|c_j)
@@ -58,7 +59,7 @@ La tarea de clasificación se reduce entonces a encontrar la clase $c_j$ que max
 \end{equation}
 \end{definition}
 
-Nuestro modelos depende entonces de dos parámetros: $P(c_j)$ y $P(f_k|c_j)$. Sin embargo no conocemos las distribuciones reales de estas variables, y por lo tanto las estimaremos empíricamente a partir de los datos observados. Llamaremos $\hat{P}(c_j)$ y $\hat{P}(f_k|c_j)$ a las estimaciones respectivamente, que se calculan utilizando estimadores de máxima verosimilitud:
+Nuestro modelo depende entonces de dos parámetros: $P(c_j)$ y $P(f_k|c_j)$. Sin embargo no conocemos las distribuciones reales de estas variables, y por lo tanto las estimaremos empíricamente a partir de los datos observados. Existen muchas formas de obtener estos parámetros, la que proponemos a continuación es un ejemplo de un entrenamiento supervisado ya que utiliza instancias etiquetadas. Llamaremos $\hat{P}(c_j)$ y $\hat{P}(f_k|c_j)$ a las estimaciones respectivamente, que se calculan utilizando estimadores de máxima verosimilitud:
 
 \begin{equation}
 \hat{P}(c_j) = \frac{\sum_{x \in \mathcal{L}} \, \hat{\Psi}(x, c_j)}{|\mathcal{L}|}
@@ -69,7 +70,7 @@ Nuestro modelos depende entonces de dos parámetros: $P(c_j)$ y $P(f_k|c_j)$. Si
 
 donde $\mathcal{L}$ es el conjunto de datos etiquetados de entrenamiento, $\hat{\Psi}(x, c_j) \in \{0,1\}$ es la clasificación obtenida del mismo y $f_k(x)$ es la cantidad de veces que la característica $f_k$ está presente en la instancia $x$.
 
-Aunque las ecuaciones están bien definidas, puede suceder que el numerador de la ecuación \ref{sin-smooth} $\sum_{x \in \mathcal{L}} \hat{\Psi}(x, c_j) f_k(x)$ sea nulo ya que una característica puede no ocurrir en ninguna instancia de la clase. Debido a la raleza en la distribución de palabras explicada por \citet{zipf1}, \citet{zipf2}, es común que ocurra este fenómeno. Para evitarlo se suaviza los datos de la siguiente manera:
+Aunque las ecuaciones están bien definidas, puede suceder que el numerador de la ecuación \ref{sin-smooth} $\sum_{x \in \mathcal{L}} \hat{\Psi}(x, c_j) f_k(x)$ sea nulo ya que una característica puede no ocurrir en ninguna instancia de la clase. Debido a la raleza en la distribución de palabras (\citet{zipf1} y \citet{zipf2}), es común que ocurra este fenómeno. Para evitarlo se suaviza los datos de la siguiente manera:
 
 \begin{equation}
 \hat{P}(f_k|c_j) = \frac{m_{jk} + \sum_{x \in \mathcal{L}} \hat{\Psi}(x, c_j) f_k(x)}{\sum_{x \in \mathcal{L}} (f_k(x) + m_k)}
@@ -92,12 +93,12 @@ m_{jk} = 1 + \Psi_f(f_k, c_j) \; \alpha
 donde $\alpha$ es una constante y $\Psi_f$ es la clasificación aprendida del usuario.
 
 \vspace{5 mm}
-En las secciones siguientes describiremos cómo implementamos algunas secciones que intervienen en el aprendizaje activo. En la figura \ref{aa-con-secciones} se ilustran en qué momento del ciclo se utilizan estas implementaciones.
+En las secciones siguientes describiremos cómo implementamos algunos módulos que intervienen en el aprendizaje activo. En la figura \ref{aa-con-secciones} se ilustran en qué momento del ciclo se utilizan estas implementaciones.
 
 \begin{figure}[h!]\label{aa-con-secciones}
 \centering
 \includegraphics[width=10cm]{partes-implementacion}
-\caption{Diagrama de la implementación del sistema aprendizaje activo.}
+\caption{Diagrama de la implementación del sistema aprendizaje activo.}\label{aa-con-secciones}
 \end{figure}
 
 \section{Selección de instancias}

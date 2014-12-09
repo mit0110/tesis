@@ -17,7 +17,7 @@
 Este escrito consiste en un resumen de conceptos claves y métodos más utilizados
 en los trabajos realizados utilizando Aprendizaje Activo. Incluye como evidencias
 numerosas citas y resultados de trabajos realizados en la década previa a su
-escritura, identificando ventajas, desventajas y posibles escenarios de aplicación 
+escritura, identificando ventajas, desventajas y posibles escenarios de aplicación
 para cada uno de ellos.
 
 \subsection{¿Qué es aprendizaje activo?}
@@ -317,7 +317,7 @@ Existen tres grandes tipos de métodos:
         \item Selección hacia delante.
         \item Eliminación hacia atrás.
     \end{itemize}
-    Gracias a que se utilizan como una caja negra, son en general universales 
+    Gracias a que se utilizan como una caja negra, son en general universales
     y portables.
 
     \item[Métodos embebidos] Realizan el proceso de selección de variables
@@ -329,52 +329,52 @@ Existen tres grandes tipos de métodos:
         rápidos.
     \end{itemize}
 
-    \item[Métodos de nested subsets ??] Son métodos embebidos que 
-    guían la búsqueda estimando cambios en el valor de la función 
-    objetivo obtenido moviendo el espacio de subconjuntos de 
+    \item[Métodos de nested subsets ??] Son métodos embebidos que
+    guían la búsqueda estimando cambios en el valor de la función
+    objetivo obtenido moviendo el espacio de subconjuntos de
     variables. Algunos métodos para calcular el cambio en el valor de la función objetivo son:
     \begin{description}
         \item[Cáculo de la diferencia finita]: Se calcula la
         diferencia entre los valores de la función objetivo
-        quitando y agregando las variables cantidatas al 
-        subconjunto. Puede utilizarse sin necesidad de reentrenar 
+        quitando y agregando las variables cantidatas al
+        subconjunto. Puede utilizarse sin necesidad de reentrenar
         el modelo.
-        \item[Aproximación cuadrática a la función de costo]: Fue 
-        originalmente propuesto para \"recortar\" pesos en las 
-        redes neuronales, pero puede ser utilizado para backward 
-        elimination a través de la eliminación de los pesos de 
+        \item[Aproximación cuadrática a la función de costo]: Fue
+        originalmente propuesto para \"recortar\" pesos en las
+        redes neuronales, pero puede ser utilizado para backward
+        elimination a través de la eliminación de los pesos de
         las variables de entrada.
-        \item[Cálculo de la sensitividad de la función objetivo]: 
-        Se utiliza el valor absoluto del cuadrado de la derivada 
+        \item[Cálculo de la sensitividad de la función objetivo]:
+        Se utiliza el valor absoluto del cuadrado de la derivada
         de la función objetiva con respecto de la variable.
     \end{description}
 
-    \item[Optimización objetiva directa] Generalmente la función 
+    \item[Optimización objetiva directa] Generalmente la función
     objetiva consiste de dos partes que compiten: el goodness-of.
-    fit que debe ser maximizado, y el número de variables para 
+    fit que debe ser maximizado, y el número de variables para
     ser minimizado. Este método embebido \"bears similarity with\"
-    funciones objetivas de dos partes. Existen numerosos 
+    funciones objetivas de dos partes. Existen numerosos
     algortimos propuestos dentro de este método.
     \begin{itemize}
-        \item Utilizando predictores lineales con SVM, la lp-norm 
-        representa en el límite el número de variables, y puede 
-        ser minimizada con una modificación simple del algoritmo 
-        original de SVM. Sin embargo, una minimización aproximada 
+        \item Utilizando predictores lineales con SVM, la lp-norm
+        representa en el límite el número de variables, y puede
+        ser minimizada con una modificación simple del algoritmo
+        original de SVM. Sin embargo, una minimización aproximada
         puede dar mejores resultados que una minimización exacta.
-        \item En lugar de usar la lp-norm, la minimización de la 
-        l1-norm es suficiente para eliminar un número 
-        considerable de varaibles. Puede continuarse la 
+        \item En lugar de usar la lp-norm, la minimización de la
+        l1-norm es suficiente para eliminar un número
+        considerable de varaibles. Puede continuarse la
         eliminación con otro método como backward elimination.
-        \item En lugar de selección de variables también se 
-        propone escalar las variables, donde los valores de 
+        \item En lugar de selección de variables también se
+        propone escalar las variables, donde los valores de
         escalamiento son meta parámetros dependientes del modelo.
     \end{itemize}
 
-    \item[Filtros] Seleccionan subconjuntos de variables como un 
+    \item[Filtros] Seleccionan subconjuntos de variables como un
     preproceso. Algunas de sus ventajas son:
     \begin{itemize}
         \item Se argumentó que son más eficientes que los
-        métodos embebidos, aunque la optimización reciente de éstos ha revertido la situación. 
+        métodos embebidos, aunque la optimización reciente de éstos ha revertido la situación.
         \item Proveen métodos de selección que son independientes de cualquier algoritmo de aprendizaje.
         \item Pueden utilizarse como un preproceso para disminuir la dimensionalidad del problema.
     \end{itemize}
@@ -515,7 +515,7 @@ de documentos seleccionados activamente y de documentos y características.
     instancias.
     \item Los usuarios pasaron en general los primeros minutos etiquetando
     características, y luego pasaron a las instancias.
-    \item Los usuarios fueron más eficientes y cometieron menos errores. 
+    \item Los usuarios fueron más eficientes y cometieron menos errores.
 \end{itemize}
 
 \subsection{Otros experimentos}
@@ -564,7 +564,7 @@ La adaptación de dominio consiste en entrenar un sistema sobre un dominio Ds y 
 Sin embargo, la minimización de la función de error es muchas veces imposible de llevar a cabo conexactitud. Por lo tanto, se busca el mejor modelo estadístico como representación de los significados de las palabras. Como concecuencia, se utiliza fuertemente el concepto de hipótesis distribucional (el sentido de una palabra depende fuertemente del contexto en el que ésta se encuentra).
 \subsubsection{Hipótesis de representación con modelos de lenguajes estadísticos (LMRH)}
 Si un modelo describe con exactitud los posibles contextos de una palabra, entonces los parámetros de ese modelo pueden describir dichos contextos. Por lo tanto, es razonable incluirlos como características en tareas de procesamiento de lenguaje natural.
-Esto quiere decir que podemos separar las tareas de aprender la mejor representación para los datos y de aprender un clasificador, realizandolas en ese orden. Para aprender la representación basta con entrenar un modelo con datos no etiquetados, y después utilizar los parámetros o estados latentes del mismo para inducir una función de representación. Si optimizamos la representación para la tarea de modelado del lenguaje, entonces obtendremos buenos resultados para otras tareas utilizando sistemas semi supervisados. 
+Esto quiere decir que podemos separar las tareas de aprender la mejor representación para los datos y de aprender un clasificador, realizandolas en ese orden. Para aprender la representación basta con entrenar un modelo con datos no etiquetados, y después utilizar los parámetros o estados latentes del mismo para inducir una función de representación. Si optimizamos la representación para la tarea de modelado del lenguaje, entonces obtendremos buenos resultados para otras tareas utilizando sistemas semi supervisados.
 \\
 Los trabajos previos realizados sobre representación caen en general en una de las siguientes cuatro categorías:
 \begin{itemize}
@@ -579,7 +579,7 @@ Otros trabajos en adaptación de dominios utilizan ejemplos etiquetados de Ds y 
     \item Pereira et al. utilizan la técnica Aprendizaje de correspondencia estructural. Toman como pivotes las palabras que son comunes a ambos dominios, y entrenan clasificadores lineales para predecirlas. Reduce los vectores de pesos obtenidos y luego proyecta las características originales sobre esos vectores para formar nuevas características.
     \item Satpal et al. cambian la función de optimización durante el entrenamiento de un conditional random field. Seleccionan características que minimizen la distancia entre los ejemplos de entrenamiento y ejemplos de test no etiquetados.
     \item McClosky et al. usan clasificadores de distintos dominios y miden cuánto se distancia un documento de cada dominio para pesar las características del clasificador usado en Ds.
-    \item Dai et al. usan la divergencia KL entre dominios para modificar los parámetros de un bayesiano ingénuo entrenado únicamente en Ds.
+    \item Dai et al. usan la divergencia KL entre dominios para modificar los parámetros de un bayesiano ingenuo entrenado únicamente en Ds.
 \end{itemize}
 
 \subsection{Aprendiendo representaciones para similitudes distribucionales}

@@ -108,6 +108,39 @@
          x="19.733334"
          y="159.56218" />
     </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath2993-3-34-74">
+      <rect
+         style="fill:#000000"
+         id="rect2995-2-3-5"
+         width="200.53334"
+         height="156"
+         x="19.733334"
+         y="159.56218" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath2993-3-344">
+      <rect
+         style="fill:#000000"
+         id="rect2995-2-2"
+         width="200.53334"
+         height="156"
+         x="19.733334"
+         y="159.56218" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath2993-72">
+      <rect
+         style="fill:#000000"
+         id="rect2995-0"
+         width="200.53334"
+         height="156"
+         x="19.733334"
+         y="159.56218" />
+    </clipPath>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -116,9 +149,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.36048668"
-     inkscape:cx="-2202.058"
-     inkscape:cy="1069.5759"
+     inkscape:zoom="0.35221101"
+     inkscape:cx="-1617.9081"
+     inkscape:cy="1218.3334"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -145,16 +178,6 @@
      inkscape:label="Capa 1"
      inkscape:groupmode="layer"
      id="layer1">
-    <rect
-       style="fill:#ffffff;stroke:#ffffff;stroke-width:0.84379709000000003"
-       id="rect4213"
-       width="1390.6321"
-       height="1213.1339"
-       x="-491.13568"
-       y="-783.18774"
-       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90" />
     <rect
        style="fill:#ffd5d5"
        id="rect3009-5"
@@ -321,7 +344,7 @@
        width="368.5632"
        height="96.062744"
        x="-2224.4263"
-       y="-37.522366"
+       y="-37.522339"
        inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
@@ -443,8 +466,8 @@
     <text
        xml:space="preserve"
        style="font-size:52.58779144px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-1541.7153"
-       y="154.40648"
+       x="-1548.3981"
+       y="158.28331"
        id="text2997-75"
        sodipodi:linespacing="125%"
        transform="scale(0.962321,1.0391543)"
@@ -452,13 +475,13 @@
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
-         x="-1541.7153"
-         y="154.40648"
-         id="tspan3007-4">Características</tspan><tspan
+         x="-1548.3981"
+         y="158.28331"
+         id="tspan5298">Mejores</tspan><tspan
          sodipodi:role="line"
-         x="-1541.7153"
-         y="220.14122"
-         id="tspan5298">más probables</tspan></text>
+         x="-1548.3981"
+         y="224.01805"
+         id="tspan3560">características</tspan></text>
     <rect
        style="fill:#e3dbdb"
        id="rect3009-6-3"
@@ -472,8 +495,8 @@
     <text
        xml:space="preserve"
        style="font-size:55.74307251px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-1910.8839"
-       y="-490.46185"
+       x="-1902.3893"
+       y="-478.76944"
        id="text2997-75-4"
        sodipodi:linespacing="125%"
        transform="scale(0.962321,1.0391543)"
@@ -481,13 +504,13 @@
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
-         x="-1910.8839"
-         y="-490.46185"
-         id="tspan3007-4-3">Instancia</tspan><tspan
+         x="-1902.3893"
+         y="-478.76944"
+         id="tspan5298-5">Mejor</tspan><tspan
          sodipodi:role="line"
-         x="-1910.8839"
-         y="-420.78302"
-         id="tspan5298-5">más probable</tspan></text>
+         x="-1902.3893"
+         y="-409.09061"
+         id="tspan3556">instancia</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:34.96562195px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -1249,16 +1272,6 @@
          x="-269.20407"
          y="-53.43681"
          id="tspan3942-5-2-1-7" /></text>
-    <path
-       sodipodi:type="arc"
-       style="fill:none;stroke:#000000"
-       id="path3935"
-       sodipodi:cx="-2044.5704"
-       sodipodi:cy="-100.93623"
-       sodipodi:rx="449.46124"
-       sodipodi:ry="495.36368"
-       d="m -1595.1092,-100.93623 a 449.46124,495.36368 0 1 1 -898.9225,0 449.46124,495.36368 0 1 1 898.9225,0 z"
-       transform="matrix(1.0861634,0,0,0.98164757,1793.4707,907.89857)" />
     <g
        id="g5331-3-9-2"
        transform="matrix(0.57628114,1.174855,-1.174855,0.57628114,710.85954,603.64704)"
@@ -1325,49 +1338,26 @@
        id="rect3009-5-2-0-9-9-7"
        width="539.4809"
        height="231.12981"
-       x="-51.703922"
-       y="-737.31158"
+       x="-50.386871"
+       y="-655.31158"
        inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
-    <text
-       xml:space="preserve"
-       style="font-size:69.382164px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="240.58711"
-       y="-584.14423"
-       id="text2997-6-1-7-0-4-8"
-       sodipodi:linespacing="125%"
-       transform="scale(0.90056201,1.1104177)"
-       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa.png"
-       inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90"><tspan
-         sodipodi:role="line"
-         x="240.58711"
-         y="-584.14423"
-         id="tspan4072">Selección de</tspan><tspan
-         sodipodi:role="line"
-         x="240.58711"
-         y="-497.41653"
-         id="tspan3294">instancias</tspan><tspan
-         sodipodi:role="line"
-         x="240.58711"
-         y="-410.68881"
-         id="tspan3942-5-2-1-7-9" /></text>
     <rect
-       style="fill:#e3dbdb"
+       style="fill:#ffd5d5"
        id="rect3009-5-2-0-9-9-7-4"
        width="539.4809"
-       height="231.12981"
-       x="-51.703922"
-       y="144.29199"
+       height="142.07808"
+       x="-50.386871"
+       y="107.21111"
        inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <text
        xml:space="preserve"
        style="font-size:69.382164px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="241.90836"
-       y="209.79446"
+       x="243.33694"
+       y="181.51489"
        id="text2997-6-1-7-0-4-8-1"
        sodipodi:linespacing="125%"
        transform="scale(0.90056201,1.1104177)"
@@ -1375,16 +1365,12 @@
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
-         x="241.90836"
-         y="209.79446"
-         id="tspan4038-1">Instancias</tspan><tspan
+         x="243.33694"
+         y="181.51489"
+         id="tspan4076">Etiqueta</tspan><tspan
          sodipodi:role="line"
-         x="241.90836"
-         y="296.52216"
-         id="tspan4076">etiquetadas</tspan><tspan
-         sodipodi:role="line"
-         x="241.90836"
-         y="383.24988"
+         x="243.33694"
+         y="268.24258"
          id="tspan3942-5-2-1-7-9-0" /></text>
     <g
        id="g5331-3-9-2-7"
@@ -1574,16 +1560,16 @@
        id="rect3009-5-2-0-9-9-7-43"
        width="539.4809"
        height="231.12981"
-       x="-50.052731"
-       y="-1061.0691"
+       x="-50.386871"
+       y="-972.0976"
        inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <text
        xml:space="preserve"
        style="font-size:69.382164px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="242.42067"
-       y="-875.70789"
+       x="242.04959"
+       y="-795.58185"
        id="text2997-6-1-7-0-4-8-0"
        sodipodi:linespacing="125%"
        transform="scale(0.90056201,1.1104177)"
@@ -1591,16 +1577,16 @@
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
-         x="242.42067"
-         y="-875.70789"
-         id="tspan4072-5">Ejemplos no</tspan><tspan
+         x="242.04959"
+         y="-795.58185"
+         id="tspan4072-5">Instancias no</tspan><tspan
          sodipodi:role="line"
-         x="242.42067"
-         y="-788.98016"
-         id="tspan3290">etiquetados</tspan><tspan
+         x="242.04959"
+         y="-708.85413"
+         id="tspan3290">etiquetadas</tspan><tspan
          sodipodi:role="line"
-         x="242.42067"
-         y="-702.2525"
+         x="242.04959"
+         y="-622.12646"
          id="tspan3942-5-2-1-7-9-4" /></text>
     <g
        id="g5331-3-9-9-5-4-72-5-0-6"
@@ -1791,26 +1777,22 @@
     </g>
     <path
        sodipodi:type="arc"
-       style="fill:#d7f4d7;stroke:#ffffff"
+       style="fill:#d7eef4;stroke:#ffffff"
        id="path4327"
        sodipodi:cx="-968.13562"
        sodipodi:cy="-655.05182"
        sodipodi:rx="74.898743"
        sodipodi:ry="73.511734"
        d="m -893.23688,-655.05182 a 74.898743,73.511734 0 1 1 -149.79752,0 74.898743,73.511734 0 1 1 149.79752,0 z"
-<<<<<<< HEAD
-       transform="translate(-1248.3125,492.38989)"
-=======
        transform="matrix(1.206145,0,0,1.206145,-1033.1931,642.68273)"
->>>>>>> f75bf85c879f510518a99cae85fe6725ce4c2e9e
        inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <text
        xml:space="preserve"
-       style="font-size:52.44843292px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-2303.2314"
-       y="-137.41542"
+       style="font-size:63.26041794px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-2287.0798"
+       y="-118.79215"
        id="text2997-6-1-7-0-7-7"
        sodipodi:linespacing="125%"
        transform="scale(0.962321,1.0391543)"
@@ -1818,12 +1800,12 @@
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
-         x="-2303.2314"
-         y="-137.41542"
+         x="-2287.0798"
+         y="-118.79215"
          id="tspan3942-5-2-1-0-1">EM</tspan></text>
     <path
        sodipodi:type="arc"
-       style="fill:#d7f4d7;stroke:#ffffff"
+       style="fill:#d7eef4;stroke:#ffffff"
        id="path4377"
        sodipodi:cx="-830.82129"
        sodipodi:cy="-555.18683"
@@ -1838,7 +1820,7 @@
        xml:space="preserve"
        style="font-size:51.74030685px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        x="-1577.0892"
-       y="376.87823"
+       y="376.87796"
        id="text2997-75-4-7-5"
        sodipodi:linespacing="125%"
        transform="scale(0.987419,1.0127413)"
@@ -1847,34 +1829,34 @@
        inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          x="-1577.0892"
-         y="376.87823"
+         y="376.87796"
          id="tspan5298-5-6-1">Selección</tspan><tspan
          sodipodi:role="line"
          x="-1577.0892"
-         y="441.55362"
+         y="441.55334"
          id="tspan4379">de</tspan><tspan
          sodipodi:role="line"
          x="-1577.0892"
-         y="506.229"
+         y="506.22873"
          id="tspan4021-7">características</tspan></text>
     <path
        sodipodi:type="arc"
-       style="fill:#d7f4d7;stroke:#ffffff"
+       style="fill:#d7eef4;stroke:#ffffff"
        id="path4377-3"
        sodipodi:cx="-830.82129"
        sodipodi:cy="-555.18683"
        sodipodi:rx="270.46768"
        sodipodi:ry="253.82353"
        d="m -560.35361,-555.18683 a 270.46768,253.82353 0 1 1 -540.93539,0 270.46768,253.82353 0 1 1 540.93539,0 z"
-       transform="matrix(0.75125409,0,0,0.75125409,-1728.2207,-212.74432)"
+       transform="matrix(0.75125409,0,0,0.75125409,-1438.6216,-283.7245)"
        inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <text
        xml:space="preserve"
        style="font-size:57.48464966px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-2467.7131"
-       y="-649.98291"
+       x="-2164.0742"
+       y="-717.68109"
        id="text2997-75-4-7"
        sodipodi:linespacing="125%"
        transform="scale(0.95376164,1.04848)"
@@ -1882,44 +1864,1681 @@
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
-         x="-2467.7131"
-         y="-649.98291"
+         x="-2164.0742"
+         y="-717.68109"
          id="tspan5298-5-6">Selección</tspan><tspan
          sodipodi:role="line"
-         x="-2467.7131"
-         y="-578.12708"
+         x="-2164.0742"
+         y="-645.82526"
          id="tspan4423">de</tspan><tspan
          sodipodi:role="line"
-         x="-2467.7131"
-         y="-506.27127"
+         x="-2164.0742"
+         y="-573.96948"
          id="tspan4021">instancias</tspan></text>
-    <path
-       sodipodi:type="arc"
-       style="fill:#d7f4d7;stroke:#ffffff"
-       id="path4327-8"
-       sodipodi:cx="-968.13562"
-       sodipodi:cy="-655.05182"
-       sodipodi:rx="74.898743"
-       sodipodi:ry="73.511734"
-       d="m -893.23688,-655.05182 a 74.898743,73.511734 0 1 1 -149.79752,0 74.898743,73.511734 0 1 1 149.79752,0 z"
-       transform="translate(-22.192262,453.55351)"
-       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+    <rect
+       style="fill:#d7f4d7"
+       id="rect3009-5-2-0-9-9-7-43-6"
+       width="539.4809"
+       height="231.12981"
+       x="-50.386871"
+       y="340.14374"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:69.382164px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="243.37083"
+       y="386.17111"
+       id="text2997-6-1-7-0-4-8-0-8"
+       sodipodi:linespacing="125%"
+       transform="scale(0.90056201,1.1104177)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="243.37083"
+         y="386.17111"
+         id="tspan3484">Instancias</tspan><tspan
+         sodipodi:role="line"
+         x="243.37083"
+         y="472.8988"
+         id="tspan4206">etiquetadas</tspan><tspan
+         sodipodi:role="line"
+         x="243.37083"
+         y="559.62653"
+         id="tspan3942-5-2-1-7-9-4-1" /></text>
+    <g
+       id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-0-2-0-7-6"
+       transform="matrix(0.00536474,0.24814954,0.2573629,-0.00556392,128.10913,356.70978)"
+       style="fill:#999999;stroke:#b3b3b3"
+       inkscape:transform-center-x="239.30745"
+       inkscape:transform-center-y="519.17063"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-2-1-4-1-2"
+         d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-8-4-9-7-1"
+         d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <g
+       id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-0-2-0-7-6-5"
+       transform="matrix(0.00536474,0.24814954,0.2573629,-0.00556392,128.10913,-636.14636)"
+       style="fill:#999999;stroke:#b3b3b3"
+       inkscape:transform-center-x="239.30745"
+       inkscape:transform-center-y="-519.17063"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-2-1-4-1-2-9"
+         d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-8-4-9-7-1-9"
+         d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:61.06723404px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="220.67488"
+       y="-553.84186"
+       id="text2997-75-4-5"
+       sodipodi:linespacing="125%"
+       transform="scale(0.99355284,1.006489)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="220.67488"
+         y="-553.84186"
+         id="tspan5298-5-8"
+         style="font-size:69.68999481px">Mejor</tspan><tspan
+         sodipodi:role="line"
+         x="220.67488"
+         y="-466.72937"
+         style="font-size:69.68999481px"
+         id="tspan3552">instancia</tspan></text>
+    <rect
+       style="fill:#ffd5d5"
+       id="rect3009-5-0"
+       width="352.96341"
+       height="104.6132"
+       x="-2587.2026"
+       y="1258.9084"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#e3dbdb"
+       id="rect3009-3"
+       width="344"
+       height="156"
+       x="-3121.2683"
+       y="1499.3357"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <g
+       id="g3050-0"
+       transform="translate(-2606.5554,1473.4176)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         transform="matrix(0.79752684,0,0,0.71502409,473.41766,-210.80796)"
+         d="m -491.42855,382.36218 c 0,22.88037 -16.62943,41.42857 -37.14286,41.42857 -20.51343,0 -37.14286,-18.5482 -37.14286,-41.42857 0,-22.88036 16.62943,-41.42857 37.14286,-41.42857 20.51343,0 37.14286,18.54821 37.14286,41.42857 z"
+         sodipodi:ry="41.42857"
+         sodipodi:rx="37.142857"
+         sodipodi:cy="382.36218"
+         sodipodi:cx="-528.57141"
+         id="path2987-1"
+         style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         sodipodi:type="arc" />
+      <path
+         clip-path="url(#clipPath2993-72)"
+         transform="matrix(-0.9375,0,0,-1.0013441,164.5,316.3485)"
+         d="m 184,164.36218 c 0,39.7645 -28.65378,72 -64,72 -35.346224,0 -64,-32.2355 -64,-72 0,-39.7645 28.653776,-71.999997 64,-71.999997 35.34622,0 64,32.235497 64,71.999997 z"
+         sodipodi:ry="72"
+         sodipodi:rx="64"
+         sodipodi:cy="164.36218"
+         sodipodi:cx="120"
+         id="path2989-2"
+         style="fill:#000000"
+         sodipodi:type="arc" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:55.85352325px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-2508.2085"
+       y="1280.2061"
+       id="text2997-6-7"
+       sodipodi:linespacing="125%"
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="-2508.2085"
+         y="1280.2061"
+         id="tspan3007-1-8">Instancias</tspan><tspan
+         sodipodi:role="line"
+         x="-2508.2085"
+         y="1350.0229"
+         id="tspan3942-4" /></text>
+    <rect
+       style="fill:#ffd5d5"
+       id="rect3009-5-2-7"
+       width="466.19974"
+       height="106.70796"
+       x="-2863.6487"
+       y="1782.2766"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:56.97192001px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-2729.5063"
+       y="1785.2308"
+       id="text2997-6-1-53"
+       sodipodi:linespacing="125%"
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="-2729.5063"
+         y="1785.2308"
+         id="tspan3007-1-1-9">Características</tspan><tspan
+         sodipodi:role="line"
+         x="-2729.5063"
+         y="1856.4457"
+         id="tspan3942-5-5" /></text>
+    <rect
+       style="fill:#e3dbdb"
+       id="rect3009-0-5"
+       width="492"
+       height="97.711708"
+       x="-2543.9956"
+       y="2031.9004"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:50.00897217px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-2387.9583"
+       y="2017.5718"
+       id="text2997-7-5"
+       sodipodi:linespacing="125%"
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="-2387.9583"
+         y="2017.5718"
+         id="tspan3007-5-6">¿Para qué clase?</tspan></text>
+    <g
+       id="g3050-9-7"
+       transform="translate(-1942.5398,2029.4414)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         transform="matrix(0.79752684,0,0,0.71502409,473.41766,-210.80796)"
+         d="m -491.42855,382.36218 c 0,22.88037 -16.62943,41.42857 -37.14286,41.42857 -20.51343,0 -37.14286,-18.5482 -37.14286,-41.42857 0,-22.88036 16.62943,-41.42857 37.14286,-41.42857 20.51343,0 37.14286,18.54821 37.14286,41.42857 z"
+         sodipodi:ry="41.42857"
+         sodipodi:rx="37.142857"
+         sodipodi:cy="382.36218"
+         sodipodi:cx="-528.57141"
+         id="path2987-7-8"
+         style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         sodipodi:type="arc" />
+      <path
+         clip-path="url(#clipPath2993-3-344)"
+         transform="matrix(-0.9375,0,0,-1.0013441,164.5,316.3485)"
+         d="m 184,164.36218 c 0,39.7645 -28.65378,72 -64,72 -35.346224,0 -64,-32.2355 -64,-72 0,-39.7645 28.653776,-71.999997 64,-71.999997 35.34622,0 64,32.235497 64,71.999997 z"
+         sodipodi:ry="72"
+         sodipodi:rx="64"
+         sodipodi:cy="164.36218"
+         sodipodi:cx="120"
+         id="path2989-1-3"
+         style="fill:#000000"
+         sodipodi:type="arc" />
+    </g>
+    <rect
+       style="fill:#ffd5d5"
+       id="rect3009-5-2-3-5"
+       width="368.5632"
+       height="96.062744"
+       x="-2247.9956"
+       y="1618.9078"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:47.15530396px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-2145.6685"
+       y="1617.1383"
+       id="text2997-6-1-5-8"
+       sodipodi:linespacing="125%"
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="-2145.6685"
+         y="1617.1383"
+         id="tspan4449-1">Etiquetas</tspan></text>
+    <rect
+       style="fill:#ffd5d5"
+       id="rect3009-5-2-0-9-1"
+       width="312.87964"
+       height="88.32151"
+       x="-2220.1538"
+       y="1422.071"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:47.15530396px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-2146.8083"
+       y="1427.8395"
+       id="text2997-6-1-7-0-6"
+       sodipodi:linespacing="125%"
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="-2146.8083"
+         y="1427.8395"
+         id="tspan3007-1-1-1-1-6">Entrenar</tspan><tspan
+         sodipodi:role="line"
+         x="-2146.8083"
+         y="1486.7836"
+         id="tspan3942-5-2-1-6" /></text>
+    <rect
+       style="fill:#ffd5d5"
+       id="rect3009-5-2-0-9-5-0"
+       width="348"
+       height="98.235497"
+       x="-1370.592"
+       y="1529.1848"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
     <text
        xml:space="preserve"
        style="font-size:52.44843292px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-1029.1034"
-       y="-174.78848"
-       id="text2997-6-1-7-0-7-7-8"
+       x="-1243.3416"
+       y="1538.387"
+       id="text2997-6-1-7-0-7-0"
        sodipodi:linespacing="125%"
        transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="-1243.3416"
+         y="1538.387"
+         id="tspan3007-1-1-1-1-0-3">Terminar</tspan><tspan
+         sodipodi:role="line"
+         x="-1243.3416"
+         y="1603.9475"
+         id="tspan3942-5-2-1-0-5" /></text>
+    <g
+       id="g3050-9-93-0"
+       transform="translate(-1653.8191,1443.5853)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         transform="matrix(0.79752684,0,0,0.71502409,473.41766,-210.80796)"
+         d="m -491.42855,382.36218 c 0,22.88037 -16.62943,41.42857 -37.14286,41.42857 -20.51343,0 -37.14286,-18.5482 -37.14286,-41.42857 0,-22.88036 16.62943,-41.42857 37.14286,-41.42857 20.51343,0 37.14286,18.54821 37.14286,41.42857 z"
+         sodipodi:ry="41.42857"
+         sodipodi:rx="37.142857"
+         sodipodi:cy="382.36218"
+         sodipodi:cx="-528.57141"
+         id="path2987-7-0-3"
+         style="fill:#000000;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         sodipodi:type="arc" />
+      <path
+         clip-path="url(#clipPath2993-3-34-74)"
+         transform="matrix(-0.9375,0,0,-1.0013441,164.5,316.3485)"
+         d="m 184,164.36218 c 0,39.7645 -28.65378,72 -64,72 -35.346224,0 -64,-32.2355 -64,-72 0,-39.7645 28.653776,-71.999997 64,-71.999997 35.34622,0 64,32.235497 64,71.999997 z"
+         sodipodi:ry="72"
+         sodipodi:rx="64"
+         sodipodi:cy="164.36218"
+         sodipodi:cx="120"
+         id="path2989-1-42-8"
+         style="fill:#000000"
+         sodipodi:type="arc" />
+    </g>
+    <rect
+       style="fill:#e3dbdb"
+       id="rect3009-6-37"
+       width="426.21295"
+       height="172.0545"
+       x="-1711.7845"
+       y="1802.302"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:52.58779144px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-1557.5118"
+       y="1804.2657"
+       id="text2997-75-1"
+       sodipodi:linespacing="125%"
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="-1557.5118"
+         y="1804.2657"
+         id="tspan5298-0">Mejores</tspan><tspan
+         sodipodi:role="line"
+         x="-1557.5118"
+         y="1870.0005"
+         id="tspan3560-5">características</tspan></text>
+    <rect
+       style="fill:#e3dbdb"
+       id="rect3009-6-3-7"
+       width="396.57834"
+       height="176.06804"
+       x="-2052.9756"
+       y="1133.4851"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:55.74307251px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-1927.387"
+       y="1161.4353"
+       id="text2997-75-4-0"
+       sodipodi:linespacing="125%"
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="-1927.387"
+         y="1161.4353"
+         id="tspan5298-5-0">Mejor</tspan><tspan
+         sodipodi:role="line"
+         x="-1927.387"
+         y="1231.1141"
+         id="tspan3556-3">instancia</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:34.96562195px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-3065.2222"
+       y="1486.3533"
+       id="text2997-9"
+       sodipodi:linespacing="125%"
+       transform="scale(0.962321,1.0391543)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         id="tspan2999-8"
+         x="-3065.2222"
+         y="1486.3533">¿Desea etiquetar</tspan><tspan
+         sodipodi:role="line"
+         x="-3065.2222"
+         y="1530.0603"
+         id="tspan3003-0">características o</tspan><tspan
+         sodipodi:role="line"
+         x="-3065.2222"
+         y="1573.7673"
+         id="tspan3007-6">instancias?</tspan></text>
+    <g
+       id="g6079-4"
+       transform="translate(-1454.195,1676.0034)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="matrix(0.99317503,-0.1166334,0.1166334,0.99317503,-9.796796,-117.48688)"
+         id="g6069-84">
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-9"
+           transform="matrix(-0.01556616,0.18903703,-0.19605565,-0.01614409,-1040.9353,77.054604)"
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1"
+           inkscape:transform-center-x="237.91217"
+           inkscape:transform-center-y="519.8539">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-55"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-27"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+      </g>
+      <g
+         transform="matrix(0.9981555,-0.06070916,0.06070916,0.9981555,-0.7786288,-54.233189)"
+         id="g6074-1">
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-9"
+           transform="matrix(0.00988257,0.18941923,-0.19645201,0.01024947,-1035.5805,99.474266)"
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1"
+           inkscape:transform-center-x="258.80082"
+           inkscape:transform-center-y="488.7418">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-3"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-3"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+      </g>
+      <g
+         inkscape:transform-center-y="543.2529"
+         inkscape:transform-center-x="229.86192"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.01854444,0.18876815,-0.19577676,-0.01923296,-1048.7087,57.305553)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-1">
+        <path
+           inkscape:connector-curvature="0"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-68"
+           d="m -319.05812,415.01795 137.79164,-94.16367 -10.20999,0.84877 10.94045,-1.4506 -149.91072,-75.10326 7.37562,86.43392 -0.48742,0.079 4.50042,83.35587 z"
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      </g>
+    </g>
+    <g
+       id="g5331-3-9-4"
+       transform="matrix(0.45859727,0.88864422,-0.88864422,0.45859727,-1790.8509,2223.3441)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         inkscape:transform-center-y="519.17063"
+         inkscape:transform-center-x="239.30745"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11036543,-0.15426204,-0.15998952,0.1144631,-991.6209,190.13446)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-2">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-9"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-7"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="490.67477"
+         inkscape:transform-center-x="255.08414"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.08694454,-0.16857627,-0.17483518,0.09017264,-998.8815,166.99291)"
+         id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-9">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-0"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-7"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="546.5158"
+         inkscape:transform-center-x="222.49815"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11023742,-0.15435355,-0.16008442,0.11433034,-972.7506,217.51116)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-6">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-9"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-76"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       id="g5331-3-9-9-2"
+       transform="matrix(-0.33019722,0.94391197,-0.94391197,-0.33019722,-2277.8869,2262.2006)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         inkscape:transform-center-y="519.17063"
+         inkscape:transform-center-x="239.30745"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11036543,-0.15426204,-0.15998952,0.1144631,-991.6209,190.13446)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-6">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-6"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-3"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="490.67477"
+         inkscape:transform-center-x="255.08414"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.08694454,-0.16857627,-0.17483518,0.09017264,-998.8815,166.99291)"
+         id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-5">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-6-23"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-0-1"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="546.5158"
+         inkscape:transform-center-x="222.49815"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11023742,-0.15435355,-0.16008442,0.11433034,-972.7506,217.51116)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-2">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-8"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-6"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       id="g5331-3-9-9-5-4"
+       transform="matrix(-0.99983642,0.01808731,-0.01808731,-0.99983642,-2691.0819,1689.0025)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         inkscape:transform-center-y="519.17063"
+         inkscape:transform-center-x="239.30745"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11036543,-0.15426204,-0.15998952,0.1144631,-991.6209,190.13446)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-9-5">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-4-7"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-8-5"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="490.67477"
+         inkscape:transform-center-x="255.08414"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.08694454,-0.16857627,-0.17483518,0.09017264,-998.8815,166.99291)"
+         id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-8-0">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-6-2-3"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-0-3-9"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="546.5158"
+         inkscape:transform-center-x="222.49815"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11023742,-0.15435355,-0.16008442,0.11433034,-972.7506,217.51116)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-4-7">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-7-3"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-3-3"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       id="g5331-3-9-9-5-4-72-5-0-7-9"
+       transform="matrix(0.9087343,-0.41737511,0.41737511,0.9087343,-1540.5063,954.1483)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         inkscape:transform-center-y="519.17063"
+         inkscape:transform-center-x="239.30745"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11036543,-0.15426204,-0.15998952,0.1144631,-991.6209,190.13446)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-9-1-77-6-4-0-2">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-4-5-5-4-2-2-0"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-8-6-9-5-1-5-0"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="490.67477"
+         inkscape:transform-center-x="255.08414"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.08694454,-0.16857627,-0.17483518,0.09017264,-998.8815,166.99291)"
+         id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-8-9-48-4-9-7-4">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-6-2-8-53-0-2-7-9"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-0-3-8-0-0-0-5-6"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="546.5158"
+         inkscape:transform-center-x="222.49815"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11023742,-0.15435355,-0.16008442,0.11433034,-972.7506,217.51116)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-4-6-5-7-2-2-4">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-7-8-9-5-1-6-7"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-3-5-27-2-8-9-4"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       id="g5331-3-9-9-5-4-72-1-6"
+       transform="matrix(-0.63187414,0.77507102,-0.77507102,-0.63187414,-1881.0605,2527.4614)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         inkscape:transform-center-y="519.17063"
+         inkscape:transform-center-x="239.30745"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11036543,-0.15426204,-0.15998952,0.1144631,-991.6209,190.13446)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-9-1-77-7-5">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-4-5-5-7-1"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-8-6-9-2-1"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="490.67477"
+         inkscape:transform-center-x="255.08414"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.08694454,-0.16857627,-0.17483518,0.09017264,-998.8815,166.99291)"
+         id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-8-9-48-9-2">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-6-2-8-53-1-3"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-0-3-8-0-5-44"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="546.5158"
+         inkscape:transform-center-x="222.49815"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11023742,-0.15435355,-0.16008442,0.11433034,-972.7506,217.51116)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-4-6-5-3-73">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-7-8-9-2-0"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-3-5-27-5-2"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       id="g5331-3-9-9-5-4-72-1-0-0"
+       transform="matrix(-0.63187414,0.77507102,-0.77507102,-0.63187414,-3143.0898,2545.6985)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         inkscape:transform-center-y="519.17063"
+         inkscape:transform-center-x="239.30745"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11036543,-0.15426204,-0.15998952,0.1144631,-991.6209,190.13446)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-9-1-77-7-4-0">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-4-5-5-7-7-9"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-8-6-9-2-7-1"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="490.67477"
+         inkscape:transform-center-x="255.08414"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.08694454,-0.16857627,-0.17483518,0.09017264,-998.8815,166.99291)"
+         id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-8-9-48-9-3-3">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-6-2-8-53-1-7-8"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-0-3-8-0-5-4-0"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="546.5158"
+         inkscape:transform-center-x="222.49815"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11023742,-0.15435355,-0.16008442,0.11433034,-972.7506,217.51116)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-4-6-5-3-7-8">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-7-8-9-2-3-3"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-3-5-27-5-6-1"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       transform="matrix(0.85701562,-0.51529042,0.51529042,0.85701562,-1536.0926,1367.3959)"
+       id="g6079-8-1"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="matrix(0.99317503,-0.1166334,0.1166334,0.99317503,-9.796796,-117.48688)"
+         id="g6069-7-3">
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-3-1"
+           transform="matrix(-0.01556616,0.18903703,-0.19605565,-0.01614409,-1040.9353,77.054604)"
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1"
+           inkscape:transform-center-x="237.91217"
+           inkscape:transform-center-y="519.8539">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-6-5"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-6-5"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+      </g>
+      <g
+         transform="matrix(0.9981555,-0.06070916,0.06070916,0.9981555,-0.7786288,-54.233189)"
+         id="g6074-5-7">
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-3-9"
+           transform="matrix(0.00988257,0.18941923,-0.19645201,0.01024947,-1035.5805,99.474266)"
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1"
+           inkscape:transform-center-x="258.80082"
+           inkscape:transform-center-y="488.7418">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-7-4"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-6-1"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+      </g>
+      <g
+         inkscape:transform-center-y="543.2529"
+         inkscape:transform-center-x="229.86192"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1"
+         transform="matrix(-0.01854444,0.18876815,-0.19577676,-0.01923296,-1048.7087,57.305553)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-8-8">
+        <path
+           inkscape:connector-curvature="0"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-2-1"
+           d="m -319.05812,415.01795 137.79164,-94.16367 -10.20999,0.84877 10.94045,-1.4506 -149.91072,-75.10326 7.37562,86.43392 -0.48742,0.079 4.50042,83.35587 z"
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      </g>
+    </g>
+    <g
+       transform="matrix(-0.03440069,-0.99940812,0.99940812,-0.03440069,-2117.2869,1056.9908)"
+       id="g6079-7-2"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="matrix(0.99317503,-0.1166334,0.1166334,0.99317503,-9.796796,-117.48688)"
+         id="g6069-8-9">
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-1-4"
+           transform="matrix(-0.01556616,0.18903703,-0.19605565,-0.01614409,-1040.9353,77.054604)"
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1"
+           inkscape:transform-center-x="237.91217"
+           inkscape:transform-center-y="519.8539">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-2-8"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-7-6"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+      </g>
+      <g
+         transform="matrix(0.9981555,-0.06070916,0.06070916,0.9981555,-0.7786288,-54.233189)"
+         id="g6074-4-8">
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-7-5"
+           transform="matrix(0.00988257,0.18941923,-0.19645201,0.01024947,-1035.5805,99.474266)"
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1"
+           inkscape:transform-center-x="258.80082"
+           inkscape:transform-center-y="488.7418">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-0-1"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-62-8"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+      </g>
+      <g
+         inkscape:transform-center-y="543.2529"
+         inkscape:transform-center-x="229.86192"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.01854444,0.18876815,-0.19577676,-0.01923296,-1048.7087,57.305553)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-2-9">
+        <path
+           inkscape:connector-curvature="0"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-21-1"
+           d="m -319.05812,415.01795 137.79164,-94.16367 -10.20999,0.84877 10.94045,-1.4506 -149.91072,-75.10326 7.37562,86.43392 -0.48742,0.079 4.50042,83.35587 z"
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      </g>
+    </g>
+    <g
+       transform="matrix(-0.59345149,-0.80486977,0.80486977,-0.59345149,-2461.4214,1191.5752)"
+       id="g6079-1-0"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="matrix(0.99317503,-0.1166334,0.1166334,0.99317503,-9.796796,-117.48688)"
+         id="g6069-5-1">
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-0-4"
+           transform="matrix(-0.01556616,0.18903703,-0.19605565,-0.01614409,-1040.9353,77.054604)"
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1"
+           inkscape:transform-center-x="237.91217"
+           inkscape:transform-center-y="519.8539">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-5-5"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-24-9"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+      </g>
+      <g
+         transform="matrix(0.9981555,-0.06070916,0.06070916,0.9981555,-0.7786288,-54.233189)"
+         id="g6074-3-6">
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-31-4"
+           transform="matrix(0.00988257,0.18941923,-0.19645201,0.01024947,-1035.5805,99.474266)"
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1"
+           inkscape:transform-center-x="258.80082"
+           inkscape:transform-center-y="488.7418">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-79-5"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-02-7"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+      </g>
+      <g
+         inkscape:transform-center-y="543.2529"
+         inkscape:transform-center-x="229.86192"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1"
+         transform="matrix(-0.01854444,0.18876815,-0.19577676,-0.01923296,-1048.7087,57.305553)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-4-5">
+        <path
+           inkscape:connector-curvature="0"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-7-0"
+           d="m -319.05812,415.01795 137.79164,-94.16367 -10.20999,0.84877 10.94045,-1.4506 -149.91072,-75.10326 7.37562,86.43392 -0.48742,0.079 4.50042,83.35587 z"
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      </g>
+    </g>
+    <g
+       transform="matrix(-0.99675441,-0.08050246,0.08050246,-0.99675441,-2694.6677,1648.0119)"
+       id="g6079-15-8"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         transform="matrix(0.99317503,-0.1166334,0.1166334,0.99317503,-9.796796,-117.48688)"
+         id="g6069-2-0">
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-8-5"
+           transform="matrix(-0.01556616,0.18903703,-0.19605565,-0.01614409,-1040.9353,77.054604)"
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1"
+           inkscape:transform-center-x="237.91217"
+           inkscape:transform-center-y="519.8539">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-3-5"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-5-2"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+      </g>
+      <g
+         transform="matrix(0.9981555,-0.06070916,0.06070916,0.9981555,-0.7786288,-54.233189)"
+         id="g6074-2-9">
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-2-9"
+           transform="matrix(0.00988257,0.18941923,-0.19645201,0.01024947,-1035.5805,99.474266)"
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1"
+           inkscape:transform-center-x="258.80082"
+           inkscape:transform-center-y="488.7418">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-01-0"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-4-1"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+      </g>
+      <g
+         inkscape:transform-center-y="543.2529"
+         inkscape:transform-center-x="229.86192"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.01854444,0.18876815,-0.19577676,-0.01923296,-1048.7087,57.305553)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-85-3">
+        <path
+           inkscape:connector-curvature="0"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-6-1"
+           d="m -319.05812,415.01795 137.79164,-94.16367 -10.20999,0.84877 10.94045,-1.4506 -149.91072,-75.10326 7.37562,86.43392 -0.48742,0.079 4.50042,83.35587 z"
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      </g>
+    </g>
+    <g
+       id="g5331-3-9-9-5-4-72-5-0-6-5"
+       transform="matrix(-0.07460548,-0.99721314,0.99721314,-0.07460548,-2119.7828,638.4505)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         inkscape:transform-center-y="519.17063"
+         inkscape:transform-center-x="239.30745"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11036543,-0.15426204,-0.15998952,0.1144631,-991.6209,190.13446)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-9-1-77-6-4-07-1">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-4-5-5-4-2-0-73"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-8-6-9-5-1-1-9"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="490.67477"
+         inkscape:transform-center-x="255.08414"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.08694454,-0.16857627,-0.17483518,0.09017264,-998.8815,166.99291)"
+         id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-8-9-48-4-9-1-8">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-6-2-8-53-0-2-9-3"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-0-3-8-0-0-0-9-82"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="546.5158"
+         inkscape:transform-center-x="222.49815"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11023742,-0.15435355,-0.16008442,0.11433034,-972.7506,217.51116)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-4-6-5-7-2-8-4">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-7-8-9-5-1-8-9"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-3-5-27-2-8-6-6"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <g
+       id="g5331-3-9-9-5-4-72-5-0-6-7-91"
+       transform="matrix(0.05721256,0.99836204,0.99836204,-0.05721256,-1984.5227,2528.6347)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         id="g4290-3"
+         transform="translate(-7.8482129,0.44975303)">
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-9-1-77-6-4-07-5-3"
+           transform="matrix(-0.10587319,-0.15737907,-0.16322228,0.10980407,-989.28031,190.88433)"
+           style="fill:#999999;stroke:#b3b3b3"
+           inkscape:transform-center-x="-0.62838698"
+           inkscape:transform-center-y="0.91128402">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-4-5-5-4-2-0-7-8"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-8-6-9-5-1-1-7-2"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-8-9-48-4-9-1-1-0"
+           transform="matrix(-0.08204945,-0.17101228,-0.17736164,0.0850958,-995.87087,167.54312)"
+           style="fill:#999999;stroke:#b3b3b3"
+           inkscape:transform-center-x="30.382152"
+           inkscape:transform-center-y="-16.605754">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-6-2-8-53-0-2-9-8-8"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-0-3-8-0-0-0-9-8-1"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+        <g
+           id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-4-6-5-7-2-8-6-1"
+           transform="matrix(-0.1057426,-0.15746685,-0.16331332,0.10966863,-971.20694,218.79356)"
+           style="fill:#999999;stroke:#b3b3b3"
+           inkscape:transform-center-x="-29.488568"
+           inkscape:transform-center-y="17.285907">
+          <path
+             sodipodi:nodetypes="cccc"
+             inkscape:connector-curvature="0"
+             id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-7-8-9-5-1-8-7-4"
+             d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+          <path
+             inkscape:connector-curvature="0"
+             id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-3-5-27-2-8-6-3-8"
+             d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+             style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+        </g>
+      </g>
+    </g>
+    <g
+       id="g5331-3-9-9-5-4-72-5-0-6-7-9-5"
+       transform="matrix(0.82651405,0.56291613,0.56291613,-0.82651405,-1662.171,2293.4958)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         inkscape:transform-center-y="519.17063"
+         inkscape:transform-center-x="239.30745"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11036543,-0.15426204,-0.15998952,0.1144631,-991.6209,190.13446)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-9-1-77-6-4-07-5-7-5">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-4-5-5-4-2-0-7-6-7"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-8-6-9-5-1-1-7-4-5"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="490.67477"
+         inkscape:transform-center-x="255.08414"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.08694454,-0.16857627,-0.17483518,0.09017264,-998.8815,166.99291)"
+         id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-8-9-48-4-9-1-1-8-8">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-6-2-8-53-0-2-9-8-1-1"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-0-3-8-0-0-0-9-8-4-8"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="546.5158"
+         inkscape:transform-center-x="222.49815"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11023742,-0.15435355,-0.16008442,0.11433034,-972.7506,217.51116)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-4-6-5-7-2-8-6-3-5">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-7-8-9-5-1-8-7-1-2"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-3-5-27-2-8-6-3-6-8"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <rect
+       style="fill:#d7f4d7"
+       id="rect3009-5-2-0-9-9-7-43-4"
+       width="387.89911"
+       height="169.92018"
+       x="-1773.2328"
+       y="-785.771"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:48.20930862px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-1598.7932"
+       y="-709.54883"
+       id="text2997-6-1-7-0-4-8-0-6"
+       sodipodi:linespacing="125%"
+       transform="scale(0.98845201,1.0116829)"
        inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
-         x="-1029.1034"
-         y="-174.78848"
-         id="tspan3942-5-2-1-0-1-2">EM</tspan></text>
+         x="-1598.7932"
+         y="-709.54883"
+         id="tspan4251">Instancias no</tspan><tspan
+         sodipodi:role="line"
+         x="-1598.7932"
+         y="-649.28717"
+         id="tspan4255">etiquetadas</tspan><tspan
+         sodipodi:role="line"
+         x="-1598.7932"
+         y="-589.02557"
+         id="tspan3942-5-2-1-7-9-4-7" /></text>
+    <rect
+       style="fill:#d7f4d7"
+       id="rect3009-5-2-0-9-9-7-43-4-1"
+       width="422.61862"
+       height="152.15955"
+       x="-1672.9615"
+       y="2040.5623"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:48.70127487px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-1494.8427"
+       y="2054.6394"
+       id="text2997-6-1-7-0-4-8-0-6-6"
+       sodipodi:linespacing="125%"
+       transform="scale(0.97827917,1.0222031)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="-1494.8427"
+         y="2054.6394"
+         id="tspan4255-7">Características</tspan><tspan
+         sodipodi:role="line"
+         x="-1494.8427"
+         y="2115.5161"
+         id="tspan4316">no etiquetadas</tspan><tspan
+         sodipodi:role="line"
+         x="-1494.8427"
+         y="2176.3926"
+         id="tspan3942-5-2-1-7-9-4-7-4" /></text>
+    <g
+       id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-0-2-0-7-6-5-6-9"
+       transform="matrix(0.00477909,-0.23194844,0.2292674,0.00520066,-1579.9617,1947.5135)"
+       style="fill:#999999;stroke:#b3b3b3"
+       inkscape:transform-center-x="213.18302"
+       inkscape:transform-center-y="485.27523"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-2-1-4-1-2-9-1-2"
+         d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-8-4-9-7-1-9-6-9"
+         d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <rect
+       style="fill:#ffd5d5"
+       id="rect3009-5-2-0-9-5-0-7"
+       width="433.83731"
+       height="138.99478"
+       x="1012.8497"
+       y="-229.72386"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:69.65805817px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="1361.5632"
+       y="-118.76235"
+       id="text2997-6-1-7-0-7-0-3"
+       sodipodi:linespacing="125%"
+       transform="scale(0.90329325,1.1070602)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="1361.5632"
+         y="-118.76235"
+         id="tspan3007-1-1-1-1-0-3-2">Terminar</tspan><tspan
+         sodipodi:role="line"
+         x="1361.5632"
+         y="-31.689774"
+         id="tspan3942-5-2-1-0-5-5" /></text>
+    <g
+       id="g5331-3-9-9-5-4-72-1-6-7"
+       transform="matrix(-0.78773154,1.0966588,-0.96624916,-0.89404757,376.4696,1182.7516)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <g
+         inkscape:transform-center-y="519.17063"
+         inkscape:transform-center-x="239.30745"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11036543,-0.15426204,-0.15998952,0.1144631,-991.6209,190.13446)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-9-9-1-77-7-5-6">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-1-4-5-5-7-1-6"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-3-8-6-9-2-1-7"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="490.67477"
+         inkscape:transform-center-x="255.08414"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.08694454,-0.16857627,-0.17483518,0.09017264,-998.8815,166.99291)"
+         id="g3882-8-4-6-8-6-0-2-0-4-3-3-6-9-1-1-8-3-8-9-48-9-2-2">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-7-1-8-8-5-77-1-6-2-8-53-1-3-5"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-24-6-2-0-4-4-0-0-3-8-0-5-44-8"
+           inkscape:connector-curvature="0" />
+      </g>
+      <g
+         inkscape:transform-center-y="546.5158"
+         inkscape:transform-center-x="222.49815"
+         style="fill:#999999;stroke:#b3b3b3"
+         transform="matrix(-0.11023742,-0.15435355,-0.16008442,0.11433034,-972.7506,217.51116)"
+         id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-5-6-6-2-4-6-5-3-73-8">
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+           id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-5-3-0-1-7-8-9-2-0-7"
+           inkscape:connector-curvature="0"
+           sodipodi:nodetypes="cccc" />
+        <path
+           style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+           d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+           id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-40-8-5-7-3-5-27-5-2-3"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+    <rect
+       style="fill:#d7f4d7"
+       id="rect3009-5-2-0-9-9-7-43-4-1-5"
+       width="333.75336"
+       height="164.36319"
+       x="-2230.5906"
+       y="1775.9722"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:49.45950699px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-2134.5867"
+       y="1778.8792"
+       id="text2997-6-1-7-0-4-8-0-6-6-3"
+       sodipodi:linespacing="125%"
+       transform="scale(0.96686355,1.0342721)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="-2134.5867"
+         y="1778.8792"
+         id="tspan4316-0">Corpus</tspan><tspan
+         sodipodi:role="line"
+         x="-2134.5867"
+         y="1840.7035"
+         id="tspan4411">etiquetados</tspan><tspan
+         sodipodi:role="line"
+         x="-2134.5867"
+         y="1902.528"
+         id="tspan3942-5-2-1-7-9-4-7-4-3" /></text>
+    <g
+       id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-0-2-0-7-6-5-6-9-7"
+       transform="matrix(0.00477909,0.23194844,0.2292674,-0.00520066,-2144.9976,1803.4173)"
+       style="fill:#999999;stroke:#b3b3b3"
+       inkscape:transform-center-x="213.18302"
+       inkscape:transform-center-y="-485.27524"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/cicloaa-features.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-2-1-4-1-2-9-1-2-1"
+         d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-8-4-9-7-1-9-6-9-9"
+         d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <g
+       id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-0-2-0-7-6-5-6-9-9"
+       transform="matrix(-0.23194844,0.00477909,0.00520066,0.2292674,-1878.5485,-782.09446)"
+       style="fill:#999999;stroke:#b3b3b3"
+       inkscape:transform-center-x="-485.27524"
+       inkscape:transform-center-y="-213.18302"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-2-1-4-1-2-9-1-2-9"
+         d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-8-4-9-7-1-9-6-9-4"
+         d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <rect
+       style="fill:#d7f4d7"
+       id="rect3009-5-2-0-9-9-7-43-4-1-9"
+       width="422.61862"
+       height="152.15955"
+       x="-1287.3688"
+       y="350.51584"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:48.70127487px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-1100.6886"
+       y="401.30194"
+       id="text2997-6-1-7-0-4-8-0-6-6-8"
+       sodipodi:linespacing="125%"
+       transform="scale(0.97827917,1.0222031)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="-1100.6886"
+         y="401.30194"
+         id="tspan4255-7-9">Características</tspan><tspan
+         sodipodi:role="line"
+         x="-1100.6886"
+         y="462.17853"
+         id="tspan4316-01">no etiquetadas</tspan><tspan
+         sodipodi:role="line"
+         x="-1100.6886"
+         y="523.05511"
+         id="tspan3942-5-2-1-7-9-4-7-4-0" /></text>
+    <g
+       id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-0-2-0-7-6-5-6-9-74-3"
+       transform="matrix(-0.23194844,-0.00477909,0.00520066,-0.2292674,-1383.8424,507.87918)"
+       style="fill:#999999;stroke:#b3b3b3"
+       inkscape:transform-center-x="-485.27523"
+       inkscape:transform-center-y="213.18302"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-2-1-4-1-2-9-1-2-4-1"
+         d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-8-4-9-7-1-9-6-9-3-9"
+         d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
+    <rect
+       style="fill:#d7f4d7"
+       id="rect3009-5-2-0-9-9-7-43-4-1-5-2"
+       width="274.13"
+       height="124.61429"
+       x="-2177.2097"
+       y="125.20853"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <text
+       xml:space="preserve"
+       style="font-size:39.02985001px;font-style:normal;font-weight:normal;text-align:center;line-height:125%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-2027.386"
+       y="174.73723"
+       id="text2997-6-1-7-0-4-8-0-6-6-3-3"
+       sodipodi:linespacing="125%"
+       transform="scale(1.0063499,0.99369016)"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
+         sodipodi:role="line"
+         x="-2027.386"
+         y="174.73723"
+         id="tspan4316-0-4">Corpus</tspan><tspan
+         sodipodi:role="line"
+         x="-2027.386"
+         y="223.52454"
+         id="tspan4411-0">etiquetados</tspan><tspan
+         sodipodi:role="line"
+         x="-2027.386"
+         y="272.31186"
+         id="tspan3942-5-2-1-7-9-4-7-4-3-3" /></text>
+    <g
+       id="g3882-8-4-6-8-6-0-2-0-4-6-0-2-5-7-76-2-0-2-0-7-6-5-6-9-7-3"
+       transform="matrix(0.00477909,0.23194844,0.2292674,-0.00520066,-2121.4282,149.82035)"
+       style="fill:#999999;stroke:#b3b3b3"
+       inkscape:transform-center-x="213.18302"
+       inkscape:transform-center-y="-485.27524"
+       inkscape:export-filename="/home/milagro/tesis/Informe/imagenes/partes-implementacion.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90">
+      <path
+         sodipodi:nodetypes="cccc"
+         inkscape:connector-curvature="0"
+         id="path3862-7-9-8-2-9-4-9-7-5-9-3-1-0-2-4-9-2-1-4-1-2-9-1-2-1-4"
+         d="m -312.5412,275.95894 1.41422,93.33809 142.83557,-8.48528 z"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+      <path
+         inkscape:connector-curvature="0"
+         id="path3862-5-6-9-3-7-4-8-2-9-1-4-1-1-4-1-92-2-8-4-9-7-1-9-6-9-9-8"
+         d="m -313.25974,446.15821 1.41422,-83.4386 142.83558,-1.41421 z"
+         style="fill:#999999;stroke:#b3b3b3;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1" />
+    </g>
   </g>
 </svg>
