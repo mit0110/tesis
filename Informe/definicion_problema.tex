@@ -5,33 +5,32 @@ Tanto el problema que planteamos abordar como la solución propuesta son complej
 
 \section{Datos Enlazados y Sistemas de Respuesta}
 
-La cantidad de infomación disponible en internet es abrumadora, y sin embargo, aún no puede utilizarse en conjunto para extracción de infomación satisfactoriamente. \citet{BernersLeeLinkedDataGuide} explican que este fenómeno se debe a que no se pueden relacionar automáticamente fragmentos de información que se refieren al mismo objeto o suceso que provengan de fuentes o documentos distintos. Es necesario que la información pueda ser adquirida y procesada por una computadora.
+La cantidad de información disponible en internet es abrumadora, y sin embargo, aún no puede utilizarse en conjunto para extracción de información satisfactoriamente. \citet{BernersLeeLinkedDataGuide} explican que este fenómeno se debe a que no se pueden relacionar automáticamente fragmentos de información que se refieren al mismo objeto o suceso que provengan de fuentes o documentos distintos. Es necesario que la información pueda ser adquirida y procesada por una computadora.
 
-\citet{BizerLinkedData} definen los datos enlazados o \textit{linked data} como infomación que cumple las siguientes características:
+\citet{BizerLinkedData} definen los datos enlazados o \textit{linked data} como información que cumple las siguientes características:
 \begin{enumerate}
     \item Puede ser leída automáticamente por una computadora.
     \item Su significado está explícitamente definido.
     \item Está conectada a fuentes de datos externas.
     \item Puede ser conectada desde fuentes de datos externas a su vez.
 \end{enumerate}
-% Berners-Lee, T. (2006). Linked Data - Design Issues. Retrieved July 23, http://www.w3.org/DesignIssues/LinkedData.html
-% Cómo cito cosas que saco de internet y que no están en una publicación?
+
 Sin embargo, no existe un consenso o una definición formal sobre el tema. \citet{BernersLeeLinkedDataGuide} describe en su artículo un protocolo orientativo para publicar datos enlazados en la web de tal forma que pudiera formase una base de conocimiento global. Con el tiempo estas reglas se han tomado como un estándar para la construcción de ontologías, y en la actualidad existen bases de conocimiento que contienen millardos de aserciones.
 
-% Brickley, D., Guha, R. (2004). RDF Vocabulary Description Language 1.0: RDF Schema - W3C Recommendation. Retrieved June 14, 2009, http://www.w3.org/TR/rdf-schema/
-Los datos enlazados se representan comunmente siguiendo un lenguaje de descripción como RDF, tal como lo describe \citet{brickleyRDF}, que consiste en una colección de tripletas. Cada tripleta se compone de un sujeto, un predicado y un objeto, donde el predicado representa una relación entre el sujeto y el objeto. De esta forma se puede representar cualquier tipo de asociación entre entidades sin importar su complejidad, contruyéndolo a partir de relaciones parciales. El resultado es información organizada en forma de grafo donde cada nodo es una entidad y cada arista es una relación entre dichas entidades.
+Los datos enlazados se representan comúnmente siguiendo un lenguaje de descripción como RDF, tal como lo describe \citet{brickleyRDF}, que consiste en una colección de tripletas. Cada tripleta se compone de un sujeto, un predicado y un objeto, donde el predicado representa una relación entre el sujeto y el objeto. De esta forma se puede representar cualquier tipo de asociación entre entidades sin importar su complejidad, construyéndolo a partir de relaciones parciales. El resultado es información organizada en forma de grafo donde cada nodo es una entidad y cada arista es una relación entre dichas entidades.
 
 Las ontologías más populares en el momento son FreeBase \footnote{www.freebase.com} y DBPedia \footnote{www.dbpedia.org}, aunque existen numerosos proyectos con dominios más acotados como MusicBrainz \footnote{www.musicbrainz.org}. Estas plataformas son abiertas con interfaces fáciles de utilizar que permiten agregar nuevos datos a cualquier persona, y como resultado se observa un rápido crecimiento en la cantidad de información disponible.
 
 Estos sitios cuentan con puertos de accesos donde los usuarios pueden enviar consultas utilizando algún lenguaje formal. Aunque estos servicios están disponibles a todo el público, se requiere cierto nivel de conocimiento técnico para generar dichas consultas. Para dar acceso real a las masas a esta gran cantidad de información se requieren interfaces capaces de extraer datos a partir de consultas en lenguaje natural, es decir, sistemas de respuestas a preguntas.
 
-Paralelamente, los sistemas de respuesta a preguntas pueden obtener grandes beneficios de una ontología. En lugar de buscar documentos o pasajes que puedan contener una respuesta, los datos enlazados pueden brindar información exacta. Además de ello, resulta más fácil procesar preguntas donde es muy poco probable encontrar la respuesta en un solo documento, por ejemplo, ``¿Qué famosas actrices nacieron en el mismo país que Naima Akef?''. Desde los años 70 este tipo de software ha utilizado bancos de conocimiento estructurado que inicialmente eran bases de datos locales. Sin embargo, dadas las limitaciones de equipamiento de la época nunca llegaron a lograr una gran cobertura. Con el desarrollo cualitativo y cuantitativo de las tecnologías y recursos asociados a la web semántica se ha podido sobreponer esta dificultad y la atención ha vuelto nuevamente hacia la información estructurada.
+Paralelamente, los sistemas de respuesta a preguntas pueden obtener grandes beneficios de una ontología. En lugar de buscar documentos o pasajes que puedan contener una respuesta, los datos enlazados pueden brindar información exacta. Además de ello, resulta más fácil procesar preguntas donde es muy poco probable encontrar la respuesta en un solo documento, por ejemplo, \textit{¿Qué famosas actrices nacieron en el mismo país que Naima Akef?}. Desde los años 70 este tipo de software ha utilizado bancos de conocimiento estructurado que inicialmente eran bases de datos locales. Sin embargo, dadas las limitaciones de equipamiento de la época nunca llegaron a lograr una gran cobertura. Con el desarrollo cualitativo y cuantitativo de las tecnologías y recursos asociados a la web semántica se ha podido sobreponer esta dificultad y la atención ha vuelto nuevamente hacia la información estructurada.
 
 Extraer información de una ontología no es difícil, sin embargo, como describe \citet{ungerQALD}, identificar el mapeo entre una pregunta en forma textual y los conceptos correspondientes de una ontología no es una tarea simple. Este proceso implica resolver distintos tipos de ambigüedades textuales, entre ellas:
+
 \begin{description}
-    \item[Ligamiento de frases preprosicionales] Es un problema muy común, donde las frases preprosiciones pueden estar ligadas al verbo o al sustantivo. Por ejemplo, en la oración ``El gato atrapa al pescado con elegancia'' la frase preposicional está ligada al verbo, mientras que en la oración ``El gato atrapa pescado con escamas'' está ligada al sustantivo. Para identificar esta asociación no hay información suficiente en la estructura de la frase y es necesario entender la semántica.
-    \item[Semántica real] Este problema es causado por la presencia de homononimia en el lenguaje natural, ya que existen palabras que tienen varios significados. Por ejemplo, en la pregunta ``¿De qué color es la vela que está sobre la mesa?'', la palabra vela puede hacer referencia a dos conceptos distintos: un cilindro de cera o una forma de propulsión naútica.
-    \item[Semántica ontológica] Aún cuando se ha determinado el concepto al cual el usuario se refiere en la pregunta, no hay garantías de que este concepto tenga un nodo equivalente dentro de la onotlogía.
+    \item[Ligamiento de frases preposicionales] Es un problema muy común, donde las frases preposiciones pueden estar ligadas al verbo o al sustantivo. Por ejemplo, en la oración \textit{El gato atrapa al pescado con elegancia} la frase preposicional está ligada al verbo, mientras que en la oración \textit{El gato atrapa pescado con escamas} está ligada al sustantivo. Para identificar esta asociación no hay información suficiente en la estructura de la frase y es necesario entender la semántica.
+    \item[Semántica real] Este problema es causado por la presencia de homonimia en el lenguaje natural, ya que existen palabras que tienen varios significados. Por ejemplo, en la pregunta \textit{¿De qué color es la vela que está sobre la mesa?}, la palabra vela puede hacer referencia a dos conceptos distintos: un cilindro de cera o una forma de propulsión naútica.
+    \item[Semántica ontológica] Aún cuando se ha determinado el concepto al cual el usuario se refiere en la pregunta, no hay garantías de que este concepto tenga un nodo equivalente dentro de la ontología.
 \end{description}
 
 Cuando se han resuelto estas ambigüedades, es necesario construir una consulta en lenguaje formal para ser enviada a la base de conocimiento. Una vez que se ha obtenido la información de la base, otra etapa de procesamiento convierte estos datos del formato legible por una computadora a un formato legible por el usuario. A continuación ilustramos con un ejemplo estas etapas utilizando una consulta en lenguaje MQL, desarrollado por \citet{mql}, sobre la estructura de FreeBase.
@@ -67,15 +66,15 @@ Cuando se han resuelto estas ambigüedades, es necesario construir una consulta 
     \end{enumerate}
 \end{example}
 
-En las consultas utilizando MQL se detalla la estuctura de la información y se completan los datos necesarios para identificar el objeto en la base de datos. Para obtener información sobre la entidad se nombran sus atributos, pero se les da un valor de $null$. El motor de búsqueda identifica estos campos y completa la información faltante. Este lenguaje es muy intuitivo y fue diseñado para ser accesible, pero no todos los lenguajes de consulta son tan simples como MQL.
+En las consultas utilizando MQL se detalla la estructura de la información y se completan los datos necesarios para identificar el objeto en la base de datos. Para obtener información sobre la entidad se nombran sus atributos, pero se les da un valor de $null$. El motor de búsqueda identifica estos campos y completa la información faltante. Este lenguaje es muy intuitivo y fue diseñado para ser accesible, pero no todos los lenguajes de consulta son tan simples como MQL.
 
-\citet{ungerQALD} menciona problemas que frecuentemente enfrentan este tipo de sistemas. Uno de ellos es la identificación la entidad a la que se hace referencia en la pregunta, en nuestro caso, ``Argentina''. Esta tarea puede llegar a ser muy compleja, por ejemplo en el caso de la entidad ``People's Republic of China''. Para resolver estos problemas se requieren sistemas de parseo y asignación de etiquetas morfosintácticas.
+\citet{ungerQALD} menciona problemas que frecuentemente enfrentan este tipo de sistemas. Uno de ellos es la identificación la entidad a la que se hace referencia en la pregunta, en nuestro caso, Argentina. Esta tarea puede llegar a ser muy compleja, por ejemplo en el caso de la entidad \textit{People's Republic of China}. Para resolver estos problemas se requieren sistemas de parseo y asignación de etiquetas morfosintácticas.
 
-Adicionalmente, las consultas contienen no sólo información brindada por la pregunta del usuario, sino también datos asociados a la estructura de la base. Si en lugar de ``/location/country'' hubieramos utilizado ``/location/location'' la consulta hubiera devuelto un error, a pesar de que el nodo asociado a Argentina es también de tipo ``/location/location''.
+Adicionalmente, las consultas contienen no sólo información brindada por la pregunta del usuario, sino también datos asociados a la estructura de la base. Si en lugar de \textit{/location/country} hubieramos utilizado \textit{/location/location} la consulta hubiera devuelto un error, a pesar de que el nodo asociado a Argentina es también de tipo \textit{/location/location}.
 
 Veamos a continuación un ejemplo en otro lenguaje de consulta llamado SPARQL, definido por \citet{sparql}. Esta consulta es compatible con la estructura de la ontología DBPedia.
 
-\begin{example} Consulta en SPARQL para la pregunta ``How many episodes does Seinfeld have?''
+\begin{example} Consulta en SPARQL para la pregunta \textit{How many episodes does Seinfeld have?}
 \begin{lstlisting}
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX dbpprop: <http://dbpedia.org/property/>
@@ -89,7 +88,7 @@ SELECT DISTINCT ?x1 WHERE {
 \end{lstlisting}
 \end{example}
 
-La cantidad de información necesaria para construir esta consulta es mucho mayor mientras que su estructura no es simple de comprender. Sin embargo, pone en relevancia el uso de tripletas para representar la relación entre distintos nodos. En particular, la variable $?x1$ representa el resultado, mientras que la variable $?x0$ representa a la entidad de nombre ``Seinfield'' y tipo ``TelevisionShow''. Observermos que el concepto ``numberOfEpisodes'' depende totalmente de la estructura de la ontología, y debe ser derivado del texto ``number of episodes''. Sin embargo, esta derivación es aleatoria y no sigue reglas fijas.
+La cantidad de información necesaria para construir esta consulta es mucho mayor mientras que su estructura no es simple de comprender. Sin embargo, pone en relevancia el uso de tripletas para representar la relación entre distintos nodos. En particular, la variable $?x1$ representa el resultado, mientras que la variable $?x0$ representa a la entidad de nombre \textit{Seinfield} y tipo \textit{TelevisionShow}. Observemos que el concepto \textit{numberOfEpisodes} depende totalmente de la estructura de la ontología, y debe ser derivado del texto \textit{number of episodes}. Sin embargo, esta derivación es aleatoria y no sigue reglas fijas.
 
 Hemos visto algunos de los conceptos y problemas involucrados en la traducción de preguntas en lenguaje natural a consultas en lenguajes formales. Quepy es una librería que facilita el manejo de esta complejidad a través de la abstracción, como veremos en la siguiente sección.
 
@@ -101,7 +100,7 @@ Como se mencionó anteriormente, Quepy es un marco de trabajo para crear aplicac
 Una aplicación creada en Quepy tiene tres secciones:
 \begin{description}
     \item[Settings] La configuración de Quepy incluye las herramientas de análisis sintáctico a utilizar como ntlk de \citet{nltk}, la URL del servidor para enviar las consultas, etc.
-    \item[Templates] Contiene las plantillas definidas por el creador de la aplicación. Cada plantilla es una expresión regular que combina distintos tipos de caracteríticas como etiquetas POS y lemmas, lo que permite al sistema identificar piezas semánticas que componen de la pregunta únicamente en base a su sintaxis. Junto con la expresión regular, cada plantilla tiene una función de interpretación que toma las secciones de la pregunta que considera relevantes y las utiliza para construir una representación interna de la pregunta llamada Expresión. Una Expresión representa la semántica de la pregunta como una fórmula de lógica de predicados. El vocabulario de predicados disponibles se especifica en el DSL.
+    \item[Templates] Contiene las plantillas definidas por el creador de la aplicación. Cada plantilla es una expresión regular que combina distintos tipos de caracteríticas como etiquetas POS y lemas, lo que permite al sistema identificar piezas semánticas que componen de la pregunta únicamente en base a su sintaxis. Junto con la expresión regular, cada plantilla tiene una función de interpretación que toma las secciones de la pregunta que considera relevantes y las utiliza para construir una representación interna de la pregunta llamada Expresión. Una Expresión representa la semántica de la pregunta como una fórmula de lógica de predicados. El vocabulario de predicados disponibles se especifica en el DSL.
     \item[DSL] Son las siglas correspondientes a Lenguaje de Dominio Específico en inglés. En esta selección se detalla cómo las Expresiones de Quepy se traducen a las partes integrantes de una consulta formal. En otras palabras, se establecen correspondencias (\textit{mappings}) entre los predicados de las plantillas y los conceptos de una ontología en particular.
 \end{description}
 
@@ -131,7 +130,7 @@ donde $?target$ y $?definition$ son parámetros que tomará la Expresión al ins
 
 Las Expresiones no son otra cosa más que primitivas semánticas, y por lo tanto pueden construirse progresivamente a partir de otras expresiones, como veremos a continuación. El siguiente código es parte de la sección de \textit{templates}.
 
-\begin{example}\label{plantilla-quepy} Plantilla para las preguntas de tipo ``What is ... ?''.
+\begin{example}\label{plantilla-quepy} Plantilla para las preguntas de tipo \textit{What is ... ?}.
 \begin{lstlisting}
 from refo import Group, Question
 from quepy.dsl import HasKeyword
@@ -154,7 +153,7 @@ class WhatIs(QuestionTemplate):
 
 Observemos que la clase tiene un atributo llamado $regex$ que corresponde a la expresión regular que define la plantilla. Estas $regex$ o patrones capturan la información sintáctica de la pregunta. Profundizaremos en la estructura de estas expresiones regulares más adelante, pero ahora notemos que uno de los elementos tiene una etiqueta $target$. Si la pregunta ingresada por el usuario concuerda con esta expresión regular, entonces los elementos que concuerden con las sub expresiones etiquetadas serán pasados al método $interpret$ de la clase. En este caso, el segmento de oración que corresponda a $Group(Pos("NN"))$ (una secuencia de sustantivos) será un atributo del parámetro $match$ recibido por $interpret$.
 
-El método $interpret$ construye una Expresión de tipo $HasKeyword$ a partir de $target$ y luego la utiliza para contruir otra Expresión de tipo $IsDefinedIn$. El resultado final de la Expresión traducida a SPARQL para la pregunta ``What is a car?'' será:
+El método $interpret$ construye una Expresión de tipo $HasKeyword$ a partir de $target$ y luego la utiliza para construir otra Expresión de tipo $IsDefinedIn$. El resultado final de la Expresión traducida a SPARQL para la pregunta \textit{What is a car?} será:
 
 \vspace{5mm}
 
@@ -183,21 +182,21 @@ Describiremos a continuación más en detalle la estructura de las plantillas qu
 
 En el ejemplo anterior reemplazamos la variable aux por su contenido para mayor claridad, lo cual no afecta el significado de la expresión regular.
 
-Los elementos de esta expresión regular son Lemmas y POS. Los lemmas, o raíces, son la forma primitiva de la palabra que se obtiene al extraerle su conjugación. Por ejemplo, el lemma de un verbo es su infinitivo, de un sustantivo es su forma singular masculina, etc. POS hace referencia a etiquetas gramaticales, a las que llamaremos etiquetas POS (\textit{part of speech tags}), y que se asignan a cada palabra según su categoría gramatical. La categoría puede obtenerse en base a la palabra en sí o a su relación con las restantes palabras en la oración. Por ejemplo, una categoría gramatical indica si la palabra es un verbo, un sustantivo, e incluso si está en plural o cuál es su tiempo verbal. Durante todo el trabajo utilizaremos las etiquetas POS definidas para el proyecto \textit{Penn TreeBank} de \citet{penntreebank}\footnote{http://www.ling.upenn.edu/courses/Fall\_2003/ling001/penn\_treebank\_pos.html}.
+Los elementos de esta expresión regular son Lemas y POS. Los lemas, o raíces, son la forma primitiva de la palabra que se obtiene al extraerle su conjugación. Por ejemplo, el lema de un verbo es su infinitivo, de un sustantivo es su forma singular masculina, etc. POS hace referencia a etiquetas gramaticales, a las que llamaremos etiquetas POS (\textit{part of speech tags}), y que se asignan a cada palabra según su categoría gramatical. La categoría puede obtenerse en base a la palabra en sí o a su relación con las restantes palabras en la oración. Por ejemplo, una categoría gramatical indica si la palabra es un verbo, un sustantivo, e incluso si está en plural o cuál es su tiempo verbal. Durante todo el trabajo utilizaremos las etiquetas POS definidas para el proyecto \textit{Penn TreeBank} de \citet{penntreebank}\footnote{http://www.ling.upenn.edu/courses/Fall\_2003/ling001/penn\_treebank\_pos.html}.
 
-Para analizar si un frase concuerda o no con una expresión regular, Quepy preprocesará la oración con el analizador sintáctico indicado en su configuración para obtener los lemma y las etiqueta POS de cada una de sus palabras. Luego, utilizará esa información para compararla con la expresión regular. Entonces, nuestro ejemplo concordará con una frase cuya primera palabra tenga lemma ``what'', su segunda palabra tenga lemma ``be'', su tercera palabra (opcionalmente) tenga etiqueta POS ``DT'', etc.
+Para analizar si un frase concuerda o no con una expresión regular, Quepy preprocesará la oración con el analizador sintáctico indicado en su configuración para obtener los lema y las etiqueta POS de cada una de sus palabras. Luego, utilizará esa información para compararla con la expresión regular. Entonces, nuestro ejemplo concordará con una frase cuya primera palabra tenga lema \textit{what}, su segunda palabra tenga lema \textit{be}, su tercera palabra (opcionalmente) tenga etiqueta POS \textit{DT}, etc.
 
-Dada una pregunta, Quepy intentará encontrar una concordancia con cada una de estas expresioner regulares existentes. Si la encuentra, entonces utilizará el método $interpret$ que explicamos en la sección anterior para construir una Expresión y luego traducirá esa Expresión a una consulta. Esta traducción intermedia es la que brinda un nivel abstracción que ayuda a resolver los problemas planteados en la sección anterior.
+Dada una pregunta, Quepy intentará encontrar una concordancia con cada una de estas expresiones regulares existentes. Si la encuentra, entonces utilizará el método $interpret$ que explicamos en la sección anterior para construir una Expresión y luego traducirá esa Expresión a una consulta. Esta traducción intermedia es la que brinda un nivel abstracción que ayuda a resolver los problemas planteados en la sección anterior.
 
 \chapter{Formalización del problema}
 
 A pesar de que Quepy facilita la generación de consultas en lenguajes formales, también tiene desventajas. La más importante de ellas es que, al utilizar expresiones regulares, los patrones tienen poca flexibilidad ya que están ligados fuertemente a su forma superficial, sin tener en cuenta clases de equivalencia, sinónimos o polisemia.
 
-En particular, si tomamos el ejemplo de la sección anterior, no se podrían reconocer preguntas del estilo ``Definition of a car'' o ``How would you define what a car is?''. La respuesta a estas preguntas se obtiene con la misma consulta generada que acabamos de analizar, por lo cual son semánticamente equivalentes. Diremos entonces que estas preguntas comparten la misma semántica, y que son reformulaciones una de la otra.
+En particular, si tomamos el ejemplo de la sección anterior, no se podrían reconocer preguntas del estilo \textit{Definition of a car} o \textit{How would you define what a car is?}. La respuesta a estas preguntas se obtiene con la misma consulta generada que acabamos de analizar, por lo cual son semánticamente equivalentes. Diremos entonces que estas preguntas comparten la misma semántica, y que son reformulaciones una de la otra.
 
 Para agregar un nuevo tipo de pregunta al sistema se deben definir sus patrones y su traducción a una consulta. Es decir, su \textit{regex} y su método \textit{interpret}. Debido a la gran cantidad de formas distintas en las que se puede expresar una pregunta existen muchos patrones para una misma interpretación, pero es imposible construir todas las expresiones regulares necesarias. Como consecuencia, los sistemas de Quepy están fuertemente limitados por esta característica. Si los patrones fueran más generales o pudieran inferirse de alguna forma, entonces ampliar los tipos soportados consistiría sólo en definir las interpretaciones.
 
-\citet{ungerQALD} clasifican los sistemas de respuesta a preguntas sobre datos enalzados (QALD por sus siglas en inglés) según sus estrategias de resolución de la pregunta. Entre ellos se encuentra la clase a la cual pertenece Quepy, llamada por los autores \textit{Template-Based approaches} o Aproximaciones Basadas en Patrones. Claramente, la falta de cobertura sobre el universo posible de preguntas en una dolencia de cualquier sistema que utilice patrones estáticos para clasificar las preguntas en una determinada representación.
+\citet{ungerQALD} clasifican los sistemas de respuesta a preguntas sobre datos enlazados (QALD por sus siglas en inglés) según sus estrategias de resolución de la pregunta. Entre ellos se encuentra la clase a la cual pertenece Quepy, llamada por los autores \textit{Template-Based approaches} o Aproximaciones Basadas en Patrones. Claramente, la falta de cobertura sobre el universo posible de preguntas en una dolencia de cualquier sistema que utilice patrones estáticos para clasificar las preguntas en una determinada representación.
 
 Lo que nos proponemos entonces lograr con este trabajo es ampliar la cobertura de un sistema QALD basado en concordancia con patrones para reconocer preguntas semánticamente equivalentes a una de las clases ya definidas en él. El sistema QALD que tomamos como base es Quepy, en particular una aplicación realizada como demostración del producto\footnote{Puede utilizarse online ingresando a http://quepy.machinalis.com/}. A partir de este punto, usaremos la palabra Quepy para referirnos tanto al marco de trabajo como a las aplicaciones construidas sobre él, y en particular a la que estaremos utilizando.
 
@@ -216,42 +215,42 @@ La clasificación de una instancia es una función $\Psi:\mathcal{X} \times \mat
 Asignaremos el valor $1$ o $Verdadero$ a los pares $\langle x_i, c_j \rangle$ si la clase $c_j$ corresponde a la instancia $x_i$, y $0$ o $Falso$ en el caso contrario. Como en nuestro caso la clase asociada a cada instancia es única, podemos definir también:
 
 \begin{definition}\label{def-clasificacion}
-Un clasificador monoetiqueta es una función $\Phi:\mathcal{X} \rightarrow \mathcal{C}$ tal que:
+Un clasificador mono-etiqueta es una función $\Phi:\mathcal{X} \rightarrow \mathcal{C}$ tal que:
 $$ \Phi(x_i) = c_j \Leftrightarrow \Psi(x_i, c_j) = 1 $$
 \end{definition}
 
-$\mathcal{C}$ para esta clasificación es el conjunto de clases semánticas de Quepy, es decir, cada una de las plantillas o patrones. El ejemplo que describimos en la sección anterior corresponde a la clase ``Whatis''. Todas las preguntas que puedan responderse a través de la consulta generada por esta plantilla serán clasificadas dentro de esta clase.
+$\mathcal{C}$ para esta clasificación es el conjunto de clases semánticas de Quepy, es decir, cada una de las plantillas o patrones. El ejemplo que describimos en la sección anterior corresponde a la clase \textit{Whatis}. Todas las preguntas que puedan responderse a través de la consulta generada por esta plantilla serán clasificadas dentro de esta clase.
 
 
 
 %Pocas preguntas como semillas, muchas preguntas no etiquetadas => aprendizaje activo
 % Cómo representar la clase semántica de una pregunta => características usadas y aprendizaje sobre características.
 
-Aunque la tarea a realizar no parece compleja y ha sido ampliamente estudiada, nos encontramos con numerosos obstáculos que impiden utilizar algún método estándar de clasificación de texto. A continuación discutiremos dos de estos incovenientes y las decisiones que tomamos para resolverlos.
+Aunque la tarea a realizar no parece compleja y ha sido ampliamente estudiada, nos encontramos con numerosos obstáculos que impiden utilizar algún método estándar de clasificación de texto. A continuación discutiremos dos de estos inconvenientes y las decisiones que tomamos para resolverlos.
 
 \subsection{De la Clasificación Supervisada al Aprendizaje Activo}
 
-En primer lugar, no contamos con un corpus anotado que permita utilizar clasificación supervisada común. Desarrollamos entonces un pequeño corpus a partir de los ejemplos incuidos en Quepy. Por cada clase agregamos también algunos casos de reformulaciones no reconocidos por la aplicación y también las etiquetamos. El resultados final fueron 115 preguntas, un número más que modesto y que difícilmente cubre el universo de posibles reformulaciones de todas las clases.
+En primer lugar, no contamos con un corpus anotado que permita utilizar clasificación supervisada común. Desarrollamos entonces un pequeño corpus a partir de los ejemplos incluidos en Quepy. Por cada clase agregamos también algunos casos de reformulaciones no reconocidos por la aplicación y también las etiquetamos. El resultados final fueron 115 preguntas, un número más que modesto y que difícilmente cubre el universo de posibles reformulaciones de todas las clases.
 
 Sin embargo, existen muchos corpus de preguntas utilizados para otras tareas de clasificación que no están etiquetados. Por lo tanto, decidimos utilizar un enfoque semiautomático que comience con un conjunto de semillas y que utilice las preguntas no etiquetadas paulatinamente para aprender la clasificación. Esto nos permitirá compensar la falta de cobertura sobre el dominio.
 
-La fuente más importante de preguntas para la construcción del corpus no anotado fueron las preguntas de entrenamiento y evaluación de las tareas del TREC\footnote{http://trec.nist.gov/data/qamain.html}. Por lo tanto, consideramos que nuestro conjunto representativo de las posibles preguntas que un usuario podría esperar que un sistema responda. Sin embargo sólo una porción muy pequeña del ellas se corresponde con alguna de las clases de Quepy. Por lo tanto, entrenar un casificador con tan alta cantidad de ruido sería una tarea muy difícil.
+La fuente más importante de preguntas para la construcción del corpus no anotado fueron las preguntas de entrenamiento y evaluación de las tareas del TREC\footnote{http://trec.nist.gov/data/qamain.html}. Por lo tanto, consideramos que nuestro conjunto representativo de las posibles preguntas que un usuario podría esperar que un sistema responda. Sin embargo sólo una porción muy pequeña del ellas se corresponde con alguna de las clases de Quepy. Por lo tanto, entrenar un clasificador con tan alta cantidad de ruido sería una tarea muy difícil.
 
 Tengamos en cuenta también que los límites de una clase semántica no siempre están claros y algunas veces dependen fuertemente de la estructura de los datos en la ontología.
 
 \begin{example}\label{preguntas-similares}\hfill
     \begin{enumerate}
-    \item ``What is the tallest mountain?''
-    \item ``What is the Everest mountain?''
+    \item \textit{What is the tallest mountain?}
+    \item \textit{What is the Everest mountain?}
     \end{enumerate}
 \end{example}
 
-Estas preguntas son muy similares, y sin embargo sólo la segunda pertenece a la case ``whatis'', ya que para responder la primera pregunta debe obtenerse la altura de todas las montañas de la base de datos y seleccionar la mayor.
+Estas preguntas son muy similares, y sin embargo sólo la segunda pertenece a la case \textit{whatis}, ya que para responder la primera pregunta debe obtenerse la altura de todas las montañas de la base de datos y seleccionar la mayor.
 
 Por este motivo decidimos utilizar una plataforma de aprendizaje activo donde un oráculo humano ayudará al sistema a delimitar estas sutilezas semánticas. \citet{rare-classes-holpedales} y \citet{AL-imbalanced-Ertekin} describe clasificadores adaptados a través del aprendizaje activo para encontrar y clasificar ejemplos raros de clases minoritarias. Además de ello, el aprendizaje activo es una estrategia que obtiene buenos resultados para problemas con una gran cantidad de clases, de acuerdo con \citet{al-multiclass-jain}.
 
 \begin{figure}[h]\label{cicloaa}
-\caption{Arquitectura de un sistema de aprendizaje activo}
+\caption{Diagrama de interacción con el usuario de un sistema de aprendizaje activo}
 \includegraphics[width=8cm]{cicloaa.png}
 \centering
 \end{figure}
@@ -260,28 +259,29 @@ Por este motivo decidimos utilizar una plataforma de aprendizaje activo donde un
 
 \subsection{Aprendizaje activo sobre características}
 
-Durante las primeras etapas de desarrollo y especificación del problema debimos definir la representación de las instancias ante el clasificador. Sin embargo, al no existir trabajos previos con la misma proximación al problema no tenemos un punto de referencia para tomar como ejemplo. Por esto, decidimos incluir características tentativamente y realizar experimentos con aprendizaje activos sobre características e instancias.
+Durante las primeras etapas de desarrollo y especificación del problema debimos definir la representación de las instancias ante el clasificador. Sin embargo, al no existir trabajos previos con la misma aproximación al problema no tenemos un punto de referencia para tomar como ejemplo. Por esto, decidimos incluir características tentativamente y realizar experimentos con aprendizaje activos sobre características e instancias.
 
 %nos ayuda a entender mejor
 
 En un enfoque como este se pedirá al usuario que etiquete las características seleccionadas con una clase si la presencia de la característica en una instancia es indicativa de la clase. \citet{settles-al-features} han realizado experimentos sobre clasificación de texto en donde se demuestra que el aprendizaje activo sobre características puede dar mejores resultados incluso que el aprendizaje sobre instancias. Durante este trabajo nos ayudará a identificar las características que mejor describen las instancias para la clasificación descripta.
 
-Las etiquetas obtenidas se utilizarán también para entrenar el clasificador reforzando la probabilidad de una característica dada una clase, como veremos en detalle en la implementación.
-
 \begin{figure}[h!]\label{aa-features}
-\caption{Arquitectura de un sistema de aprendizaje activo sobre intancias y características.}
+\caption{Diagrama de interacción con el usuario de un sistema de aprendizaje activo sobre instancias y características.}
 \includegraphics[width=12cm]{cicloaa-features}
 \centering
 \end{figure}
 
-El usuario también tendrá la posibilidad de entrenar el clasificador con las etiquetas que ya ha ingresado o de terminar la sesión en cualquier momento. El diagrama de iteracción queda configurado como se muestra en la imagen \ref{aa-features}.
+Las etiquetas obtenidas se utilizarán también para entrenar el clasificador reforzando la probabilidad de una característica dada una clase, como veremos en detalle en la implementación.
+
+
+El usuario también tendrá la posibilidad de entrenar el clasificador con las etiquetas que ya ha ingresado o de terminar la sesión en cualquier momento. El diagrama de iteración queda configurado como se muestra en la imagen \ref{aa-features}.
 
 \subsection{Dualist}
 
 Dualist es un sistema muy similar al que estamos planteando desarrollado por \citet{dualist} que combina el aprendizaje sobre instancias y sobre características. Los resultados presentados son para diversas tareas como el análisis de sentimientos o la clasificación de documentos.
 
 \begin{figure}[h!]
-\caption{Captura de pantalla de la interfáz gráfica de Dualist.}
+\caption{Captura de pantalla de la interfaz gráfica de Dualist.}
 \includegraphics[width=12cm]{dualist-screen}
 \centering
 \end{figure}

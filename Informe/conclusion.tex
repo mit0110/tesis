@@ -1,2 +1,20 @@
 
-L + B + T son muy fuertes pero tenemos la intuicion de que no escalan
+\chapter*{Conclusiones y trabajo futuro}
+
+La conclusión más importante que podemos sacar de este trabajo son los beneficios del aprendizaje activo en entornos poco estudiados o con alta incertidumbre donde no se disponen de ejemplos etiquetados. Por otra parte, el entrenamiento del clasificador con un corpus de características indicativas de cada clase ha demostrado que puede aumentar significativamente el desempeño en clases minoritarias con pocas instancias sin perder precisión en las clases mayoritarias.
+
+Para llevar a cabo estos experimentos fue necesario implementar un sistema de aprendizaje activo sobre características e instancias comparable a \textit{Dualist}, de \citet{dualist}. Lo hemos desarrollado de tal forma que es independiente a nuestro problema y al clasificador utilizado, pudiendo ser adaptado a otras tareas de clasificación con aprendizaje activo. Aún así, este sistema es joven y sólo fue utilizado en una aplicación. Es necesario entonces refinar su arquitectura y transformarlo en una librería para su uso general.
+
+Otra importante implementación desarrollada para este trabajo fue la modificación del clasificador bayesiano \textit{MultinomialNB} para que pueda ser entrenado utilizando un corpus de características relacionadas a clases. Nuestra aproximación, aunque básica, ha demostrado ser de gran utilidad. Proponemos como trabajo futuro investigar el impacto de graduar la relación entre una característica y una clase, incluyendo también etiquetas negativas donde la presencia de la característica indica que la instancia no pertenece a una clase determinada.
+
+Algunos parámetros del aprendizaje activo no fueron incluidos en nuestros experimentos y los proponemos para un estudio posterior ya que su impacto puede no ser trivial. Utilizamos la técnica Esperanza-maximización siguiendo a \citet{dualist}, pero no hemos comprobado cómo se comporta el sistema sin este paso o cómo afecta la cantidad de iteraciones del algoritmo. Además de ello, consideramos interesante continuar con la investigación sobre las mejores formas de selección de características con ganancia de información calculada con respecto a cada clase en lugar de globalmente.
+
+Los resultados de los experimentos con aprendizaje activo revelan que cambiar la estrategia de selección tanto de características e instancias durante el entrenamiento puede ser beneficioso en escenarios donde se disponen de pocos ejemplos. Comenzar seleccionando instancias con baja entropía o características con baja ganancia de información ha demostrado ser una buena estrategia en las primeras iteraciones ya que permite al clasificador afirmar su conocimiento sobre una pequeña parte del universo antes continuar con sectores desconocidos.
+
+% Ig sobre todo el corpus o solo sobre el de entrenamiento
+% Aplicar el interjudging implementado
+
+Con respecto al problema de cobertura de Quepy en particular logramos ampliar el reconocimiento de nuevas preguntas dentro de las clases semánticas. Antes de poder integrar un clasificador a Quepy necesitamos un sistema de reconocimiento de entidades nombradas para identificar el objetivo de la pregunta. Insistiremos en representar las preguntas con el tipo de las entidades nombradas en ella ya que consideramos que los resultados pobres que obtuvimos en nuestros experimentos derivan en la forma en que obtuvimos las entidades nombradas.
+
+% Para tratar de mejorar los resultados de clasificación con una clase mayoritaria tan grande hacer clasificadores binarios uno versus el resto que tal vez ayudarían a identificar mejor cada una de las clases.
+

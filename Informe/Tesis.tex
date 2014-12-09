@@ -10,6 +10,7 @@
 \usepackage{natbib}
 \usepackage{amsthm}  % For theorems and definitions
 \usepackage{amsmath}  % For the operatorname
+\usepackage{longtable}
 \theoremstyle{definition}
 \newtheorem{definition}{Definición}
 \newtheorem{example}{Ejemplo}
@@ -21,9 +22,9 @@
 %and uncomment the next line)
 %\include{mymacros}
 
-\title{Aprendizaje Activo para clasificación de preguntas sobre Datos Enlazados (Linked Data)}   %note \\[1ex] is a line break in the title
+\title{Aprendizaje Activo para Clasificación de Preguntas}   %note \\[1ex] is a line break in the title
 
-\author{Teruel Milagro}             %your name
+\author{Milagro Teruel}             %your name
 \college{Facultad de Matemática, Astronomía y Física\\[1ex]
 		}  %your college
 
@@ -55,21 +56,23 @@
 \end{romanpages}            % end roman page numbering
 
 %now include the files of latex for each of the chapters etc
+\addcontentsline{toc}{chapter}{Introducción}
 \include{introduccion}
 \include{definicion_problema}
 \include{caracteristicas_elegidas}
 \include{arquitectura}
 \include{experimentacion}
 \include{resultados}
-\include{conclusiones}
+\addcontentsline{toc}{chapter}{Conclusiones y trabajo futuro}
+\include{conclusion}
 
 %now enable appendix numbering format and include any appendices
-%\appendix
-\include{apendice}
-%\include{appendix2}
+\appendix
+\include{apendice1}
+\include{apendice2}
 
 %next line adds the Bibliography to the contents page
-\addcontentsline{toc}{chapter}{Bibliography}
+\addcontentsline{toc}{chapter}{Bibliografía}
 %uncomment next line to change bibliography name to references
 %\renewcommand{\bibname}{References}
 \bibliography{biblio}        %use a bibtex bibliography file refs.bib

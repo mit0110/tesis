@@ -1,4 +1,4 @@
-\begin{thebibliography}{33}
+\begin{thebibliography}{42}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -15,6 +15,12 @@ Steven Abney.
 Tim Berners-Lee.
 \newblock Linked data - design issues, November 2014.
 \newblock URL \url{http://www.w3.org/DesignIssues/LinkedData.html}.
+
+\bibitem[Bird et~al.(2009)Bird, Klein, and Loper]{nltk}
+Steven Bird, Ewan Klein, and Edward Loper.
+\newblock \emph{Natural Language Processing with Python}.
+\newblock O Reilly Media, Inc., 2009.
+\newblock ISBN 0596516495.
 
 \bibitem[Brickley and Guha(2014)]{brickleyRDF}
 Dan Brickley and Ramanathan~V. Guha.
@@ -33,11 +39,28 @@ Tom~Heath Christian~Bizer and Tim Berners-Lee.
 \newblock \emph{International journal on semantic web and information systems},
   5(3):\penalty0 1--22, 2009.
 
+\bibitem[Cortes and Vapnik(1995)]{svm-cortes}
+Corinna Cortes and Vladimir Vapnik.
+\newblock Support-vector networks.
+\newblock \emph{Mach. Learn.}, 20\penalty0 (3):\penalty0 273--297, September
+  1995.
+\newblock ISSN 0885-6125.
+\newblock \doi{10.1023/A:1022627411411}.
+\newblock URL \url{http://dx.doi.org/10.1023/A:1022627411411}.
+
 \bibitem[Cover and Thomas(1991)]{information-theory-cover}
 Thomas~M. Cover and Joy~A. Thomas.
 \newblock \emph{Elements of Information Theory}.
 \newblock Wiley-Interscience, New York, NY, USA, 1991.
 \newblock ISBN 0-471-06259-6.
+
+\bibitem[Deerwester et~al.(1990)Deerwester, Dumais, Furnas, Landauer, and
+  Harshman]{lsa}
+Scott Deerwester, Susan~T. Dumais, George~W. Furnas, Thomas~K. Landauer, and
+  Richard Harshman.
+\newblock Indexing by latent semantic analysis.
+\newblock \emph{Journal of the American Society for Information Science},
+  41\penalty0 (6):\penalty0 391--407, 1990.
 
 \bibitem[Dempster et~al.(1977)Dempster, Laird, and
   Rubin]{Dempster-maximumlikelihood}
@@ -121,6 +144,22 @@ P.~Jain and A.~Kapoor.
 \newblock In \emph{Computer Vision and Pattern Recognition, 2009. CVPR 2009.
   IEEE Conference on}, pages 762--769, June 2009.
 
+\bibitem[Joachims(1998)]{svm-uso-Joachims}
+Thorsten Joachims.
+\newblock Text categorization with suport vector machines: Learning with many
+  relevant features.
+\newblock In \emph{Proceedings of the 10th European Conference on Machine
+  Learning}, ECML '98, pages 137--142, London, UK, UK, 1998. Springer-Verlag.
+\newblock ISBN 3-540-64417-2.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=645326.649721}.
+
+\bibitem[Judge et~al.(2006)Judge, Cahill, and Genabith]{corpus-stanford}
+John Judge, Aoife Cahill, and Josef~Van Genabith.
+\newblock Questionbank: Creating a corpus of parse-annotated questions.
+\newblock In \emph{In Proceedings of the 21st International Conference on
+  Computational Linguistics and 44th Annual Meeting of the ACL (COLING-ACL-06},
+  pages 497--504, 2006.
+
 \bibitem[Kosseim and Yousefi(2008)]{Kosseimmuyparecido}
 Leila Kosseim and Jamileh Yousefi.
 \newblock Improving the performance of question answering with semantically
@@ -143,16 +182,34 @@ Christopher~D. Manning, Prabhakar Raghavan, and Hinrich Sch\"{u}tze.
 \newblock Cambridge University Press, New York, NY, USA, 2008.
 \newblock ISBN 0521865719, 9780521865715.
 
+\bibitem[Marcus et~al.(1993)Marcus, Santorini, and Marcinkiewicz]{penntreebank}
+Mitchell~P. Marcus, Beatrice Santorini, and Mary~Ann Marcinkiewicz.
+\newblock Building a large annotated corpus of english: The penn treebank.
+\newblock \emph{COMPUTATIONAL LINGUISTICS}, 19\penalty0 (2):\penalty0 313--330,
+  1993.
+
 \bibitem[McCallum and Nigam(1998)]{multinomialnb-comparision-mccallum}
 Andrew McCallum and Kamal Nigam.
 \newblock A comparison of event models for naive bayes text classification.
 \newblock \emph{AAAI-98 workshop on learning for text categorization},
   752:\penalty0 41--48, 1998.
 
-\bibitem[Ou and Zhu(??)]{ou_entailement}
+\bibitem[Meyer(2014)]{mql}
+Scott Meyer.
+\newblock A brief tour of graphd, November 2014.
+\newblock URL
+  \url{https://web.archive.org/web/20120530075727/http://blog.freebase.com/2008/04/09/a-brief-tour-of-graphd}.
+
+\bibitem[Ou and Zhu(2011)]{ou_entailement}
 Shiyan Ou and Zhenyuan Zhu.
 \newblock An entailment-based question answering system over semantic web data.
-\newblock \emph{??}, ??\penalty0 (?):\penalty0 ?--?, ??
+\newblock In Chunxiao Xing, Fabio Crestani, and Andreas Rauber, editors,
+  \emph{Digital Libraries: For Cultural Heritage, Knowledge Dissemination, and
+  Future Creation}, volume 7008 of \emph{Lecture Notes in Computer Science},
+  pages 311--320. Springer Berlin Heidelberg, 2011.
+\newblock ISBN 978-3-642-24825-2.
+\newblock \doi{10.1007/978-3-642-24826-9\_39}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-642-24826-9\_39}.
 
 \bibitem[Pedregosa et~al.(2011)Pedregosa, Varoquaux, Gramfort, Michel, Thirion,
   Grisel, Blondel, Prettenhofer, Weiss, Dubourg, Vanderplas, Passos,
@@ -163,6 +220,18 @@ F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
 \newblock Scikit-learn: Machine learning in {P}ython.
 \newblock \emph{Journal of Machine Learning Research}, 12:\penalty0 2825--2830,
   2011.
+
+\bibitem[Prud'hommeaux and Seaborne(2008)]{sparql}
+Eric Prud'hommeaux and Andy Seaborne.
+\newblock Sparql query language for rdf.
+\newblock Technical report, W3C, January 2008.
+\newblock URL \url{http://www.w3.org/TR/rdf-sparql-query/}.
+
+\bibitem[Rennie et~al.(2003)Rennie, Shih, Teevan, and Karger]{tackling-mnb}
+Jason D.~M. Rennie, Lawrence Shih, Jaime Teevan, and David~R. Karger.
+\newblock Tackling the poor assumptions of naive bayes text classifiers.
+\newblock In \emph{In Proceedings of the Twentieth International Conference on
+  Machine Learning}, pages 616--623, 2003.
 
 \bibitem[Roobaert et~al.(2006)Roobaert, Karakoulas, and Chawla]{infgain}
 Danny Roobaert, Grigoris Karakoulas, and NiteshV. Chawla.
@@ -223,10 +292,16 @@ Christina Unger, André Freitas, and Philipp Cimiano.
   Publishing, 2014.
 \newblock ISBN 978-3-319-10586-4.
 
-\bibitem[Wang and Li(??)]{rui_relations}
+\bibitem[Wang and Li(2012)]{rui_relations}
 Rui Wang and Shuguang Li.
 \newblock Constructing a question corpus for textual semantic relations.
-\newblock \emph{??}, ??\penalty0 (?):\penalty0 ?--?, ??
+\newblock In Nicoletta Calzolari~(Conference Chair), Khalid Choukri, Thierry
+  Declerck, Mehmet~Uğur Doğan, Bente Maegaard, Joseph Mariani, Asuncion
+  Moreno, Jan Odijk, and Stelios Piperidis, editors, \emph{Proceedings of the
+  Eight International Conference on Language Resources and Evaluation
+  (LREC'12)}, Istanbul, Turkey, may 2012. European Language Resources
+  Association (ELRA).
+\newblock ISBN 978-2-9517408-7-7.
 
 \bibitem[Zipf(1935)]{zipf1}
 George~Kingsley Zipf.

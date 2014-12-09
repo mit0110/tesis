@@ -2,15 +2,15 @@
 
 Una importante parte de cualquier problema que aborde el lenguaje natural es la forma de representarlo. Las características relevantes para describir un problema dependen fuertemente del mismo y de su solución, si bien existen numerosos ejemplos de trabajos previos a tomar como modelo. El siguiente paso es identificar qué características de la pregunta son indicativas de su clase semántica, lo cual no tiene una respuesta intuitiva.
 
-Nuestra primera aproximación fue utilizar criterios estándares en la catergorización de texto como los lemmas de las palabras y sus etiquetas POS. \citet{Sebastiani-text-categorization} describe que a pesar de su simpleza son representaciones muy poderosas y que otras más complejas no necesariamente llevarán a un mejor desempeño del clasificador. A pesar de ser formas superficiales del lenguaje, son una manisfetación de la semántica ya que ésta es su causa latente.
+Nuestra primera aproximación fue utilizar criterios estándares en la categorización de texto como los lemas de las palabras y sus etiquetas POS. \citet{Sebastiani-text-categorization} describe que a pesar de su simpleza son representaciones muy poderosas y que otras más complejas no necesariamente llevarán a un mejor desempeño del clasificador. A pesar de ser formas superficiales del lenguaje, son una manifestación de la semántica ya que ésta es su causa latente.
 
-Además de lemmas es común el uso de n-gramas para la representación de texto. Un n-grama es una secuencia de lemmas de longitud n extraída del texto. Ilustramos este concepto con un ejemplo:
+Además de lemas es común el uso de n-gramas para la representación de texto. Un n-grama es una secuencia de lemas de longitud n extraída del texto. Ilustramos este concepto con un ejemplo:
 
 \begin{example} Descomposición de una oración en bigramas y trigramas.
 
 Oración: ``El gato come pescado.''
 
-Lemmas: ``el'', ``gato'', ``comer'', ``pescado'', ``.''.
+Lemas: ``el'', ``gato'', ``comer'', ``pescado'', ``.''.
 
 Bigramas: ``el gato'', ``gato comer'', ``comer pescado'', ``pescado .''.
 
@@ -20,10 +20,11 @@ Trigramas: ``el gato comer'', ``gato comer pescado'', ``comer pescado .''.
 
 Se espera que los n-gramas representen además de las palabras del texto la relación que existe entre ellas derivada de su posición relativa. Sin embargo, estas combinaciones crecen exponencialmente con el tamaño del corpus y dan lugar a matrices muy esparsas, ya que pocos n-gramas ocurren en muchas instancias del corpus. Por ello decidimos limitarnos a bigramas y trigramas.
 
-Los n-gramas pueden construirse no sólo a partir de los lemmas sino también incluyendo etiquetas POS. Este tipo de estructuras son útiles cuando queremos representar, por ejemplo, ``la palabra comer seguida de un sustantivo''. Utilizaremos bigramas combinados de la forma (lemma, POS) y (POS, lemma), a las que llamamos bigramas mezclados.
+Los n-gramas pueden construirse no sólo a partir de los lemas sino también incluyendo etiquetas POS. Este tipo de estructuras son útiles cuando queremos representar, por ejemplo, ``la palabra comer seguida de un sustantivo''. Utilizaremos bigramas combinados de la forma (lema, POS) y (POS, lema), a las que llamamos bigramas mezclados.
+
 \section{Subpatrones}
 
-Como presentamos en el ejemplo \ref{preguntas-similares} algunas preguntas tienen tanto lemmas como etiquetas POS muy similares y sin embargo pertencen a clases distintas. La forma en la que Quepy distingue estos casos es utilizando la estructura de la frase, representada en sus patrones. Por eso, decidimos utilizar además como característica los patrones que concuerdan con la pregunta (\textit{pattern matching}).
+Como presentamos en el ejemplo \ref{preguntas-similares} algunas preguntas tienen tanto lemas como etiquetas POS muy similares y sin embargo pertenecen a clases distintas. La forma en la que Quepy distingue estos casos es utilizando la estructura de la frase, representada en sus patrones. Por eso, decidimos utilizar además como característica los patrones que concuerdan con la pregunta (\textit{pattern matching}).
 
 Esta representación por sí sola tampoco mejora nuestra situación inicial, ya que sólo reconoce las preguntas que corresponden de forma exacta a un patrón. La solución que encontramos para este problema fue dividir cada patrón en todos sus posibles subpatrones y determinar con cuales de todos estos subpatrones concuerda cada instancia.
 
@@ -87,12 +88,12 @@ Existe un tipo más de característica que determina fuertemente la semántica d
 En FreeBase, para obtener los actores que trabajaron en una película, como en el caso de la primera pregunta, debe utilizarse la relación ``/film/film/starring'', mientras que en el caso de una serie televisiva se utiliza ``/tv/tv\_program/regular\_cast''.
 \end{example}
 
-El indicio más certero de la clase semántica en estos casos es la entidad nombrada en la pregunta. Por ello, la incluímos como una característica más. Agregaremos los tipos de dicha entidad en la base de conocimiento, particularmente para esta aplicación FreeBase. Cabe destacar que no todas las preguntas tienen una entidad, y en el caso de que sí tenga no siempre podemos reconocerla. Esto depende del sistema externo de reconocimiento de nombres de entidades o NER por sus siglas en inglés. En el capítulo siguiente describiremos el sistema que utilizamos para esta tarea.
+El indicio más certero de la clase semántica en estos casos es la entidad nombrada en la pregunta. Por ello, la incluimos como una característica más. Agregaremos los tipos de dicha entidad en la base de conocimiento, particularmente para esta aplicación FreeBase. Cabe destacar que no todas las preguntas tienen una entidad, y en el caso de que sí tenga no siempre podemos reconocerla. Esto depende del sistema externo de reconocimiento de nombres de entidades o NER por sus siglas en inglés. En el capítulo siguiente describiremos el sistema que utilizamos para esta tarea.
 
 En resumen, las características propuestas para el sistema son:
 \begin{itemize}
     \item Etiquetas POS.
-    \item Lemmas, bigramas, trigramas y bigramas mezclados.
+    \item Lemas, bigramas, trigramas y bigramas mezclados.
     \item Concordancias a patrones parciales.
     \item Entidad nombrada.
     \item Tipos de la entidad nombrada.
