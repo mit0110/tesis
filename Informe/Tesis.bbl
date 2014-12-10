@@ -1,4 +1,4 @@
-\begin{thebibliography}{42}
+\begin{thebibliography}{43}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -152,6 +152,12 @@ Thorsten Joachims.
   Learning}, ECML '98, pages 137--142, London, UK, UK, 1998. Springer-Verlag.
 \newblock ISBN 3-540-64417-2.
 \newblock URL \url{http://dl.acm.org/citation.cfm?id=645326.649721}.
+
+\bibitem[Jones et~al.(2001--)Jones, Oliphant, Peterson, et~al.]{scipy}
+Eric Jones, Travis Oliphant, Pearu Peterson, et~al.
+\newblock {SciPy}: Open source scientific tools for {Python}, 2001--.
+\newblock URL \url{http://www.scipy.org/}.
+\newblock [Online; accessed 2014-12-10].
 
 \bibitem[Judge et~al.(2006)Judge, Cahill, and Genabith]{corpus-stanford}
 John Judge, Aoife Cahill, and Josef~Van Genabith.

@@ -70,21 +70,21 @@ Nuestro modelo depende entonces de dos parámetros: $P(c_j)$ y $P(f_k|c_j)$. Sin
 
 donde $\mathcal{L}$ es el conjunto de datos etiquetados de entrenamiento, $\hat{\Psi}(x, c_j) \in \{0,1\}$ es la clasificación obtenida del mismo y $f_k(x)$ es la cantidad de veces que la característica $f_k$ está presente en la instancia $x$.
 
-Aunque las ecuaciones están bien definidas, puede suceder que el numerador de la ecuación \ref{sin-smooth} $\sum_{x \in \mathcal{L}} \hat{\Psi}(x, c_j) f_k(x)$ sea nulo ya que una característica puede no ocurrir en ninguna instancia de la clase. Debido a la raleza en la distribución de palabras (\citet{zipf1} y \citet{zipf2}), es común que ocurra este fenómeno. Para evitarlo se suaviza los datos de la siguiente manera:
+Aunque las ecuaciones están bien definidas, puede suceder que el numerador de la ecuación \ref{sin-smooth} $\sum_{x \in \mathcal{L}} \hat{\Psi}(x, c_j) f_k(x)$ sea nulo ya que una característica puede no ocurrir en ninguna instancia de la clase. Debido a la raleza en la distribución de palabras (\citet{zipf1} y \citet{zipf2}), es común que ocurra este fenómeno. Para evitarlo se suavizan los datos de la siguiente manera:
 
 \begin{equation}
 \hat{P}(f_k|c_j) = \frac{m_{jk} + \sum_{x \in \mathcal{L}} \hat{\Psi}(x, c_j) f_k(x)}{\sum_{x \in \mathcal{L}} (f_k(x) + m_k)}
 \end{equation}
 
-\citet{dualist} plantea que $m_{jk}$ es la probabilidad anterior de $f_k$ para la clase $c_j$, y comúnmente se utiliza una distribución uniforme como la Laplaciana donde todos los valores son 1. El término $m_k$ es un valor para normalizar la división.
+\citet{dualist} plantea que $m_{jk}$ es la probabilidad anterior o a priori de $f_k$ para la clase $c_j$, es decir, una cantidad desconocida que expresa la incertidumbre acerca de la distribución de probabilidad de las características. Al ser desconocida comúnmente se utiliza en su lugar una distribución uniforme como la Laplaciana donde todos los valores son 1. El término $m_k$ es un valor para normalizar la división.
 
-Nuestro objetivo principal es adaptar este clasificador para que utilice un parámetro adicional $m_{jk}$ modificando esta probabilidad anterior en base a las etiquetas del usuario para las características. Introduciremos entonces la siguiente definición:
+Nuestro objetivo principal es poder entrenar el clasificador con información sobre la relación entre las características y las clases. Adaptamos entonces el \textit{MultinomialNB} para que utilice un parámetro adicional $m_{jk}$ modificando esta probabilidad anterior siguiendo las etiquetas de las características que provee oráculo humano. Introduciremos entonces la siguiente definición:
 
 \begin{definition}
 La clasificación de una características es una función $\Psi_f:\mathcal{F} \times \mathcal{C} \rightarrow \{0, 1\}$ que asigna valores booleanos donde $\mathcal{F}$ es el conjunto de características y $\mathcal{C}$ es el conjunto de clases posibles.
 \end{definition}
 
-Seguimos la implementación de dualist para agregar esta clasificación adicional de la siguiente manera:
+Seguimos la implementación de Dualist para agregar esta clasificación adicional de la siguiente manera:
 
 \begin{equation}\label{eq-feat-boost}
 m_{jk} = 1 + \Psi_f(f_k, c_j) \; \alpha
@@ -103,21 +103,16 @@ En las secciones siguientes describiremos cómo implementamos algunos módulos q
 
 \section{Selección de instancias}
 
-Elegir las instancias para que sean etiquetadas por el usuario es el centro de los algoritmos de aprendizaje activo y existen numerosas estrategias que pueden utilizarse. Trabajos como \citet{settles_active_learning_survey} y \citet{al-logistic-regresion-schein} resumen las más importantes de ellas:
+Elegir las instancias para que sean etiquetadas por el usuario es central en los algoritmos de aprendizaje activo y existen numerosas estrategias que pueden utilizarse. Trabajos como \citet{settles_active_learning_survey} y \citet{al-logistic-regresion-schein} resumen las más importantes de ellas:
 
 \begin{description}
-    \item[Muestro por incertidumbre] Asumiendo que el aprendedor tiene cierto
-    grado de certidumbre a la hora de etiquetar un ejemplo, hay varias formas
-    de utilizar esta información para seleccionar los ejemplos que se enviarán
-    al oráculo:
+    \item[Muestreo por incertidumbre] Asumiendo que el aprendedor tiene cierto     grado de certidumbre a la hora de etiquetar un ejemplo, hay varias formas     de utilizar esta información para seleccionar los ejemplos que se enviarán     al oráculo:
     \begin{itemize}
         \item Confianza o incertidumbre en su clasificación.
         \item Distancia entre la dos primeras etiquetas más probables.
         \item Entropía.
     \end{itemize}
-    Estudios han demostrado que dichas estrategias obtienen resultados similares
-    y que la elección debe hacerse teniendo en cuenta la aplicación particular
-    para la que se utilizarán.
+    Algunos estudios han mostrado que dichas estrategias obtienen resultados similares y que la elección debe hacerse teniendo en cuenta la aplicación particular para la que se utilizarán.
     \item[Selección por comité (QBC)] Se utilizan varios clasificadores para obtener
     un conjunto de etiquetas para cada una de las instancias no etiquetadas.
     Luego se seleccionan las instancias que hayan generado mayor desacuerdo
@@ -131,17 +126,12 @@ Elegir las instancias para que sean etiquetadas por el usuario es el centro de l
     lugar de maximizar el cambio en el modelo, minimiza su error de
     generalización. El objetivo es reducir el número esperado de predicciones
     erróneas. Este método ha sido ampliamente estudiado demostrando muy buenos
-    resultados, sin embargo, es el método computacionalmente más costoso.
-    \item[Reducción de la varianza] Intenta minimizar el error esperado
-    indirectamente minimizando la varianza de los resultados. Para ello,
-    selecciona un conjunto de instancias que maximice la información Fisher. Al
-    igual que en el método anterior se tiene en cuenta todo es espacio de
-    ejemplos en lugar de cada una de las instancias, y por lo tanto tiene menos
-    probabilidades de seleccionar ejemplos raros en la distribución.
+    resultados. Sin embargo, es el método computacionalmente más costoso.
+    \item[Reducción de la varianza] Intenta minimizar el error esperado indirectamente minimizando la varianza de los resultados. Para ello, selecciona un conjunto de instancias que maximice la cantidad de información Fisher. Al igual que en el método anterior tiene en cuenta todo el espacio de ejemplos en lugar de cada una de las instancias, y por lo tanto tiene menos probabilidades de seleccionar ejemplos raros en la distribución.
     \item[Métodos pesados por la densidad] Siguiendo la misma línea que los dos
     métodos anteriores, supone que los ejemplos significativos son aquellos
     que no solo tienen alta incertidumbre, sino que son representativos
-    de la distribución subyacente. Estudios indican resultados superiores,
+    de la distribución subyacente. Algunos estudios indican resultados superiores,
     acompañados por implementaciones de alta velocidad que permiten incluso
     interacción de tiempo real con el usuario.
 \end{description}
@@ -155,8 +145,8 @@ De todas estas opciones elegimos explorar el espacio de instancias a través de 
 Este método ha sido utilizado previamente como parte del aprendizaje activo por \citet{entropy-or}, \citet{settles-entropy} y \citet{Hwa-entropy}. Nosotros lo tomamos por varios motivos:
 \begin{itemize}
     \item Es simple y rápido de calcular.
-    \item Tiene en cuenta la incertidumbre de todas las clases, no solo una o dos de ellas.
-    \item \citet{settles_active_learning_survey} sostiene que la entropía es más adecuada cuando se busca minimizar la pérdida o \textit{log-loss}, definida como la desviación de la clasificación; mientras que los otros métodos son adecuados para minimizar el error. En particular buscamos que el clasificador se desempeñe correctamente en todas las clases y no solo en la clase mayoritaria.
+    \item Tiene en cuenta la incertidumbre de todas las clases, no sólo una o dos de ellas.
+    \item \citet{settles_active_learning_survey} sostiene que la entropía es más adecuada cuando se busca minimizar la pérdida o \textit{log-loss}, definida como la desviación de la clasificación; mientras que los otros métodos son adecuados para minimizar el error. En particular buscamos que el clasificador se desempeñe correctamente en todas las clases y no sólo en la clase mayoritaria.
 \end{itemize}
 
 
@@ -180,7 +170,7 @@ Notemos que es una función entre variables aleatorias, donde una es la presenci
 
 donde $I_k \in \{0, 1\}$ indica la presencia o ausencia de la característica k.
 
-Algunas de estas probabilidades no son parte de nuestro, por lo que las estimamos empíricamente como:
+Algunas de estas probabilidades no son parte del modelo, por lo que las estimamos empíricamente como:
 $$ \hat{P}(I_k = 1) = \frac{|\{ x \in \mathcal{X}: f_k(x) > 0 \} |}{|\mathcal{X}|} $$
 $$ \hat{P}(I_k = z, c_j) = \frac{|\{ x \in \mathcal{X}: I_k(x) = z \wedge \Psi(x, c_j)\} |}{|\mathcal{X}|} $$
 $$ \hat{P}(I_k = 0) = 1 - \hat{P}(I_k = 1) $$
@@ -189,7 +179,9 @@ donde $\mathcal{X}$ es el conjunto de instancias.
 Para simplificar la tarea de etiquetamiento, presentamos al usuario las características asociadas a las clases para las que son más probables. Esta selección se realiza en dos pasos: primero seleccionamos las k características que coocurren más veces con la clase y luego las ordenamos por su ganancia de información.
 
 \section{Esperanza-Maximización}
-El algoritmo de esperanza-maximización propuesto por \citet{Dempster-maximumlikelihood} es ampliamente utilizado para inferir parámetros desconocidos en una distribución que tiene estados latentes. Si conociéramos el universo completo de instancias posibles y sus clases correspondientes, entonces podríamos estimar los parámetros de un clasificador directamente utilizando máxima verosimilitud. Sin embargo, no conocemos parte de este universo, lo cual constituye nuestros estados latentes.
+El algoritmo de esperanza-maximización propuesto por \citet{Dempster-maximumlikelihood} es ampliamente utilizado para inferir parámetros desconocidos en una distribución que tiene estados latentes. Para la clasificación de texto, los estados latentes son las clases de las instancias.
+
+Esperanza-Maximización es utilizado como un método de entrenamiento de clasificadores no supervisado, es decir, con datos no etiquetados. La variante que propone \citet{dualist} y que describiremos a continuación incluye tantos instancias etiquetadas como no etiquetadas. El objetivo de aplicar este algoritmo es introducir al clasificador parte de la información de los datos no etiquetados al maximizar la probabilidad de los datos observados.
 
 Ya hemos definido previamente el concepto de verosimilitud o \textit{likelihood} del modelo: es una función sobre los parámetros del modelo y un conjunto de datos que calcula la probabilidad de los valores tomados por cada variable aleatoria del modelo bajo dichos parámetros. Podemos escribirlo como:
 
@@ -222,11 +214,11 @@ El paso E es el que calcula el valor esperado de la verosimilitud asumiendo que 
 
 Si los parámetros actuales fueran correctos, entonces la verosimilitud obtenida sería la verosimilitud real del modelo, pero como no lo son provee una cota inferior. Luego, como tenemos una función sin valores no observados, el paso M maximiza $l(\theta)$ encontrando parámetros del modelo más adecuados. De esta forma optimizamos la cota inferior encontrada generando un nuevo conjunto de parámetros $\hat{\theta}$.
 
-Ambos pasos se repite numerosas veces hasta lograr convergencia. Sin embargo tomamos ejemplo de Settles y realizamos una sola iteración, dado que argumenta que las siguientes iteraciones no aportan significativamente a la precisión del clasificador.
+Ambos pasos se repiten numerosas veces hasta lograr convergencia. En nuestros experimentos, tomamos ejemplo de Settles, y realizamos una sola iteración, dado  que las siguientes iteraciones no aportan significativamente a la precisión del clasificador.
 
-Si bien derivar la maximización correcta de los parámetros del $FeatMultinomialNB$ no es trivial, la implementación posterior sí es sencilla. Para realizarlo nos basamos en la maximización de un clasificador Bayesiano simple de \citet{data-mining-Liu}, agregando la noción de \citet{dualist} de utilizar tanto los datos etiquetados como no etiquetados pesando los no etiquetados por un factor de 0,1.
+Si bien derivar la maximización correcta de los parámetros del $MultinomialNB$ no es trivial, la implementación posterior sí es sencilla. Para realizarlo nos basamos en la maximización de un clasificador Bayesiano simple de \citet{data-mining-Liu}, agregando la noción de \citet{dualist} de utilizar tanto los datos etiquetados como no etiquetados pesando los no etiquetados por un factor de 0,1.
 
-Al etiquetar los ejemplos no anotados obtenemos una matriz con $P(c_j|x_i)$ para cada instancia y cada clase. Utilizamos esta matriz para reestimar los parámetros de la siguiente forma:
+Al etiquetar probabilísticamente los ejemplos no anotados con el clasificador se obtiene una matriz con $P(c_j|x_i)$ para cada instancia y cada clase. En base a ella y a los parámetros actuales del clasificador reestimamos los nuevos parámetros de la siguiente forma:
 
 \begin{equation*}
 \hat{P}_u(c_j) = \sum_{x_i \in \mathcal{U}} P(c_j|x_i) P(x_i)
@@ -250,4 +242,3 @@ Al etiquetar los ejemplos no anotados obtenemos una matriz con $P(c_j|x_i)$ para
 \end{equation}
 
 donde $\mathcal{U}$ es el conjunto de datos no etiquetados y $\mathcal{Z}_1$, $\mathcal{Z}_2$ son contantes de normalización.
-
