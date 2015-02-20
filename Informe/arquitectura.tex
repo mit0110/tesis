@@ -7,7 +7,7 @@ La arquitectura de nuestro sistema integra tres grandes bloques que interactúan
 
 \begin{description}
     \item[FeatMultinomialNB] Es el clasificador del sistema. Hereda del clasificador multinomial bayesiano \textit{MultinomialNB} de la librería scikit-learn (\citet{scikit-learn}) y está adaptado para soportar el entrenamiento utilizando tanto instancias como características. Elegimos este clasificador siguiendo a \citet{dualist}.
-    \item[ActivePipeline] Es una clase que abstrae los ciclos de aprendizaje activo. Recordemos que constan de dos pasos principales donde se seleccionan las instancias o características y luego se procesan las etiqueta devueltas por el usuario. Para llevar a cabo estas tareas el ActivePipeline necesita tener acceso a los corpus etiquetados y no etiquetados y al clasificador, lo cual lo convierte en el módulo central del proyecto.
+    \item[ActivePipeline] Es una clase que abstrae los ciclos de aprendizaje activo. Recordemos que constan de dos pasos principales donde se seleccionan las instancias o características y luego se procesan las etiqueta devueltas por el usuario. Para llevar a cabo estas tareas el \textit{ActivePipeline} necesita tener acceso a los corpus etiquetados y no etiquetados y al clasificador, lo cual lo convierte en el módulo central del proyecto.
     \item[Preprocess] Es un módulo que convierte las preguntas de entrenamiento etiquetadas a su representación vectorial utilizando las características descriptas en el capítulo anterior. La representación de las preguntas está completamente ligada a los patrones de la aplicación de Quepy. Por ello diseñamos el preproceso como una extensión opcional de Quepy que puede utilizar cualquier clasificador. En otras palabras, no es necesario que se integre con el aprendizaje activo.
 \end{description}
 
@@ -15,17 +15,17 @@ La arquitectura de nuestro sistema integra tres grandes bloques que interactúan
 
 ActivePipeline es una clase creada para simplificar la tarea del aprendizaje activo. Entre las actividades que realiza se encuentra la lectura de los conjuntos de datos, la selección de instancias y características para presentar al oráculo humano, la gestión de los datos ingresados y el reentrenamiento del clasificador. También agregamos funciones que facilitan el entorno de experimentación como sesiones y métricas de evaluación parcial.
 
-Hasta el momento hemos realizado una prueba de concepto que demuestra que una aproximación de este estilo ayudaría a resolver el problema de la falta de cobertura de Quepy. Esta arquitectura está en desarrollo constante y no ha sido terminada para integrarse en un sistema estable para interactuar con un sistema real. Describiremos a continuación los puntos más centrales de la implementación ya que los detalles son altamente propensos a ser modificados en el futuro.
+Hasta el momento hemos realizado una prueba de concepto que demuestra que una aproximación de este estilo ayudaría a resolver el problema de la falta de cobertura de Quepy. Esta arquitectura está en desarrollo constante y no ha sido terminada para integrarse en un sistema estable. Describiremos a continuación los puntos más centrales de la implementación ya que los detalles son altamente propensos a ser modificados en el futuro.
 
-Para crear una instancia de ActivePipeline se requiere un diccionario con los siguientes parámetros:
+Para crear una instancia de \textit{ActivePipeline} se requiere un diccionario con los siguientes parámetros:
 \begin{description}
-    \item[Clasificador] Es una instancia entrenable de un clasificador. Para mantener generalidad, requerimos que tenga la interfaz estándar de \textit{scikit-learn}. Los métodos que utilizamos son \textit{fit} para contruir el modelo a partir de los datos anotados, \textit{predict\_proba}, \textit{predict\_log\_proba} para obtener la probabilidad de cada clase dado un conjunto de instancias y \textit{score} que calcula el rendimiento del clasificador.
+    \item[Clasificador] Es una instancia entrenable de un clasificador. Para mantener generalidad, requerimos que tenga la interfaz estándar de \textit{scikit-learn}. Los métodos que utilizamos son \textit{fit} para contruir el modelo a partir de los datos anotados, \textit{predict\_proba}, \textit{predict\_log\_proba} para obtener la probabilidad de cada clase y su logaritmo dado un conjunto de instancias y \textit{score} para calcular el rendimiento del clasificador.
     \item[Conjuntos de datos] Se deben definir los archivos desde donde recuperar al menos tres conjuntos de datos: el de entrenamiento, el de evaluación y el no etiquetado. Ya deben estar preprocesados antes de ser leídos por el ActivePipeline, y es recomendable que sean instancias de una clase Corpus también definida en el sistema.
 \end{description}
 
-Al permitir elegir tanto características como el conjunto de datos y el clasificador, la clase ActivePipeline puede ser utilizada dentro de cualquier ámbito de aprendizaje activo incluso no relacionado al procesamiento del lenguaje natural.
+Al permitir elegir tanto características como el conjunto de datos y el clasificador, la clase \textit{ActivePipeline} puede ser utilizada dentro de cualquier ámbito de aprendizaje activo incluso no relacionado al procesamiento del lenguaje natural.
 
-Tanto para el aprendizaje sobre características y sobre instancias el ActivePipeline cuenta con una función automática. El usuario debe definir sólo las funciones de interacción con el usuario, es decir, cómo mostrar la información, y pasarlas como parámetros al ActivePipeline.
+Tanto para el aprendizaje sobre características y sobre instancias el \textit{ActivePipeline} cuenta con una función automática. El usuario debe definir sólo las funciones de interacción con el usuario, es decir, cómo mostrar la información, y pasarlas como parámetros al ActivePipeline.
 
 \subsection{FeatMultinomialNB: Un clasificador entrenado con características}
 
@@ -43,9 +43,9 @@ Bajo este modelo, la probabilidad de que una instancia $x_i$ sea de clase $c_j$ 
 \begin{equation}\label{eq-mnb-prob}
     P(c_j|x_i) \propto P(c_j) \prod_{1\leq k \leq n_i}P(f_k|c_j)
 \end{equation}
-donde $n_i$ es la cantidad de características que aparecen en la instancia $x_i$ y $P(f_k|c_j)$ es la probabilidad de que la característica $f_k$ esté presente en una instancia de clase $c_j$. \citet{multinomial-manning} explican que la intuición detrás de estos conceptos es que $P(f_k|c_j)$ indica de qué tan buen indicador es $f_k$ para la clase $c_j$, mientras que $P(c_j)$ pesa estos valores por la probabilidad de la clase. El producto de las probabilidades y pesos es una medida de cuánta evidencia existe de que la instancia pertenezca a la clase.
+donde $n_i$ es la cantidad de características que aparecen en la instancia $x_i$ y $P(f_k|c_j)$ es la probabilidad de que la característica $f_k$ esté presente en una instancia de clase $c_j$. \citet{multinomial-manning} explican que la intuición detrás de estos conceptos es que $P(f_k|c_j)$ representa qué tan buen indicador es $f_k$ para la clase $c_j$, mientras que $P(c_j)$ pesa estos valores por la probabilidad de la clase. El producto de las probabilidades y pesos es una medida de cuánta evidencia existe de que la instancia pertenezca a la clase.
 
-La gran cantidad de multiplicaciones sobre valores probabilísticos menores que uno puede llevar fácilmente a un desbordamiento aritmético debido la imposibilidad de representar números tan pequeños en una computadora. Utilizaremos logaritmos para manejar esta situación, manteniendo la proporción de los operandos ya que el logaritmo es una función monótona creciente y basándonos fuertemente en la propiedad que asegura $\log(ab) = \log(a) + \log(b)$. La ecuación \ref{eq-mnb-prob} es equivalente a:
+La gran cantidad de multiplicaciones sobre valores probabilísticos menores que uno puede llevar fácilmente a un desbordamiento aritmético debido la imposibilidad de representar números tan pequeños en una computadora. Utilizaremos logaritmos para manejar esta situación, manteniendo la proporción de los operandos ya que el logaritmo es una función monótona creciente y basándonos fuertemente en la propiedad que asegura que $\log(ab) = \log(a) + \log(b)$. La ecuación \ref{eq-mnb-prob} es equivalente a:
 
 \begin{equation}
 \log P(c_j|x_i) \propto \log P(c_j) + \sum_{1\leq k \leq n_i} \log P(f_k|c_j)
@@ -98,12 +98,12 @@ En las secciones siguientes describiremos cómo implementamos algunos módulos q
 \begin{figure}[h!]\label{aa-con-secciones}
 \centering
 \includegraphics[width=10cm]{partes-implementacion}
-\caption{Diagrama de la implementación del sistema aprendizaje activo.}\label{aa-con-secciones}
+\caption{Diagrama de la implementación de un sistema aprendizaje activo.}\label{aa-con-secciones}
 \end{figure}
 
 \section{Selección de instancias}
 
-Elegir las instancias para que sean etiquetadas por el usuario es central en los algoritmos de aprendizaje activo y existen numerosas estrategias que pueden utilizarse. Trabajos como \citet{settles_active_learning_survey} y \citet{al-logistic-regresion-schein} resumen las más importantes de ellas:
+Elegir las instancias para que sean etiquetadas por el usuario es central en los algoritmos de aprendizaje activo y existen numerosas estrategias que pueden utilizarse. Trabajos como los de \citet{settles_active_learning_survey} y \citet{al-logistic-regresion-schein} resumen las más importantes de ellas:
 
 \begin{description}
     \item[Muestreo por incertidumbre] Asumiendo que el aprendedor tiene cierto     grado de certidumbre a la hora de etiquetar un ejemplo, hay varias formas     de utilizar esta información para seleccionar los ejemplos que se enviarán     al oráculo:
@@ -170,7 +170,7 @@ Notemos que es una función entre variables aleatorias, donde una es la presenci
 
 donde $I_k \in \{0, 1\}$ indica la presencia o ausencia de la característica k.
 
-Algunas de estas probabilidades no son parte del modelo, por lo que las estimamos empíricamente como:
+Algunas de estas probabilidades no son parte del modelo bayesiano ingenuo, por lo que las estimamos empíricamente como:
 $$ \hat{P}(I_k = 1) = \frac{|\{ x \in \mathcal{X}: f_k(x) > 0 \} |}{|\mathcal{X}|} $$
 $$ \hat{P}(I_k = z, c_j) = \frac{|\{ x \in \mathcal{X}: I_k(x) = z \wedge \Psi(x, c_j)\} |}{|\mathcal{X}|} $$
 $$ \hat{P}(I_k = 0) = 1 - \hat{P}(I_k = 1) $$
@@ -181,7 +181,7 @@ Para simplificar la tarea de etiquetamiento, presentamos al usuario las caracter
 \section{Esperanza-Maximización}
 El algoritmo de esperanza-maximización propuesto por \citet{Dempster-maximumlikelihood} es ampliamente utilizado para inferir parámetros desconocidos en una distribución que tiene estados latentes. Para la clasificación de texto, los estados latentes son las clases de las instancias.
 
-Esperanza-Maximización es utilizado como un método de entrenamiento de clasificadores no supervisado, es decir, con datos no etiquetados. La variante que propone \citet{dualist} y que describiremos a continuación incluye tantos instancias etiquetadas como no etiquetadas. El objetivo de aplicar este algoritmo es introducir al clasificador parte de la información de los datos no etiquetados al maximizar la probabilidad de los datos observados.
+Esperanza-Maximización es utilizado como un método de entrenamiento de clasificadores no supervisado, es decir, con datos no etiquetados. La variante que propone \citet{dualist} y que describiremos a continuación incluye tantos instancias etiquetadas como no etiquetadas. El objetivo de aplicar este algoritmo es introducir al clasificador parte de la información de las instancias no etiquetadas al maximizar la probabilidad de los datos observados.
 
 Ya hemos definido previamente el concepto de verosimilitud o \textit{likelihood} del modelo: es una función sobre los parámetros del modelo y un conjunto de datos que calcula la probabilidad de los valores tomados por cada variable aleatoria del modelo bajo dichos parámetros. Podemos escribirlo como:
 
@@ -218,7 +218,7 @@ Ambos pasos se repiten numerosas veces hasta lograr convergencia. En nuestros ex
 
 Si bien derivar la maximización correcta de los parámetros del $MultinomialNB$ no es trivial, la implementación posterior sí es sencilla. Para realizarlo nos basamos en la maximización de un clasificador Bayesiano simple de \citet{data-mining-Liu}, agregando la noción de \citet{dualist} de utilizar tanto los datos etiquetados como no etiquetados pesando los no etiquetados por un factor de 0,1.
 
-Al etiquetar probabilísticamente los ejemplos no anotados con el clasificador se obtiene una matriz con $P(c_j|x_i)$ para cada instancia y cada clase. En base a ella y a los parámetros actuales del clasificador reestimamos los nuevos parámetros de la siguiente forma:
+En el paso E al etiquetar probabilísticamente los ejemplos no anotados con el clasificador se obtiene una matriz con $P(c_j|x_i)$ para cada instancia y cada clase. En base a ella y a los parámetros actuales del clasificador reestimamos los nuevos parámetros de la siguiente forma:
 
 \begin{equation*}
 \hat{P}_u(c_j) = \sum_{x_i \in \mathcal{U}} P(c_j|x_i) P(x_i)

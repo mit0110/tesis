@@ -4,7 +4,7 @@ Una parte importante de cualquier problema que aborde el lenguaje natural es la 
 
 Nuestra primera aproximación fue utilizar criterios estándares en la categorización de texto como los lemas de las palabras y sus etiquetas POS. \citet{Sebastiani-text-categorization} describe que a pesar de su simpleza son representaciones muy poderosas y que otras más complejas no necesariamente llevarán a un mejor desempeño del clasificador. A pesar de ser formas superficiales del lenguaje, son una manifestación de la semántica ya que ésta es su causa latente.
 
-Una representación posible pero que descartamos es utilizar las palabras o el lexico de las preguntas. Este tipo de representación es redundante con respecto a los lemas ya que contienen información muy similar, mientras que tienen una dispersión mucho mayor. Por ejemplo, el lema ``comer'' incluye la información de las palabras ``come'', ``comía'', ``comeremos'', etc.
+Una representación posible pero que descartamos es utilizar las palabras o el léxico de las preguntas. Este tipo de representación es redundante con respecto a los lemas ya que contienen información muy similar, mientras que tienen una dispersión mucho mayor. Por ejemplo, el lema ``comer'' incluye la información de las palabras ``come'', ``comía'', ``comeremos'', etc.
 
 Además de lemas es común el uso de n-gramas para la representación de texto. Un n-grama de lemas es una secuencia de longitud n extraída del texto. Ilustramos este concepto con un ejemplo:
 
@@ -22,7 +22,7 @@ Trigramas: ``el gato comer'', ``gato comer pescado'', ``comer pescado .''.
 
 Se espera que los n-gramas representen además de las palabras del texto la relación que existe entre ellas derivada de su posición relativa. Sin embargo, estas combinaciones crecen exponencialmente con el tamaño del corpus y dan lugar a matrices muy dispersas, ya que pocos n-gramas ocurren en muchas instancias del corpus. Por ello decidimos limitarnos a bigramas y trigramas.
 
-Los n-gramas pueden construirse no sólo a partir de los lemas sino también incluyendo etiquetas POS. Este tipo de estructuras son útiles cuando queremos representar, por ejemplo, ``la palabra comer seguida de un sustantivo''. Utilizaremos bigramas combinados de la forma (lema, POS) y (POS, lema), a las que llamamos bigramas mezclados.
+Los n-gramas pueden construirse no sólo a partir de los lemas sino también incluyendo etiquetas POS. Este tipo de estructuras son útiles cuando queremos representar, por ejemplo, ``la palabra comer seguida de un sustantivo''. Utilizaremos bigramas combinados de la forma (lema, POS) y (POS, lema), a las que llamamos Bigramas Mezclados.
 
 \section{Subpatrones}
 
@@ -88,7 +88,7 @@ Existe un tipo más de característica que determina fuertemente la semántica d
         \item ``Who are the actors of Titanic?''
         \item ``Who are the actors of Friends?''
     \end{enumerate}
-En FreeBase, para obtener los actores que trabajaron en una película, como en el caso de la primera pregunta, debe utilizarse la relación ``/film/film/starring'', mientras que en el caso de una serie televisiva se utiliza ``/tv/tv\_program/regular\_cast''.
+En FreeBase, para obtener los actores que trabajaron en una película, como en el caso de la primera pregunta, debe utilizarse la relación \textit{/film/film/starring}, mientras que en el caso de una serie televisiva se utiliza \textit{/tv/tv\_program/regular\_cast}.
 \end{example}
 
 El indicio más certero de la clase semántica en estos casos es la entidad nombrada en la pregunta. Por ello, la incluimos como una característica más. Agregaremos los tipos de dicha entidad en la base de conocimiento extraídos de FreeBase. Cabe destacar que no todas las preguntas tienen una entidad, y en el caso de que sí tenga no siempre podemos reconocerla. Esto depende del módulo externo de reconocimiento de nombres de entidades (NERC). En el capítulo siguiente describiremos el sistema que utilizamos para esta tarea.

@@ -15,7 +15,7 @@ El primer paso antes de comenzar a experimentar fue conseguir las preguntas para
 
 Para el conjunto etiquetado comenzamos a partir de 58 ejemplos incluídos dentro de la aplicación de Quepy que describían posibles preguntas en inglés reconocidas por el programa. Es decir, estas 58 preguntas concuerdan con alguno de los patrones de la aplicación. Manualmente generamos reformulaciones para las cuales no existían patrones, aumentando el número de instancias etiquetadas a 115. En el apéndice \ref{ap-3} incluimos un listado de este corpus incial.
 
-A partir de este punto comenzamos a buscar preguntas no etiquetadas. Utilizamos los corpus de entrenamiento y evaluación de los concursos del \textit{Text REtrieval Conference} (TREC) desde el año 1999 hasta el año 2007 \footnote{http://trec.nist.gov/data/qamain.html}. Esta competencia incluye preguntas de variados dominios y por ello la consideramos suficientemente representativa. Agregamos también las preguntas compiladas por \citet{corpus-stanford}, aunque no utilizamos la información adicional de este corpus. Obtuvimos un total de 6658 preguntas no etiquetadas.
+A partir de este punto comenzamos a buscar preguntas no etiquetadas. Utilizamos los corpus de entrenamiento y evaluación de los concursos de \textit{Text REtrieval Conference} (TREC) 8 y 9\footnote{http://trec.nist.gov/data/qamain.html}. Esta competencia incluye preguntas de variados dominios y por ello la consideramos suficientemente representativa. Agregamos también las preguntas compiladas por \citet{corpus-stanford}, aunque no utilizamos la información adicional de este corpus. Obtuvimos un total de 6658 preguntas no etiquetadas.
 
 Como último paso, etiquetamos otras 597 preguntas de este último conjunto que seleccionamos al azar. Aquí se introducen ejemplos etiquetados de preguntas que no pertenecen a ninguna clase semántica que pueda ser respondida por Quepy, y por lo tanto les asignamos la clase \textit{other}.
 
@@ -36,7 +36,7 @@ A partir de este conjunto de preguntas etiquetado separamos un porcentaje para e
 
 Sin embargo, algunos de los experimentos a realizar simularían las respuestas de un oráculo humano interactuando con el sistema a partir de las preguntas previamente etiquetadas.
 
-Dividimos entonces las instancias etiquetadas entre un corpus semilla de entrenamiento inicial del aprendedor, con una instancia de cada clase, y un corpus que simularía el no etiquetado a partir del cual generar las respuestas de esta interacción. Esta división nos permitió simular el funcionamiento del sistema con diferentes configuraciones, sin necesidad de recurrir a la colaboración de un experto para cada una de ellas. El la tabla \ref{corpus-para-simulacion} se describe la configuración de estos corpus para simulaciones y en al apéndice \ref{ap-1} se incluye una tabla con la distribución de cada corpus por clase.
+Dividimos entonces las instancias etiquetadas entre un corpus semilla de entrenamiento inicial del aprendedor, con una instancia de cada clase, y un corpus que simularía el no etiquetado para generar las respuestas de esta interacción. Esta división nos permitió simular el funcionamiento del sistema con diferentes configuraciones, sin necesidad de recurrir a la colaboración de un experto para cada una de ellas. El la tabla \ref{corpus-para-simulacion} se describe la configuración de estos corpus para simulaciones y en al apéndice \ref{ap-1} se incluye una tabla con la distribución de cada corpus por clase.
 
 % Testing corpus: 31 recognized instances
 % Testing corpus: 186 total instances
@@ -61,11 +61,11 @@ Dividimos entonces las instancias etiquetadas entre un corpus semilla de entrena
 
 \section{Preproceso}
 
-Para poder comparar las preguntas con los patrones definidos en Quepy utilizamos el módulo de preproceso incluído en el mismo. Para la lematización y la extracción de etiquetas POS Quepy utiliza la librería \textit{nltk} desarrollada por \citet{nltk}, y a partir de esta información construye automáticamente objetos que pueden ser comparados con un patrón. El siguiente paso es comparar cada una de las preguntas procesadas con los patrones parciales de Quepy que extraemos de la misma aplicación. Adicionalmente utilizamos lemas y etiquetas POS para construir los bigramas, trigramas y bigramas mezclados.
+Para poder comparar las preguntas con los patrones definidos en Quepy utilizamos el módulo de preproceso incluído en el mismo. Para la lematización y la extracción de etiquetas POS Quepy utiliza la librería \textit{nltk} (\citet{nltk}), y a partir de esta información construye automáticamente objetos que pueden ser comparados con un patrón. El siguiente paso es comparar cada una de las preguntas procesadas con los patrones parciales de Quepy que extraemos de la misma aplicación. Adicionalmente utilizamos lemas y etiquetas POS para construir los bigramas, trigramas y bigramas mezclados.
 
 Para obtener las entidades nombradas en las preguntas primero descargamos directamente desde FreeBase los nombres de posibles entidades. Debido a que la cantidad de infomación disponible es muy grande, restringimos nuestra búsqueda a entidades que probablemente estuvieran involucrados en preguntas de nuestro corpus. FreeBase organiza sus nodos asignándoles a cada uno varios tipos y decidimos tomar ventaja de esta característica para la selección de entidades.
 
-Guiándonos por las clases de preguntas presenten en el corpus decidimos que los siguientes tipos eran relevantes: film\_actor, film\_director, books, book\_author, celebrities, locations, movies, musical\_group, musical\_group\_member, tv\_actor y tv\_show. Descargamos los nombres de todas las entidades de esos tipos y todos los otros tipos que tuvieran esas entidades.
+Guiándonos por las clases de preguntas presentes en el corpus decidimos que los siguientes tipos eran relevantes: film\_actor, film\_director, books, book\_author, celebrities, locations, movies, musical\_group, musical\_group\_member, tv\_actor y tv\_show. Descargamos los nombres de todas las entidades de esos tipos y todos los otros tipos que tuvieran esas entidades.
 
 Una vez obtenida esa información, comparamos cada nombre con cada pregunta para identificar si estaba contenido en ella o no. Si lo estaba, agregamos el nombre y sus tipos a la representación de la pregunta.
 
@@ -130,9 +130,11 @@ Incluimos estos clasificadores dentro de un ciclo de aprendizaje activo sólo so
 % python experiments/grapich_learning_curves.py experiments/results/experiment4/learningcurve-full-186-step2-unbalance "Curva de aprendizaje" experiments/results/experiment4/recognitioncurve-full-186-step2-unbalance "Curva de reconocimiento"
 \begin{figure}[h!]
 \centering
-\includegraphics[width=12cm]{curva-apr-vs-rec-dt}
-\caption{Curvas de aprendizaje y reconocimiento para el clasificador DT comenzando con un corpus de 29 instancias etiquetadas.}\label{curva-apr-vs-rec-dt}
+\includegraphics[width=10cm]{curva-apr-vs-rec-dt}
+\caption{Curvas de aprendizaje y reconocimiento para el clasificador DT con un corpus no balanceado.}\label{curva-apr-vs-rec-dt}
 \end{figure}
+
+En la figura \ref{curva-apr-vs-rec-dt} se presentan las curvas de aprendizaje y reconocimiento para el clasificador DT en los experimentos de aprendizaje activo simulado.
 
 El valor las tres medidas en los clasificadores SVM y MNB durante el aprendizaje activo se mantiene constante luego de superar las 10 instancias agregadas al corpus de entrenamiento.
 
@@ -141,7 +143,7 @@ El valor las tres medidas en los clasificadores SVM y MNB durante el aprendizaje
 \textbf{Conclusión}
 Si observáramos aisladamente la medida del \textit{accuracy} para este experimento podría pensarse que todos los clasificadores obtienen resultados significativos, o al menos aceptables. Sin embargo el reconocimiento y el factor kappa ponen en relevancia que los clasificadores MNB y SVM sólo reconocen la clase mayoritaria y etiquetan con ella a todas las instancias. Es decir, estos clasificadores tienen un sesgo por la clase mayoritaria, ya que, ante las poca información que tienen, clasificar a todos los ejemplos como la clase mayoritaria ofrece el mejor resultado posible.
 
-La figura \ref{curva-apr-vs-rec-dt} con el desempeño en el aprendizaje activo del clasificador DT da indicios de porqué sucede este fenómeno. El reconocimiento alcanza su punto máximo con un valor de 0.45 con 60 instancias agregadas al corpus de entrenamiento y posteriormente decae hasta su valor final. Las instancias agregadas en los primeros ciclos son las que tienen mayor entropía, es decir, requieren mayor cantidad de información para ser representadas. Dicho de otra manera, son aquellas sobre las que el clasificador tiene menos información y por lo tanto no pertenecen a la clase mayoritaria. Todo esto nos indica que al agregar instancias de la clase mayoritaria el reconocimiento del clasificador decae, mientras que el \textit{accuracy}.
+La figura \ref{curva-apr-vs-rec-dt} con el desempeño en el aprendizaje activo del clasificador DT da indicios de porqué sucede este fenómeno. El reconocimiento alcanza su punto máximo con un valor de 0.45 con 60 instancias agregadas al corpus de entrenamiento y posteriormente decae hasta su valor final. Las instancias agregadas en los primeros ciclos son las que tienen mayor entropía, es decir, requieren mayor cantidad de información para ser representadas. Dicho de otra manera, son aquellas sobre las que el clasificador tiene menos información y por lo tanto no pertenecen a la clase mayoritaria. Todo esto nos indica que al agregar instancias de la clase mayoritaria el reconocimiento del clasificador decae, mientras que el \textit{accuracy} aumenta.
 
 Por lo tanto, formulamos la hipótesis de nuestro experimento número 2 de que entrenar el clasificador con pocas instancias de la clase mayoritaria aumentaría el reconocimiento final.
 
@@ -163,14 +165,14 @@ Para tener una línea de comparación, también realizamos el mismo proceso con 
 %python experiments/grapich_learning_curves.py experiments/results/experiment4/learningcurve-full-186-step2-hip2 "DT" experiments/results/experiment5/learningcurve-full-186-step2-hip2 "SVM" experiments/results/experiment2/learningcurve-full-186-step1-hip2 "MNB"
 \includegraphics[width=8cm]{recognition-curve-hip2}
 % python experiments/grapich_learning_curves.py experiments/results/experiment4/recognitioncurve-full-186-step2-hip2 "DT" experiments/results/experiment5/recognitioncurve-full-186-step2-hip2 "SVM" experiments/results/experiment2/recognitioncurve-full-186-step1-hip2 "MNB"
-\caption{Curvas de aprendizaje y reconocimiento en función de la cantidad de instancias de la clase mayoritaria utilizadas en el entrenamiento para los clasificadores DT, SVM y MNB.}\label{curva-apr-hip2}
+\caption{\textit{Accuracy} y reconocimiento en función de la cantidad de instancias de la clase mayoritaria utilizadas en el entrenamiento para los clasificadores DT, SVM y MNB.}\label{curva-apr-hip2}
 \centering
 \end{figure}
 
 \vspace{3 mm}
 
 \textbf{Conclusión}
-Como esperábamos, el reconocimiento es inversamente proporcional a la cantidad de instancias de clase mayoritaria que se utilizan en el entrenamiento. Esto no quiere decir que no deban ser utilizadas, sino que pueden estar oscureciendo los pocos datos etiquetados de las otras clases que componen el corpus de entrenamiento.
+Como esperábamos, el reconocimiento es inversamente proporcional a la cantidad de instancias de clase mayoritaria que se utilizan en el entrenamiento. Esto no quiere decir que no deban ser utilizadas, sino que pueden estar oscureciendo los pocos datos etiquetados de las otras clases.
 
 Estos resultados no son extraños en problemas donde se busca reconocer y clasificar una pequeña parte del universo de instancias, como ya hemos visto que plantea \citet{rare-classes-holpedales}. En nuestro caso, estamos clasificando el resto del universo dentro de una clase mayoritaria aunque esto no se corresponda con la realidad. Esta mega-clase engloba las instancias de todas las clases que no podemos reconocer, y como tal no existen características distintivas que permitan al clasificador reconocerlas. Ante tanta diversidad, como podemos observar el desempeño es pobre y se basa sólo en la probabilidad mayor de una etiqueta.
 
@@ -189,7 +191,7 @@ La base de la clasificación es la generalización de la información de los dat
 \textbf{Hipótesis} Las características como las concordancias parciales y los tipos de entidades nombradas son más significativas que las otras para el clasificador \textit{MultinomialNB}.
 \vspace{3 mm}
 
-Antes de comenzar con el entrenamiento a través de aprendizaje activo propiamente dicho queremos determinar la configuración de experimentos que maximizará el resultado final. Como mencionamos en el capítulo \ref{capitulo-features}, consideramos que este grupo de características representa mejor a las instancias para esta tarea de categorización en particular. Las preguntas que queremos analizar tienen una longitud corta y un vocabulario similar, es decir, muchas preguntas contiene palabras como \textit{What}, \textit{Who} o \textit{is}. Sin embargo, estas palabras no son discriminatorias de la clase en la mayoría de los casos, sino que dependemos del resto de la frase. Por otro lado, al tener una alta cantidad de clases distintas, es probable que cada una de estas palabras discriminatorias esté presente en pocos ejemplos, si no sólo en uno, resultando en un matriz de representación muy dispersa. Por estos motivos suponemos que utilizar derivados simples de los lemas no formará una frontera de decisión tan clara para el clasificador.
+Antes de comenzar con el entrenamiento a través de aprendizaje activo propiamente dicho queremos determinar la combinación de características y técnicas de preprocesamiento que maximizará el resultado final. Como mencionamos en el capítulo \ref{capitulo-features}, consideramos que este grupo de características representa mejor a las instancias para esta tarea de categorización en particular. Las preguntas que queremos analizar tienen una longitud corta y un vocabulario similar, es decir, muchas preguntas contiene palabras como \textit{What}, \textit{Who} o \textit{is}. Sin embargo, estas palabras no son discriminatorias de la clase en la mayoría de los casos, sino que dependemos del resto de la frase. Por otro lado, al tener una alta cantidad de clases distintas, es probable que cada una de estas palabras discriminatorias esté presente en pocos ejemplos, si no sólo en uno, resultando en un matriz de representación muy dispersa. Por estos motivos suponemos que utilizar derivados simples de los lemas no formará una frontera de decisión tan clara para el clasificador.
 
 Para probar esta hipótesis entrenamos el clasificador \textit{MultinomialNB} con el corpus de entrenamiento y no etiquetado (simulado) descriptos en la sección anterior preprocesados con distintas combinaciones de características. Para un mejor entendimiento de los datos, realizamos un análisis sobre el corpus usado para entrenamiento y obtenemos la distribución de ocurrencias de cada tipo de características en las instancias.
 
@@ -218,7 +220,7 @@ Para probar esta hipótesis entrenamos el clasificador \textit{MultinomialNB} co
     \textbf{PM + NET + NE} & \textbf{0.64} & 0.43 \\[0.5ex]
     \hline
 \end{tabular}
-\caption{Comparación de desempeño sobre el corpus de evaluación}\label{tabla-exp3}
+\caption{Rendimiento del clasificador para distintas combinaciones de características}\label{tabla-exp3}
 \end{table}
 
 En la figura \ref{fig-distribucion-features} cada gráfico de torta ilustra la cantidad de características que ocurren en un número fijo de instancias distribuidas según la clase a la que pertenecen. Es decir, en el primer gráfico la porción de color negro representa cuántos lemas (L) aparecen sólo en una pregunta de todo el corpus.
@@ -231,7 +233,7 @@ En la figura \ref{fig-distribucion-features} cada gráfico de torta ilustra la c
 
 \vspace{3 mm}
 
-\textbf{Conclusión} Primero realizaremos un análisis de los gráficos de torta y luego ahondaremos en el desempeño del clasificador a partir de esa base. Lo primero que notamos es que, como habíamos supuesto, la proporción de Concordancias parciales (PM) y Tipos de entidades nombradas (NET) aumenta mientras aumenta el número de instancias en las que están presentes. Es decir, en proporción hay muchas más reglas que concuerdan con muchas instancias que con una sola. Lo mismo ocurre con las etiquetas POS, pero recordemos que hay pocas de ellas y que en general ocurren muchas veces en el texto. Es decir, en todas las frases hay sustantivos y verbos. Por lo tanto, no las consideraremos relevantes. Sin embargo, sí encontramos significativo que la proporción de los lemas se mantenga constante con respecto a la cantidad de instancias en las que ocurren. Esto nos indica que esta característica podría ser mucho más útil de lo que esperábamos.
+\textbf{Conclusión} Primero realizaremos un análisis de los gráficos de torta y luego ahondaremos en el desempeño del clasificador a partir de esa base. Lo primero que notamos es que, como habíamos supuesto, la proporción de Concordancias parciales (PM) y Tipos de entidades nombradas (NET) aumenta mientras aumenta el número de instancias en las que están presentes. Es decir, en proporción hay muchas más reglas que concuerdan con muchas instancias que con una sola, lo que nos indica que son menos dispersas. Lo mismo ocurre con las etiquetas POS, pero recordemos que hay pocas de ellas y que en general ocurren muchas veces en el texto. Es decir, en todas las frases hay sustantivos y verbos. Por lo tanto, no las consideraremos relevantes. Sin embargo, sí encontramos significativo que la proporción de los lemas se mantenga constante con respecto a la cantidad de instancias en las que ocurren. Esto nos indica que esta característica podría ser mucho más útil de lo que esperábamos.
 
 El fenómeno contrario ocurre con los Bigramas (B) y Trigramas (T), junto con las Entidades Nombradas en sí (NE), que en general ocurren en pocas instancias dentro del corpus. Por lo tanto, esperaríamos que no se desempeñen bien aisladas sino en conjunto con otras características.
 
@@ -248,14 +250,15 @@ Por otra parte, los Tipos de las entidades nombradas y las Entidades nombradas s
 
 Métodos de suavizado son utilizados comúnmente en la clasificación de texto y extracción de información para contrarrestar la distribución de palabras descripta por la ley de Zipff, donde pocas palabras ocurren muchas veces mientras que la mayoría de los términos están presentes en pocas instancias.
 
-\textit{Tf-Idf} hace referencia a Frecuencia de términos y frecuencia inversa de documentos, una medida estadística para determinar cuán importante es una palabra dentro de una instancia o documento. Se calcula como el producto de otras dos medidas: la Frecuencia del término es la cantidad de veces que una característica ocurre en la instancia, y la Frecuencia inversa del documento es la inversa de la cantidad de veces que la característica aparece en todo el corpus. Como resultado, palabras que ocurren pocas veces en el corpus y se concentran sólo en una porción de instancias toman más relevancia con respecto a palabras que ocurren en muchas instancias, ya que se consideran más representativas. Ha sido utilizado por \citet{tackling-mnb} como una forma de modelado alternativa para el clasificador Bayesiano ingenuo.
+\textit{Tf-Idf} hace referencia a Frecuencia de términos y frecuencia inversa de documentos, una medida estadística para determinar cuán importante es una palabra dentro de una instancia o documento. Se calcula como el producto de otras dos medidas: la Frecuencia del término es la cantidad de veces que una característica ocurre en la instancia, y la Frecuencia inversa del documento es la inversa de la cantidad de veces que la característica aparece en todo el corpus. Como resultado, palabras que ocurren pocas veces en el corpus y se concentran sólo en una porción de instancias toman proporcionalmente más relevancia con respecto a palabras que ocurren en muchas instancias, ya que se consideran más representativas. Ha sido utilizado por \citet{tackling-mnb} como una forma de modelado alternativa para el clasificador Bayesiano ingenuo.
 
-\textit{LSA} o Análisis de semántica latente es una técnica introducida por \citet{lsa} para superar los problemas de utilizar aproximaciones basadas sólo en términos para el procesamiento de lenguaje natural. Supone que existe una estructura semántica oculta por la alta variabilidad del vocabulario e intenta minimizar el ruido a través de técnicas estadísticas. \textit{LSA} utiliza una técnica llamada Descomposición en valores singulares o \textit{SVD} que descompone la matriz de representación en un nuevo espacio vectorial de forma que se reduce la dimensionalidad (tiene menos características) mientras se preserva la relación entre las las características restantes y las instancias.
+\textit{LSA} o Análisis de semántica latente es una técnica introducida por \citet{lsa} para superar los problemas de utilizar aproximaciones basadas sólo en términos para el procesamiento de lenguaje natural. Supone que existe una estructura semántica oculta por la alta variabilidad del vocabulario e intenta minimizar el ruido a través de técnicas estadísticas. \textit{LSA} utiliza una técnica llamada Descomposición en valores singulares o \textit{SVD} que descompone la matriz de representación en un nuevo espacio vectorial de forma que se reduce la dimensionalidad (tiene menos características) mientras se preserva la relación entre las las características restantes y las instancias. El objetivo de esta transformación es reducir el ruido en los datos introducido por la dispersión de las características.
 
 Para aplicar estos dos métodos usamos las clases \textit{TfidfTransformer} y \textit{TruncatedSVD} de la librería \textit{scikit-learn}. Luego de preprocesar todos los corpus con estos métodos entrenamos el clasificador \textit{MultinomialNB} y comprobamos su rendimiento sobre el corpus de evaluación.
 
 \vspace{3 mm}
 \textbf{Resultados}
+
 \begin{table}[h]
 \centering
 \begin{tabular}{l c c | c c}
@@ -286,11 +289,12 @@ Para aplicar estos dos métodos usamos las clases \textit{TfidfTransformer} y \t
 \end{tabular}
 \caption{Comparación de desempeño sobre el corpus de evaluación con distintas caraterísticas y técnicas de suavizamiento.}\label{tabla-exp4}
 \end{table}
+
 % L + PM + NET + NE + B + T + MB + POS
+En la tabla \ref{tabla-exp4} mostramos las mediciones más significativas de \textit{accuracy} y reconocimiento obtenidas sin aprendizaje activo para combinaciones de las siguientes características: Lemas (L), Bigramas (B), Trigramas (T), Bigramas Mezclados (MB), Etiquetas POS (POS), Entidades nombradas (NE), Tipos de las entidades nombradas (NET) y Concordancia a patrones parciales (PM), aplicando métodos de suavizado de Tf-idf y LSA. Entre paréntesis se incluye la diferencia de cada métrica con respecto a los resultados de la tabla \ref{tabla-exp3}. En el apéndice \ref{ap-4} se muestran las tablas ambas tablas para una mejor comparación.
 
-En la tabla \ref{tabla-exp4} mostramos las mediciones más significativas de \textit{accuracy} y reconocimiento obtenidas sin aprendizaje activo para combinaciones de las siguientes características: Lemas (L), Bigramas (B), Trigramas (T), Bigramas Mezclados (MB), Etiquetas POS (POS), Entidades nombradas (NE), Tipos de las entidades nombradas (NET) y Concordancia a patrones parciales (PM), aplicando métodos de suavizado de Tf-idf y LSA. Entre paréntesis se incluye la diferencia de cada métrica con respecto a los resultados de la tabla \ref{tabla-exp3}.
+No incluimos los resultados de los experimentos utilizando ambos métodos ya que ninguno de ellos es superior a los mencionados anteriormente.
 
-No incluimos los resultados de los experimentos utilizando ambos métodos ya que ninguno de ellos dio mejores resultados que los mencionados anteriormente.
 
 Los datos expresados con el preprocesamiento de LSA tienen el número de dimensiones que maximizan el resultado. Para las combinaciones más exitosas PM + L + B + T y PM + L se utilizaron 250 características.
 
@@ -348,13 +352,13 @@ El clasificador se reentrenó y se aplicó un ciclo del algoritmo Esperanza-Maxi
 
 \vspace{3 mm}
 
-\textbf{Resultados} En la figura \ref{fig-aa-comparision} mostramos la evolución del \textit{accuracy} y del reconocimiento para las tres estrategias de selección de instancias: aleatoria, mayor entropía y menor entropía. Para graficar las curvas utilizando selección aleatoria se promedian los valores obtenidos de cada métrica de 5 experimentos distintos.
+\textbf{Resultados} En la figura \ref{fig-aa-comparision} mostramos la evolución del \textit{accuracy} y del reconocimiento para las tres estrategias de selección de instancias: aleatoria, mayor entropía y menor entropía. Para graficar las curvas utilizando selección aleatoria se promedian los valores obtenidos de cada métrica en 5 experimentos distintos.
 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=9cm]{learningcurve-aa-exp5}
 \includegraphics[width=9cm]{recognitioncurve-aa-exp5}
-\caption{Desempeño del clasificador con aprendizaje activo y distintas estrategias de selección de instancias.}\label{fig-aa-comparision}
+\caption{Rendimiento del clasificador con aprendizaje activo y distintas estrategias de selección de instancias.}\label{fig-aa-comparision}
 \end{figure}
 
 \vspace{3 mm}
@@ -439,7 +443,7 @@ En la figura \ref{comp-feat-tr-inst} se muestra el \textit{accuracy} y reconocim
 \textbf{Conclusión}
 Comenzamos por evaluar cuál era el mejor valor posible para el parámetro $\alpha$ y obtuvimos resultados que no se corresponden con los experimentos de \citet{dualist}. Si bien para el reconocimiento el valor del peso adicional no tiene grandes variaciones, el crecimiento es casi proporcional para el \textit{accuracy}. Al no existir etiquetas para la clase \textit{other} introducir pesos en las características crea un límite que le permite al clasificador distinguir las instancias de la clase mayoritaria sin perder reconocimiento. Mientras mayor es el peso adicional, más clara es la línea de separación.
 
-Podemos observar en la imagen \ref{comp-feat-tr-inst} que la separación entre las curvas de aprendizaje entrenando con y sin características se mantiene aproximadamente constante a partir de las 20 instancias. Por otra parte, para el reconocimiento no ocurre lo mismo sino que se cumple nuestra hipótesis de que la contribución del corpus de características disminuiría al agregar instancias. Esto se debe principalmente a que no hay etiquetas para la clase \textit{other} en el corpus de características.
+Podemos observar en la imagen \ref{comp-feat-tr-inst} que la separación entre las curvas de aprendizaje entrenando con y sin características se mantiene aproximadamente constante a partir de las 20 instancias. Por otra parte, para el reconocimiento no ocurre lo mismo sino que se cumple nuestra hipótesis de que la contribución del corpus de características disminuiría al agregar instancias. Esto se debe principalmente, como ya mencionamos, a que no hay etiquetas para la clase \textit{other} en el corpus de características.
 
 Notamos también que agregar más de 20 instancias no afecta en gran medida ni el \textit{accuracy} ni el reconocimiento ya que gran parte de la información aportada por estas instancias también está representada en el corpus de características. Sin embargo, nosotros hemos etiquetado la mayoría de las características extraídas del estas instancias que estamos agregando. En una sesión de aprendizaje activo real el usuario etiquetaría instancias que probablemente tengan características que no sean redundantes y entonces se justificaría el entrenamiento con gran número de instancias y características.
 

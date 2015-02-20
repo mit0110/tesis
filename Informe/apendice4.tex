@@ -1,7 +1,8 @@
-\chapter*{Comparación completa de rendimiento con suavizado}
+\chapter{Comparación completa de rendimiento con suavizado}\label{ap-4}
 
 En la siguiente tabla se muestran los valores del \textit{accuracy} (A) y reconocimiento (R) para las versión base y para las dos técnicas de suavizado utilizadas: \textit{LSA} y \textit{Tf-Idf}.
 
+Cada fila representa las mediciones obtenidas para una combinación de diferentes tipos de características. Los tipos utilizados son: Lemas (L), Bigramas (B), Trigramas (T), Bigramas Mezclados (MB), Etiquetas POS (POS), Entidades nombradas (NE), Tipos de las entidades nombradas (NET) y Concordancia a patrones parciales (PM).
 
 \begin{table}[h]
 \begin{center}
@@ -26,5 +27,3 @@ PM + NET + NE + L & 0.52 & 0.46 & 0.52 & 0.46 & 0.76 & 0.21 \\[0.5ex]
 \end{center}
 \caption{Comparación de desempeño con distintas caraterísticas y técnicas de suavizamiento.}\label{t-ap-4}
 \end{table}
-
-Cada fila representa las mediciones obtenidas para una combinación de diferentes tipos de características. Los tipos utilizados son: Lemas (L), Bigramas (B), Trigramas (T), Bigramas Mezclados (MB), Etiquetas POS (POS), Entidades nombradas (NE), Tipos de las entidades nombradas (NET) y Concordancia a patrones parciales (PM).

@@ -37,6 +37,7 @@
 \def\degree#1{\gdef\@degree{#1}}
 % The name of your Oxford college (e.g. Christ Church, Pembroke)
 \def\college#1{\gdef\@college{#1}}
+\def\university#1{\gdef\@university{#1}}
 
 \def\directors#1{\gdef\@directors{#1}}
 
@@ -111,7 +112,7 @@
   \vspace*{1ex}
       {{\Large \@college} \par}
   \vspace*{1ex}
-      {Universidad Nacional de Córdoba \par}
+      {{\@university} \par}
   \vspace*{25mm}
       {{\submittedtext} \par}
   \vspace*{1ex}
@@ -239,7 +240,7 @@
     {{\large \vspace*{1ex} \@author} \par}
 {\large \vspace*{1ex}
     {{\@college} \par}
-    {Universidad Nacional de Córdoba \par}
+    {{\@university} \par}
 \vspace*{1ex}
     {{\it \submittedtext} \par}
     {\it {\@degree} \par}
