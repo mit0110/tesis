@@ -99,26 +99,26 @@
 %define title page layout
 \renewcommand{\maketitle}{
 \begin{alwayssingle}
-    \renewcommand{\footnotesize}{\small}
-    \renewcommand{\footnoterule}{\relax}
     \thispagestyle{empty}
-  \null\vfill
   \begin{center}
+    {{\Large \@college} \par}
+    {{\@university} \par}
+    \vspace*{15mm}
     { \Huge {\bfseries {\@title}} \par}
-%{\large \vspace*{40mm} {\logo \par} \vspace*{25mm}}
+
 \vspace*{75mm}
     {{\Large \@author} \par}
 {\large \vspace*{1ex}
-  \vspace*{1ex}
-      {{\Large \@college} \par}
-  \vspace*{1ex}
-      {{\@university} \par}
-  \vspace*{25mm}
       {{\submittedtext} \par}
   \vspace*{1ex}
       {\it {\@directors} \par}
-  \vspace*{2ex}
-%    {\@degreedate}
+  \vspace*{40mm}
+  %License
+  \begin{center}
+   \htmladdnormallink{\includegraphics[scale=1]{licencia.png}}{http://creativecommons.org/licenses/by/2.5/ar/}
+  \end{center}
+  \small{{\@title} por {\@author} se distribuye bajo una \htmladdnormallink{Licencia Creative Commons Atribución 2.5 Argentina.}{http://creativecommons.org/licenses/by/2.5/ar/}}
+
 }
   \end{center}
   \null\vfill
@@ -152,7 +152,7 @@
 {\begin{alwayssingle} \thispagestyle{empty}
 \begin{center}
 \vspace*{1.5cm}
-{\Large \bfseries Acknowledgements}
+{\Large \bfseries Agradecimientos}
 \end{center}
 \vspace{0.5cm}
 \begin{quote}}

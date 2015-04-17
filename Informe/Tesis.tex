@@ -18,6 +18,10 @@
 \usepackage{listings}
 \usepackage{color}
 \lstset{language=Python}
+\usepackage{xmpincl}
+\includexmp{metadata}
+\usepackage{html}
+\usepackage{hyperref}
 
 %input macros (i.e. write your own macros file called mymacros.tex
 %and uncomment the next line)
@@ -32,8 +36,9 @@
 
 %\renewcommand{\submittedtext}{change the default text here if needed}
 %\degree{Licenciada en Ciencias de la Computación}     %the degree
-\directors{Laura Alonso Alemany\\[1ex]
+\directors{Laura Alonso Alemany, 
 		Franco Luque}
+
 
 %end the preamble and start the document
 \begin{document}
@@ -48,9 +53,9 @@
 
 
 \maketitle                  % create a title page from the preamble info
+\include{abstract}          % include the abstract
 \include{dedication}        % include a dedication.tex file
 \include{acknowlegements}   % include an acknowledgements.tex file
-\include{abstract}          % include the abstract
 
 \begin{romanpages}          % start roman page numbering
 \tableofcontents            % generate and include a table of contents
